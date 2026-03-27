@@ -70,7 +70,7 @@ header .logo svg {
     position: absolute;
     top: -40px;
     left: 0;
-    background: #800000;
+    background: linear-gradient(to right, rgba(7, 7, 7, 0.95), rgba(148, 148, 148, 0.95));
     color: white;
     padding: 8px;
     text-decoration: none;
@@ -95,8 +95,9 @@ header .logo svg {
     background-color: #2a2a2a;
     border-bottom: 1px solid #444;
     position: sticky;
-    top: 0;
+    top: 65px;  /* прижато к шапке */
     z-index: 100;
+
 }
 
 .category-nav a,
