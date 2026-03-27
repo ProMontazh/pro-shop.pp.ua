@@ -111,7 +111,7 @@ header .logo svg {
 }
 
 /* ============================================
-   НАВИГАЦИЯ ПО КАТЕГОРІЯХ - ДЕСКТОП (КАК БЫЛО)
+   НАВИГАЦИЯ ПО КАТЕГОРІЯХ - ДЕСКТОП (КАК БЫЛО ИЗНАЧАЛЬНО)
    ============================================ */
 .category-nav {
     background: transparent;
@@ -123,9 +123,31 @@ header .logo svg {
     gap: 10px;
 }
 
-/* "На головну" в конец в таком же стиле */
+/* Ссылка "На головну" - компактная */
 .nav-home {
-    display: none; /* скрываем старую кнопку */
+    background: #800000;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9em;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-home::before {
+    content: "←";
+    font-size: 1.1em;
+}
+
+.nav-home:hover {
+    background: #600000;
+    transform: translateY(-1px);
 }
 
 /* Контейнер категорий */
@@ -161,19 +183,8 @@ header .logo svg {
     font-weight: 600;
 }
 
-/* "На головну" в конец в таком же стиле как вкладки */
-.nav-categories a:last-child {
-    margin-left: auto;
-    background: #e8e8e8;
-}
-
-.nav-categories a:last-child:hover {
-    background: #800000;
-    color: white;
-}
-
 /* ============================================
-   МОБІЛЬНА ВЕРСІЯ (до 768px) - КВАДРАТНІ КАРТОЧКИ
+   МОБІЛЬНА ВЕРСІЯ (до 768px)
    ============================================ */
 @media (max-width: 768px) {
     .category-nav {
@@ -187,6 +198,11 @@ header .logo svg {
         right: 0;
         z-index: 999;
         background: #1a1a1a;
+    }
+
+    /* Кнопка назад скрыта на мобильном */
+    .nav-home {
+        display: none;
     }
 
     /* Все категории в один ряд с отступами */
@@ -219,17 +235,12 @@ header .logo svg {
         margin: 0;
     }
 
-    /* Последняя ссылка "На головну" скрыта на мобильном */
-    .nav-categories a:last-child {
-        display: none;
-    }
-
     /* УВЕЛИЧЕННАЯ иконка */
     .nav-categories a::before {
         content: "";
         display: block;
-        width: 70%; /* было 55% */
-        height: 70%; /* было 55% */
+        width: 70%;
+        height: 70%;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -238,7 +249,7 @@ header .logo svg {
         opacity: 0.8;
     }
 
-    /* Активная категория - ЕЛЕ-ЕЛЕ красное свечение */
+    /* Активная категория - еле-еле красное свечение */
     .nav-categories a.active {
         border: 1px solid #800000;
         box-shadow: 0 0 4px rgba(128, 0, 0, 0.4), inset 0 0 3px rgba(128, 0, 0, 0.2);
@@ -248,12 +259,6 @@ header .logo svg {
     .nav-categories a.active::before {
         filter: grayscale(0%);
         opacity: 1;
-    }
-
-    /* Остальные без эффектов при наведении */
-    .nav-categories a:not(.active):hover::before {
-        filter: grayscale(30%);
-        opacity: 0.9;
     }
 
     /* ============================================
@@ -326,6 +331,43 @@ header .logo svg {
 
     .products {
         margin-top: calc(65px + 28vw);
+    }
+}
+
+/* ============================================
+   ДЕСКТОПНАЯ ВЕРСИЯ (от 769px) - КАК БЫЛО
+   ============================================ */
+@media (min-width: 769px) {
+    .category-nav {
+        padding: 8px 20px 0;
+        margin-bottom: 0;
+        align-items: flex-start;
+    }
+
+    .nav-categories {
+        margin-left: 15px;
+        padding-top: 2px;
+    }
+
+    .nav-categories a {
+        padding: 5px 12px;
+        font-size: 0.8em;
+        border-radius: 15px;
+    }
+
+    /* Убираем иконки на десктопе */
+    .nav-categories a::before {
+        display: none;
+    }
+}
+
+/* ============================================
+   БОЛЬШИЕ ЭКРАНЫ (от 1200px) - КАК БЫЛО
+   ============================================ */
+@media (min-width: 1200px) {
+    .nav-categories a {
+        padding: 6px 16px;
+        font-size: 0.85em;
     }
 }
 /* ========================================
