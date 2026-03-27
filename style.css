@@ -3,6 +3,7 @@
    КОЛЬОРИ: темна тема
    ======================================== */
 
+/* CSS ЗМІННІ */
 :root {
     --text-dark: #333;
     --white: #ffffff;
@@ -109,254 +110,48 @@ header .logo svg {
     color: #666;
 }
 
-/* ============================================
-   НАВИГАЦИЯ ПО КАТЕГОРИЯМ - АДАПТИВНАЯ
-   ============================================ */
-
-/* Базовые стили для всех экранов */
+/* ========================================
+   НАВІГАЦІЯ ПО КАТЕГОРІЯХ
+   ======================================== */
 .category-nav {
-    background: transparent;
-    padding: 10px 15px;
-    margin: 0 auto;
-    max-width: 1400px;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
+    padding: 15px 20px;
+    background-color: #2a2a2a;
+    border-bottom: 1px solid #444;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-/* Ссылка "На головну" - компактная */
-.nav-home {
-    background: #800000;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 8px;
+.category-nav a,
+.nav-link {
+    color: #ccc;
     text-decoration: none;
-    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
     font-size: 0.9em;
     white-space: nowrap;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    background: transparent;
+    border: 1px solid transparent;
 }
 
-.nav-home::before {
-    content: "←";
-    font-size: 1.1em;
+.category-nav a:hover,
+.nav-link:hover {
+    background-color: #444;
+    color: #fff;
 }
 
-.nav-home:hover {
-    background: #600000;
-    transform: translateY(-1px);
-}
-
-/* Контейнер категорий */
-.nav-categories {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    flex: 1;
-}
-
-.nav-categories a {
-    color: #333;
-    text-decoration: none;
-    padding: 6px 14px;
-    border-radius: 20px;
-    background: #f0f0f0;
-    border: 1px solid #e0e0e0;
-    font-size: 0.85em;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-}
-
-.nav-categories a:hover {
-    background: #800000;
-    color: white;
+.category-nav a.active,
+.nav-link.active {
+    background-color: #800000;
+    color: #fff;
     border-color: #800000;
 }
 
-.nav-categories a.active {
-    background: #800000;
-    color: white;
-    border-color: #800000;
-    font-weight: 600;
-}
-
-/* ============================================
-   МОБИЛЬНАЯ ВЕРСИЯ (до 768px) - ТОЛЬКО ИКОНКИ В РЯД
-   ============================================ */
-@media (max-width: 768px) {
-    .category-nav {
-        flex-direction: column;
-        padding: 10px;
-        gap: 10px;
-    }
-
-    /* Кнопка назад компактнее */
-    .nav-home {
-        width: 100%;
-        justify-content: center;
-        padding: 10px;
-        font-size: 0.9em;
-        border-radius: 10px;
-    }
-
-    /* Все категории в один ряд без скролла */
-    .nav-categories {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: visible;
-        gap: 4px;
-        padding: 0;
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    /* Компактные квадратные карточки - только иконки */
-    .nav-categories a {
-        flex: 1 1 0;
-        min-width: 0;
-        height: 55px;
-        padding: 0;
-        border-radius: 10px;
-        background: white;
-        border: 1px solid #e0e0e0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-        font-size: 0;
-    }
-
-    /* Иконка категории */
-    .nav-categories a::before {
-        content: "";
-        display: block;
-        width: 35px;
-        height: 35px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        transition: all 0.3s ease;
-        filter: grayscale(30%);
-        opacity: 0.9;
-    }
-
-    /* Активная категория - бордовый фон */
-    .nav-categories a.active {
-        background: #800000;
-        border-color: #800000;
-        transform: translateY(-2px);
-        box-shadow: 0 3px 10px rgba(128,0,0,0.2);
-    }
-
-    .nav-categories a.active::before {
-        filter: grayscale(0%);
-        opacity: 1;
-        transform: scale(1.05);
-    }
-
-    /* ============================================
-       ИКОНКИ КАТЕГОРИЙ
-       ============================================ */
-    
-    .nav-categories a[href*="indoor"]::before {
-        background-image: url('images/indoor_1.png');
-    }
-    .nav-categories a[href*="outdoor.html"]::before {
-        background-image: url('images/outdoor_1.png');
-    }
-    .nav-categories a[href*="4g"]::before,
-    .nav-categories a[href*="4G"]::before {
-        background-image: url('images/outdoor_4G_1.png');
-    }
-    .nav-categories a[href*="microsd"]::before,
-    .nav-categories a[href*="microSD"]::before {
-        background-image: url('images/microSD_1.png');
-    }
-    .nav-categories a[href*="alarm"]::before {
-        background-image: url('images/alarm_1.png');
-    }
-    .nav-categories a[href*="hub"]::before {
-        background-image: url('images/hub_white_1.png');
-    }
-    .nav-categories a[href="protect.html"]::before,
-    .nav-categories a[href="./protect.html"]::before,
-    .nav-categories a:not([href*="outdoor"])[href*="protect"]::before {
-        background-image: url('images/protect_indoor_1.png');
-    }
-    .nav-categories a[href*="protect_outdoor"]::before,
-    .nav-categories a[href*="protect-outdoor"]::before {
-        background-image: url('images/protect_outdoor_1.png');
-    }
-    .nav-categories a[href*="water"]::before,
-    .nav-categories a[href*="waterstop"]::before {
-        background-image: url('images/waterstop_1.png');
-    }
-    .nav-categories a[href*="fire"]::before {
-        background-image: url('images/fire_1.png');
-    }
-}
-
-/* ============================================
-   ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ (до 380px) - 2 РЯДА
-   ============================================ */
-@media (max-width: 380px) {
-    .nav-categories {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(2, 50px);
-        gap: 5px;
-    }
-
-    .nav-categories a {
-        height: 50px;
-    }
-
-    .nav-categories a::before {
-        width: 32px;
-        height: 32px;
-    }
-}
-
-/* ============================================
-   ДЕСКТОПНАЯ ВЕРСИЯ (от 769px) - КАК БЫЛО
-   ============================================ */
-@media (min-width: 769px) {
-    .category-nav {
-        padding: 8px 20px 0;
-        margin-bottom: 0;
-        align-items: flex-start;
-    }
-
-    .nav-categories {
-        margin-left: 15px;
-        padding-top: 2px;
-    }
-
-    .nav-categories a {
-        padding: 5px 12px;
-        font-size: 0.8em;
-        border-radius: 15px;
-    }
-
-    /* Убираем иконки на десктопе */
-    .nav-categories a::before {
-        display: none;
-    }
-}
-
-/* ============================================
-   БОЛЬШИЕ ЭКРАНЫ (от 1200px) - КАК БЫЛО
-   ============================================ */
-@media (min-width: 1200px) {
-    .nav-categories a {
-        padding: 6px 16px;
-        font-size: 0.85em;
-    }
-}
 /* ========================================
    КАТЕГОРІЇ НА ГОЛОВНІЙ
    ======================================== */
@@ -522,7 +317,7 @@ header .logo svg {
 
 /* ✅ Назва — не обрізається */
 .product-item h3 {
-  
+
     color:#b0b0b0;
     font-size: 1.0rem;
     margin-bottom: 10px;
