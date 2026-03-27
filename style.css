@@ -245,7 +245,7 @@ header .logo svg {
 
     /* Отступ для контента */
     .products {
-        margin-top: calc(65px + 14vw);
+        margin-top: 150px;  /* фиксированный отступ */
     }
 }
 
