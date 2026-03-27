@@ -185,7 +185,7 @@ header .logo svg {
 }
 
 /* ============================================
-   МОБИЛЬНАЯ ВЕРСИЯ (до 768px) - ВСЕ КАТЕГОРИИ В РЯД
+   МОБИЛЬНАЯ ВЕРСИЯ (до 768px) - ТОЛЬКО ИКОНКИ В РЯД
    ============================================ */
 @media (max-width: 768px) {
     .category-nav {
@@ -207,17 +207,17 @@ header .logo svg {
     .nav-categories {
         display: flex;
         flex-wrap: nowrap;
-        overflow-x: visible; /* убрали скролл */
-        gap: 4px; /* минимальный отступ */
+        overflow-x: visible;
+        gap: 4px;
         padding: 0;
         width: 100%;
-        justify-content: space-between; /* равномерное распределение */
+        justify-content: space-between;
     }
 
-    /* Компактные квадратные карточки */
+    /* Компактные квадратные карточки - только иконки */
     .nav-categories a {
-        flex: 1 1 0; /* равная ширина всех */
-        min-width: 0; /* разрешаем сжиматься */
+        flex: 1 1 0;
+        min-width: 0;
         height: 55px;
         padding: 0;
         border-radius: 10px;
@@ -227,11 +227,10 @@ header .logo svg {
         align-items: center;
         justify-content: center;
         box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-        position: relative;
-        font-size: 0; /* скрываем текст */
+        font-size: 0;
     }
 
-    /* Иконка категории - меньше */
+    /* Иконка категории */
     .nav-categories a::before {
         content: "";
         display: block;
@@ -245,8 +244,7 @@ header .logo svg {
         opacity: 0.9;
     }
 
-    /* Эффекты при наведении/активации */
-    .nav-categories a:hover,
+    /* Активная категория - бордовый фон */
     .nav-categories a.active {
         background: #800000;
         border-color: #800000;
@@ -254,24 +252,10 @@ header .logo svg {
         box-shadow: 0 3px 10px rgba(128,0,0,0.2);
     }
 
-    .nav-categories a:hover::before,
     .nav-categories a.active::before {
         filter: grayscale(0%);
         opacity: 1;
         transform: scale(1.05);
-    }
-
-    /* Индикатор активной категории - маленькая точка */
-    .nav-categories a.active::after {
-        content: "";
-        position: absolute;
-        top: 3px;
-        right: 3px;
-        width: 8px;
-        height: 8px;
-        background: #ff4444;
-        border-radius: 50%;
-        border: 1px solid white;
     }
 
     /* ============================================
@@ -337,6 +321,42 @@ header .logo svg {
     }
 }
 
+/* ============================================
+   ДЕСКТОПНАЯ ВЕРСИЯ (от 769px) - КАК БЫЛО
+   ============================================ */
+@media (min-width: 769px) {
+    .category-nav {
+        padding: 8px 20px 0;
+        margin-bottom: 0;
+        align-items: flex-start;
+    }
+
+    .nav-categories {
+        margin-left: 15px;
+        padding-top: 2px;
+    }
+
+    .nav-categories a {
+        padding: 5px 12px;
+        font-size: 0.8em;
+        border-radius: 15px;
+    }
+
+    /* Убираем иконки на десктопе */
+    .nav-categories a::before {
+        display: none;
+    }
+}
+
+/* ============================================
+   БОЛЬШИЕ ЭКРАНЫ (от 1200px) - КАК БЫЛО
+   ============================================ */
+@media (min-width: 1200px) {
+    .nav-categories a {
+        padding: 6px 16px;
+        font-size: 0.85em;
+    }
+}
 /* ========================================
    КАТЕГОРІЇ НА ГОЛОВНІЙ
    ======================================== */
