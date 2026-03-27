@@ -249,33 +249,6 @@ header .logo svg {
     }
 }
 
-/* ============================================
-   ДУЖЕ МАЛЕНЬКІ ЕКРАНИ (до 380px) - 2 РЯДИ
-   ============================================ */
-@media (max-width: 380px) {
-    .nav-categories {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        gap: 4px;
-        padding: 4px;
-    }
-
-    .nav-categories a {
-        aspect-ratio: 1 / 1;
-        min-height: 70px;
-    }
-
-    .nav-categories a::before {
-        width: 65%;
-        height: 65%;
-    }
-
-    .products {
-        margin-top: calc(65px + 28vw);
-    }
-}
-
 
 /* ========================================
    КАТЕГОРІЇ НА ГОЛОВНІЙ
