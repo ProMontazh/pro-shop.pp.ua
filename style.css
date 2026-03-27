@@ -111,72 +111,65 @@ header .logo svg {
 }
 
 /* ============================================
-   НАВИГАЦИЯ ПО КАТЕГОРІЯХ - ДЕСКТОП
+   НАВИГАЦИЯ ПО КАТЕГОРІЯХ - ДЕСКТОП (КАК БЫЛО)
    ============================================ */
 .category-nav {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 20px;
     background: transparent;
+    padding: 10px 15px;
     margin: 0 auto;
     max-width: 1400px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-/* Скрываем старую кнопку "На головну" */
+/* "На головну" в конец в таком же стиле */
 .nav-home {
-    display: none;
+    display: none; /* скрываем старую кнопку */
 }
 
-/* Все вкладки в одну линию */
+/* Контейнер категорий */
 .nav-categories {
     display: flex;
     gap: 8px;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     flex: 1;
-    justify-content: flex-start;
 }
 
-/* Стиль вкладок как был */
 .nav-categories a {
-    color: #ccc;
+    color: #333;
     text-decoration: none;
     padding: 6px 14px;
-    border-radius: 15px;
-    background: #333;
-    border: 1px solid #444;
+    border-radius: 20px;
+    background: #f0f0f0;
+    border: 1px solid #e0e0e0;
     font-size: 0.85em;
     transition: all 0.3s ease;
     white-space: nowrap;
 }
 
 .nav-categories a:hover {
-    background: #444;
-    color: #fff;
+    background: #800000;
+    color: white;
+    border-color: #800000;
 }
 
 .nav-categories a.active {
     background: #800000;
-    color: #fff;
+    color: white;
     border-color: #800000;
+    font-weight: 600;
 }
 
-/* "На головну" в конце в том же стиле */
-.nav-categories a[href="index.html"],
-.nav-categories a[href="./index.html"],
-.nav-categories a[href="/index.html"],
-.nav-categories a[href="../index.html"] {
-    background: #444;
-    margin-left: auto; /* прижимаем вправо */
-    border: 1px solid #555;
+/* "На головну" в конец в таком же стиле как вкладки */
+.nav-categories a:last-child {
+    margin-left: auto;
+    background: #e8e8e8;
 }
 
-.nav-categories a[href="index.html"]:hover,
-.nav-categories a[href="./index.html"]:hover,
-.nav-categories a[href="/index.html"]:hover,
-.nav-categories a[href="../index.html"]:hover {
-    background: #555;
-    color: #fff;
+.nav-categories a:last-child:hover {
+    background: #800000;
+    color: white;
 }
 
 /* ============================================
@@ -223,23 +216,20 @@ header .logo svg {
         justify-content: center;
         font-size: 0;
         position: relative;
-        margin: 0; /* убираем лишние отступы */
+        margin: 0;
     }
 
-    /* УБИРАЕМ особые стили для "На головну" на мобильном */
-    .nav-categories a[href="index.html"],
-    .nav-categories a[href="./index.html"],
-    .nav-categories a[href="/index.html"],
-    .nav-categories a[href="../index.html"] {
-        display: none; /* скрываем на мобильном */
+    /* Последняя ссылка "На головну" скрыта на мобильном */
+    .nav-categories a:last-child {
+        display: none;
     }
 
-    /* Иконка */
+    /* УВЕЛИЧЕННАЯ иконка */
     .nav-categories a::before {
         content: "";
         display: block;
-        width: 55%;
-        height: 55%;
+        width: 70%; /* было 55% */
+        height: 70%; /* было 55% */
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -248,10 +238,10 @@ header .logo svg {
         opacity: 0.8;
     }
 
-    /* Активная категория - УБРАНЫ красные линии */
+    /* Активная категория - ЕЛЕ-ЕЛЕ красное свечение */
     .nav-categories a.active {
-        border: 2px solid #800000;
-        /* УБРАНО: box-shadow с красным свечением */
+        border: 1px solid #800000;
+        box-shadow: 0 0 4px rgba(128, 0, 0, 0.4), inset 0 0 3px rgba(128, 0, 0, 0.2);
         z-index: 1;
     }
 
@@ -308,7 +298,7 @@ header .logo svg {
 
     /* Отступ для контента */
     .products {
-        margin-top: calc(65px + 12vw);
+        margin-top: calc(65px + 14vw);
     }
 }
 
@@ -326,11 +316,16 @@ header .logo svg {
 
     .nav-categories a {
         aspect-ratio: 1 / 1;
-        min-height: 60px;
+        min-height: 70px;
+    }
+
+    .nav-categories a::before {
+        width: 65%;
+        height: 65%;
     }
 
     .products {
-        margin-top: calc(65px + 24vw);
+        margin-top: calc(65px + 28vw);
     }
 }
 /* ========================================
