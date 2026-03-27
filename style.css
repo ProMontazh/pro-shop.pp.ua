@@ -82,33 +82,6 @@ header .logo svg {
     top: 0;
 }
 
-/* ========================================
-   BREADCRUMBS (хлібні крихти)
-   ======================================== */
-.breadcrumbs {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    margin-top: 90px;
-    font-size: 0.9em;
-    color: #aaa;
-    background-color: #1a1a1a;
-}
-
-.breadcrumbs a {
-    color: #ff4444;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.breadcrumbs a:hover {
-    color: #fff;
-}
-
-.breadcrumbs span {
-    color: #666;
-}
 
 /* ========================================
    НАВІГАЦІЯ ПО КАТЕГОРІЯХ
