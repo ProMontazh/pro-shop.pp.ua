@@ -110,77 +110,46 @@ header .logo svg {
     color: #666;
 }
 
-/* ============================================
-   НАВИГАЦИЯ ПО КАТЕГОРІЯХ - ДЕСКТОП (КАК БЫЛО ИЗНАЧАЛЬНО)
-   ============================================ */
+/* ========================================
+   НАВІГАЦІЯ ПО КАТЕГОРІЯХ
+   ======================================== */
 .category-nav {
-    background: transparent;
-    padding: 10px 15px;
-    margin: 0 auto;
-    max-width: 1400px;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
+    padding: 15px 20px;
+    background-color: #2a2a2a;
+    border-bottom: 1px solid #444;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-/* Ссылка "На головну" - компактная */
-.nav-home {
-    background: #800000;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 8px;
+.category-nav a,
+.nav-link {
+    color: #ccc;
     text-decoration: none;
-    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
     font-size: 0.9em;
     white-space: nowrap;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    background: transparent;
+    border: 1px solid transparent;
 }
 
-.nav-home::before {
-    content: "←";
-    font-size: 1.1em;
+.category-nav a:hover,
+.nav-link:hover {
+    background-color: #444;
+    color: #fff;
 }
 
-.nav-home:hover {
-    background: #600000;
-    transform: translateY(-1px);
-}
-
-/* Контейнер категорий */
-.nav-categories {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    flex: 1;
-}
-
-.nav-categories a {
-    color: #333;
-    text-decoration: none;
-    padding: 6px 14px;
-    border-radius: 20px;
-    background: #f0f0f0;
-    border: 1px solid #e0e0e0;
-    font-size: 0.85em;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-}
-
-.nav-categories a:hover {
-    background: #800000;
-    color: white;
+.category-nav a.active,
+.nav-link.active {
+    background-color: #800000;
+    color: #fff;
     border-color: #800000;
-}
-
-.nav-categories a.active {
-    background: #800000;
-    color: white;
-    border-color: #800000;
-    font-weight: 600;
 }
 
 /* ============================================
