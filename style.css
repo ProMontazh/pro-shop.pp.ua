@@ -109,46 +109,295 @@ header .logo svg {
     color: #666;
 }
 
-/* ========================================
-   НАВІГАЦІЯ ПО КАТЕГОРІЯХ
-   ======================================== */
+/* ============================================
+   НАВИГАЦИЯ ПО КАТЕГОРИЯМ - АДАПТИВНАЯ
+   ============================================ */
+
+/* Базовые стили для всех экранов */
 .category-nav {
+    background: transparent;
+    padding: 10px 15px;
+    margin: 0 auto;
+    max-width: 1400px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    align-items: center;
     gap: 10px;
-    padding: 15px 20px;
-    background-color: #2a2a2a;
-    border-bottom: 1px solid #444;
-    position: sticky;
-    top: 0;
-    z-index: 100;
 }
 
-.category-nav a,
-.nav-link {
-    color: #ccc;
+/* Ссылка "На головну" - компактная */
+.nav-home {
+    background: #800000;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
     text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    transition: all 0.3s ease;
+    font-weight: 600;
     font-size: 0.9em;
     white-space: nowrap;
-    background: transparent;
-    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-.category-nav a:hover,
-.nav-link:hover {
-    background-color: #444;
-    color: #fff;
+.nav-home::before {
+    content: "←";
+    font-size: 1.1em;
 }
 
-.category-nav a.active,
-.nav-link.active {
-    background-color: #800000;
-    color: #fff;
+.nav-home:hover {
+    background: #600000;
+    transform: translateY(-1px);
+}
+
+/* Контейнер категорий */
+.nav-categories {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.nav-categories a {
+    color: #333;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: #f0f0f0;
+    border: 1px solid #e0e0e0;
+    font-size: 0.85em;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-categories a:hover {
+    background: #800000;
+    color: white;
     border-color: #800000;
+}
+
+.nav-categories a.active {
+    background: #800000;
+    color: white;
+    border-color: #800000;
+    font-weight: 600;
+}
+
+/* ============================================
+   МОБИЛЬНАЯ ВЕРСИЯ (до 768px) - КАРТОЧКИ С ИКОНКАМИ
+   ============================================ */
+@media (max-width: 768px) {
+    .category-nav {
+        flex-direction: column;
+        padding: 10px;
+        gap: 12px;
+    }
+
+    /* Кнопка назад на всю ширину */
+    .nav-home {
+        width: 100%;
+        justify-content: center;
+        padding: 12px;
+        font-size: 1em;
+        border-radius: 12px;
+    }
+
+    /* Горизонтальный скролл категорий */
+    .nav-categories {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 12px;
+        padding: 5px 0;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        width: 100%;
+    }
+
+    .nav-categories::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Карточки категорий с иконками */
+    .nav-categories a {
+        flex: 0 0 auto;
+        width: 100px;
+        min-width: 100px;
+        padding: 12px 8px;
+        border-radius: 16px;
+        background: white;
+        border: 2px solid #e8e8e8;
+        font-size: 0.75em;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Контейнер для иконки */
+    .nav-categories a::before {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 50px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: all 0.3s ease;
+        filter: grayscale(30%);
+        opacity: 0.9;
+    }
+
+    /* Название категории под иконкой */
+    .nav-categories a {
+        line-height: 1.3;
+        white-space: normal;
+        word-wrap: break-word;
+        hyphens: auto;
+    }
+
+    /* Эффекты при наведении/активации */
+    .nav-categories a:hover,
+    .nav-categories a.active {
+        background: #800000;
+        color: white;
+        border-color: #800000;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 16px rgba(128,0,0,0.25);
+    }
+
+    .nav-categories a:hover::before,
+    .nav-categories a.active::before {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    /* Индикатор активной категории */
+    .nav-categories a.active::after {
+        content: "●";
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        color: #ff4444;
+        font-size: 0.6em;
+        width: 16px;
+        height: 16px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    }
+
+    /* ============================================
+       ИКОНКИ КАТЕГОРИЙ - ПОДКЛЮЧЕНИЕ ИЗОБРАЖЕНИЙ
+       ============================================ */
+    
+    /* Внутрішні камери */
+    .nav-categories a[href*="indoor"]::before {
+        background-image: url('images/indoor_1.png');
+    }
+    
+    /* Зовнішні камери */
+    .nav-categories a[href*="outdoor.html"]::before {
+        background-image: url('images/outdoor_1.png');
+    }
+    
+    /* 4G камери */
+    .nav-categories a[href*="4g"]::before,
+    .nav-categories a[href*="4G"]::before {
+        background-image: url('images/outdoor_4G_1.png');
+    }
+    
+    /* Карти пам'яті */
+    .nav-categories a[href*="microsd"]::before,
+    .nav-categories a[href*="microSD"]::before {
+        background-image: url('images/microSD_1.png');
+    }
+    
+    /* Комплекти сигналізації */
+    .nav-categories a[href*="alarm"]::before {
+        background-image: url('images/alarm_1.png');
+    }
+    
+    /* Хаби */
+    .nav-categories a[href*="hub"]::before {
+        background-image: url('images/hub_white_1.png');
+    }
+    
+    /* Внутрішні датчики */
+    .nav-categories a[href="protect.html"]::before,
+    .nav-categories a[href="./protect.html"]::before,
+    .nav-categories a:not([href*="outdoor"])[href*="protect"]::before {
+        background-image: url('images/protect_indoor_1.png');
+    }
+    
+    /* Зовнішні датчики */
+    .nav-categories a[href*="protect_outdoor"]::before,
+    .nav-categories a[href*="protect-outdoor"]::before {
+        background-image: url('images/protect_outdoor_1.png');
+    }
+    
+    /* Захист від потопу */
+    .nav-categories a[href*="water"]::before,
+    .nav-categories a[href*="waterstop"]::before {
+        background-image: url('images/waterstop_1.png');
+    }
+    
+    /* Захист від пожежі */
+    .nav-categories a[href*="fire"]::before {
+        background-image: url('images/fire_1.png');
+    }
+}
+
+/* ============================================
+   ДЕСКТОПНАЯ ВЕРСИЯ (от 769px) - КОМПАКТНЫЙ ВИД
+   ============================================ */
+@media (min-width: 769px) {
+    .category-nav {
+        padding: 8px 20px 0;
+        margin-bottom: 0;
+        align-items: flex-start;
+    }
+
+    .nav-categories {
+        margin-left: 15px;
+        padding-top: 2px;
+    }
+
+    .nav-categories a {
+        padding: 5px 12px;
+        font-size: 0.8em;
+        border-radius: 15px;
+    }
+
+    /* Убираем иконки на десктопе */
+    .nav-categories a::before {
+        display: none;
+    }
+
+    /* Убираем индикатор активной на десктопе */
+    .nav-categories a.active::after {
+        display: none;
+    }
+}
+
+/* ============================================
+   БОЛЬШИЕ ЭКРАНЫ (от 1200px)
+   ============================================ */
+@media (min-width: 1200px) {
+    .nav-categories a {
+        padding: 6px 16px;
+        font-size: 0.85em;
+    }
 }
 
 /* ========================================
