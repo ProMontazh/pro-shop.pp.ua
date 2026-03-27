@@ -11,7 +11,7 @@
 }
 
 /* Reset та базові стилі */
-*, *::before, *::after {
+*, *::before,  {
     box-sizing: border-box;
 }
 
