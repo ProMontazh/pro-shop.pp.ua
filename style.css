@@ -303,42 +303,7 @@ header .logo svg {
     }
 }
 
-/* ============================================
-   ДЕСКТОПНАЯ ВЕРСИЯ (от 769px) - КАК БЫЛО
-   ============================================ */
-@media (min-width: 769px) {
-    .category-nav {
-        padding: 8px 20px 0;
-        margin-bottom: 0;
-        align-items: flex-start;
-    }
 
-    .nav-categories {
-        margin-left: 15px;
-        padding-top: 2px;
-    }
-
-    .nav-categories a {
-        padding: 5px 12px;
-        font-size: 0.8em;
-        border-radius: 15px;
-    }
-
-    /* Убираем иконки на десктопе */
-    .nav-categories a::before {
-        display: none;
-    }
-}
-
-/* ============================================
-   БОЛЬШИЕ ЭКРАНЫ (от 1200px) - КАК БЫЛО
-   ============================================ */
-@media (min-width: 1200px) {
-    .nav-categories a {
-        padding: 6px 16px;
-        font-size: 0.85em;
-    }
-}
 /* ========================================
    КАТЕГОРІЇ НА ГОЛОВНІЙ
    ======================================== */
