@@ -152,7 +152,7 @@ header .logo svg {
     border-color: #800000;
 }
 /* ============================================
-   МОБИЛЬНАЯ ВЕРСИЯ (до 768px) - КАРТОЧКИ КАК НА ГЛАВНОЙ
+   МОБИЛЬНАЯ ВЕРСИЯ (до 768px) - КВАДРАТНЫЕ КАРТОЧКИ
    ============================================ */
 @media (max-width: 768px) {
     .category-nav {
@@ -161,15 +161,15 @@ header .logo svg {
         gap: 0;
         margin: 0;
         position: fixed;
-        top: 65px; /* прижаты к хедеру (высота хедера 65px) */
+        top: 65px;
         left: 0;
         right: 0;
         z-index: 999;
-        background: #1a1a1a; /* фон как на главной */
+        background: #1a1a1a;
         border-bottom: 2px solid #800000;
     }
 
-    /* Кнопка назад — убираем, на мобильном не нужна */
+    /* Кнопка назад скрыта */
     .nav-home {
         display: none;
     }
@@ -179,41 +179,28 @@ header .logo svg {
         display: flex;
         flex-wrap: nowrap;
         overflow-x: visible;
-        gap: 0; /* без отступов как на главной */
+        gap: 0;
         padding: 0;
         width: 100%;
         justify-content: space-between;
     }
 
-    /* Карточки категорий — как на главной */
+    /* Квадратные карточки */
     .nav-categories a {
         flex: 1 1 0;
         min-width: 0;
-        height: 70px; /* компактная высота */
+        aspect-ratio: 1 / 1; /* квадрат */
+        height: auto;
         padding: 0;
-        border-radius: 0; /* без скруглений */
-        background: linear-gradient(145deg, #0f0f0f, #1a1a1a); /* как .category-card */
-        border: 1px solid #444; /* как .category-card */
-        border-right: 1px solid #333; /* разделители */
+        border-radius: 0;
+        background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+        border: 1px solid #444;
+        border-right: 1px solid #333;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: none;
         font-size: 0;
         position: relative;
-        overflow: hidden;
-        /* текстура как на главной */
-        background-image: 
-            repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 10px,
-                rgba(0,0,0,0.3) 10px,
-                rgba(0,0,0,0.3) 11px,
-                transparent 11px,
-                transparent 20px
-            ),
-            linear-gradient(145deg, #0f0f0f, #1a1a1a);
     }
 
     /* Убираем правую границу у последней */
@@ -221,12 +208,12 @@ header .logo svg {
         border-right: 1px solid #444;
     }
 
-    /* Иконка категории — как на главной */
+    /* Иконка */
     .nav-categories a::before {
         content: "";
         display: block;
-        width: 40px;
-        height: 40px;
+        width: 60%;
+        height: 60%;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -235,20 +222,22 @@ header .logo svg {
         opacity: 0.8;
     }
 
-    /* Подсветка при наведении — как .category-card:hover */
-    .nav-categories a:hover,
+    /* Только активная категория подсвечивается */
     .nav-categories a.active {
-        box-shadow: 0 0 15px rgba(128, 0, 0, 0.4);
-        border-color: #800000;
-        border-width: 2px;
+        border: 2px solid #800000; /* тонкая линия */
+        box-shadow: inset 0 0 10px rgba(128, 0, 0, 0.3);
         z-index: 1;
     }
 
-    .nav-categories a:hover::before,
     .nav-categories a.active::before {
         filter: grayscale(0%);
         opacity: 1;
-        transform: scale(1.05);
+    }
+
+    /* Остальные без эффектов при наведении */
+    .nav-categories a:not(.active):hover::before {
+        filter: grayscale(30%);
+        opacity: 0.9;
     }
 
     /* ============================================
@@ -291,9 +280,9 @@ header .logo svg {
         background-image: url('images/fire_1.png');
     }
 
-    /* Отступ для контента под фиксированной навигацией */
+    /* Отступ для контента */
     .products {
-        margin-top: 70px; /* 65px хедер + 70px навигация */
+        margin-top: calc(65px + 10vw); /* хедер + динамическая высота квадратов */
     }
 }
 
@@ -304,26 +293,17 @@ header .logo svg {
     .nav-categories {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(2, 55px);
+        grid-template-rows: repeat(2, 1fr);
         gap: 0;
     }
 
     .nav-categories a {
-        height: 55px;
-        border-bottom: 1px solid #333;
-    }
-
-    .nav-categories a:nth-child(-n+5) {
-        border-bottom: 1px solid #333;
-    }
-
-    .nav-categories a::before {
-        width: 35px;
-        height: 35px;
+        aspect-ratio: 1 / 1;
+        min-height: 60px;
     }
 
     .products {
-        margin-top: 110px; /* 65 + 110 */
+        margin-top: calc(65px + 20vw);
     }
 }
 /* ========================================
