@@ -110,49 +110,77 @@ header .logo svg {
     color: #666;
 }
 
-/* ========================================
-   НАВІГАЦІЯ ПО КАТЕГОРІЯХ
-   ======================================== */
+/* ============================================
+   НАВИГАЦИЯ ПО КАТЕГОРІЯХ - ДЕСКТОП
+   ============================================ */
 .category-nav {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    padding: 15px 20px;
-    background-color: #2a2a2a;
-    border-bottom: 1px solid #444;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: transparent;
+    margin: 0 auto;
+    max-width: 1400px;
 }
 
-.category-nav a,
-.nav-link {
+/* Скрываем старую кнопку "На головну" */
+.nav-home {
+    display: none;
+}
+
+/* Все вкладки в одну линию */
+.nav-categories {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+    flex: 1;
+    justify-content: flex-start;
+}
+
+/* Стиль вкладок как был */
+.nav-categories a {
     color: #ccc;
     text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 6px 14px;
+    border-radius: 15px;
+    background: #333;
+    border: 1px solid #444;
+    font-size: 0.85em;
     transition: all 0.3s ease;
-    font-size: 0.9em;
     white-space: nowrap;
-    background: transparent;
-    border: 1px solid transparent;
 }
 
-.category-nav a:hover,
-.nav-link:hover {
-    background-color: #444;
+.nav-categories a:hover {
+    background: #444;
     color: #fff;
 }
 
-.category-nav a.active,
-.nav-link.active {
-    background-color: #800000;
+.nav-categories a.active {
+    background: #800000;
     color: #fff;
     border-color: #800000;
 }
+
+/* "На головну" в конце в том же стиле */
+.nav-categories a[href="index.html"],
+.nav-categories a[href="./index.html"],
+.nav-categories a[href="/index.html"],
+.nav-categories a[href="../index.html"] {
+    background: #444;
+    margin-left: auto; /* прижимаем вправо */
+    border: 1px solid #555;
+}
+
+.nav-categories a[href="index.html"]:hover,
+.nav-categories a[href="./index.html"]:hover,
+.nav-categories a[href="/index.html"]:hover,
+.nav-categories a[href="../index.html"]:hover {
+    background: #555;
+    color: #fff;
+}
+
 /* ============================================
-   МОБИЛЬНАЯ ВЕРСИЯ (до 768px) - КВАДРАТНЫЕ КАРТОЧКИ
+   МОБІЛЬНА ВЕРСІЯ (до 768px) - КВАДРАТНІ КАРТОЧКИ
    ============================================ */
 @media (max-width: 768px) {
     .category-nav {
@@ -166,54 +194,52 @@ header .logo svg {
         right: 0;
         z-index: 999;
         background: #1a1a1a;
-        border-bottom: 2px solid #800000;
     }
 
-    /* Кнопка назад скрыта */
-    .nav-home {
-        display: none;
-    }
-
-    /* Все категории в один ряд */
+    /* Все категории в один ряд с отступами */
     .nav-categories {
         display: flex;
         flex-wrap: nowrap;
         overflow-x: visible;
-        gap: 1;
-        padding: 0;
+        gap: 4px;
+        padding: 4px;
         width: 100%;
         justify-content: space-between;
+        margin: 0;
     }
 
-    /* Квадратные карточки */
+    /* Квадратные карточки с закруглением */
     .nav-categories a {
         flex: 1 1 0;
         min-width: 0;
-        aspect-ratio: 1 / 1; /* квадрат */
+        aspect-ratio: 1 / 1;
         height: auto;
         padding: 0;
-        border-radius: 1;
+        border-radius: 6px;
         background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
         border: 1px solid #444;
-        border-right: 1px solid #333;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 0;
         position: relative;
+        margin: 0; /* убираем лишние отступы */
     }
 
-    /* Убираем правую границу у последней */
-    .nav-categories a:last-child {
-        border-right: 1px solid #444;
+    /* УБИРАЕМ особые стили для "На головну" на мобильном */
+    .nav-categories a[href="index.html"],
+    .nav-categories a[href="./index.html"],
+    .nav-categories a[href="/index.html"],
+    .nav-categories a[href="../index.html"] {
+        display: none; /* скрываем на мобильном */
     }
 
     /* Иконка */
     .nav-categories a::before {
         content: "";
         display: block;
-        width: 60%;
-        height: 60%;
+        width: 55%;
+        height: 55%;
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -222,10 +248,10 @@ header .logo svg {
         opacity: 0.8;
     }
 
-    /* Только активная категория подсвечивается */
+    /* Активная категория - УБРАНЫ красные линии */
     .nav-categories a.active {
-        border: 0.5px solid #800000; /* тонкая линия */
-        box-shadow: inset 0 0 10px rgba(128, 0, 0, 0.3);
+        border: 2px solid #800000;
+        /* УБРАНО: box-shadow с красным свечением */
         z-index: 1;
     }
 
@@ -241,7 +267,7 @@ header .logo svg {
     }
 
     /* ============================================
-       ИКОНКИ КАТЕГОРИЙ
+       ІКОНКИ КАТЕГОРІЙ
        ============================================ */
     .nav-categories a[href*="indoor"]::before {
         background-image: url('images/indoor_1.png');
@@ -282,19 +308,20 @@ header .logo svg {
 
     /* Отступ для контента */
     .products {
-        margin-top: calc(65px + 10vw); /* хедер + динамическая высота квадратов */
+        margin-top: calc(65px + 12vw);
     }
 }
 
 /* ============================================
-   ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ (до 380px) - 2 РЯДА
+   ДУЖЕ МАЛЕНЬКІ ЕКРАНИ (до 380px) - 2 РЯДИ
    ============================================ */
 @media (max-width: 380px) {
     .nav-categories {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(2, 1fr);
-        gap: 0;
+        gap: 4px;
+        padding: 4px;
     }
 
     .nav-categories a {
@@ -303,7 +330,7 @@ header .logo svg {
     }
 
     .products {
-        margin-top: calc(65px + 20vw);
+        margin-top: calc(65px + 24vw);
     }
 }
 /* ========================================
