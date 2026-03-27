@@ -151,7 +151,181 @@ header .logo svg {
     color: #fff;
     border-color: #800000;
 }
+/* ============================================
+   МОБИЛЬНАЯ ВЕРСИЯ (до 768px) - КАРТОЧКИ КАК НА ГЛАВНОЙ
+   ============================================ */
+@media (max-width: 768px) {
+    .category-nav {
+        flex-direction: column;
+        padding: 0;
+        gap: 0;
+        margin: 0;
+        position: fixed;
+        top: 65px; /* прижаты к хедеру (высота хедера 65px) */
+        left: 0;
+        right: 0;
+        z-index: 999;
+        background: #1a1a1a; /* фон как на главной */
+        border-bottom: 2px solid #800000;
+    }
 
+    /* Кнопка назад — убираем, на мобильном не нужна */
+    .nav-home {
+        display: none;
+    }
+
+    /* Все категории в один ряд */
+    .nav-categories {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: visible;
+        gap: 0; /* без отступов как на главной */
+        padding: 0;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    /* Карточки категорий — как на главной */
+    .nav-categories a {
+        flex: 1 1 0;
+        min-width: 0;
+        height: 70px; /* компактная высота */
+        padding: 0;
+        border-radius: 0; /* без скруглений */
+        background: linear-gradient(145deg, #0f0f0f, #1a1a1a); /* как .category-card */
+        border: 1px solid #444; /* как .category-card */
+        border-right: 1px solid #333; /* разделители */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: none;
+        font-size: 0;
+        position: relative;
+        overflow: hidden;
+        /* текстура как на главной */
+        background-image: 
+            repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(0,0,0,0.3) 10px,
+                rgba(0,0,0,0.3) 11px,
+                transparent 11px,
+                transparent 20px
+            ),
+            linear-gradient(145deg, #0f0f0f, #1a1a1a);
+    }
+
+    /* Убираем правую границу у последней */
+    .nav-categories a:last-child {
+        border-right: 1px solid #444;
+    }
+
+    /* Иконка категории — как на главной */
+    .nav-categories a::before {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 40px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        transition: all 0.3s ease;
+        filter: grayscale(50%);
+        opacity: 0.8;
+    }
+
+    /* Подсветка при наведении — как .category-card:hover */
+    .nav-categories a:hover,
+    .nav-categories a.active {
+        box-shadow: 0 0 15px rgba(128, 0, 0, 0.4);
+        border-color: #800000;
+        border-width: 2px;
+        z-index: 1;
+    }
+
+    .nav-categories a:hover::before,
+    .nav-categories a.active::before {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    /* ============================================
+       ИКОНКИ КАТЕГОРИЙ
+       ============================================ */
+    .nav-categories a[href*="indoor"]::before {
+        background-image: url('images/indoor_1.png');
+    }
+    .nav-categories a[href*="outdoor.html"]::before {
+        background-image: url('images/outdoor_1.png');
+    }
+    .nav-categories a[href*="4g"]::before,
+    .nav-categories a[href*="4G"]::before {
+        background-image: url('images/outdoor_4G_1.png');
+    }
+    .nav-categories a[href*="microsd"]::before,
+    .nav-categories a[href*="microSD"]::before {
+        background-image: url('images/microSD_1.png');
+    }
+    .nav-categories a[href*="alarm"]::before {
+        background-image: url('images/alarm_1.png');
+    }
+    .nav-categories a[href*="hub"]::before {
+        background-image: url('images/hub_white_1.png');
+    }
+    .nav-categories a[href="protect.html"]::before,
+    .nav-categories a[href="./protect.html"]::before,
+    .nav-categories a:not([href*="outdoor"])[href*="protect"]::before {
+        background-image: url('images/protect_indoor_1.png');
+    }
+    .nav-categories a[href*="protect_outdoor"]::before,
+    .nav-categories a[href*="protect-outdoor"]::before {
+        background-image: url('images/protect_outdoor_1.png');
+    }
+    .nav-categories a[href*="water"]::before,
+    .nav-categories a[href*="waterstop"]::before {
+        background-image: url('images/waterstop_1.png');
+    }
+    .nav-categories a[href*="fire"]::before {
+        background-image: url('images/fire_1.png');
+    }
+
+    /* Отступ для контента под фиксированной навигацией */
+    .products {
+        margin-top: 70px; /* 65px хедер + 70px навигация */
+    }
+}
+
+/* ============================================
+   ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ (до 380px) - 2 РЯДА
+   ============================================ */
+@media (max-width: 380px) {
+    .nav-categories {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(2, 55px);
+        gap: 0;
+    }
+
+    .nav-categories a {
+        height: 55px;
+        border-bottom: 1px solid #333;
+    }
+
+    .nav-categories a:nth-child(-n+5) {
+        border-bottom: 1px solid #333;
+    }
+
+    .nav-categories a::before {
+        width: 35px;
+        height: 35px;
+    }
+
+    .products {
+        margin-top: 110px; /* 65 + 110 */
+    }
+}
 /* ========================================
    КАТЕГОРІЇ НА ГОЛОВНІЙ
    ======================================== */
