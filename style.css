@@ -522,7 +522,7 @@ header .logo svg {
     border-radius: 8px;
     cursor: pointer;
     z-index: 1100;
-    font-weight: 480;
+    font-weight: 470;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
     user-select: none;
