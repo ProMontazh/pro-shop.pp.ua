@@ -161,18 +161,19 @@
         офісом або магазином з будь-якого місця через смартфон. Камери IMOU відрізняются простим встановленням і стабільною роботою.
     </p>
    <div class="products-container">
-        <div class="product-item" onclick="openProductDetails('vnutrishni_kamery/IPC_K2MP_3H1WE.html')">
-            <img src="images/IPC-K2MP-3H1WE.png" alt="Відеокамера 1">
-            <h3>Поворотна камера IMOU IPC-K2MP-3H1WE</h3>
-            <p>Поворотна Wi-Fi камера з мікрофоном та динаміком, роздільна здатність 3Мп, кут 66°</p>
-            <p class="product-price">1120.00 грн</p>
-            <button class="btn" onclick="addToCart(event, { 
-                id:'IPC-K2MP-3H1WE', 
-                name:'Камера IPC-K2MP-3H1WE', 
-                price:1120, 
-                image:'images/IPC-K2MP-3H1WE.png' 
-            })">Додати у кошик</button>
-        </div>
+    <a href="vnutrishni_kamery/IPC_K2MP_3H1WE.html" class="product-item">
+        <img src="images/IPC-K2MP-3H1WE.png" alt="Відеокамера 1">
+        <h3>Поворотна камера IMOU IPC-K2MP-3H1WE</h3>
+        <p>Поворотна Wi-Fi камера з мікрофоном та динаміком, роздільна здатність 3Мп, кут 66°</p>
+        <p class="product-price">1120.00 грн</p>
+        <button class="btn" onclick="event.preventDefault(); addToCart(event, { 
+            id:'IPC-K2MP-3H1WE', 
+            name:'Камера IPC-K2MP-3H1WE', 
+            price:1120, 
+            image:'images/IPC-K2MP-3H1WE.png' 
+        })">Додати у кошик</button>
+    </a>
+</div>
 
         <div class="product-item" onclick="openProductDetails('details/cam_indoor_2_IPC_C32EP.html')">
             <img src="images/IPC-C22EP-A.png" alt="Відеокамера 2">
