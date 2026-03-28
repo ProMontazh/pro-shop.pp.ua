@@ -90,7 +90,7 @@ header .logo svg {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     padding: 0px 10px;
     background-color: #2a2a2a;
     border-bottom: 1px solid #444;
