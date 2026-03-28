@@ -153,8 +153,8 @@ header .logo svg {
         display: flex;
         flex-wrap: nowrap;
         overflow-x: visible;
-        gap: 4px;
-        padding: 4px;
+        gap: 2px;
+        padding: 2px;
         width: 100%;
         justify-content: space-between;
         margin: 0;
@@ -167,7 +167,7 @@ header .logo svg {
         aspect-ratio: 1 / 1;
         height: auto;
         padding: 0;
-        border-radius: 6px;
+        border-radius: 2px;
         background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
         border: 1px solid #444;
         display: flex;
