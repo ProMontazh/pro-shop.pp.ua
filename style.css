@@ -189,7 +189,7 @@ header .logo svg {
         background-position: center;
         transition: all 0.3s ease;
         filter: grayscale(50%);
-        opacity: 0.8;
+        opacity: 0;
     }
 
     /* Активная категория - еле-еле красное свечение */
