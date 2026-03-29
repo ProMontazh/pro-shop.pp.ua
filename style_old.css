@@ -1386,7 +1386,40 @@ body.slide-in-right {
         font-size: 14px;
     }
 }
-
+ /* ========================================
+       СКРЫВАЕМ СТАРУЮ НАВИГАЦИЮ НА МОБИЛЬНЫХ
+       ======================================== */
+    
+    /* Скрываем липкую навигацию по категориям */
+    .category-nav {
+        display: none !important;
+    }
+    
+    /* Скрываем кнопки категорий на страницах товаров */
+    .category-buttons,
+    #categories {
+        display: none !important;
+    }
+    
+    /* Показываем индикатор свайпа вместо навигации */
+    .swipe-hint {
+        display: flex !important;
+        position: sticky;
+        top: 65px; /* под хедером */
+        z-index: 99;
+        background: #2a2a2a;
+        border-bottom: 1px solid #444;
+    }
+    
+    /* Корректируем отступы контента */
+    .products {
+        padding-top: 10px;
+    }
+    
+    .breadcrumbs {
+        margin-top: 70px; /* уменьшаем, т.к. нет навигации */
+    }
+}
 @media (max-width: 900px) and (orientation: landscape) {
     #categories {
         padding-top: 80px;
