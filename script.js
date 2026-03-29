@@ -21,7 +21,7 @@ const CATEGORY_SLIDES = [
     { file: 'vnutrishni_kamery.html', key: 'indoor' },
     { file: 'zovnishni_kamery.html', key: 'outdoor' },
     { file: 'zovnishni_4G_kamery.html', key: 'outdoor_4G' },
-    { file: 'karty_pam\'yati.html', key: 'microsd' },
+    { file: 'karty_pam\'yati.html', key: 'microSD' }, //
     { file: 'komplekty_syhnalizaciyi.html', key: 'alarm' },
     { file: 'khuby.html', key: 'hub' },
     { file: 'vnutrishni_datchyky.html', key: 'protect' },
