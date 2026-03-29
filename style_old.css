@@ -1149,6 +1149,75 @@ footer > p {
         padding-top: 34px;
     }
 }
+/* ========================================
+/* Анимации перехода между категориями */
+======================================== */
+body {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Уход влево (свайп влево → следующая категория) */
+body.slide-out-left {
+    transform: translateX(-30%);
+    opacity: 0;
+}
+
+/* Уход вправо (свайп вправо → предыдущая категория) */
+body.slide-out-right {
+    transform: translateX(30%);
+    opacity: 0;
+}
+
+/* Вход слева */
+@keyframes slideInFromLeft {
+    from { transform: translateX(-30%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Вход справа */
+@keyframes slideInFromRight {
+    from { transform: translateX(30%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+body.slide-in-left {
+    animation: slideInFromLeft 0.3s ease;
+}
+
+body.slide-in-right {
+    animation: slideInFromRight 0.3s ease;
+}
+
+/* Индикатор свайпа (показывается только на мобильных) */
+.swipe-hint {
+    display: none;
+    text-align: center;
+    padding: 8px;
+    color: #666;
+    font-size: 0.8em;
+    background: #2a2a2a;
+    border-bottom: 1px solid #444;
+}
+
+@media (max-width: 768px) {
+    .swipe-hint {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 20px;
+    }
+}
+
+.swipe-hint span {
+    color: #800000;
+    opacity: 0.6;
+}
+
+.swipe-hint .current {
+    color: #fff;
+    font-weight: 600;
+    opacity: 1;
+}
 
 @media (max-width: 768px) {
     .breadcrumbs {
