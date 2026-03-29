@@ -436,8 +436,8 @@ header .logo svg {
 .cart-content {
     display: none;
     position: fixed;
-    right: 15px;
-    top: 77px;
+    right: 10px;
+    top: 90px;
     background-color: rgba(255,255,255,0.95);
     color: black;
     padding: 20px;
