@@ -1,10 +1,14 @@
 /* ======================================================
-   🧩 КАРТА КАТЕГОРИЙ
+   🧩 КАРТА КАТЕГОРІЙ
    ====================================================== */
 const CATEGORY_MAP = {
     indoor: { label: 'Внутрішні камери IMOU', icon: 'reviews_png/cam_indoor.png' },
     outdoor: { label: 'Зовнішні камери IMOU', icon: 'reviews_png/cam_outdoor.png' },
     outdoor_4G: { label: 'Зовнішні 4G камери IMOU', icon: 'reviews_png/cam_outdoor_4G.png' },
+    microSD: { 
+        label: 'Карти пам\'яті microSD', 
+        icon: 'reviews_png/microsd.png' 
+    },
     alarm: { label: 'Комплекти сигналізації Ajax', icon: 'reviews_png/starterkit.png' },
     hub: { label: 'Хаби, модулі Ajax', icon: 'reviews_png/hub.png' },
     protect: { label: 'Внутрішня охорона Ajax', icon: 'reviews_png/motionprotect.png' },
@@ -21,7 +25,7 @@ const CATEGORY_SLIDES = [
     { file: 'vnutrishni_kamery.html', key: 'indoor' },
     { file: 'zovnishni_kamery.html', key: 'outdoor' },
     { file: 'zovnishni_4G_kamery.html', key: 'outdoor_4G' },
-    { file: 'karty_pam\'yati.html', key: 'microSD' }, //
+    { file: "karty_pam'yati.html", key: 'microSD' },
     { file: 'komplekty_syhnalizaciyi.html', key: 'alarm' },
     { file: 'khuby.html', key: 'hub' },
     { file: 'vnutrishni_datchyky.html', key: 'protect' },
