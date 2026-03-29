@@ -186,8 +186,8 @@ header .logo svg {
             transparent 10px,
             rgba(0,0,0,0.3) 10px,
             rgba(0,0,0,0.3) 11px,
-            transparent 11px,
-            transparent 20px
+            transparent 6px,  /* радиус закругления карточек категорий біло 11  */
+            transparent 10px /* радиус закругления карточек категорий біло 20  */
         ),
         /* Градієнт для об'єму */
          /* фон карточки категорий  linear-gradient(145deg, #252525 0%, #1a1a1a 50%, #151515 100%); */
