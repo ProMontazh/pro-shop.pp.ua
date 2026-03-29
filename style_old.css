@@ -1386,10 +1386,18 @@ body.slide-in-right {
         font-size: 14px;
     }
 }
- /* ========================================
-       СКРЫВАЕМ ТОЛЬКО ЛИПКУЮ НАВИГАЦИЮ
-       ======================================== */
-    
+ @media (max-width: 900px) and (orientation: landscape) {
+    #categories {
+        padding-top: 80px;
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+/* ========================================
+   МОБІЛЬНІ — СКРИВАЄМО НАВІГАЦІЮ, ЗАЛИШАЄМО СВАЙП
+   ======================================== */
+@media (max-width: 768px) {
     /* Скрываем только липкую навигацию по категориям */
     .category-nav {
         display: none !important;
@@ -1408,11 +1416,7 @@ body.slide-in-right {
         margin-top: 70px;
     }
     
-    /* ========================================
-       КНОПКИ КАТЕГОРИЙ НА ГЛАВНОЙ — ОСТАВЛЯЕМ
-       ======================================== */
-    
-    /* На главной странице кнопки категорий видны */
+    /* Кнопки категорий на главной — оставляем */
     #categories,
     .category-buttons {
         display: flex !important;
@@ -1422,12 +1426,5 @@ body.slide-in-right {
     .category-card {
         flex: 1 1 calc(50% - 10px) !important;
         max-width: calc(50% - 10px) !important;
-    }
-}
-@media (max-width: 900px) and (orientation: landscape) {
-    #categories {
-        padding-top: 80px;
-        background-size: cover;
-        background-position: center;
     }
 }
