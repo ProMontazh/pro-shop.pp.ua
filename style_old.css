@@ -1386,7 +1386,44 @@ body.slide-in-right {
         font-size: 14px;
     }
 }
-
+ /* ========================================
+       СКРЫВАЕМ ТОЛЬКО ЛИПКУЮ НАВИГАЦИЮ
+       ======================================== */
+    
+    /* Скрываем только липкую навигацию по категориям */
+    .category-nav {
+        display: none !important;
+    }
+    
+    /* Показываем индикатор свайпа */
+    .swipe-hint {
+        display: flex !important;
+        position: sticky;
+        top: 65px;
+        z-index: 99;
+    }
+    
+    /* Корректируем отступ breadcrumbs */
+    .breadcrumbs {
+        margin-top: 70px;
+    }
+    
+    /* ========================================
+       КНОПКИ КАТЕГОРИЙ НА ГЛАВНОЙ — ОСТАВЛЯЕМ
+       ======================================== */
+    
+    /* На главной странице кнопки категорий видны */
+    #categories,
+    .category-buttons {
+        display: flex !important;
+    }
+    
+    /* Уменьшаем размер карточек для мобильных */
+    .category-card {
+        flex: 1 1 calc(50% - 10px) !important;
+        max-width: calc(50% - 10px) !important;
+    }
+}
 @media (max-width: 900px) and (orientation: landscape) {
     #categories {
         padding-top: 80px;
