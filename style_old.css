@@ -192,7 +192,7 @@ header .logo svg {
         /* Градієнт для об'єму */
          /* фон карточки категорий  linear-gradient(145deg, #252525 0%, #1a1a1a 50%, #151515 100%); */
         background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
-    border-radius: 5px; /* радиус закругления карточек категорий біло 15  */
+    border-radius: 8px; /* радиус закругления карточек категорий біло 15  */
     padding: 0;
     text-align: center;
     cursor: pointer;
