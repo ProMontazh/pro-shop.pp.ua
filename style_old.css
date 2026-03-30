@@ -117,8 +117,8 @@ header .logo svg {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
-    padding: 6px 20px;
+    gap: 15px;/* ← расстояние между кнопками */
+    padding: 5px 15px; /* ← отступы всей панели навигации */
     background-color: #2a2a2a;
     border-bottom: 1px solid #444;
     position: sticky;
@@ -130,10 +130,10 @@ header .logo svg {
 .nav-link {
     color: #ccc;
     text-decoration: none;
-    padding: 6px 16px;
-    border-radius: 4px;
+    padding: 4px 16px; /* ← внутренние отступы (высота/ширина области) */
+    border-radius: 4px; /* ← скругление углов */
     transition: all 0.3s ease;
-    font-size: 0.8em;
+    font-size: 0.8em;/* ← размер текста */
     white-space: nowrap;
     background: transparent;
     border: 1px solid transparent;
