@@ -130,7 +130,7 @@ header .logo svg {
 .nav-link {
     color: #ccc;
     text-decoration: none;
-    padding: 8px 16px;
+    padding: 6px 16px;
     border-radius: 4px;
     transition: all 0.3s ease;
     font-size: 0.8em;
