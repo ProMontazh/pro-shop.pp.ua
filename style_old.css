@@ -130,7 +130,7 @@ header .logo svg {
 .nav-link {
     color: #ccc;
     text-decoration: none;
-    padding: 4px 16px; /* ← внутренние отступы (высота/ширина области) */
+    padding: 4px 8px; /* ← внутренние отступы (высота/ширина области) */
     border-radius: 4px; /* ← скругление углов */
     transition: all 0.3s ease;
     font-size: 0.8em;/* ← размер текста */
