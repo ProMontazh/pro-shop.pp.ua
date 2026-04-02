@@ -118,7 +118,7 @@ header .logo svg {
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;/* ← расстояние между кнопками */
-    padding: 0px 15px 10px 15px; /* ← отступы всей панели навигации */
+    padding: 0px 20px 10px 20px; /* ← отступы всей панели навигации */
     background-color: #2a2a2a;
     border-bottom: 1px solid #444;
     position: sticky;
