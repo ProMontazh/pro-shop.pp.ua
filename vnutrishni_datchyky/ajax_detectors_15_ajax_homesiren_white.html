@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Meta Tags -->
     <title>Внутрішня сирена Ajax HomeSiren White — купити в Україні | ПРОЗАХИСТ</title>
     <meta name="description" content="Купити бездротову внутрішню сирену Ajax HomeSiren White. Гучність 80-100 дБ, LED-індикація, до 5 років автономності. Ціна 2180 грн. Доставка по Україні.">
     <meta name="keywords" content="Ajax HomeSiren, внутрішня сирена Ajax, HomeSiren White, сирена для квартири, купити сирену Ajax, охоронна сигналізація">
     <meta name="author" content="ПРОЗАХИСТ">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Canonical -->
     <link rel="canonical" href="https://xn--80anevegliy.pp.ua/vnutrishni_datchyky/homesiren_white.html">
-    
+
     <!-- Open Graph -->
     <meta property="og:type" content="product">
     <meta property="og:url" content="https://xn--80anevegliy.pp.ua/vnutrishni_datchyky/homesiren_white.html">
@@ -22,14 +22,14 @@
     <meta property="og:image" content="https://xn--80anevegliy.pp.ua/images/ajax_homesiren_white_1.jpg">
     <meta property="product:price:amount" content="2180.00">
     <meta property="product:price:currency" content="UAH">
-    
+
     <!-- Favicons -->
     <link rel="icon" type="image/svg+xml" sizes="16x16" href="/favicon_16.svg">
     <link rel="icon" type="image/svg+xml" sizes="32x32" href="/favicon_32.svg">
-    
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -54,7 +54,7 @@
       }
     }
     </script>
-    
+
     <style>
         * {
             margin: 0;
@@ -108,7 +108,7 @@
             margin: 0 5px;
         }
 
-        /* Toast - стиль как на основном сайте */
+        /* Toast */
         .toast {
             position: fixed;
             top: 50%;
@@ -151,13 +151,12 @@
             font-weight: 600;
         }
 
-        /* Carousel */
+        /* Carousel - стили как на первом примере */
         .carousel-wrapper {
             position: relative;
             overflow: hidden;
-            background: #141414;
-            border: 1px solid #2a2a2a;
-            margin-bottom: 25px;
+            max-width: 100%;
+            margin: 0 auto;
         }
 
         .carousel {
@@ -168,10 +167,9 @@
         .carousel img {
             flex: 0 0 100%;
             max-width: 100%;
-            height: auto;
+            border-radius: 5px;
             cursor: pointer;
             object-fit: contain;
-            background: #0d0d0d;
         }
 
         /* Carousel Arrows */
@@ -233,10 +231,10 @@
             margin-right: 8px;
         }
 
-        /* Price - СЕРАЯ как на основном сайте */
+        /* Price */
         .product-price {
             font-size: 1.8em;
-            color: #808080; /* Серый цвет как на основном сайте */
+            color: #808080;
             text-align: center;
             margin: 25px 0;
             font-weight: 600;
@@ -285,8 +283,9 @@
         .modal img {
             max-width: 90%;
             max-height: 90%;
-            border-radius: 5px;
+            border-radius: 10px;
             border: 2px solid #444;
+            transition: transform 0.3s ease;
         }
 
         .modal .arrow {
@@ -322,7 +321,24 @@
             color: #ff4444;
         }
 
-        /* Mobile */
+        /* Media Queries */
+        @media (min-width: 768px) {
+            .carousel-arrow { display: flex; }
+        }
+
+        @media (min-width: 1024px) {
+            .product-description {
+                margin-left: 80px;
+                margin-right: 40px;
+            }
+            .product-description ul {
+                padding-left: 60px;
+            }
+            .carousel img {
+                max-height: 420px;
+            }
+        }
+
         @media (max-width: 768px) {
             header {
                 position: static;
@@ -372,6 +388,7 @@
             }
         }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -443,17 +460,19 @@
             <img src="../images/ajax_homesiren_white_3.png" alt="Ajax HomeSiren White — внутрішня сирена LED-індикація" onclick="openModal(2)">
             <img src="../images/ajax_homesiren_white_4.png" alt="Ajax HomeSiren White — внутрішня сирена вигляд ззаду" onclick="openModal(3)">
             <img src="../images/ajax_homesiren_white_5.png" alt="Ajax HomeSiren White — внутрішня сирена вигляд ззаду" onclick="openModal(4)">
+            <!-- Клон первого изображения для бесконечной карусели -->
+            <img src="../images/ajax_homesiren_white_1.png" alt="Ajax HomeSiren White — внутрішня сирена вигляд спереду" onclick="openModal(0)">
         </div>
 
-        <button class="carousel-arrow left" onclick="prevSlide()">&#10094;</button>
-        <button class="carousel-arrow right" onclick="nextSlide()">&#10095;</button>
+        <button class="carousel-arrow left" onclick="prevImage()">&#10094;</button>
+        <button class="carousel-arrow right" onclick="nextImage()">&#10095;</button>
     </div>
 
     <div id="toast" class="toast"></div>
 
     <div class="product-description">
         <p>Бездротова сирена <strong>Ajax HomeSiren</strong> призначена для звукового та світлового оповіщення про тривоги системи безпеки. Потужний зумер з регульованою гучністю від 80 до 100 дБ та яскравий LED для візуальної індикації.</p>
-        
+
         <ul>
             <li>Гучність: 80-100 дБ на відстані 1 м (налаштовується)</li>
             <li>Дальність зв'язку з хабом: до 2000 м</li>
@@ -469,53 +488,77 @@
 
     <p class="product-price">2180.00 грн</p>
     <button class="btn" onclick="addToCart()">Додати у кошик</button>
-    
+
     <a href="../vnutrishni_datchyky.html" class="back-link">← Повернутися до каталогу</a>
 </div>
 
 <div id="modal" class="modal" onclick="closeModal()">
-    <span class="arrow left" onclick="event.stopPropagation(); prevModal()">&#10094;</span>
+    <span class="arrow left" onclick="event.stopPropagation(); prevModalImage()">&#10094;</span>
     <img id="modal-img" src="" alt="Збільшене зображення сирени Ajax HomeSiren"/>
-    <span class="arrow right" onclick="event.stopPropagation(); nextModal()">&#10095;</span>
+    <span class="arrow right" onclick="event.stopPropagation(); nextModalImage()">&#10095;</span>
 </div>
 
 <script>
-    // Carousel functionality
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel img');
-    const totalSlides = slides.length;
+    // Carousel functionality с зацикливанием как в первом примере
+    let currentIndex = 0;
+    const images = [
+        "../images/ajax_homesiren_white_1.png",
+        "../images/ajax_homesiren_white_2.png",
+        "../images/ajax_homesiren_white_3.png",
+        "../images/ajax_homesiren_white_4.png",
+        "../images/ajax_homesiren_white_5.png"
+    ];
+    const totalSlides = images.length;
     const carousel = document.getElementById('carousel');
 
     function updateCarousel() {
-        carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
     }
 
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % totalSlides;
+    function nextImage() {
+        currentIndex++;
+        carousel.style.transition = 'transform 0.5s ease';
         updateCarousel();
+
+        // Если дошли до клона (позиция после последнего оригинала)
+        if (currentIndex === totalSlides) {
+            setTimeout(() => {
+                carousel.style.transition = 'none';
+                currentIndex = 0;
+                updateCarousel();
+            }, 500); // После завершения анимации
+        }
     }
 
-    function prevSlide() {
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        updateCarousel();
+    function prevImage() {
+        // Если на первом изображении - мгновенно прыгаем на клон
+        if (currentIndex === 0) {
+            carousel.style.transition = 'none';
+            currentIndex = totalSlides;
+            updateCarousel();
+
+            // Даем браузеру время применить изменения
+            setTimeout(() => {
+                carousel.style.transition = 'transform 0.5s ease';
+                currentIndex--;
+                updateCarousel();
+            }, 20);
+        } else {
+            currentIndex--;
+            carousel.style.transition = 'transform 0.5s ease';
+            updateCarousel();
+        }
     }
 
     // Auto-slide every 5 seconds
-    setInterval(nextSlide, 5000);
+    setInterval(nextImage, 5000);
 
     // Modal functionality
     let modalIndex = 0;
-    const modalImages = [
-        '../images/ajax_homesiren_white_1.png',
-        '../images/ajax_homesiren_white_2.png',
-        '../images/ajax_homesiren_white_3.png',
-        '../images/ajax_homesiren_white_4.png',
-        '../images/ajax_homesiren_white_5.png'
-    ];
 
     function openModal(index) {
         modalIndex = index;
-        document.getElementById('modal-img').src = modalImages[modalIndex];
+        document.getElementById('modal-img').src = images[modalIndex];
         document.getElementById('modal').style.display = 'flex';
     }
 
@@ -523,45 +566,41 @@
         document.getElementById('modal').style.display = 'none';
     }
 
-    function nextModal() {
-        modalIndex = (modalIndex + 1) % modalImages.length;
-        document.getElementById('modal-img').src = modalImages[modalIndex];
+    function nextModalImage() {
+        modalIndex = (modalIndex + 1) % images.length;
+        document.getElementById('modal-img').src = images[modalIndex];
     }
 
-    function prevModal() {
-        modalIndex = (modalIndex - 1 + modalImages.length) % modalImages.length;
-        document.getElementById('modal-img').src = modalImages[modalIndex];
+    function prevModalImage() {
+        modalIndex = (modalIndex - 1 + images.length) % images.length;
+        document.getElementById('modal-img').src = images[modalIndex];
     }
 
     // Swipe support for carousel
-    let touchStartX = 0;
-    let touchEndX = 0;
-
+    let startX = 0;
     carousel.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-    });
+        startX = e.touches[0].clientX;
+    }, { passive: true });
 
     carousel.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    });
-
-    function handleSwipe() {
-        if (touchEndX < touchStartX - 50) nextSlide();
-        if (touchEndX > touchStartX + 50) prevSlide();
-    }
+        const diff = e.changedTouches[0].clientX - startX;
+        if (Math.abs(diff) > 50) {
+            diff > 0 ? prevImage() : nextImage();
+        }
+    }, { passive: true });
 
     // Swipe for modal
     const modal = document.getElementById('modal');
     modal.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-    });
+        startX = e.touches[0].clientX;
+    }, { passive: true });
 
     modal.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        if (touchEndX < touchStartX - 50) nextModal();
-        if (touchEndX > touchStartX + 50) prevModal();
-    });
+        const diff = e.changedTouches[0].clientX - startX;
+        if (Math.abs(diff) > 50) {
+            diff > 0 ? prevModalImage() : nextModalImage();
+        }
+    }, { passive: true });
 
     // Cart functionality
     function addToCart() {
@@ -569,19 +608,19 @@
             id: 'Ajax HomeSiren White',
             name: 'Ajax HomeSiren White',
             price: 2180,
-            image: '../images/ajax_homesiren_white_1.jpg',
+            image: '../images/ajax_homesiren_white_1.png',
             quantity: 1
         };
-        
+
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         const existing = cart.find(i => i.id === item.id);
-        
+
         if (existing) {
             existing.quantity++;
         } else {
             cart.push(item);
         }
-        
+
         localStorage.setItem('cart', JSON.stringify(cart));
         showToast('Ajax HomeSiren White додано до кошика!');
     }
