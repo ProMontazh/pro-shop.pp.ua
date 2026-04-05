@@ -1,50 +1,59 @@
 <!DOCTYPE html>
 <html lang="uk">
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="canonical" href="https://pro-shop.pp.ua/vnutrishni_kamery/IPC_K2MP_3H1WE">
-    <title>Деталі товару - Imou Ranger Mini (IPC-K2MP-3H1WE) 3МП (3.6мм)</title>
+    <title>Поворотна камера IMOU IPC-K2MP-3H1WE 3МП | ПРОЗАХИСТ</title>
+    <meta name="description" content="Купити поворотну Wi-Fi камеру IMOU IPC-K2MP-3H1WE 3МП. Smart tracking, детекція людей, нічне бачення 10м. Доставка по Україні.">
+    
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            box-sizing: border-box;
         }
 
-        /* Header БЕЗ фону, фіксований на десктопі */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* Header */
         header {
             position: fixed;
-            top: 0px;
-            left: 0px;
+            top: 0;
+            left: 0;
             z-index: 1000;
             background: transparent;
+            padding: 10px 20px;
         }
 
         .logo svg {
-            width: 205px;
+            width: 180px;
             height: auto;
-            /* filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3)); */
         }
 
+        /* Toast */
         .toast {
             position: fixed;
-            top: 45%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.4);
+            background-color: rgba(128, 0, 0, 0.9);
             color: white;
-            padding: 8px 12px;
+            padding: 12px 20px;
             border-radius: 5px;
-            font-size: 1.0em;
+            font-size: 1em;
             white-space: nowrap;
             visibility: hidden;
             opacity: 0;
-            transition: opacity 0.5s;
+            transition: opacity 0.3s;
             z-index: 9999;
+            border: 1px solid #ff4444;
         }
 
         .toast.show {
@@ -52,77 +61,103 @@
             opacity: 1;
         }
 
+        /* Container */
         .container {
-            max-width: 830px;
-            margin: 20px auto;
+            max-width: 900px;
+            margin: 100px auto 40px;
             padding: 30px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            animation: fadeIn 3.0s forwards;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
         }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
+        /* Product Title */
         .product-title {
             text-align: center;
-            font-size: 1.5em;
-            margin-top: 0;
+            font-size: 1.6em;
+            color: #fff;
+            margin-bottom: 25px;
+            font-weight: 600;
         }
 
+        /* Carousel */
         .carousel {
             display: flex;
             overflow-x: auto;
-            gap: 10px;
-            padding: 10px;
+            gap: 15px;
+            padding: 15px;
             scroll-behavior: smooth;
-            justify-content: flex-start;
+            justify-content: center;
+            background: #141414;
+            border: 1px solid #2a2a2a;
+            margin-bottom: 25px;
         }
 
         .carousel img {
             width: 100%;
-            max-width: 400px;
+            max-width: 350px;
             cursor: pointer;
             border-radius: 5px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #444;
         }
 
         .carousel img:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
+            box-shadow: 0 0 15px rgba(255, 68, 68, 0.3);
         }
 
+        /* Description */
         .product-description {
-            max-width: 100%;
-            margin-top: 20px;
-            font-size: 1.0rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #b0b0b0;
+            margin-bottom: 20px;
+        }
+
+        .product-description strong {
+            color: #fff;
+        }
+
+        .features-title {
+            color: #ff4444;
+            font-size: 1.2em;
+            margin: 25px 0 15px;
+            font-weight: 600;
         }
 
         .product-description ul {
-            padding-left: 20px;
-            margin-top: 10px;
-            margin-bottom: 0;
+            list-style: none;
+            padding-left: 0;
         }
 
         .product-description li {
-            margin-bottom: 6px;
+            padding: 8px 0;
+            border-bottom: 1px dotted #444;
+            color: #999;
         }
 
+        .product-description li:before {
+            content: "▸ ";
+            color: #800000;
+            margin-right: 8px;
+        }
+
+        /* Price */
         .product-price {
-            font-size: 1.8em;
-            color: red;
+            font-size: 2em;
+            color: #ff4444;
             text-align: center;
-            margin: 10px 0;
+            margin: 25px 0;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
         }
 
+        /* Button */
         .btn {
             display: block;
             width: fit-content;
-            padding: 10px 20px;
-            background-color: #007bff;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #800000 0%, #ff4444 100%);
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -130,13 +165,20 @@
             margin: 20px auto;
             text-align: center;
             border: none;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .btn:hover {
-            background-color: #0056b3;
+            background: linear-gradient(135deg, #ff4444 0%, #800000 100%);
+            box-shadow: 0 0 20px rgba(255, 68, 68, 0.4);
+            transform: translateY(-2px);
         }
 
-        /* Модальне вікно */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -144,7 +186,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.95);
             justify-content: center;
             align-items: center;
             z-index: 10000;
@@ -153,66 +195,64 @@
         .modal img {
             max-width: 90%;
             max-height: 90%;
-            border-radius: 10px;
+            border-radius: 5px;
+            border: 2px solid #444;
         }
 
         .modal .arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 3em;
-            color: white;
+            font-size: 2.5em;
+            color: #999;
             cursor: pointer;
             user-select: none;
-            padding: 10px;
+            padding: 20px;
+            transition: color 0.3s;
+        }
+
+        .modal .arrow:hover {
+            color: #ff4444;
         }
 
         .modal .arrow.left {
-            left: 20px;
+            left: 10px;
         }
 
         .modal .arrow.right {
-            right: 20px;
+            right: 10px;
         }
 
-        /* Покращення списку характеристик на ПК */
-        @media (min-width: 1024px) {
-            .product-description ul {
-                padding-left: 150px;
-                margin-top: 15px;
-            }
-
-            .product-description li {
-                border-bottom: 1px dotted #ddd;
-                padding-bottom: 5px;
-            }
+        /* Back link */
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #808080;
+            text-decoration: none;
+            transition: color 0.3s;
         }
 
-        /* Мобільна версія */
+        .back-link:hover {
+            color: #ff4444;
+        }
+
+        /* Mobile */
         @media (max-width: 768px) {
-            /* Логотип НЕ фіксований на мобільних */
             header {
                 position: static;
-                top: auto;
-                left: auto;
-                padding: 0px;
-                background: transparent;
+                padding: 10px;
+                background: #0d0d0d;
             }
 
             .logo svg {
-                width: 230px;
-               
+                width: 150px;
             }
 
             .container {
                 margin: 0;
                 padding: 20px;
-                box-shadow: none;
-                border-radius: 0;
-            }
-
-            body {
-                background-color: #fff;
+                border: none;
             }
 
             .product-title {
@@ -220,23 +260,32 @@
             }
 
             .carousel {
-                padding: 5px 0;
+                justify-content: flex-start;
+                padding: 10px;
+            }
+
+            .carousel img {
+                max-width: 280px;
+            }
+
+            .product-price {
+                font-size: 1.6em;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 15px;
             }
         }
 
-        /* Дуже маленькі екрани */
         @media (max-width: 480px) {
             .logo svg {
-                width: 205px;
-            }
-            header {
-                position: static;
-                top: auto;
-                left: auto;
-                padding: 0px;
-                background: transparent;
+                width: 130px;
             }
 
+            .product-title {
+                font-size: 1.1em;
+            }
         }
     </style>
 </head>
@@ -246,7 +295,6 @@
   <div class="logo">
     <svg xmlns="http://www.w3.org/2000/svg" width="180" height="56" viewBox="0 0 600 200">
       <defs>
-        <!-- 🌊 Хвиля для слогана -->
         <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="-0.3" stop-color="#999">
             <animate attributeName="offset" values="-0.3; 1.3; 1.3" keyTimes="0; 0.5; 1" dur="15s" repeatCount="indefinite" begin="2s" />
@@ -258,7 +306,6 @@
             <animate attributeName="offset" values="0; 1.6; 1.6" keyTimes="0; 0.5; 1" dur="15s" repeatCount="indefinite" begin="2s" />
           </stop>
         </linearGradient>
-        <!-- 🔴 Хвиля для ПРО -->
         <linearGradient id="pro-wave" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="-0.3" stop-color="#800000">
             <animate attributeName="offset" values="-0.3; 1.3; 1.3" keyTimes="0; 0.25; 1" dur="4.2s" begin="10s; 25s; 40s; 55s; 70s" fill="freeze" />
@@ -270,7 +317,6 @@
             <animate attributeName="offset" values="0; 1.6; 1.6" keyTimes="0; 0.25; 1" dur="4.2s" begin="10s; 25s; 40s; 55s; 70s" fill="freeze" />
           </stop>
         </linearGradient>
-        <!-- ⚙️ Хвиля для ЗАХИСТ -->
         <linearGradient id="zahist-wave" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="-0.3" stop-color="#808080">
             <animate attributeName="offset" values="-0.3; 1.3; 1.3" keyTimes="0; 0.25; 1" dur="5s" begin="10.7s; 25.7s; 40.7s; 55.7s; 70.7s" fill="freeze" />
@@ -283,19 +329,9 @@
           </stop>
         </linearGradient>
       </defs>
-      <!-- ПРО -->
-      <text x="15" y="100" font-family="Open Sans, sans-serif" font-weight="bold" font-size="74" fill="url(#pro-wave)">
-        ПРО
-      </text>
-      <!-- ЗАХИСТ -->
-      <text x="172" y="100" font-family="Open Sans, sans-serif" font-weight="bold" font-size="74" fill="url(#zahist-wave)">
-        ЗАХИСТ
-      </text>
-      <!-- Слоган -->
-      <text x="15" y="160" font-family="Arial, sans-serif" font-weight="bold" font-size="33" fill="url(#wave-gradient)">
-        БЕЗДРОТОВІ СИСТЕМИ БЕЗПЕКИ
-      </text>
-      <!-- Декор -->
+      <text x="15" y="100" font-family="Open Sans, sans-serif" font-weight="bold" font-size="74" fill="url(#pro-wave)">ПРО</text>
+      <text x="172" y="100" font-family="Open Sans, sans-serif" font-weight="bold" font-size="74" fill="url(#zahist-wave)">ЗАХИСТ</text>
+      <text x="15" y="160" font-family="Arial, sans-serif" font-weight="bold" font-size="33" fill="url(#wave-gradient)">БЕЗДРОТОВІ СИСТЕМИ БЕЗПЕКИ</text>
       <line x1="483" y1="65" x2="523" y2="48" stroke="#800000" stroke-width="10" />
       <line x1="523" y1="48" x2="563" y2="65" stroke="#800000" stroke-width="10" />
       <line x1="493" y1="70" x2="493" y2="100" stroke="#808080" stroke-width="10" />
@@ -315,34 +351,34 @@
     <div id="toast" class="toast"></div>
 
     <div class="product-description">
-        Роздільна здатність 3МП, 1/3" CMOS-матриця; Фокус 3.6мм (кут огляду 66°); Максимальна роздільна здатність відео 3 МП (2304 x 1296) - 20 к\с; Кодеки H.264, H.265; Нічне ч/б (до 10м); Функції зображення: смарт-трекінг, детектор руху, виявлення людини; 5 VDC; Колір корпусу – білий
-        <br><br>
-        Характеристики:
+        <strong>Опис:</strong> Роздільна здатність 3МП, 1/3" CMOS-матриця. Фокус 3.6мм (кут огляду 66°). Максимальна роздільна здатність відео 3 МП (2304 x 1296) - 20 к/с. Кодеки H.264, H.265. Нічне ч/б (до 10м). Функції: смарт-трекінг, детектор руху, виявлення людини. Живлення 5 VDC. Колір корпусу – білий.
+        
+        <div class="features-title">Характеристики:</div>
         <ul>
-            <li>Матриця	1/3" Progressive CMOS</li>
-            <li>Регулювання по осях	355° Панорамування та -5~50° Нахилу</li>
-            <li>Фокусна відстань	3.6 мм</li>
-            <li>Кути огляду	Г: 66°, В: 36°, Д: 79°</li>
-            <li>Тип підсвічування	ч/б 10 м</li>
-            <li>Відео компресія	H.265/H.264</li>
-            <li>Частота кадрів (головний потік)	2304 x 1296 - 20 к/с</li>
-            <li>Метод зберігання	microSD до 512 Гб</li>
-            <li>Аудіо інтерфейси	вбудований мікрофон та динамік</li>
-            <li>Мережеві інтерфейси	1 x 100Mbps Ethernet; Wi-Fi: IEEE802.11b/g/n/axx</li>
-            <li>Цифрове збільшення	8х</li>
-            <li>Виявлення аудіо винятків	Підтримує</li>
-            <li>Живлення	DC 5В 1A</li>
-            <li>Потужність споживання	4.2 Вт</li>
-            <li>Робоча температура	-10°C - +45°C</li>
-            <li>Розміри	95 × 96 × 109.2 мм</li>
-            <li>Вага	200 г</li>
-            <li>Розмір упаковки (Ш х В х Г)	100 x 110 x 130 мм</li>
-            <li>Вага брутто	0.37 кг</li>
+            <li>Матриця: 1/3" Progressive CMOS</li>
+            <li>Регулювання по осях: 355° панорамування, -5°~50° нахилу</li>
+            <li>Фокусна відстань: 3.6 мм</li>
+            <li>Кути огляду: Г: 66°, В: 36°, Д: 79°</li>
+            <li>Підсвічування: ч/б LED, дальність 10 м</li>
+            <li>Відео компресія: H.265 / H.264</li>
+            <li>Частота кадрів: 2304×1296 @ 20 к/с</li>
+            <li>Зберігання: microSD до 512 Гб</li>
+            <li>Аудіо: вбудований мікрофон та динамік</li>
+            <li>Мережа: 100Mbps Ethernet, Wi-Fi 802.11b/g/n/ax</li>
+            <li>Цифрове збільшення: 8×</li>
+            <li>Виявлення аудіо аномалій: підтримується</li>
+            <li>Живлення: DC 5В 1А</li>
+            <li>Споживання: 4.2 Вт</li>
+            <li>Температура: -10°C ~ +45°C</li>
+            <li>Розміри: 95 × 96 × 109.2 мм</li>
+            <li>Вага: 200 г (брутто 370 г)</li>
         </ul>
     </div>
 
     <p class="product-price">1120.00 грн</p>
-    <button class="btn" onclick="addToCartFromProductPage({ id: 'IPC-K2MP-3H1WE', name: 'Камера IPC-K2MP-3H1WE', price: 1120.00, image: '../images/IPC-K2MP-3H1WE_1.png' })">Додати у кошик</button>
+    <button class="btn" onclick="addToCartFromProductPage({ id: 'IPC-K2MP-3H1WE', name: 'Камера IMOU IPC-K2MP-3H1WE', price: 1120.00, image: '../images/IPC-K2MP-3H1WE_1.png' })">Додати у кошик</button>
+    
+    <a href="javascript:history.back()" class="back-link">← Повернутися до каталогу</a>
 </div>
 
 <div id="modal" class="modal" onclick="closeModal()">
@@ -424,26 +460,6 @@
             prevImage();
         } else if (startX - endX > 50) {
             nextImage();
-        }
-    });
-
-    // Повернення до категорії при натисканні "назад"
-    window.addEventListener('popstate', () => {
-        const lastCat = localStorage.getItem('lastCategory');
-        if (lastCat) {
-            window.location.href = `index.html#${lastCat}`;
-        } else {
-            window.location.href = 'index.html';
-        }
-    });
-
-    // Центрування зображення, якщо воно одне
-    document.addEventListener("DOMContentLoaded", () => {
-        const carousel = document.querySelector(".carousel");
-        const imgs = carousel.querySelectorAll("img");
-
-        if (imgs.length === 1) {
-            carousel.style.justifyContent = "center";
         }
     });
 </script>
