@@ -239,7 +239,7 @@
         }
 
         /* Button */
-        .btn {
+.btn {
     background: linear-gradient(145deg, #800000, #a00000);
     color: #fff;
     border: none;
@@ -250,14 +250,15 @@
     font-weight: 600;
     transition: all 0.3s ease;
     width: 30%;
-    display: inline-block;
+    display: block;          /* block вместо inline-block */
+    margin: 0 auto;          /* центрирование по горизонтали */
+    text-align: center;
 }
 
 .btn:hover {
     background: linear-gradient(145deg, #a00000, #c00000);
-    transform: scale(1.02);
+    transform: scale(1.0);
 }
-
         /* Modal */
         .modal {
             display: none;
