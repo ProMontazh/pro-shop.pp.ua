@@ -111,29 +111,26 @@
 
         /* Toast */
         .toast {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.85);
-            color: #fff;
-            padding: 15px 25px;
-            border-radius: 8px;
-            font-size: 1em;
-            white-space: nowrap;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.3s, transform 0.3s;
-            z-index: 9999;
-            border: 1px solid #444;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 1.0em;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 9999;
+}
 
-        .toast.show {
-            visibility: visible;
-            opacity: 1;
-        }
-
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+}
         /* Container */
         .container {
             max-width: 900px;
