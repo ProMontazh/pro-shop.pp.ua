@@ -1,5 +1,5 @@
 // ⚠️ ВСТАВТЕ ВАШ GOOGLE SCRIPT URL ТУТ ⚠️
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzhSB-fcDDeBBhRWBBO1h7ocuHFnOlVqqWUv9rsKXBVED_MHxkEbXHoeeH__q090sU1uw/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzHkIMm6k0BCBRDUPBbicKiqwRTv4BMlLu8ZEbYfIGvJ5pmXrir2q-CWqgrs8LJsB_5/exec';
 
 let selectedRating = 0;
 let allReviews = [];
