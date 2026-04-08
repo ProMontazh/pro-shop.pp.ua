@@ -398,7 +398,7 @@ header .logo svg {
    ======================================== */
 .cart {
     position: fixed;
-    top: 10px;
+    top: 8px;
     right: 10px;
     background-color: #333;
     color: white;
