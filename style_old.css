@@ -413,7 +413,7 @@ header .logo svg {
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .cart-content {
@@ -1236,7 +1236,7 @@ body.slide-in-right {
         top: 12px;
         right: 10px;
         padding: 6px 8px;
-        font-size: 0.95em;
+        font-size: 0.9em;
     }
 
     .cart-content {
@@ -1396,7 +1396,7 @@ body.slide-in-right {
     
     /* Корректируем отступ breadcrumbs */
     .breadcrumbs {
-        margin-top: 70px;
+        margin-top: 55px;
     }
     
     /* Кнопки категорий на главной — оставляем */
