@@ -400,15 +400,15 @@ function goToCategoryFromReview(categoryId) {
 
     // 3️⃣ Переходим на страницу категории
     const categoryUrls = {
-        'indoor': 'indoor.html',
-        'outdoor': 'outdoor.html',
-        'outdoor_4G': 'outdoor_4g.html',
-        'alarm': 'alarm.html',
-        'hub': 'hub.html',
-        'protect': 'protect.html',
-        'protect_outdoor': 'protect_outdoor.html',
-        'waterstop': 'waterstop.html',
-        'fire': 'fire.html',
+        'indoor': 'vnutrishni_kamery.html',
+        'outdoor': 'zovnishni_kamery.html',
+        'outdoor_4G': 'zovnishni_4G_kamery.html',
+        'alarm': 'komplekty_syhnalizaciyi.html',
+        'hub': 'khuby.html',
+        'protect': 'vnutrishni_datchyky.html',
+        'protect_outdoor': 'zovnishni_datchyky.html',
+        'waterstop': 'zakhyst_vid_potopu.html',
+        'fire': 'pozhezhna_bezpeka.html',
         'other': 'index.html'
     };
 
