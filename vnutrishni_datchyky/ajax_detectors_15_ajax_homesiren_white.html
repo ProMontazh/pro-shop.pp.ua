@@ -373,29 +373,29 @@
         /* ========================================
            КАРУСЕЛЬ
            ======================================== */
-      .carousel-wrapper {
+    .carousel-wrapper {
     position: relative;
     overflow: hidden;
     max-width: 100%;
     margin: 0 auto 30px;
-    background: #1a1a1a; /* Тот же фон что и у .container */
-    border-radius: 5px;
+    background: linear-gradient(145deg, #2a2a2a, #333); /* Как .product-item на главной */
+    border-radius: 15px; /* Как у карточек товаров */
+    border: 1px solid #444; /* Как у карточек товаров */
 }
 
 .carousel {
     display: flex;
     transition: transform 0.5s ease;
-    background: #1a1a1a; /* Фон как у карточки */
+    background: transparent; /* Наследуем от wrapper */
 }
 
 .carousel img {
     flex: 0 0 100%;
     max-width: 100%;
-    border-radius: 5px;
+    border-radius: 15px; /* Совпадает с wrapper */
     cursor: pointer;
     object-fit: contain;
     max-height: 420px;
-    /* Убираем отдельный фон у изображений */
     background: transparent;
     display: block;
 }
