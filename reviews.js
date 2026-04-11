@@ -1,6 +1,20 @@
 // ⚠️ ВСТАВТЕ ВАШ GOOGLE SCRIPT URL ТУТ ⚠️
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzHkIMm6k0BCBRDUPBbicKiqwRTv4BMlLu8ZEbYfIGvJ5pmXrir2q-CWqgrs8LJsB_5/exec';
 
+// ✅ ДОБАВЛЕНО: CATEGORY_MAP (был отсутствующий)
+const CATEGORY_MAP = {
+    'vnutrishni_kamery': { label: 'Внутрішні камери', icon: '/icons/camera.svg' },
+    'zovnishni_kamery': { label: 'Зовнішні камери', icon: '/icons/camera.svg' },
+    'zovnishni_4G_kamery': { label: '4G камери', icon: '/icons/4g.svg' },
+    'komplekty_syhnalizaciyi': { label: 'Комплекти сигналізації', icon: '/icons/alarm.svg' },
+    'khuby': { label: 'Хаби', icon: '/icons/hub.svg' },
+    'vnutrishni_datchyky': { label: 'Внутрішні датчики', icon: '/icons/sensor.svg' },
+    'zovnishni_datchyky': { label: 'Зовнішні датчики', icon: '/icons/sensor.svg' },
+    'zakhyst_vid_potopu': { label: 'Захист від потопу', icon: '/icons/water.svg' },
+    'pozhezhna_bezpeka': { label: 'Пожежна безпека', icon: '/icons/fire.svg' },
+    'other': { label: 'Інше', icon: '/icons/default.svg' }
+};
+
 let selectedRating = 0;
 let allReviews = [];
 
@@ -40,17 +54,14 @@ function updateWidget(reviews) {
         ? reviews.reduce((sum, r) => sum + r.rating, 0) / count 
         : 0;
 
-    // Оновити число
     widgetRating.textContent = avgRating.toFixed(1);
 
-    // Оновити кількість
     const countText = count === 0 ? 'Немає відгуків' :
                      count === 1 ? '1 відгук' :
                      count < 5 ? `${count} відгуки` :
                      `${count} відгуків`;
     widgetCount.textContent = countText;
 
-    // Оновити зірки
     renderWidgetStars(avgRating);
 }
 
@@ -66,16 +77,13 @@ function renderWidgetStars(rating) {
         star.className = 'widget-star';
         star.innerHTML = '★';
 
-        // Якщо рейтинг більше поточної зірки
         if (rating >= i) {
-            // Повністю заповнена зірка
             const filled = document.createElement('span');
             filled.className = 'widget-star-filled';
             filled.style.width = '100%';
             filled.innerHTML = '★';
             star.appendChild(filled);
         } else if (rating > i - 1) {
-            // Частково заповнена зірка
             const filled = document.createElement('span');
             filled.className = 'widget-star-filled';
             const percentage = ((rating - (i - 1)) * 100).toFixed(0);
@@ -88,21 +96,21 @@ function renderWidgetStars(rating) {
     }
 }
 
-// ✅ ОНОВЛЕНА ФУНКЦІЯ: Відкрити модальне вікно з підтримкою апаратної кнопки "Назад"
+// Відкрити модальне вікно
 function openReviewsModal() {
     const modal = document.getElementById('reviewsModal');
     if (!modal) return;
     
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
     
-    // ✅ ДОДАЄМО ЗАПИС В ІСТОРІЮ ДЛЯ АПАРАТНОЇ КНОПКИ "НАЗАД"
     history.pushState({ reviewsModal: true }, '', '#reviews');
     
     loadReviews();
 }
 
-// ✅ ОНОВЛЕНА ФУНКЦІЯ: Закрити модальне вікно з підтримкою апаратної кнопки "Назад"
+// ✅ ИСПРАВЛЕНО: Закрити модальне вікно (полная очистка)
 function closeReviewsModal() {
     const modal = document.getElementById('reviewsModal');
     if (!modal) return;
@@ -111,7 +119,6 @@ function closeReviewsModal() {
     document.body.style.overflow = '';
     document.documentElement.style.overflow = '';
     
-    // ✅ ВИДАЛЯЄМО ЗАПИС З ІСТОРІЇ
     if (window.location.hash === '#reviews') {
         history.back();
     }
@@ -123,23 +130,21 @@ function closeModalOnOutsideClick(event) {
     }
 }
 
+// Обробник Escape
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         closeReviewsModal();
     }
 });
 
-// ✅ ОНОВЛЕНИЙ popstate ОБРОБНИК З ПІДТРИМКОЮ АПАРАТНОЇ КНОПКИ "НАЗАД"
+// ✅ ИСПРАВЛЕНО: popstate обробник (чистая логика)
 window.addEventListener('popstate', (e) => {
-    // ✅ СПОЧАТКУ ПЕРЕВІРЯЄМО МОДАЛКУ ВІДГУКІВ
     const modal = document.getElementById('reviewsModal');
     if (modal && modal.classList.contains('active')) {
         if (!e.state || !e.state.reviewsModal) {
-            // Закриваємо модалку при натисканні апаратної кнопки "Назад"
             modal.classList.remove('active');
             document.body.style.overflow = '';
             document.documentElement.style.overflow = '';
-            return; // Виходимо, не обробляємо категорії
         }
     }
 });
@@ -298,11 +303,10 @@ function updateModalStats(reviews) {
                      `${count} відгуків`;
     modalCount.textContent = countText;
 
-    // ⭐ Зірки в модальному вікні — такі ж як у віджеті (з частковим заповненням)
     renderModalStars(avgRating);
 }
 
-// Нова функція для відображення зірок у модальному вікні
+// Відображення зірок у модальному вікні
 function renderModalStars(rating) {
     const container = document.getElementById('modalStars');
     if (!container) return;
@@ -314,16 +318,13 @@ function renderModalStars(rating) {
         star.className = 'modal-star';
         star.innerHTML = '★';
 
-        // Якщо рейтинг більше поточної зірки — повністю заповнена
         if (rating >= i) {
             const filled = document.createElement('span');
             filled.className = 'modal-star-filled';
             filled.style.width = '100%';
             filled.innerHTML = '★';
             star.appendChild(filled);
-        } 
-        // Частково заповнена зірка
-        else if (rating > i - 1) {
+        } else if (rating > i - 1) {
             const filled = document.createElement('span');
             filled.className = 'modal-star-filled';
             const percentage = ((rating - (i - 1)) * 100).toFixed(0);
@@ -357,7 +358,8 @@ function displayReviews(reviews) {
             .map((_, i) => `<span class="star ${i >= review.rating ? 'empty' : ''}">★</span>`)
             .join('');
 
-        const cat = CATEGORY_MAP[review.product] || CATEGORY_MAP.other;
+        // ✅ ИСПРАВЛЕНО: безопасное получение категории
+        const cat = CATEGORY_MAP[review.product] || CATEGORY_MAP['other'];
 
         const card = document.createElement('div');
         card.className = 'review-card';
@@ -371,9 +373,9 @@ function displayReviews(reviews) {
             </div>
             <div class="review-stars">${stars}</div>
             <div class="review-text">${escapeHtml(review.text)}</div>
-            <div class="review-product" onclick="goToCategoryFromReview('${review.product}')">
-                <img src="${cat.icon}" alt="${cat.label}">
-                ${cat.label}
+            <div class="review-product" onclick="goToCategoryFromReview('${review.product}')" style="cursor: pointer;">
+                <img src="${cat.icon}" alt="${cat.label}" onerror="this.style.display='none'">
+                <span>${cat.label}</span>
             </div>
         `;
 
@@ -387,31 +389,35 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
+// ✅ ИСПРАВЛЕНО: Переход на страницу категории
 function goToCategoryFromReview(categoryId) {
-    // 1️⃣ Закрываем модалку
-    const modal = document.querySelector('.reviews-modal');
-    if (modal) {
-        modal.classList.remove('active');
+    // Проверка существования категории
+    if (!CATEGORY_MAP[categoryId]) {
+        console.warn('Невідома категорія:', categoryId);
+        categoryId = 'other';
     }
-
-    // 2️⃣ Возвращаем скролл страницы
-    document.body.style.overflow = '';
-    document.documentElement.style.overflow = '';
-
-    // 3️⃣ Переходим на страницу категории
+    
+    // Закрываем модалку
+    closeReviewsModal();
+    
+    // URL категорий
     const categoryUrls = {
-        'vnutrishni_kamery':'vnutrishni_kamery.html',
-        'zovnishni_kamery':'zovnishni_kamery.html',
-        'zovnishni_4G_kamery':'zovnishni_4G_kamery.html',
-        'komplekty_syhnalizaciyi':'komplekty_syhnalizaciyi.html',
-        'khuby':'khuby.html',
-        'vnutrishni_datchyky':'vnutrishni_datchyky.html',
-        'zovnishni_datchyky':'zovnishni_datchyky.html',
-        'zakhyst_vid_potopu':'zakhyst_vid_potopu.html',
-        'pozhezhna_bezpeka':'pozhezhna_bezpeka.html',
-        'other':'index.html'
+        'vnutrishni_kamery': 'vnutrishni_kamery.html',
+        'zovnishni_kamery': 'zovnishni_kamery.html',
+        'zovnishni_4G_kamery': 'zovnishni_4G_kamery.html',
+        'komplekty_syhnalizaciyi': 'komplekty_syhnalizaciyi.html',
+        'khuby': 'khuby.html',
+        'vnutrishni_datchyky': 'vnutrishni_datchyky.html',
+        'zovnishni_datchyky': 'zovnishni_datchyky.html',
+        'zakhyst_vid_potopu': 'zakhyst_vid_potopu.html',
+        'pozhezhna_bezpeka': 'pozhezhna_bezpeka.html',
+        'other': 'index.html'
     };
 
     const targetUrl = categoryUrls[categoryId] || 'index.html';
-    window.location.href = targetUrl;
+    
+    // Задержка для анимации закрытия
+    setTimeout(() => {
+        window.location.href = targetUrl;
+    }, 300);
 }
