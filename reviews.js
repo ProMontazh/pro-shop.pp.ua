@@ -400,16 +400,16 @@ function goToCategoryFromReview(categoryId) {
 
     // 3️⃣ Переходим на страницу категории
     const categoryUrls = {
-        'vnutrishni_kamery': 'vnutrishni_kamery.html',
-        'zovnishni_kamery': 'zovnishni_kamery.html',
-        'zovnishni_4G_kamery': 'zovnishni_4G_kamery.html',
-        'komplekty_syhnalizaciyi': 'komplekty_syhnalizaciyi.html',
-        'khuby': 'khuby.html',
-        'vnutrishni_datchyky': 'vnutrishni_datchyky.html',
-        'zovnishni_datchyky': 'zovnishni_datchyky.html',
-        'zakhyst_vid_potopu': 'zakhyst_vid_potopu.html',
-        'pozhezhna_bezpeka': 'pozhezhna_bezpeka.html',
-        'other': 'index.html'
+        'vnutrishni_kamery':'vnutrishni_kamery.html',
+        'zovnishni_kamery':'zovnishni_kamery.html',
+        'zovnishni_4G_kamery':'zovnishni_4G_kamery.html',
+        'komplekty_syhnalizaciyi':'komplekty_syhnalizaciyi.html',
+        'khuby':'khuby.html',
+        'vnutrishni_datchyky':'vnutrishni_datchyky.html',
+        'zovnishni_datchyky':'zovnishni_datchyky.html',
+        'zakhyst_vid_potopu':'zakhyst_vid_potopu.html',
+        'pozhezhna_bezpeka':'pozhezhna_bezpeka.html',
+        'other':'index.html'
     };
 
     const targetUrl = categoryUrls[categoryId] || 'index.html';
