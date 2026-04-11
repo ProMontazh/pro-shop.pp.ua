@@ -2,19 +2,16 @@
    🧩 КАРТА КАТЕГОРІЙ
    ====================================================== */
 const CATEGORY_MAP = {
-    vnutrishni_kamery: { label: 'Внутрішні камери IMOU', icon: 'reviews_png/cam_indoor.png' },
-    zovnishni_kamery: { label: 'Зовнішні камери IMOU', icon: 'reviews_png/cam_outdoor.png' },
-    zovnishni_4G_kamery: { label: 'Зовнішні 4G камери IMOU', icon: 'reviews_png/cam_outdoor_4G.png' },
-    microSD: { 
-        label: 'Карти пам\'яті microSD', 
-        icon: 'reviews_png/microsd.png' 
-    },
-    komplekty_syhnalizaciyi: { label: 'Комплекти сигналізації Ajax', icon: 'reviews_png/starterkit.png' },
-    khuby: { label: 'Хаби, модулі Ajax', icon: 'reviews_png/hub.png' },
-    vnutrishni_datchyky: { label: 'Внутрішня охорона Ajax', icon: 'reviews_png/motionprotect.png' },
-    zovnishni_datchyky: { label: 'Зовнішня охорона Ajax', icon: 'reviews_png/motioncam_outdoor.png' },
-    zakhyst_vid_potopu: { label: 'Захист від потопу Ajax', icon: 'reviews_png/waterstop.png' },
-    pozhezhna_bezpeka: { label: 'Захист від пожежі Ajax', icon: 'reviews_png/manualcallpoint.png' },
+    vnutrishni_kamery: { label: 'Внутрішні камери IMOU', icon: 'images/indoor_1.png' },
+    zovnishni_kamery: { label: 'Зовнішні камери IMOU', icon: 'images/outdoor_1.png' },
+    zovnishni_4G_kamery: { label: 'Зовнішні 4G камери IMOU', icon: 'images/outdoor_4G_1.png' },
+    microSD: { label: 'Карти пам\'яті microSD', icon: 'images/microSD_1.png' },
+    komplekty_syhnalizaciyi: { label: 'Комплекти сигналізації Ajax', icon: 'images/alarm_1.png' },
+    khuby: { label: 'Хаби, модулі Ajax', icon: 'images/hub_white_1.png' },
+    vnutrishni_datchyky: { label: 'Внутрішня охорона Ajax', icon: 'images/protect_indoor_1.png' },
+    zovnishni_datchyky: { label: 'Зовнішня охорона Ajax', icon: 'images/protect_outdoor_1.png' },
+    zakhyst_vid_potopu: { label: 'Захист від потопу Ajax', icon: 'images/waterstop_1.png' },
+    pozhezhna_bezpeka: { label: 'Захист від пожежі Ajax', icon: 'images/fire_1.png' },
     other: { label: 'Інше', icon: 'favicon.svg' }
 };
 
