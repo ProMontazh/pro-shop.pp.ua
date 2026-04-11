@@ -373,28 +373,32 @@
         /* ========================================
            КАРУСЕЛЬ
            ======================================== */
-        .carousel-wrapper {
-            position: relative;
-            overflow: hidden;
-            max-width: 100%;
-            margin: 0 auto 30px;
-        }
+      .carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 0 auto 30px;
+    background: #1a1a1a; /* Тот же фон что и у .container */
+    border-radius: 5px;
+}
 
-        .carousel {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+    background: #1a1a1a; /* Фон как у карточки */
+}
 
-        .carousel img {
-            flex: 0 0 100%;
-            max-width: 100%;
-            border-radius: 5px;
-            cursor: pointer;
-            object-fit: contain;
-            max-height: 420px;
-            background: #222;
-        }
-
+.carousel img {
+    flex: 0 0 100%;
+    max-width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    object-fit: contain;
+    max-height: 420px;
+    /* Убираем отдельный фон у изображений */
+    background: transparent;
+    display: block;
+}
         .carousel-arrow {
             position: absolute;
             top: 50%;
