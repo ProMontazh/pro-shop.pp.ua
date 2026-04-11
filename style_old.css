@@ -1020,8 +1020,8 @@ footer > p {
 }
 
 .review-product img {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 4px;
 }
 
@@ -1368,6 +1368,11 @@ body.slide-in-right {
     .review-text {
         font-size: 14px;
     }
+   .review-product img {
+    width: 35px;
+    height: 35px;
+    border-radius: 4px;
+}
 }
  @media (max-width: 900px) and (orientation: landscape) {
     #categories {
