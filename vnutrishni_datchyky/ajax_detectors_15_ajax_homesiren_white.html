@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
@@ -57,104 +56,293 @@
     </script>
 
     <style>
+        /* ========================================
+           БАЗОВЫЕ СТИЛИ (из основного CSS)
+           ======================================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
         body {
             font-family: 'Open Sans', sans-serif;
-            background-color: #0d0d0d;
+            background-color: #1a1a1a;
             color: #e0e0e0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Header */
+        /* ========================================
+           HEADER С ХЛЕБНЫМИ КРОШКАМИ
+           ======================================== */
         header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      background: transparent;
-    }
-
-    .logo svg {
-      height: 55px;
-      width: auto;
-
-    }
-
-
-        /* Breadcrumbs */
-        .breadcrumbs {
-            max-width: 900px;
-            margin: 20px auto 0;
-            padding: 8px 30px;
-            color: #666;
-            font-size: 0.9em;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 55px;
+            background: linear-gradient(to right, rgba(7, 7, 7, 0.95), rgba(148, 148, 148, 0.95));
+            padding: 0;
+            color: white;
+            z-index: 1000;
+            border-bottom: 2px solid #800000;
+            display: flex;
+            align-items: center;
         }
 
-        .breadcrumbs a {
-            color: #808080;
+        .logo {
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
+        .logo svg {
+            height: 55px;
+            width: auto;
+            display: block;
+        }
+
+        /* Хлебные крошки в шапке */
+        .header-breadcrumbs {
+            flex: 1;
+            margin-left: 20px;
+            margin-right: 120px;
+            overflow: hidden;
+            white-space: nowrap;
+            mask-image: linear-gradient(to right, black 85%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        }
+
+        .header-breadcrumbs a {
+            color: #ccc;
             text-decoration: none;
-            transition: color 0.3s;
+            font-size: 0.85em;
+            transition: color 0.3s ease;
         }
 
-        .breadcrumbs a:hover {
+        .header-breadcrumbs a:hover {
             color: #ff4444;
         }
 
-        .breadcrumbs span {
-            color: #999;
-            margin: 0 5px;
+        .header-breadcrumbs .separator {
+            color: #666;
+            font-size: 0.85em;
+            margin: 0 8px;
         }
 
-        /* Toast */
-        .toast {
-    position: fixed;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.4);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 1.0em;
-    white-space: nowrap;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.5s;
-    z-index: 9999;
-}
-.toast.show {
-    visibility: visible;
-    opacity: 1;
-}
-        /* Container */
+        .header-breadcrumbs .current {
+            color: #fff;
+            font-size: 0.85em;
+        }
+
+        /* ========================================
+           КОРЗИНА
+           ======================================== */
+        .cart {
+            position: fixed;
+            top: 8px;
+            right: 10px;
+            background-color: #333;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 1100;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+        }
+
+        .cart:hover {
+            background-color: #444;
+            transform: scale(1.05);
+        }
+
+        .cart-content {
+            display: none;
+            position: fixed;
+            right: 10px;
+            top: 65px;
+            background-color: rgba(255,255,255,0.95);
+            color: black;
+            padding: 20px;
+            border-radius: 8px;
+            width: 465px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            z-index: 1100;
+        }
+
+        .cart-content.active {
+            display: block !important;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #800000;
+            padding-bottom: 10px;
+        }
+
+        .cart-content h2 {
+            color: #000;
+            margin: 0;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 2em;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .cart-close:hover {
+            color: #ff4444;
+            background: #f0f0f0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            gap: 8px;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item .item-name {
+            flex: 1;
+            text-align: left;
+            color: #000;
+            font-size: 0.9em;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .quantity-btn {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .quantity-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .quantity {
+            font-size: 14px;
+            padding: 0 6px;
+            min-width: 20px;
+            text-align: center;
+            color: #000;
+        }
+
+        .total-price {
+            color: #000;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-top: 15px;
+            text-align: right;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            gap: 10px;
+        }
+
+        .checkout-button, .cancel-button {
+            padding: 10px 16px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            flex: 1;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-button {
+            background-color: #4CAF50;
+        }
+
+        .checkout-button:hover {
+            background-color: #367c39;
+        }
+
+        .cancel-button {
+            background-color: #f35363;
+        }
+
+        .cancel-button:hover {
+            background-color: #d44150;
+        }
+
+        /* ========================================
+           ОСНОВНОЙ КОНТЕНТ
+           ======================================== */
         .container {
             max-width: 900px;
-            margin: 20px auto 40px;
+            margin: 75px auto 40px;
             padding: 30px;
             background-color: #1a1a1a;
             border: 1px solid #333;
         }
 
-        /* Product Title */
         .product-title {
             text-align: center;
-            font-size: 1.5em;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
             color: #fff;
             margin-bottom: 25px;
             font-weight: 600;
         }
 
-        /* Carousel - стили как на первом примере */
+        /* ========================================
+           КАРУСЕЛЬ С АДАПТИВНЫМИ СТРЕЛКАМИ
+           ======================================== */
         .carousel-wrapper {
             position: relative;
             overflow: hidden;
             max-width: 100%;
-            margin: 0 auto;
+            margin: 0 auto 30px;
         }
 
         .carousel {
@@ -168,40 +356,53 @@
             border-radius: 5px;
             cursor: pointer;
             object-fit: contain;
+            max-height: 420px;
+            background: #222;
         }
 
-        /* Carousel Arrows */
-      .carousel-arrow {
-    position: absolute;
-    top: 50%;                    /* ← по центру вертикально */
-    transform: translateY(-50%);
-    background: transparent;     /* ← убрали фон */
-    color: #999;                 /* ← цвет как в модальном окне */
-    font-size: 2.5em;            /* ← увеличили размер */
-    width: auto;                 /* ← авто ширина */
-    height: auto;                /* ← авто высота */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0;            /* ← убрали круглость */
-    cursor: pointer;
-    user-select: none;
-    transition: color 0.3s;     /* ← только цвет анимируем */
-    z-index: 10;
-    border: none;
-    padding: 20px;               /* ← добавили padding для удобства клика */
-}
+        /* Адаптивные стрелки карусели */
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            color: #999;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            width: auto;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.3s, transform 0.2s;
+            z-index: 10;
+            border: none;
+            padding: clamp(10px, 3vw, 20px);
+        }
 
-.carousel-arrow:hover {
-    background: transparent;     /* ← без фона при наведении */
-    color: #ff4444;              /* ← красный при наведении */
-    box-shadow: none;            /* ← убрали тень */
-}
+        .carousel-arrow:hover {
+            background: transparent;
+            color: #ff4444;
+            transform: translateY(-50%) scale(1.1);
+        }
 
-.carousel-arrow.left { left: 60px; }
-.carousel-arrow.right { right: 60px; }
+        .carousel-arrow:active {
+            transform: translateY(-50%) scale(0.95);
+        }
 
-        /* Description */
+        .carousel-arrow.left { 
+            left: clamp(5px, 5vw, 60px); 
+        }
+
+        .carousel-arrow.right { 
+            right: clamp(5px, 5vw, 60px); 
+        }
+
+        /* ========================================
+           ОПИСАНИЕ ТОВАРА
+           ======================================== */
         .product-description {
             font-size: 0.95rem;
             line-height: 1.7;
@@ -211,6 +412,9 @@
 
         .product-description strong {
             color: #ff4444;
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 10px;
         }
 
         .product-description ul {
@@ -223,45 +427,53 @@
             padding: 5px 0;
             color: #999;
             font-size: 0.9em;
+            padding-left: 20px;
+            position: relative;
         }
 
         .product-description li:before {
-            content: "▸ ";
+            content: "▸";
             color: #800000;
-            margin-right: 8px;
+            position: absolute;
+            left: 0;
         }
 
-        /* Price */
+        /* ========================================
+           ЦЕНА И КНОПКА
+           ======================================== */
         .product-price {
-            font-size: 1.8em;
-            color: #808080;
+            font-size: clamp(1.5rem, 5vw, 1.8rem);
+            color: #ff4444;
             text-align: center;
             margin: 25px 0;
             font-weight: 600;
         }
 
-        /* Button */
-.btn {
-    background: linear-gradient(145deg, #800000, #a00000);
-    color: #fff;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    width: 30%;
-    display: block;          /* block вместо inline-block */
-    margin: 0 auto;          /* центрирование по горизонтали */
-    text-align: center;
-}
+        .btn {
+            background: linear-gradient(145deg, #800000, #a00000);
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 300px;
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+        }
 
-.btn:hover {
-    background: linear-gradient(145deg, #a00000, #c00000);
-    transform: scale(1.0);
-}
-        /* Modal */
+        .btn:hover {
+            background: linear-gradient(145deg, #a00000, #c00000);
+            transform: scale(1.02);
+        }
+
+        /* ========================================
+           МОДАЛЬНОЕ ОКНО
+           ======================================== */
         .modal {
             display: none;
             position: fixed;
@@ -275,34 +487,66 @@
             z-index: 10000;
         }
 
-       .modal img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
-    border: none;                /* ← УБРАНО: было 2px solid #444 */
-    transition: transform 0.3s ease;
-}
+        .modal.active {
+            display: flex;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
 
         .modal .arrow {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 2.5em;
+            font-size: clamp(2rem, 5vw, 2.5rem);
             color: #999;
             cursor: pointer;
             user-select: none;
             padding: 20px;
             transition: color 0.3s;
+            background: none;
+            border: none;
         }
 
         .modal .arrow:hover {
             color: #ff4444;
         }
 
-        .modal .arrow.left { left: 180px; }
-        .modal .arrow.right { right: 180px; }
+        .modal .arrow.left { left: 20px; }
+        .modal .arrow.right { right: 20px; }
 
-        /* Back link */
+        /* ========================================
+           TOAST
+           ======================================== */
+        .toast {
+            position: fixed;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 1em;
+            white-space: nowrap;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: 9999;
+        }
+
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* ========================================
+           ССЫЛКА НАЗАД
+           ======================================== */
         .back-link {
             display: block;
             text-align: center;
@@ -316,9 +560,118 @@
             color: #ff4444;
         }
 
-        /* Media Queries */
-        @media (min-width: 768px) {
-            .carousel-arrow { display: flex; }
+        /* ========================================
+           FOOTER
+           ======================================== */
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9em;
+            border-top: 2px solid #800000;
+            margin-top: 40px;
+        }
+
+        .footer-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .black {
+            color: #808080;
+            font-weight: bold;
+        }
+
+        .red {
+            color: #800000;
+            font-weight: bold;
+        }
+
+        /* ========================================
+           АДАПТИВНОСТЬ
+           ======================================== */
+        @media (max-width: 768px) {
+            header {
+                height: 50px;
+            }
+            
+            .logo svg {
+                height: 50px;
+            }
+            
+            .header-breadcrumbs {
+                margin-left: 10px;
+                margin-right: 80px;
+                font-size: 0.9em;
+            }
+            
+            /* Показываем только последние 2 уровня */
+            .header-breadcrumbs a:first-child,
+            .header-breadcrumbs a:first-child + .separator {
+                display: none;
+            }
+            
+            .container {
+                margin-top: 65px;
+                padding: 20px;
+                border: none;
+            }
+            
+            .carousel-arrow {
+                font-size: 1.8rem;
+                padding: 15px;
+                background: rgba(0, 0, 0, 0.3);
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+            }
+            
+            .carousel-arrow.left { left: 5px; }
+            .carousel-arrow.right { right: 5px; }
+            
+            .carousel img {
+                max-height: 300px;
+            }
+            
+            .cart-content {
+                width: 96%;
+                max-width: 400px;
+                left: 50%;
+                transform: translateX(-50%);
+                right: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-breadcrumbs {
+                font-size: 0.8em;
+                margin-right: 70px;
+            }
+            
+            /* Компактный вид - только "← Назад" */
+            .header-breadcrumbs a:not(:last-of-type),
+            .header-breadcrumbs .separator:not(:last-of-type) {
+                display: none;
+            }
+            
+            .header-breadcrumbs a:last-of-type::before {
+                content: "←";
+                color: #ff4444;
+                margin-right: 5px;
+            }
+            
+            .carousel-arrow {
+                font-size: 1.5rem;
+                padding: 10px;
+                width: 35px;
+                height: 35px;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: none;
+            }
         }
 
         @media (min-width: 1024px) {
@@ -326,536 +679,463 @@
                 margin-left: 80px;
                 margin-right: 40px;
             }
-            .product-description ul {
-                padding-left: 60px;
+            
+            .carousel-arrow {
+                font-size: 2.5rem;
+                padding: 25px;
             }
-            .carousel img {
-                max-height: 420px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header {
-                position: static;
-                padding: 10px;
-                background: #0d0d0d;
-            }
-
-            .breadcrumbs {
-                position: static;
-                margin: 2px auto 0;
-                padding: 10px 20px;
-                font-size: 0.85em;
-            }
-            .container {
-                margin: 0;
-                padding: 20px;
-                border: none;
-            }
-
-            .product-title {
-                font-size: 1.2em;
-            }
-
-           .carousel-arrow {
-        font-size: 2em;          /* чуть меньше на мобильных */
-        padding: 15px;
-        background: transparent;
-        width: auto;
-        height: auto;
-        border-radius: 0;
-    }
-
-            .product-price {
-                font-size: 1.5em;
-            }
-
-            .btn {
-                width: 100%;
-                padding: 15px;
-            }
-        
-            .carousel-arrow.left { left: 2px; }
-            .carousel-arrow.right { right: 2px; }
-           }
-        @media (max-width: 480px) {
-            .logo svg {
-                width: 130px;
-            }
+            
+            .carousel-arrow.left { left: 80px; }
+            .carousel-arrow.right { right: 80px; }
         }
     </style>
-<base target="_blank">
 </head>
 <body>
 
-<header>
-    <div class="logo">
-        <a href="../index.html" style="text-decoration: none;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="180" height="56" viewBox="0 0 600 200">
-                <defs>
-                    <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="-0.3" stop-color="#999">
-                            <animate attributeName="offset" values="-0.3; 1.3; 1.3" keyTimes="0; 0.5; 1" dur="15s" repeatCount="indefinite" begin="2s" />
-                        </stop>
-                        <stop offset="-0.15" stop-color="#666">
-                            <animate attributeName="offset" values="-0.15; 1.45; 1.45" keyTimes="0; 0.5; 1" dur="15s" repeatCount="indefinite" begin="2s" />
-                        </stop>
-                        <stop offset="0" stop-color="#999">
-                            <animate attributeName="offset" values="0; 1.6; 1.6" keyTimes="0; 0.5; 1" dur="15s" repeatCount="indefinite" begin="2s" />
-                        </stop>
-                    </linearGradient>
-                    <linearGradient id="pro-wave" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="-0.3" stop-color="#800000">
-                            <animate attributeName="offset" values="-0.3; 1.3; 1.3" keyTimes="0; 0.25; 1" dur="4.2s" begin="10s; 25s; 40s; 55s; 70s" fill="freeze" />
-                        </stop>
-                        <stop offset="-0.15" stop-color="#ff4444">
-                            <animate attributeName="offset" values="-0.15; 1.45; 1.45" keyTimes="0; 0.25; 1" dur="4.2s" begin="10s; 25s; 40s; 55s; 70s" fill="freeze" />
-                        </stop>
-                        <stop offset="0" stop-color="#800000">
-                            <animate attributeName="offset" values="0; 1.6; 1.6" keyTimes="0; 0.25; 1" dur="4.2s" begin="10s; 25s; 40s; 55s; 70s" fill="freeze" />
-                        </stop>
-                    </linearGradient>
-                    <linearGradient id="zahist-wave" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="-0.3" stop-color="#808080">
-                            <animate attributeName="offset" values="-0.3; 1.3; 1.3" keyTimes="0; 0.25; 1" dur="5s" begin="10.7s; 25.7s; 40.7s; 55.7s; 70.7s" fill="freeze" />
-                        </stop>
-                        <stop offset="-0.15" stop-color="#e0e0e0">
-                            <animate attributeName="offset" values="-0.15; 1.45; 1.45" keyTimes="0; 0.25; 1" dur="5s" begin="10.7s; 25.7s; 40.7s; 55.7s; 70.7s" fill="freeze" />
-                        </stop>
-                        <stop offset="0" stop-color="#808080">
-                            <animate attributeName="offset" values="0; 1.6; 1.6" keyTimes="0; 0.25; 1" dur="5s" begin="10.7s; 25.7s; 40.7s; 55.7s; 70.7s" fill="freeze" />
-                        </stop>
-                    </linearGradient>
-                </defs>
-                <text x="15" y="100" font-family="Open Sans, sans-serif" font-weight="bold" font-size="74" fill="url(#pro-wave)">ПРО</text>
-                <text x="172" y="100" font-family="Open Sans, sans-serif" font-weight="bold" font-size="74" fill="url(#zahist-wave)">ЗАХИСТ</text>
-                <text x="15" y="160" font-family="Arial, sans-serif" font-weight="bold" font-size="33" fill="url(#wave-gradient)">БЕЗДРОТОВІ СИСТЕМИ БЕЗПЕКИ</text>
-                <line x1="483" y1="65" x2="523" y2="48" stroke="#800000" stroke-width="10" />
-                <line x1="523" y1="48" x2="563" y2="65" stroke="#800000" stroke-width="10" />
-                <line x1="493" y1="70" x2="493" y2="100" stroke="#808080" stroke-width="10" />
-                <line x1="553" y1="70" x2="553" y2="100" stroke="#808080" stroke-width="10" />
-            </svg>
-        </a>
+    <!-- ШАПКА С ХЛЕБНЫМИ КРОШКАМИ -->
+    <header>
+        <div class="logo">
+            <a href="../index.html" style="text-decoration: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="180" height="56" viewBox="0 0 600 200">
+                    <defs>
+                        <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="-0.3" stop-color="#999">
+                                <animate attributeName="offset" values="-0.3; 1.3; 1.3" keyTimes="0; 0.5; 1" dur="15s" repeatCount="indefinite" begin="2s" />
+                            </stop>
+                            <stop offset="-0.15" stop-color="#666">
+                                <animate attributeName="offset" values="-0.15; 1.45; 1.45" keyTimes="0; 0.5; 1" dur="15s" repeatCount="indefinite" begin="2s" />
+                            </stop>
+                            <stop offset="0" stop-color="#999">
+                                <animate attributeName="offset" values="0; 1.6; 1.6" keyTimes="0; 0.5; 1" dur="15s" repeatCount="indefinite" begin="2s" />
+                            </stop>
+                        </linearGradient>
+                        <linearGradient id="pro-wave" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="-0.3" stop-color="#800000">
+                                <animate attributeName="offset" values="-0.3; 1.3; 1.3" keyTimes="0; 0.25; 1" dur="4.2s" begin="10s; 25s; 40s; 55s; 70s" fill="freeze" />
+                            </stop>
+                            <stop offset="-0.15" stop-color="#ff4444">
+                                <animate attributeName="offset" values="-0.15; 1.45; 1.45" keyTimes="0; 0.25; 1" dur="4.2s" begin="10s; 25s; 40s; 55s; 70s" fill="freeze" />
+                            </stop>
+                            <stop offset="0" stop-color="#800000">
+                                <animate attributeName="offset" values="0; 1.6; 1.6" keyTimes="0; 0.25; 1" dur="4.2s" begin="10s; 25s; 40s; 55s; 70s" fill="freeze" />
+                            </stop>
+                        </linearGradient>
+                        <linearGradient id="zahist-wave" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="-0.3" stop-color="#808080">
+                                <animate attributeName="offset" values="-0.3; 1.3; 1.3" keyTimes="0; 0.25; 1" dur="5s" begin="10.7s; 25.7s; 40.7s; 55.7s; 70.7s" fill="freeze" />
+                            </stop>
+                            <stop offset="-0.15" stop-color="#e0e0e0">
+                                <animate attributeName="offset" values="-0.15; 1.45; 1.45" keyTimes="0; 0.25; 1" dur="5s" begin="10.7s; 25.7s; 40.7s; 55.7s; 70.7s" fill="freeze" />
+                            </stop>
+                            <stop offset="0" stop-color="#808080">
+                                <animate attributeName="offset" values="0; 1.6; 1.6" keyTimes="0; 0.25; 1" dur="5s" begin="10.7s; 25.7s; 40.7s; 55.7s; 70.7s" fill="freeze" />
+                            </stop>
+                        </linearGradient>
+                    </defs>
+                    <text x="15" y="100" font-family="Open Sans, sans-serif" font-weight="bold" font-size="74" fill="url(#pro-wave)">ПРО</text>
+                    <text x="172" y="100" font-family="Open Sans, sans-serif" font-weight="bold" font-size="74" fill="url(#zahist-wave)">ЗАХИСТ</text>
+                    <text x="15" y="160" font-family="Arial, sans-serif" font-weight="bold" font-size="33" fill="url(#wave-gradient)">БЕЗДРОТОВІ СИСТЕМИ БЕЗПЕКИ</text>
+                    <line x1="483" y1="65" x2="523" y2="48" stroke="#800000" stroke-width="10" />
+                    <line x1="523" y1="48" x2="563" y2="65" stroke="#800000" stroke-width="10" />
+                    <line x1="493" y1="70" x2="493" y2="100" stroke="#808080" stroke-width="10" />
+                    <line x1="553" y1="70" x2="553" y2="100" stroke="#808080" stroke-width="10" />
+                </svg>
+            </a>
+        </div>
+        
+        <!-- Хлебные крошки в шапке -->
+        <nav class="header-breadcrumbs" aria-label="Breadcrumb">
+            <a href="../index.html">Головна</a>
+            <span class="separator">/</span>
+            <a href="../vnutrishni_datchyky.html">Внутрішні датчики</a>
+            <span class="separator">/</span>
+            <span class="current">HomeSiren White</span>
+        </nav>
+    </header>
+
+    <!-- КОРЗИНА -->
+    <div class="cart" onclick="toggleCart()">
+        🛒 <span id="cart-count">0</span>
     </div>
-</header>
 
-<!-- Breadcrumbs -->
-<nav class="breadcrumbs" aria-label="Breadcrumb">
-    <a href="../index.html">Головна</a> <span>/</span>
-    <a href="../vnutrishni_datchyky.html">Внутрішні датчики</a> <span>/</span>
-    <span style="color: #ff4444;">HomeSiren White</span>
-</nav>
+    <!-- МОДАЛЬНОЕ ОКНО КОРЗИНЫ -->
+    <div class="cart-content" id="cart-content">
+        <div class="cart-header">
+            <h2>Кошик</h2>
+            <button class="cart-close" onclick="toggleCart()">×</button>
+        </div>
+        <div id="cart-items"></div>
+        <div class="total-price">Разом: <span id="total-price">0</span> грн</div>
+        <div class="button-row">
+            <button class="checkout-button" onclick="checkout()">Оформити</button>
+            <button class="cancel-button" onclick="toggleCart()">Закрити</button>
+        </div>
+    </div>
 
-<div class="container">
-    <h1 class="product-title">Бездротова внутрішня сирена Ajax HomeSiren White</h1>
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="container">
+        <h1 class="product-title">Бездротова внутрішня сирена Ajax HomeSiren White</h1>
 
-    <div class="carousel-wrapper">
-        <div class="carousel" id="carousel">
-            <img src="../images/ajax_homesiren_white_1.png" alt="Ajax HomeSiren White — внутрішня сирена вигляд спереду" onclick="openModal(0)">
-            <img src="../images/ajax_homesiren_white_2.png" alt="Ajax HomeSiren White — внутрішня сирена вигляд збоку" onclick="openModal(1)">
-            <img src="../images/ajax_homesiren_white_3.png" alt="Ajax HomeSiren White — внутрішня сирена LED-індикація" onclick="openModal(2)">
-            <img src="../images/ajax_homesiren_white_4.png" alt="Ajax HomeSiren White — внутрішня сирена вигляд ззаду" onclick="openModal(3)">
-            <img src="../images/ajax_homesiren_white_5.png" alt="Ajax HomeSiren White — внутрішня сирена вигляд ззаду" onclick="openModal(4)">
-            <!-- Клон первого изображения для бесконечной карусели -->
-            <img src="../images/ajax_homesiren_white_1.png" alt="Ajax HomeSiren White — внутрішня сирена вигляд спереду" onclick="openModal(0)">
+        <!-- КАРУСЕЛЬ -->
+        <div class="carousel-wrapper">
+            <div class="carousel" id="carousel">
+                <img src="../images/ajax_homesiren_white_1.png" alt="Ajax HomeSiren White — вигляд спереду" onclick="openModal(0)">
+                <img src="../images/ajax_homesiren_white_2.png" alt="Ajax HomeSiren White — вигляд збоку" onclick="openModal(1)">
+                <img src="../images/ajax_homesiren_white_3.png" alt="Ajax HomeSiren White — LED-індикація" onclick="openModal(2)">
+                <img src="../images/ajax_homesiren_white_4.png" alt="Ajax HomeSiren White — вигляд ззаду" onclick="openModal(3)">
+                <img src="../images/ajax_homesiren_white_5.png" alt="Ajax HomeSiren White — комплектація" onclick="openModal(4)">
+                <!-- Клон для бесконечной карусели -->
+                <img src="../images/ajax_homesiren_white_1.png" alt="Ajax HomeSiren White — вигляд спереду" onclick="openModal(0)">
+            </div>
+
+            <button class="carousel-arrow left" onclick="prevImage()" aria-label="Попереднє зображення">&#10094;</button>
+            <button class="carousel-arrow right" onclick="nextImage()" aria-label="Наступне зображення">&#10095;</button>
         </div>
 
-        <button class="carousel-arrow left" onclick="prevImage()">&#10094;</button>
-        <button class="carousel-arrow right" onclick="nextImage()">&#10095;</button>
+        <!-- TOAST -->
+        <div id="toast" class="toast"></div>
+
+        <!-- ОПИСАНИЕ -->
+        <div class="product-description">
+            Бездротова сирена Ajax HomeSiren Jeweller призначена для звукового та світлового оповіщення про тривоги, події системи безпеки та спроби проникнення в приміщення. Пристрій оснащений потужним зумером з регульованою гучністю від 80 до 100 дБ та яскравим світлодіодом для візуального сповіщення.
+
+            <strong>Основні характеристики:</strong>
+            <ul>
+                <li>Гучність звукового сигналу: від 80 до 100 дБ на відстані 1 м</li>
+                <li>Дальність зв'язку з хабом до 2000 м на відкритому просторі</li>
+                <li>Тривалість тривоги: від 3 секунд до 3 хвилин (налаштовується)</li>
+                <li>Автономна робота до 5 років від двох батарей CR123A</li>
+                <li>Можливість під'єднання додаткового зовнішнього світлодіода</li>
+                <li>Індикація подій системи (тривоги, затримки, режими охорони)</li>
+                <li>Сповіщення про відчинення дверей/вікон поза режимом охорони</li>
+                <li>Захист від саботажу та радіозавад</li>
+            </ul>
+
+            <strong>Технологія зв'язку Jeweller:</strong>
+            <ul>
+                <li>Пропрієтарна бездротова технологія Ajax</li>
+                <li>Дальність зв'язку: до 2000 м</li>
+                <li>Двосторонній зв'язок з хабом</li>
+                <li>Блокове шифрування з плаваючим ключем</li>
+                <li>Радіочастотний гопінг для захисту від перехоплення</li>
+            </ul>
+
+            <strong>Фізичні характеристики:</strong>
+            <ul>
+                <li>Розміри: 75 × 76 × 27 мм</li>
+                <li>Вага: 97 г</li>
+                <li>Діапазон робочих температур: від −10°C до +40°C</li>
+                <li>Клас захисту: IP50 (захист від пилу)</li>
+                <li>Кольори: чорний, білий</li>
+            </ul>
+
+            <strong>Комплектація:</strong>
+            <ul>
+                <li>HomeSiren Jeweller</li>
+                <li>Кріпильна панель SmartBracket</li>
+                <li>2 батареї CR123A (попередньо встановлені)</li>
+                <li>Конектор для LED-індикатора</li>
+                <li>Монтажний комплект</li>
+                <li>Коротка інструкція</li>
+            </ul>
+        </div>
+
+        <!-- ЦЕНА И КНОПКА -->
+        <p class="product-price">2180.00 грн</p>
+        <button class="btn" onclick="addToCart()">Додати у кошик</button>
+
+        <a href="../vnutrishni_datchyky.html" class="back-link">← Повернутися до каталогу</a>
     </div>
 
-    <div id="toast" class="toast"></div>
+    <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ИЗОБРАЖЕНИЙ -->
+    <div id="modal" class="modal" onclick="closeModal()">
+        <button class="arrow left" onclick="event.stopPropagation(); prevModalImage()" aria-label="Попереднє зображення">&#10094;</button>
+        <img id="modal-img" src="" alt="Збільшене зображення сирени Ajax HomeSiren"/>
+        <button class="arrow right" onclick="event.stopPropagation(); nextModalImage()" aria-label="Наступне зображення">&#10095;</button>
+    </div>
 
-     <div class="product-description">
-Бездротова сирена Ajax HomeSiren Jeweller призначена для звукового та світлового оповіщення про тривоги, події системи безпеки та спроби проникнення в приміщення. 
-Пристрій оснащений потужним зумером з регульованою гучністю від 80 до 100 дБ та яскравим світлодіодом для візуального сповіщення. 
-Підтримує індикацію різних подій системи: тривоги, затримки на вхід/вихід, режими охорони, а також може сповіщати про відчинення дверей і вікон навіть коли система не на охороні.
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-wrapper">
+            <p>
+                <span class="black">ПРО</span><span class="red">ЗАХИСТ</span> — Бездротові системи безпеки
+            </p>
+            <p style="color: #666; margin-top: 10px; font-size: 0.85em;">
+                © 2024 ПРОЗАХИСТ. Всі права захищені.
+            </p>
+        </div>
+    </footer>
 
-<br><br>
-<strong>Основні характеристики:</strong>
-<ul>
-  <li>Світлозвуковий сигнал тривоги (зумер і світлодіод)</li>
-  <li>Гучність звукового сигналу: від 80 до 100 дБ на відстані 1 м (налаштовується)</li>
-  <li>За початкових налаштувань: 93 дБ на відстані 1 м</li>
-  <li>Дальність зв'язку з хабом до 2000 м на відкритому просторі</li>
-  <li>Тривалість тривоги: від 3 секунд до 3 хвилин (налаштовується)</li>
-  <li>Тривалість тривоги до 15 хвилин (для версії прошивки NA 5.60.4.14 або вище)</li>
-  <li>Частота звукового сигналу: 3,4 ± 0,5 кГц</li>
-  <li>Можливість під'єднання додаткового зовнішнього світлодіода</li>
-  <li>Індикація подій системи (тривоги, затримки, режими охорони)</li>
-  <li>Сповіщення про відчинення дверей/вікон поза режимом охорони</li>
-  <li>Автономна робота до 5 років від двох батарей CR123A</li>
-  <li>Дистанційне керування та налаштування через застосунок Ajax</li>
-</ul>
+    <!-- JAVASCRIPT -->
+    <script>
+        // ========================================
+        // ДАННЫЕ
+        // ========================================
+        const images = [
+            "../images/ajax_homesiren_white_1.png",
+            "../images/ajax_homesiren_white_2.png",
+            "../images/ajax_homesiren_white_3.png",
+            "../images/ajax_homesiren_white_4.png",
+            "../images/ajax_homesiren_white_5.png"
+        ];
 
-<strong>Звуковий сигнал тривоги:</strong>
-<ul>
-  <li>Гучність: від 80 до 100 дБ на відстані 1 м</li>
-  <li>Початкові налаштування: 93 дБ на відстані 1 м</li>
-  <li>Налаштування гучності через застосунок Ajax</li>
-  <li>Частота звукового сигналу: 3,4 ± 0,5 кГц</li>
-  <li>Тривалість тривоги: від 3 секунд до 3 хвилин</li>
-  <li>Тривалість до 15 хвилин для версії прошивки NA 5.60.4.14 або вище</li>
-  <li>Потужний п'єзоелектричний зумер</li>
-  <li>Пронизливий звук для ефективного відлякування</li>
-</ul>
-
-<strong>Світлова індикація:</strong>
-<ul>
-  <li>Вбудований яскравий світлодіод</li>
-  <li>Візуальне сповіщення про тривоги та події</li>
-  <li>Індикація режимів роботи системи</li>
-  <li>Можливість під'єднання додаткового зовнішнього LED-індикатора (3 В⎓)</li>
-  <li>Додатковий світлодіод працює паралельно з вбудованим та повністю повторює індикацію</li>
-  <li>Можна розмістити на зовнішній стіні будівлі для видимості з вулиці</li>
-  <li>Конектор для LED-індикатора в комплекті</li>
-  <li>Додатковий світлодіод купується окремо</li>
-</ul>
-
-<strong>Індикація подій:</strong>
-<ul>
-  <li>Тривоги при спрацюванні датчиків</li>
-  <li>Затримки на вхід/вихід (попередження перед увімкненням тривоги)</li>
-  <li>Режим охорони (індикація постановки на охорону)</li>
-  <li>Зміна режиму охорони (часткова/повна охорона, зняття з охорони)</li>
-  <li>Індикація після тривоги (підтвердження події)</li>
-  <li>Різні сигнали для різних типів подій</li>
-</ul>
-
-<strong>Сповіщення про відчинення:</strong>
-<ul>
-  <li>Функція доступна коли система НЕ в режимі охорони</li>
-  <li>Сирена сповіщає про спрацювання датчиків відчинення (двері, вікна)</li>
-  <li>Корисно для контролю відвідувачів у офісах та магазинах</li>
-  <li>Повідомлення про прихід дітей зі школи</li>
-  <li>Моніторинг відчинення певних дверей або вікон</li>
-  <li>М'яке звукове сповіщення (не тривога)</li>
-  <li>Налаштування через застосунок Ajax</li>
-</ul>
-
-<strong>Тип попереджувального пристрою:</strong>
-<ul>
-  <li>Тип W (для приміщень, має власне живлення)</li>
-  <li>Автономне живлення від батарей</li>
-  <li>Не потребує зовнішнього джерела живлення</li>
-  <li>Бездротове підключення до системи</li>
-  <li>Відповідає стандартам для внутрішніх сирен</li>
-</ul>
-
-<strong>Технологія зв'язку Jeweller:</strong>
-<ul>
-  <li>Пропрієтарна бездротова технологія Ajax для передавання команд, тривог і подій</li>
-  <li>Дальність зв'язку: до 2000 м (між пристроєм і хабом або ретранслятором за відсутності перешкод)</li>
-  <li>Двосторонній зв'язок з хабом</li>
-  <li>Блокове шифрування з плаваючим ключем</li>
-  <li>Передовий захист від саботажу</li>
-  <li>Миттєві сповіщення про події</li>
-  <li>Дистанційне керування та налаштування в застосунках Ajax</li>
-  <li>Радіочастотний гопінг для запобігання радіозавадам і перехопленню сигналу</li>
-  <li>Діапазони радіочастот: 868,0–868,6 МГц</li>
-  <li>Максимальна ефективна випромінювана потужність (ERP): до 25 мВт</li>
-  <li>Автоматичне регулювання потужності для зменшення енергоспоживання та радіозавад</li>
-  <li>Модуляція радіосигналу: GFSK</li>
-</ul>
-
-<strong>Захист від саботажу:</strong>
-<ul>
-  <li>Тривога тампера при спробі відірвати пристрій від поверхні або зняти з кріплення</li>
-  <li>Захист від підміни — автентифікація пристрою</li>
-  <li>Виявлення втрати зв'язку через 36 секунд (залежить від налаштувань Jeweller)</li>
-  <li>Захист від радіозавад через радіочастотний гопінг</li>
-  <li>Сповіщення про низький заряд батареї</li>
-  <li>Блокове шифрування передачі даних</li>
-</ul>
-
-<strong>Живлення:</strong>
-<ul>
-  <li>Батареї: 2 × CR123A (попередньо встановлені)</li>
-  <li>Розрахунковий строк роботи від батарей: до 5 років</li>
-  <li>Діапазон робочої напруги: 1,9–3,3 В⎓</li>
-  <li>Номінальна робоча напруга: 3 В⎓</li>
-  <li>Споживання струму в стані спокою при номінальній напрузі: 68 мкА</li>
-  <li>Середній струм споживання при звучанні (початкові налаштування): 50 мА</li>
-  <li>Максимальний струм споживання при номінальній напрузі: 1,1 А (при гучності "Дуже голосно")</li>
-  <li>Повна ємність батареї: 3200 мА·год</li>
-  <li>Низька напруга батареї: 2,1 В⎓</li>
-  <li>Напруга відпрацьованої батареї: 1,9 В⎓ (пристрій вимикається)</li>
-  <li>Ємність відпрацьованої батареї: 366 мА·год</li>
-  <li>Виробник батареї: Huiderui</li>
-</ul>
-
-<strong>Фізичні характеристики:</strong>
-<ul>
-  <li>Розміри: 75 × 76 × 27 мм</li>
-  <li>Вага: 97 г</li>
-  <li>Діапазон робочих температур: від −10°C до +40°C</li>
-  <li>Допустима вологість: до 75%</li>
-  <li>Клас захисту: IP50 (захист від пилу)</li>
-  <li>Кольори: чорний, білий</li>
-  <li>Сирена призначена лише для використання у приміщенні</li>
-  <li>Компактний дизайн для непомітного встановлення</li>
-</ul>
-
-<strong>Рекомендації з встановлення:</strong>
-<ul>
-  <li>Рекомендована висота встановлення: 2,5 м і вище</li>
-  <li>Встановлюйте у видному місці для максимальної ефективності світлової індикації</li>
-  <li>Розташовуйте у центральній частині приміщення для рівномірного розповсюдження звуку</li>
-  <li>Уникайте встановлення за меблями або в закритих нішах (погіршує звук)</li>
-  <li>Не встановлюйте поруч з металевими конструкціями (може погіршити зв'язок)</li>
-  <li>Для великих приміщень рекомендується встановлення кількох сирен</li>
-  <li>Сирена призначена лише для використання у приміщенні</li>
-  <li>Використовуйте додатковий зовнішній LED-індикатор для видимості з вулиці</li>
-</ul>
-
-<strong>Застосування:</strong>
-<ul>
-  <li>Житлові приміщення (квартири, будинки)</li>
-  <li>Офіси та комерційні приміщення</li>
-  <li>Магазини та торгові точки (індикація відчинення входу)</li>
-  <li>Банки та фінансові установи</li>
-  <li>Складські приміщення</li>
-  <li>Навчальні заклади</li>
-  <li>Медичні установи</li>
-  <li>Готелі та хостели</li>
-  <li>Гаражі та паркінги</li>
-  <li>Виробничі приміщення</li>
-</ul>
-
-<strong>Переваги Ajax HomeSiren:</strong>
-<ul>
-  <li>✅ Висока дальність зв'язку — до 2000 м</li>
-  <li>✅ Регульована гучність — від 80 до 100 дБ</li>
-  <li>✅ Світлозвукове сповіщення — зумер і світлодіод</li>
-  <li>✅ Можливість підключення додаткового LED-індикатора</li>
-  <li>✅ Індикація різних подій системи</li>
-  <li>✅ Сповіщення про відчинення поза режимом охорони</li>
-  <li>✅ Налаштування тривалості тривоги від 3 с до 15 хв</li>
-  <li>✅ До 5 років автономної роботи</li>
-  <li>✅ Дистанційне налаштування через застосунок Ajax</li>
-  <li>✅ Захист від саботажу та радіозавад</li>
-  <li>✅ Компактний дизайн</li>
-  <li>✅ Два кольори на вибір (чорний, білий)</li>
-</ul>
-
-<strong>Налаштування через застосунок Ajax:</strong>
-<ul>
-  <li>Регулювання гучності звукового сигналу (80, 85, 90, 95, 100 дБ)</li>
-  <li>Налаштування тривалості тривоги (від 3 с до 3 хв, або до 15 хв)</li>
-  <li>Увімкнення/вимкнення функції сповіщення про відчинення</li>
-  <li>Вибір датчиків для функції сповіщення про відчинення</li>
-  <li>Налаштування індикації різних подій</li>
-  <li>Тестування звуку та світлодіода</li>
-  <li>Моніторинг заряду батарей</li>
-  <li>Перевірка рівня сигналу Jeweller</li>
-  <li>Перегляд історії подій</li>
-  <li>Дистанційна активація сирени для тестування</li>
-</ul>
-
-<strong>Сценарії використання:</strong>
-<ul>
-  <li>Звукове відлякування злодіїв при спробі проникнення</li>
-  <li>Візуальне сповіщення про тривогу для людей з порушенням слуху</li>
-  <li>Індикація режиму охорони для співробітників офісу</li>
-  <li>Сповіщення про прихід відвідувачів у магазині</li>
-  <li>Контроль приходу дітей зі школи (сповіщення про відчинення)</li>
-  <li>Попередження про затримку на вхід/вихід</li>
-  <li>Зовнішня індикація тривоги через додатковий LED (видимий з вулиці)</li>
-  <li>Координація дій служби охорони при тривозі</li>
-</ul>
-
-
-<strong>Комплектація:</strong>
-<ul>
-  <li>HomeSiren Jeweller</li>
-  <li>Кріпильна панель SmartBracket</li>
-  <li>2 батареї CR123A (попередньо встановлені)</li>
-  <li>Конектор для LED-індикатора</li>
-  <li>Монтажний комплект</li>
-  <li>Коротка інструкція</li>
-</ul>
-
-<strong>Сумісність:</strong>
-<ul>
-  <li>Працює з усіма хабами Ajax (Hub, Hub 2, Hub Plus, Hub Hybrid)</li>
-  <li>Підтримка ретрансляторів сигналу (ReX, ReX 2)</li>
-  <li>Інтеграція з застосунками Ajax (iOS, Android, macOS, Windows)</li>
-  <li>Підключення до пультів централізованого спостереження (ПЦС)</li>
-  <li>Підтримка професійного режиму для інсталяторів (PRO)</li>
-  <li>Сумісність з усіма датчиками Ajax</li>
-</ul>
-
-<strong>Чим відрізняється від вуличної сирени StreetSiren:</strong>
-<ul>
-  <li>Призначена для встановлення тільки всередині приміщення</li>
-  <li>IP50 замість IP54 (немає захисту від води)</li>
-  <li>Компактніший розмір (75×76×27 мм проти 163×163×56 мм)</li>
-  <li>Менша вага (97 г проти 353 г)</li>
-  <li>Максимальна гучність 100 дБ (проти 113 дБ у StreetSiren)</li>
-  <li>Можливість підключення додаткового LED-індикатора</li>
-  <li>Функція сповіщення про відчинення</li>
-  <li>Нижча вартість</li>
-</ul>
-
-<strong>Чому варто обрати HomeSiren:</strong>
-<ul>
-  <li>Компактний розмір для непомітного встановлення</li>
-  <li>Регульована гучність під різні приміщення</li>
-  <li>Світлова індикація для візуального сповіщення</li>
-  <li>Функція сповіщення про відчинення</li>
-  <li>Можливість додаткового LED для видимості ззовні</li>
-  <li>Тривалий термін роботи від батарей</li>
-  <li>Гнучкі налаштування через застосунок</li>
-  <li>Надійний захист від саботажу</li>
-</ul>
-</div>
-
-    <p class="product-price">2180.00 грн</p>
-    <button class="btn" onclick="addToCart()">Додати у кошик</button>
-
-    <a href="../vnutrishni_datchyky.html" class="back-link">← Повернутися до каталогу</a>
-</div>
-
-<div id="modal" class="modal" onclick="closeModal()">
-    <span class="arrow left" onclick="event.stopPropagation(); prevModalImage()">&#10094;</span>
-    <img id="modal-img" src="" alt="Збільшене зображення сирени Ajax HomeSiren"/>
-    <span class="arrow right" onclick="event.stopPropagation(); nextModalImage()">&#10095;</span>
-</div>
-
-<script>
-    // Carousel functionality с зацикливанием как в первом примере
-    let currentIndex = 0;
-    const images = [
-        "../images/ajax_homesiren_white_1.png",
-        "../images/ajax_homesiren_white_2.png",
-        "../images/ajax_homesiren_white_3.png",
-        "../images/ajax_homesiren_white_4.png",
-        "../images/ajax_homesiren_white_5.png"
-    ];
-    const totalSlides = images.length;
-    const carousel = document.getElementById('carousel');
-
-    function updateCarousel() {
-        carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }
-
-    function nextImage() {
-        currentIndex++;
-        carousel.style.transition = 'transform 0.5s ease';
-        updateCarousel();
-
-        // Если дошли до клона (позиция после последнего оригинала)
-        if (currentIndex === totalSlides) {
-            setTimeout(() => {
-                carousel.style.transition = 'none';
-                currentIndex = 0;
-                updateCarousel();
-            }, 500); // После завершения анимации
-        }
-    }
-
-    function prevImage() {
-        // Если на первом изображении - мгновенно прыгаем на клон
-        if (currentIndex === 0) {
-            carousel.style.transition = 'none';
-            currentIndex = totalSlides;
-            updateCarousel();
-
-            // Даем браузеру время применить изменения
-            setTimeout(() => {
-                carousel.style.transition = 'transform 0.5s ease';
-                currentIndex--;
-                updateCarousel();
-            }, 20);
-        } else {
-            currentIndex--;
-            carousel.style.transition = 'transform 0.5s ease';
-            updateCarousel();
-        }
-    }
-
-    // Auto-slide every 5 seconds
-    setInterval(nextImage, 5000);
-
-    // Modal functionality
-    let modalIndex = 0;
-
-    function openModal(index) {
-        modalIndex = index;
-        document.getElementById('modal-img').src = images[modalIndex];
-        document.getElementById('modal').style.display = 'flex';
-    }
-
-    function closeModal() {
-        document.getElementById('modal').style.display = 'none';
-    }
-
-    function nextModalImage() {
-        modalIndex = (modalIndex + 1) % images.length;
-        document.getElementById('modal-img').src = images[modalIndex];
-    }
-
-    function prevModalImage() {
-        modalIndex = (modalIndex - 1 + images.length) % images.length;
-        document.getElementById('modal-img').src = images[modalIndex];
-    }
-
-    // Swipe support for carousel
-    let startX = 0;
-    carousel.addEventListener('touchstart', e => {
-        startX = e.touches[0].clientX;
-    }, { passive: true });
-
-    carousel.addEventListener('touchend', e => {
-        const diff = e.changedTouches[0].clientX - startX;
-        if (Math.abs(diff) > 50) {
-            diff > 0 ? prevImage() : nextImage();
-        }
-    }, { passive: true });
-
-    // Swipe for modal
-    const modal = document.getElementById('modal');
-    modal.addEventListener('touchstart', e => {
-        startX = e.touches[0].clientX;
-    }, { passive: true });
-
-    modal.addEventListener('touchend', e => {
-        const diff = e.changedTouches[0].clientX - startX;
-        if (Math.abs(diff) > 50) {
-            diff > 0 ? prevModalImage() : nextModalImage();
-        }
-    }, { passive: true });
-
-    // Cart functionality
-    function addToCart() {
-        const item = {
-            id: 'Ajax HomeSiren White',
+        const productData = {
+            id: 'homesiren-white',
             name: 'Ajax HomeSiren White',
             price: 2180,
-            image: '../images/ajax_homesiren_white_1.png',
-            quantity: 1
+            image: '../images/ajax_homesiren_white_1.png'
         };
 
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const existing = cart.find(i => i.id === item.id);
+        // ========================================
+        // КАРУСЕЛЬ
+        // ========================================
+        let currentIndex = 0;
+        const totalSlides = images.length;
+        const carousel = document.getElementById('carousel');
 
-        if (existing) {
-            existing.quantity++;
-        } else {
-            cart.push(item);
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
 
-        localStorage.setItem('cart', JSON.stringify(cart));
-        showToast('Ajax HomeSiren White додано до кошика!');
-    }
+        function nextImage() {
+            currentIndex++;
+            carousel.style.transition = 'transform 0.5s ease';
+            updateCarousel();
 
-    function showToast(message) {
-        const toast = document.getElementById('toast');
-        toast.textContent = message;
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2500);
-    }
-</script>
+            if (currentIndex === totalSlides) {
+                setTimeout(() => {
+                    carousel.style.transition = 'none';
+                    currentIndex = 0;
+                    updateCarousel();
+                }, 500);
+            }
+        }
+
+        function prevImage() {
+            if (currentIndex === 0) {
+                carousel.style.transition = 'none';
+                currentIndex = totalSlides;
+                updateCarousel();
+
+                setTimeout(() => {
+                    carousel.style.transition = 'transform 0.5s ease';
+                    currentIndex--;
+                    updateCarousel();
+                }, 20);
+            } else {
+                currentIndex--;
+                carousel.style.transition = 'transform 0.5s ease';
+                updateCarousel();
+            }
+        }
+
+        // Автопрокрутка
+        setInterval(nextImage, 5000);
+
+        // ========================================
+        // МОДАЛЬНОЕ ОКНО
+        // ========================================
+        let modalIndex = 0;
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+
+        function openModal(index) {
+            modalIndex = index;
+            modalImg.src = images[modalIndex];
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function nextModalImage() {
+            modalIndex = (modalIndex + 1) % images.length;
+            modalImg.src = images[modalIndex];
+        }
+
+        function prevModalImage() {
+            modalIndex = (modalIndex - 1 + images.length) % images.length;
+            modalImg.src = images[modalIndex];
+        }
+
+        // Клавиатура
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('active')) return;
+            
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowRight') nextModalImage();
+            if (e.key === 'ArrowLeft') prevModalImage();
+        });
+
+        // ========================================
+        // СВАЙПЫ
+        // ========================================
+        let startX = 0;
+
+        carousel.addEventListener('touchstart', e => {
+            startX = e.touches[0].clientX;
+        }, { passive: true });
+
+        carousel.addEventListener('touchend', e => {
+            const diff = e.changedTouches[0].clientX - startX;
+            if (Math.abs(diff) > 50) {
+                diff > 0 ? prevImage() : nextImage();
+            }
+        }, { passive: true });
+
+        modal.addEventListener('touchstart', e => {
+            startX = e.touches[0].clientX;
+        }, { passive: true });
+
+        modal.addEventListener('touchend', e => {
+            const diff = e.changedTouches[0].clientX - startX;
+            if (Math.abs(diff) > 50) {
+                diff > 0 ? prevModalImage() : nextModalImage();
+            }
+        }, { passive: true });
+
+        // ========================================
+        // КОРЗИНА
+        // ========================================
+        function toggleCart() {
+            const cartContent = document.getElementById('cart-content');
+            cartContent.classList.toggle('active');
+            if (cartContent.classList.contains('active')) {
+                renderCart();
+            }
+        }
+
+        function getCart() {
+            return JSON.parse(localStorage.getItem('cart')) || [];
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            const cart = getCart();
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = count;
+        }
+
+        function addToCart() {
+            const cart = getCart();
+            const existing = cart.find(item => item.id === productData.id);
+
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({
+                    ...productData,
+                    quantity: 1
+                });
+            }
+
+            saveCart(cart);
+            showToast('Товар додано до кошика!');
+        }
+
+        function removeFromCart(id) {
+            let cart = getCart();
+            cart = cart.filter(item => item.id !== id);
+            saveCart(cart);
+            renderCart();
+        }
+
+        function changeQuantity(id, delta) {
+            const cart = getCart();
+            const item = cart.find(item => item.id === id);
+            
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    removeFromCart(id);
+                    return;
+                }
+                saveCart(cart);
+                renderCart();
+            }
+        }
+
+        function renderCart() {
+            const cart = getCart();
+            const container = document.getElementById('cart-items');
+            const totalEl = document.getElementById('total-price');
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Кошик порожній</p>';
+                totalEl.textContent = '0';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                html += `
+                    <div class="cart-item">
+                        <span class="item-name">${item.name}</span>
+                        <div class="quantity-control">
+                            <button class="quantity-btn" onclick="changeQuantity('${item.id}', -1)">−</button>
+                            <span class="quantity">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="changeQuantity('${item.id}', 1)">+</button>
+                        </div>
+                        <span style="color: #000; min-width: 70px; text-align: right;">${itemTotal} грн</span>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            totalEl.textContent = total;
+        }
+
+        function checkout() {
+            const cart = getCart();
+            if (cart.length === 0) {
+                showToast('Кошик порожній!');
+                return;
+            }
+            
+            // Здесь можно добавить переход на страницу оформления
+            showToast('Переходимо до оформлення замовлення...');
+            // window.location.href = '../checkout.html';
+        }
+
+        // ========================================
+        // TOAST
+        // ========================================
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // ========================================
+        // ИНИЦИАЛИЗАЦИЯ
+        // ========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartCount();
+        });
+
+        // Закрытие корзины при клике вне её
+        document.addEventListener('click', (e) => {
+            const cart = document.querySelector('.cart');
+            const cartContent = document.getElementById('cart-content');
+            
+            if (!cart.contains(e.target) && !cartContent.contains(e.target)) {
+                cartContent.classList.remove('active');
+            }
+        });
+    </script>
 
 </body>
 </html>
