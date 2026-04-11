@@ -2,19 +2,19 @@
    🧩 КАРТА КАТЕГОРІЙ
    ====================================================== */
 const CATEGORY_MAP = {
-    indoor: { label: 'Внутрішні камери IMOU', icon: 'reviews_png/cam_indoor.png' },
-    outdoor: { label: 'Зовнішні камери IMOU', icon: 'reviews_png/cam_outdoor.png' },
-    outdoor_4G: { label: 'Зовнішні 4G камери IMOU', icon: 'reviews_png/cam_outdoor_4G.png' },
+    vnutrishni_kamery: { label: 'Внутрішні камери IMOU', icon: 'reviews_png/cam_indoor.png' },
+    zovnishni_kamery: { label: 'Зовнішні камери IMOU', icon: 'reviews_png/cam_outdoor.png' },
+    zovnishni_4G_kamery: { label: 'Зовнішні 4G камери IMOU', icon: 'reviews_png/cam_outdoor_4G.png' },
     microSD: { 
         label: 'Карти пам\'яті microSD', 
         icon: 'reviews_png/microsd.png' 
     },
-    alarm: { label: 'Комплекти сигналізації Ajax', icon: 'reviews_png/starterkit.png' },
-    hub: { label: 'Хаби, модулі Ajax', icon: 'reviews_png/hub.png' },
-    protect: { label: 'Внутрішня охорона Ajax', icon: 'reviews_png/motionprotect.png' },
-    protect_outdoor: { label: 'Зовнішня охорона Ajax', icon: 'reviews_png/motioncam_outdoor.png' },
-    waterstop: { label: 'Захист від потопу Ajax', icon: 'reviews_png/waterstop.png' },
-    fire: { label: 'Захист від пожежі Ajax', icon: 'reviews_png/manualcallpoint.png' },
+    komplekty_syhnalizaciyi: { label: 'Комплекти сигналізації Ajax', icon: 'reviews_png/starterkit.png' },
+    khuby: { label: 'Хаби, модулі Ajax', icon: 'reviews_png/hub.png' },
+    vnutrishni_datchyky: { label: 'Внутрішня охорона Ajax', icon: 'reviews_png/motionprotect.png' },
+    zovnishni_datchyky: { label: 'Зовнішня охорона Ajax', icon: 'reviews_png/motioncam_outdoor.png' },
+    zakhyst_vid_potopu: { label: 'Захист від потопу Ajax', icon: 'reviews_png/waterstop.png' },
+    pozhezhna_bezpeka: { label: 'Захист від пожежі Ajax', icon: 'reviews_png/manualcallpoint.png' },
     other: { label: 'Інше', icon: 'favicon.svg' }
 };
 
@@ -22,16 +22,16 @@ const CATEGORY_MAP = {
    👆 СВАЙП НАВІГАЦІЯ — МІНІМАЛЬНА
    ====================================================== */
 const CATEGORY_SLIDES = [
-    { file: 'vnutrishni_kamery.html', key: 'indoor' },
-    { file: 'zovnishni_kamery.html', key: 'outdoor' },
-    { file: 'zovnishni_4G_kamery.html', key: 'outdoor_4G' },
+    { file: 'vnutrishni_kamery.html', key: 'vnutrishni_kamery' },
+    { file: 'zovnishni_kamery.html', key: 'zovnishni_kamery' },
+    { file: 'zovnishni_4G_kamery.html', key: 'zovnishni_4G_kamery' },
     { file: "karty_pam'yati.html", key: 'microSD' },
-    { file: 'komplekty_syhnalizaciyi.html', key: 'alarm' },
-    { file: 'khuby.html', key: 'hub' },
-    { file: 'vnutrishni_datchyky.html', key: 'protect' },
-    { file: 'zovnishni_datchyky.html', key: 'protect_outdoor' },
-    { file: 'zakhyst_vid_potopu.html', key: 'waterstop' },
-    { file: 'pozhezhna_bezpeka.html', key: 'fire' }
+    { file: 'komplekty_syhnalizaciyi.html', key: 'komplekty_syhnalizaciyi' },
+    { file: 'khuby.html', key: 'khuby' },
+    { file: 'vnutrishni_datchyky.html', key: 'vnutrishni_datchyky' },
+    { file: 'zovnishni_datchyky.html', key: 'zovnishni_datchyky' },
+    { file: 'zakhyst_vid_potopu.html', key: 'zakhyst_vid_potopu' },
+    { file: 'pozhezhna_bezpeka.html', key: 'pozhezhna_bezpeka' }
 ];
 
 function initSwipeNavigation() {
