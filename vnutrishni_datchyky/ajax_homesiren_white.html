@@ -75,7 +75,7 @@
             overflow-x: hidden;
         }
 
-       /* ========================================
+   /* ========================================
    HEADER та LOGO
    ======================================== */
 header {
@@ -87,15 +87,15 @@ header {
     background: linear-gradient(to right, rgba(7, 7, 7, 0.95), rgba(148, 148, 148, 0.95));
     padding: 0;
     color: white;
+    text-align: left;
     z-index: 1000;
     border-bottom: 2px solid #800000;
-    display: flex;          /* добавить */
-    align-items: center;    /* добавить */
 }
 
 header .logo svg {
     height: 55px;
     width: auto;
+    display: block;
 }
 
         .header-breadcrumbs {
@@ -164,7 +164,7 @@ header .logo svg {
 .mobile-breadcrumbs .current {
     color: #ff4444;
 }
-       /* ========================================
+   /* ========================================
    КОШИК
    ======================================== */
 .cart {
@@ -191,7 +191,7 @@ header .logo svg {
     display: none;
     position: fixed;
     right: 10px;
-    top: 65px;
+    top: 105px;
     background-color: rgba(255,255,255,0.95);
     color: black;
     padding: 20px;
@@ -638,7 +638,7 @@ header .logo svg {
         /* ========================================
            АДАПТИВНОСТЬ
            ======================================== */
-       @media (max-width: 768px) {
+     @media (max-width: 768px) {
     .header-breadcrumbs {
         display: none;
     }
@@ -676,10 +676,9 @@ header .logo svg {
         left: 50%;
         transform: translateX(-50%);
         right: auto;
-        top: 65px;
+        top: 105px;    /* ← ИСПРАВЛЕНО: было 65px */
     }
 }
-
        @media (max-width: 480px) {
     .mobile-breadcrumbs {
         font-size: 0.8em;    /* ещё меньше для маленьких экранов */
