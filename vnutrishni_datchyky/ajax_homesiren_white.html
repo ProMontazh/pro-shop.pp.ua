@@ -141,37 +141,35 @@
            МОБИЛЬНЫЕ ХЛЕБНЫЕ КРОШКИ
         ======================================== */
         .mobile-breadcrumbs {
-            display: none;
-            position: fixed;
-            top: 55px;
-            left: 0;
-            width: 100%;
-            background: #2a2a2a;
-            padding: 10px 15px;
-            border-bottom: 1px solid #444;
-            z-index: 999;
-            font-size: 0.9em;
-        }
+    display: none;
+    position: fixed;
+    top: 55px;
+    left: 0;
+    width: 100%;
+    background: #2a2a2a;
+    padding: 6px 10px;        /* было 10px 15px — уменьшил вертикальный отступ */
+    border-bottom: 1px solid #444;
+    z-index: 999;
+    font-size: 0.8em;       /* было 0.9em — уменьшил шрифт */
+    white-space: nowrap;      /* добавить чтобы не переносилось */
+    overflow: hidden;         /* скрыть лишнее */
+    text-overflow: ellipsis;  /* троеточие если не влезает */
+}
 
-        .mobile-breadcrumbs a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+.mobile-breadcrumbs a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
 
-        .mobile-breadcrumbs a:hover {
-            color: #ff4444;
-        }
+.mobile-breadcrumbs .separator {
+    color: #666;
+    margin: 0 4px;          /* было 8px — уменьшил отступы вокруг разделителя */
+}
 
-        .mobile-breadcrumbs .separator {
-            color: #666;
-            margin: 0 8px;
-        }
-
-        .mobile-breadcrumbs .current {
-            color: #ff4444;
-        }
-
+.mobile-breadcrumbs .current {
+    color: #ff4444;
+}
        /* ========================================
    КОШИК
    ======================================== */
