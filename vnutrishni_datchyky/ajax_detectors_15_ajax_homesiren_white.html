@@ -171,202 +171,202 @@
             color: #ff4444;
         }
 
-        /* ========================================
-           КОРЗИНА
-           ======================================== */
-        .cart {
-            position: fixed;
-            top: 8px;
-            right: 10px;
-            background-color: #333;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            z-index: 1100;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-            user-select: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 14px;
-        }
+       /* ========================================
+   КОШИК
+   ======================================== */
+.cart {
+    position: fixed;
+    top: 8px;
+    right: 10px;
+    background-color: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1100;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+}
 
-        .cart:hover {
-            background-color: #444;
-            transform: scale(1.05);
-        }
+.cart-content {
+    display: none;
+    position: fixed;
+    right: 10px;
+    top: 105px;
+    background-color: rgba(255,255,255,0.95);
+    color: black;
+    padding: 20px;
+    border-radius: 8px;
+    width: 465px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    z-index: 1100;
+}
 
-        .cart-content {
-            display: none;
-            position: fixed;
-            right: 10px;
-            top: 65px;
-            background-color: rgba(255,255,255,0.95);
-            color: black;
-            padding: 20px;
-            border-radius: 8px;
-            width: 465px;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-            z-index: 1100;
-        }
+.cart-content.active {
+    display: block !important;
+}
 
-        .cart-content.active {
-            display: block !important;
-        }
+/* Заголовок кошика з кнопкою закриття */
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #800000;
+    padding-bottom: 10px;
+}
 
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #800000;
-            padding-bottom: 10px;
-        }
+.cart-content h2 {
+    color: #000;
+    margin: 0;
+}
 
-        .cart-content h2 {
-            color: #000;
-            margin: 0;
-        }
+/* Кнопка закриття кошика (хрестик) */
+.cart-close {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 2em;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    padding: 0;
+    line-height: 1;
+}
 
-        .cart-close {
-            background: none;
-            border: none;
-            color: #666;
-            font-size: 2em;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
+.cart-close:hover {
+    color: #ff4444;
+    background: #f0f0f0;
+}
 
-        .cart-close:hover {
-            color: #ff4444;
-            background: #f0f0f0;
-        }
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 8px;
+    padding: 0;
+}
 
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            gap: 8px;
-            padding: 10px 0;
-            border-bottom: 1px solid #ddd;
-        }
+.cart-item > span:first-child,
+.cart-item .item-name {
+    flex: 1;
+    text-align: left !important;
+    font-size: 8px !important;
+    line-height: 1.4;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    color: #000;
+}
 
-        .cart-item .item-name {
-            flex: 1;
-            text-align: left;
-            color: #000;
-            font-size: 0.9em;
-        }
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
 
-        .cart-item .item-price {
-            color: #808080;
-            font-weight: 600;
-            min-width: 70px;
-            text-align: right;
-        }
+.quantity-btn {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 0;
+    line-height: 1;
+}
 
-        .quantity-control {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
+.quantity-btn:hover {
+    background-color: #0056b3;
+}
 
-        .quantity-btn {
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+.quantity {
+    font-size: 14px;
+    padding: 0 6px;
+    min-width: 20px;
+    text-align: center !important;
+    line-height: 24px;
+    color: #000;
+}
 
-        .quantity-btn:hover {
-            background-color: #0056b3;
-        }
+#cart-items {
+    max-height: 300px;
+    overflow-y: auto;
+}
 
-        .quantity {
-            font-size: 14px;
-            padding: 0 6px;
-            min-width: 20px;
-            text-align: center;
-            color: #000;
-        }
+.total-price {
+    color: #000;
+    font-size: 1.04em;
+    font-weight: bold;
+    margin-top: 15px;
+}
 
-        .total-price {
-            color: #000;
-            font-size: 1.1em;
-            font-weight: bold;
-            margin-top: 15px;
-            text-align: right;
-        }
+#discount-message {
+    color: #28a745;
+    font-weight: bold;
+    font-size: 1.0em;
+    margin-left: 10px;
+    display: none;
+}
 
-        #discount-message {
-            color: #28a745;
-            font-weight: bold;
-            font-size: 1.0em;
-            margin-left: 10px;
-            display: none;
-        }
+#stock-warning {
+    color: red;
+    font-weight: bold;
+}
 
-        #stock-warning {
-            color: red;
-            font-weight: bold;
-            margin-top: 10px;
-        }
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
 
-        .button-row {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-            gap: 10px;
-        }
+.checkout-button, .cancel-button {
+    padding: 10px 16px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    min-width: 100px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.0;
+    display: inline-block;
+    cursor: pointer;
+}
 
-        .checkout-button, .cancel-button {
-            padding: 10px 16px;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            border: none;
-            flex: 1;
-            text-align: center;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+.checkout-button {
+    background-color: #4CAF50;
+}
 
-        .checkout-button {
-            background-color: #4CAF50;
-        }
+.cancel-button {
+    background-color: #f35363;
+}
 
-        .checkout-button:hover {
-            background-color: #367c39;
-        }
+.checkout-button:hover {
+    background-color: #367c39;
+}
 
-        .cancel-button {
-            background-color: #f35363;
-        }
-
-        .cancel-button:hover {
-            background-color: #d44150;
-        }
+.cancel-button:hover {
+    background-color: #d44150;
+}
 
         /* ========================================
            ОСНОВНОЙ КОНТЕНТ — фон как у карточек категорий
