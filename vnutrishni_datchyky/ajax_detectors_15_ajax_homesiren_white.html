@@ -1120,265 +1120,114 @@
     </footer> -->
 
     <!-- JAVASCRIPT -->
-    <!-- <script>
+     <script>
         const images = [
-            "../images/ajax_homesiren_white_1.png",
-            "../images/ajax_homesiren_white_2.png",
-            "../images/ajax_homesiren_white_3.png",
-            "../images/ajax_homesiren_white_4.png",
-            "../images/ajax_homesiren_white_5.png"
-        ];
+    "../images/ajax_homesiren_white_1.png",
+    "../images/ajax_homesiren_white_2.png",
+    "../images/ajax_homesiren_white_3.png",
+    "../images/ajax_homesiren_white_4.png",
+    "../images/ajax_homesiren_white_5.png"
+];
 
-        const productData = {
-            id: 'homesiren-white',
-            name: 'Ajax HomeSiren White',
-            price: 2180,
-            image: '../images/ajax_homesiren_white_1.png'
-        };
+let currentIndex = 0;
+const totalSlides = images.length;
+const carousel = document.getElementById('carousel');
 
-        let currentIndex = 0;
-        const totalSlides = images.length;
-        const carousel = document.getElementById('carousel');
+function updateCarousel() {
+    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+}
 
-        function updateCarousel() {
-            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
+function nextImage() {
+    currentIndex++;
+    carousel.style.transition = 'transform 0.5s ease';
+    updateCarousel();
 
-        function nextImage() {
-            currentIndex++;
-            carousel.style.transition = 'transform 0.5s ease';
+    if (currentIndex === totalSlides) {
+        setTimeout(() => {
+            carousel.style.transition = 'none';
+            currentIndex = 0;
             updateCarousel();
+        }, 500);
+    }
+}
 
-            if (currentIndex === totalSlides) {
-                setTimeout(() => {
-                    carousel.style.transition = 'none';
-                    currentIndex = 0;
-                    updateCarousel();
-                }, 500);
-            }
-        }
+function prevImage() {
+    if (currentIndex === 0) {
+        carousel.style.transition = 'none';
+        currentIndex = totalSlides;
+        updateCarousel();
 
-        function prevImage() {
-            if (currentIndex === 0) {
-                carousel.style.transition = 'none';
-                currentIndex = totalSlides;
-                updateCarousel();
+        setTimeout(() => {
+            carousel.style.transition = 'transform 0.5s ease';
+            currentIndex--;
+            updateCarousel();
+        }, 20);
+    } else {
+        currentIndex--;
+        carousel.style.transition = 'transform 0.5s ease';
+        updateCarousel();
+    }
+}
 
-                setTimeout(() => {
-                    carousel.style.transition = 'transform 0.5s ease';
-                    currentIndex--;
-                    updateCarousel();
-                }, 20);
-            } else {
-                currentIndex--;
-                carousel.style.transition = 'transform 0.5s ease';
-                updateCarousel();
-            }
-        }
+setInterval(nextImage, 5000);
 
-        setInterval(nextImage, 5000);
+let modalIndex = 0;
+const modal = document.getElementById('modal');
+const modalImg = document.getElementById('modal-img');
 
-        let modalIndex = 0;
-        const modal = document.getElementById('modal');
-        const modalImg = document.getElementById('modal-img');
+function openModal(index) {
+    modalIndex = index;
+    modalImg.src = images[modalIndex];
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
 
-        function openModal(index) {
-            modalIndex = index;
-            modalImg.src = images[modalIndex];
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+function closeModal() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
 
-        function closeModal() {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
+function nextModalImage() {
+    modalIndex = (modalIndex + 1) % images.length;
+    modalImg.src = images[modalIndex];
+}
 
-        function nextModalImage() {
-            modalIndex = (modalIndex + 1) % images.length;
-            modalImg.src = images[modalIndex];
-        }
+function prevModalImage() {
+    modalIndex = (modalIndex - 1 + images.length) % images.length;
+    modalImg.src = images[modalIndex];
+}
 
-        function prevModalImage() {
-            modalIndex = (modalIndex - 1 + images.length) % images.length;
-            modalImg.src = images[modalIndex];
-        }
+document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowRight') nextModalImage();
+    if (e.key === 'ArrowLeft') prevModalImage();
+});
 
-        document.addEventListener('keydown', (e) => {
-            if (!modal.classList.contains('active')) return;
-            if (e.key === 'Escape') closeModal();
-            if (e.key === 'ArrowRight') nextModalImage();
-            if (e.key === 'ArrowLeft') prevModalImage();
-        });
+let startX = 0;
 
-        let startX = 0;
+carousel.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+}, { passive: true });
 
-        carousel.addEventListener('touchstart', e => {
-            startX = e.touches[0].clientX;
-        }, { passive: true });
+carousel.addEventListener('touchend', e => {
+    const diff = e.changedTouches[0].clientX - startX;
+    if (Math.abs(diff) > 50) {
+        diff > 0 ? prevImage() : nextImage();
+    }
+}, { passive: true });
 
-        carousel.addEventListener('touchend', e => {
-            const diff = e.changedTouches[0].clientX - startX;
-            if (Math.abs(diff) > 50) {
-                diff > 0 ? prevImage() : nextImage();
-            }
-        }, { passive: true });
+modal.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+}, { passive: true });
 
-        modal.addEventListener('touchstart', e => {
-            startX = e.touches[0].clientX;
-        }, { passive: true });
-
-        modal.addEventListener('touchend', e => {
-            const diff = e.changedTouches[0].clientX - startX;
-            if (Math.abs(diff) > 50) {
-                diff > 0 ? prevModalImage() : nextModalImage();
-            }
-        }, { passive: true });
-
-        function toggleCart() {
-            const cartContent = document.getElementById('cart-content');
-            cartContent.classList.toggle('active');
-            if (cartContent.classList.contains('active')) {
-                renderCart();
-            }
-        }
-
-        function getCart() {
-            return JSON.parse(localStorage.getItem('cart')) || [];
-        }
-
-        function saveCart(cart) {
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-        }
-
-        function updateCartCount() {
-            const cart = getCart();
-            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cart-count').textContent = count;
-        }
-
-        function addToCart() {
-            const cart = getCart();
-            const existing = cart.find(item => item.id === productData.id);
-
-            if (existing) {
-                existing.quantity++;
-            } else {
-                cart.push({
-                    ...productData,
-                    quantity: 1
-                });
-            }
-
-            saveCart(cart);
-            showToast('Товар додано до кошика!');
-        }
-
-        function removeFromCart(id) {
-            let cart = getCart();
-            cart = cart.filter(item => item.id !== id);
-            saveCart(cart);
-            renderCart();
-        }
-
-        function changeQuantity(id, delta) {
-            const cart = getCart();
-            const item = cart.find(item => item.id === id);
-            
-            if (item) {
-                item.quantity += delta;
-                if (item.quantity <= 0) {
-                    removeFromCart(id);
-                    return;
-                }
-                saveCart(cart);
-                renderCart();
-            }
-        }
-
-        function clearCart() {
-            localStorage.removeItem('cart');
-            updateCartCount();
-            renderCart();
-        }
-
-        function renderCart() {
-            const cart = getCart();
-            const container = document.getElementById('cart-items');
-            const totalEl = document.getElementById('total-price');
-            const discountEl = document.getElementById('discount-message');
-            const stockWarning = document.getElementById('stock-warning');
-
-            if (cart.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Кошик порожній</p>';
-                totalEl.textContent = '0';
-                discountEl.style.display = 'none';
-                stockWarning.textContent = '';
-                return;
-            }
-
-            let html = '';
-            let total = 0;
-            let totalItems = 0;
-
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                totalItems += item.quantity;
-                
-                html += `
-                    <div class="cart-item">
-                        <span class="item-name">${item.name}</span>
-                        <div class="quantity-control">
-                            <button class="quantity-btn" onclick="changeQuantity('${item.id}', -1)">−</button>
-                            <span class="quantity">${item.quantity}</span>
-                            <button class="quantity-btn" onclick="changeQuantity('${item.id}', 1)">+</button>
-                        </div>
-                        <span class="item-price">${item.price} грн</span>
-                    </div>
-                `;
-            });
-
-            container.innerHTML = html;
-            totalEl.textContent = total;
-
-            if (totalItems >= 10) {
-                const discount = total * 0.05;
-                const discountedTotal = total - discount;
-                discountEl.textContent = `(знижка 5%: -${discount.toFixed(2)} грн, до сплати: ${discountedTotal.toFixed(2)} грн)`;
-                discountEl.style.display = 'inline';
-            } else {
-                discountEl.style.display = 'none';
-            }
-
-            if (totalItems > 30) {
-                stockWarning.textContent = 'Уточняйте наявність товару при замовленні більше 30 одиниць';
-            } else {
-                stockWarning.textContent = '';
-            }
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 2500);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            updateCartCount();
-        });
-
-        document.addEventListener('click', (e) => {
-            const cart = document.querySelector('.cart');
-            const cartContent = document.getElementById('cart-content');
-            
-            if (!cart.contains(e.target) && !cartContent.contains(e.target)) {
-                cartContent.classList.remove('active');
-            }
-        });
-    </script> -->
+modal.addEventListener('touchend', e => {
+    const diff = e.changedTouches[0].clientX - startX;
+    if (Math.abs(diff) > 50) {
+        diff > 0 ? prevModalImage() : nextModalImage();
+    }
+}, { passive: true });
+    </script> 
 
 </body>
 </html>
