@@ -147,7 +147,7 @@
     left: 0;
     width: 100%;
     background: #2a2a2a;
-    padding: 6px 10px;        /* было 10px 15px — уменьшил вертикальный отступ */
+    padding: 4px 10px;        /* было 10px 15px — уменьшил вертикальный отступ */
     border-bottom: 1px solid #444;
     z-index: 999;
     font-size: 0.8em;       /* было 0.9em — уменьшил шрифт */
@@ -686,25 +686,28 @@
     }
 }
 
-        @media (max-width: 480px) {
-            .mobile-breadcrumbs {
-                font-size: 0.85em;
-                padding: 8px 10px;
-            }
-            
-            .carousel-arrow {
-                font-size: 1.5rem;
-                padding: 10px;
-                width: 35px;
-                height: 35px;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: none;
-            }
-        }
-
+       @media (max-width: 480px) {
+    .mobile-breadcrumbs {
+        font-size: 0.75em;    /* ещё меньше для маленьких экранов */
+        padding: 5px 8px;     /* ещё компактнее */
+    }
+    
+    .mobile-breadcrumbs .separator {
+        margin: 0 3px;        /* минимальные отступы */
+    }
+    
+    .carousel-arrow {
+        font-size: 1.5rem;
+        padding: 10px;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: none;
+    }
+}
         @media (min-width: 769px) {
             .mobile-breadcrumbs {
                 display: none !important;
