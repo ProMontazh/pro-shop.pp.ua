@@ -672,19 +672,20 @@ header .logo svg {
         max-height: 300px;
     }
     
+    .cart {
+        top: 10px;
+        right: 10px;
+        padding: 6px 8px;
+        font-size: 0.9em;
+    }
+
     .cart-content {
         width: 96%;
         max-width: 400px;
-        left: 50%;
-        transform: translateX(-50%);
-        right: auto;
-        top: 105px;    /* ← ИСПРАВЛЕНО: было 65px */
-    /* Корзина на мобильных - фиксируем позицию */
-    .cart {
-        top: 8px;           /* оставляем как есть */
-        right: 10px;        /* оставляем как есть */
-        padding: 6px 10px;  /* немного уменьшаем padding для компактности */
-        font-size: 12px;    /* немного уменьшаем шрифт */
+        margin: 0 auto;
+        top: 65px;
+        left: 0;
+        right: 0;
     }
     
    /*  .cart-content {
