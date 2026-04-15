@@ -1203,9 +1203,13 @@ body.slide-in-right {
 }
  
 @media (max-width: 768px) {
-    .breadcrumbs {
-        margin-top: 70px;
-        font-size: 0.85em;
+     .header-breadcrumbs {
+        display: none;
+    }
+    
+    .mobile-breadcrumbs {
+        display: block;
+        top: 55px;
     }
 
     #categories {
@@ -1381,7 +1385,15 @@ body.slide-in-right {
         background-position: center;
     }
 }
-
+   @media (max-width: 480px) {
+    .mobile-breadcrumbs {
+        font-size: 0.8em;    /* ещё меньше для маленьких экранов */
+        padding: 5px 8px;     /* ещё компактнее */
+    }
+    
+    .mobile-breadcrumbs .separator {
+        margin: 0 3px;        /* минимальные отступы */
+    }
 /* ========================================
    МОБІЛЬНІ — СКРИВАЄМО НАВІГАЦІЮ, ЗАЛИШАЄМО СВАЙП
    ======================================== */
