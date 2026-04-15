@@ -1201,7 +1201,7 @@ body.slide-in-right {
     font-weight: 600;
     opacity: 1;
 }
-
+ 
 @media (max-width: 768px) {
     .breadcrumbs {
         margin-top: 70px;
