@@ -1416,3 +1416,55 @@ body.slide-in-right {
         max-width: calc(50% - 10px) !important;
     }
 }
+/* ========================================
+   МОБІЛЬНІ ХЛІБНІ КРОШКИ (як у деталях товару)
+   ======================================== */
+.mobile-breadcrumbs {
+    display: none;
+    position: fixed;
+    top: 55px;
+    left: 0;
+    width: 100%;
+    background: #2a2a2a;
+    padding: 4px 10px;
+    border-bottom: 1px solid #444;
+    z-index: 999;
+    font-size: 0.8em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mobile-breadcrumbs a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.mobile-breadcrumbs .separator {
+    color: #666;
+    margin: 0 4px;
+}
+
+.mobile-breadcrumbs .current {
+    color: #ff4444;
+}
+
+/* ========================================
+   АДАПТИВНІСТЬ
+   ======================================== */
+@media (max-width: 768px) {
+    .mobile-breadcrumbs {
+        display: block;
+    }
+    
+    /* Збільшуємо відступ контенту через хлібні крошки */
+    #categories {
+        padding-top: 100px;  /* 55px шапка + 45px хлібні крошки */
+    }
+    
+    /* або якщо використовуєте .products */
+    .products {
+        padding-top: 100px;
+    }
+}
