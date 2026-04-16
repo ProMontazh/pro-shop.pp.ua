@@ -392,9 +392,10 @@ header .logo svg {
     width: 100%;
 }
 
-/* ЦІНА В КАРТОЧЦІ ТОВАРУ — ЧЕРВОНА */
-.product-item .product-price {
-    color: #ff4444;
+/* ========================================
+   ЦІНА ТОВАРУ — БАЗОВИЙ СТИЛЬ (СІРИЙ)
+   ======================================== */
+.product-price {
     font-size: 1.3rem;
     font-weight: 700;
     margin: 15px 0;
@@ -405,6 +406,23 @@ header .logo svg {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* ========================================
+   ЦІНА В КАРТОЧЦІ ТОВАРУ (НА ГОЛОВНІЙ) — ЧЕРВОНА
+   ======================================== */
+.product-item .product-price {
+    color: #ff4444;
+}
+
+/* ========================================
+   ЦІНА НА СТОРІНЦІ ТОВАРУ (У .container) — СІРА
+   ======================================== */
+.container .product-price {
+    font-size: clamp(1.5rem, 5vw, 1.8rem);
+    color: #808080;
+    text-align: center;
+    margin: 25px 0;
 }
 
 .product-item .btn {
@@ -1350,17 +1368,6 @@ body.slide-in-right {
     color: #800000;
     position: absolute;
     left: 0;
-}
-
-/* ========================================
-   ЦІНА ТОВАРУ НА СТОРІНЦІ ТОВАРУ (СІРА)
-   ======================================== */
-.container .product-price {
-    font-size: clamp(1.5rem, 5vw, 1.8rem);
-    color: #808080;
-    text-align: center;
-    margin: 25px 0;
-    font-weight: 600;
 }
 
 /* ========================================
