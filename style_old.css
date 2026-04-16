@@ -2,6 +2,7 @@
    ПРОЗАХІСТ - Основні стилі
    КОЛЬОРИ: темна тема
    ======================================== */
+
 /* CSS ЗМІННІ */
 :root {
     --text-dark: #333;
@@ -227,11 +228,11 @@ header .logo svg {
     flex-wrap: wrap;
 }
 
-/* ФОН КАРТОЧОК КАТЕГОРІЙ — ЯК ОСНОВНИЙ ФОН #1a1a1a */
+/* ФОН КАРТОЧОК КАТЕГОРІЙ — БЕЗ ЕФЕКТУ ЦАРАПИН (як було) */
 .category-card {
     position: relative;
     overflow: hidden;
-    background: #1a1a1a;
+    background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
     border-radius: 8px;
     padding: 0;
     text-align: center;
@@ -1416,35 +1417,68 @@ body.slide-in-right {
 }
 
 /* ========================================
-   АДАПТИВНІСТЬ
+   АДАПТИВНІСТЬ — ХЛІБНІ КРОШКИ (ОНОВЛЕНО)
    ======================================== */
-@media (max-width: 1024px) {
-    .footer-links {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-    }
 
-    .footer-links .cat2,
-    .footer-links .cat3 {
-        padding-top: 34px;
+/* --- ДЕСКТОП (від 769px) --- */
+@media (min-width: 769px) {
+    .mobile-breadcrumbs {
+        display: none !important;
     }
-}
-
-@media (max-width: 900px) and (orientation: landscape) {
-    #categories {
-        padding-top: 80px;
-        background-size: cover;
-        background-position: center;
-    }
-}
-
-@media (max-width: 768px) {
+    
     .header-breadcrumbs {
-        display: none;
+        display: flex !important;
+    }
+}
+
+/* --- ПЛАНШЕТИ В ПОРТРЕТІ (768px - 1024px) --- */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
+    .header-breadcrumbs {
+        display: none !important;
     }
     
     .mobile-breadcrumbs {
-        display: block;
+        display: block !important;
+    }
+    
+    /* Зміщуємо контент вниз на висоту мобільних крошок */
+    #categories {
+        padding-top: 90px;
+    }
+    
+    .container {
+        margin-top: 90px;
+    }
+}
+
+/* --- ПЛАНШЕТИ В ЛАНДШАФТІ (768px - 1024px) --- */
+@media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+    .mobile-breadcrumbs {
+        display: none !important;
+    }
+    
+    .header-breadcrumbs {
+        display: flex !important;
+    }
+    
+    /* Стандартний відступ тільки для шапки */
+    #categories {
+        padding-top: 75px;
+    }
+    
+    .container {
+        margin-top: 75px;
+    }
+}
+
+/* --- МОБІЛЬНІ В ПОРТРЕТІ (до 768px) --- */
+@media (max-width: 768px) and (orientation: portrait) {
+    .header-breadcrumbs {
+        display: none !important;
+    }
+    
+    .mobile-breadcrumbs {
+        display: block !important;
     }
     
     .swipe-hint {
@@ -1668,6 +1702,40 @@ body.slide-in-right {
     }
 }
 
+/* --- МОБІЛЬНІ В ЛАНДШАФТІ (до 768px) --- */
+@media (max-width: 768px) and (orientation: landscape) {
+    .mobile-breadcrumbs {
+        display: none !important;
+    }
+    
+    .header-breadcrumbs {
+        display: flex !important;
+        margin-left: 10px;
+        margin-right: 100px;
+        font-size: 0.75em;
+    }
+    
+    /* Зменшуємо відступи для економії місця */
+    #categories {
+        padding: 75px 10px 20px 10px;
+    }
+    
+    .container {
+        margin-top: 75px;
+        padding: 15px;
+    }
+    
+    .category-card {
+        flex: 1 1 calc(25% - 10px) !important;
+        max-width: calc(25% - 10px) !important;
+    }
+    
+    .swipe-hint {
+        display: none;
+    }
+}
+
+/* --- МАЛЕНЬКІ МОБІЛЬНІ (до 480px) --- */
 @media (max-width: 480px) {
     .mobile-breadcrumbs {
         font-size: 0.8em;
@@ -1691,12 +1759,7 @@ body.slide-in-right {
     }
 }
 
-@media (min-width: 769px) {
-    .mobile-breadcrumbs {
-        display: none !important;
-    }
-}
-
+/* --- ВЕЛИКІ ЕКРАНИ (від 1024px) --- */
 @media (min-width: 1024px) {
     .product-description {
         margin-left: 80px;
@@ -1710,4 +1773,26 @@ body.slide-in-right {
     
     .carousel-arrow.left { left: 80px; }
     .carousel-arrow.right { right: 80px; }
+}
+
+/* --- ФУТЕР ДЛЯ ПЛАНШЕТІВ --- */
+@media (max-width: 1024px) {
+    .footer-links {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .footer-links .cat2,
+    .footer-links .cat3 {
+        padding-top: 34px;
+    }
+}
+
+/* --- ЛАНДШАФТНИЙ РЕЖИМ ДЛЯ КАТЕГОРІЙ --- */
+@media (max-width: 900px) and (orientation: landscape) {
+    #categories {
+        padding-top: 80px;
+        background-size: cover;
+        background-position: center;
+    }
 }
