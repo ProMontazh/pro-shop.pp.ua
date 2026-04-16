@@ -669,75 +669,21 @@ header .logo svg {
 }
 
 /* ========================================
-   FOOTER
+   FOOTER — ОРИГІНАЛЬНИЙ СТИЛЬ (БЕЗ ЗМІН)
    ======================================== */
 footer {
     background: #1a1a1a;
-    color: var(--white);
+    color: #fff;
     text-align: center;
-    padding: 30px 20px 5px 20px;
+    padding: 30px 20px;
     font-size: 0.9em;
-    margin-top: 0px;
     border-top: 2px solid #800000;
+    margin-top: 40px;
 }
 
 .footer-wrapper {
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.footer-links {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 25px;
-    margin-bottom: 20px;
-    align-items: start;
-}
-
-.footer-links > div {
-    text-align: left;
-    margin-top: 0;
-}
-
-.footer-links h4 {
-    color: var(--white);
-    margin-bottom: 15px;
-    font-size: 1.1em;
-    font-weight: 700;
-    border-bottom: none;
-    padding-bottom: 0;
-    margin-top: 0;
-    line-height: 1.2;
-}
-
-.footer-links .cat2 h4,
-.footer-links .cat3 h4 {
-    display: none;
-}
-
-.footer-links .cat2,
-.footer-links .cat3 {
-    padding-top: 33px;
-}
-
-.footer-links a {
-    display: block;
-    color: #aaa;
-    text-decoration: none;
-    margin-bottom: 8px;
-    transition: var(--transition);
-    font-size: 0.9em;
-    line-height: 1.4;
-}
-
-.footer-links a:hover {
-    color: var(--white);
-}
-
-footer > p {
-    text-align: center;
-    color: #666;
-    margin-top: 20px;
 }
 
 .black {
@@ -1773,26 +1719,4 @@ body.slide-in-right {
     
     .carousel-arrow.left { left: 80px; }
     .carousel-arrow.right { right: 80px; }
-}
-
-/* --- ФУТЕР ДЛЯ ПЛАНШЕТІВ --- */
-@media (max-width: 1024px) {
-    .footer-links {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-    }
-
-    .footer-links .cat2,
-    .footer-links .cat3 {
-        padding-top: 34px;
-    }
-}
-
-/* --- ЛАНДШАФТНИЙ РЕЖИМ ДЛЯ КАТЕГОРІЙ --- */
-@media (max-width: 900px) and (orientation: landscape) {
-    #categories {
-        padding-top: 80px;
-        background-size: cover;
-        background-position: center;
-    }
 }
