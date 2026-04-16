@@ -228,11 +228,11 @@ header .logo svg {
     flex-wrap: wrap;
 }
 
-/* ФОН КАРТОЧОК КАТЕГОРІЙ — БЕЗ ЕФЕКТУ ЦАРАПИН (як було) */
+/* ФОН КАРТОЧОК КАТЕГОРІЙ — ЯК ОСНОВНИЙ ФОН #1a1a1a */
 .category-card {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+    background: #1a1a1a;
     border-radius: 8px;
     padding: 0;
     text-align: center;
