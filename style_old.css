@@ -2,6 +2,7 @@
    ПРОЗАХІСТ - Основні стилі
    КОЛЬОРИ: темна тема
    ======================================== */
+
 /* CSS ЗМІННІ */
 :root {
     --text-dark: #333;
@@ -57,11 +58,46 @@ header {
     text-align: left;
     z-index: 1000;
     border-bottom: 2px solid #800000;
+    display: flex;
+    align-items: center;
 }
 
 header .logo svg {
     height: 55px;
     width: auto;
+    display: block;
+}
+
+.header-breadcrumbs {
+    flex: 1;
+    margin-left: 20px;
+    margin-right: 120px;
+    overflow: hidden;
+    white-space: nowrap;
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+}
+
+.header-breadcrumbs a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.85em;
+    transition: color 0.3s ease;
+}
+
+.header-breadcrumbs a:hover {
+    color: #ff4444;
+}
+
+.header-breadcrumbs .separator {
+    color: #666;
+    font-size: 0.85em;
+    margin: 0 8px;
+}
+
+.header-breadcrumbs .current {
+    color: #fff;
+    font-size: 0.85em;
 }
 
 /* SEO: Skip link для доступності */
@@ -83,15 +119,50 @@ header .logo svg {
 
 .promontazh-link {
     text-decoration: none;
-    color: #999999;  /* Как основной текст seo-footer */
+    color: #999999;
     font-weight: inherit;
     transition: color 0.3s ease;
 }
 
 .promontazh-link:hover {
-    color: #ffffff;  /* Ярче при наведении */
+    color: #ffffff;
     text-decoration: none;
 }
+
+/* ========================================
+   МОБІЛЬНІ ХЛІБНІ КРОШКИ
+   ======================================== */
+.mobile-breadcrumbs {
+    display: none;
+    position: fixed;
+    top: 55px;
+    left: 0;
+    width: 100%;
+    background: #2a2a2a;
+    padding: 4px 10px;
+    border-bottom: 1px solid #444;
+    z-index: 999;
+    font-size: 0.8em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mobile-breadcrumbs a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.mobile-breadcrumbs .separator {
+    color: #666;
+    margin: 0 4px;
+}
+
+.mobile-breadcrumbs .current {
+    color: #ff4444;
+}
+
 /* ========================================
    НАВІГАЦІЯ ПО КАТЕГОРІЯХ
    ======================================== */
@@ -99,8 +170,8 @@ header .logo svg {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;/* ← расстояние между кнопками */
-    padding: 0px 20px 10px 20px; /* ← отступы всей панели навигации */
+    gap: 15px;
+    padding: 0px 20px 10px 20px;
     background-color: #2a2a2a;
     border-bottom: 1px solid #444;
     position: sticky;
@@ -112,10 +183,10 @@ header .logo svg {
 .nav-link {
     color: #ccc;
     text-decoration: none;
-    padding: 8px 14px; /* ← внутренние отступы (высота/ширина области) */
-    border-radius: 4px; /* ← скругление углов */
+    padding: 8px 14px;
+    border-radius: 4px;
     transition: all 0.3s ease;
-    font-size: 0.8em;/* ← размер текста */
+    font-size: 0.8em;
     white-space: nowrap;
     background: transparent;
     border: 1px solid transparent;
@@ -160,8 +231,7 @@ header .logo svg {
 .category-card {
     position: relative;
     overflow: hidden;
-     background: 
-       /* Легка текстура подряпин */
+    background: 
         repeating-linear-gradient(
             45deg,
             transparent,
@@ -171,10 +241,8 @@ header .logo svg {
             transparent 11px,  
             transparent 22px 
         ),
-        /* Градієнт для об'єму */
-         /* фон карточки категорий  linear-gradient(145deg, #252525 0%, #1a1a1a 50%, #151515 100%); */
-        background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
-    border-radius: 8px; /* радиус закругления карточек категорий біло 15  */
+        linear-gradient(145deg, #0f0f0f, #1a1a1a);
+    border-radius: 8px;
     padding: 0;
     text-align: center;
     cursor: pointer;
@@ -186,11 +254,10 @@ header .logo svg {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* ✅ Підсвічування ПРИ НАВЕДЕННІ — тільки тінь і бордер, без transform */
 .category-card:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     border-color: #800000;
-    border-width: 2px;  /* ← ЗМІНЕНО: 1px → 3px (або 2px, 4px) */
+    border-width: 2px;
 }
 
 .category-card img {
@@ -213,6 +280,7 @@ header .logo svg {
     box-sizing: border-box;
     font-size: 0.8em;
 }
+
 /* ========================================
    ТОВАРИ — ФІКСОВАНІ 4 КОЛОНКИ З ЦЕНТРУВАННЯМ
    ======================================== */
@@ -220,7 +288,7 @@ header .logo svg {
     padding: 20px;
     max-width: 1400px;
     margin: 0 auto;
-    margin-bottom: 40px; /* Увеличиваем отступ секций товаров от футера */
+    margin-bottom: 40px;
 }
 
 .products h1 {
@@ -239,7 +307,6 @@ header .logo svg {
     padding: 0 15px;
 }
 
-/* ✅ ЯК У ПРИКЛАДІ: flex замість grid */
 .products-container {
     display: flex;
     flex-wrap: wrap;
@@ -264,7 +331,6 @@ header .logo svg {
     width: 280px;
     flex: 0 0 280px;
     box-sizing: border-box;
-    /* ✅ Авто висота — підлаштовується під контент */
     min-height: auto;
 }
 
@@ -274,7 +340,6 @@ header .logo svg {
     border-color: #800000;
 }
 
-/* ✅ Контейнер для зображення — фіксовані розміри */
 .product-image-wrapper {
     width: 100%;
     height: 180px;
@@ -297,46 +362,38 @@ header .logo svg {
     display: block;
 }
 
-/* ✅ Назва — не обрізається */
 .product-item h3 {
-  
-    color:#b0b0b0;
+    color: #b0b0b0;
     font-size: 1.0rem;
     margin-bottom: 10px;
-    /* ✅ Авто висота — підлаштовується */
     height: auto;
     min-height: 2.6em;
     line-height: 1.3;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    /* ✅ Не обрізаємо */
     display: block;
     overflow: visible;
     flex-shrink: 0;
     width: 100%;
 }
 
-/* ✅ ОПИС — показується ПОВНІСТЮ, не обрізається */
 .product-item p {
     color: #aaa;
     font-size: 0.85rem;
     margin-bottom: 10px;
-    /* ✅ Авто висота — весь текст видно */
     height: auto;
     min-height: 1.5em;
     line-height: 1.5;
-    /* ✅ Не обрізаємо, дозволяємо перенос */
     overflow: visible;
     display: block;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    /* ✅ Не даємо стискатись */
     flex-shrink: 0;
     width: 100%;
 }
 
-/* ✅ ЦІННИК — не стрибає */
-.product-price {
+/* ЦІНА В КАРТОЧЦІ ТОВАРУ — ЧЕРВОНА */
+.product-item .product-price {
     color: #ff4444;
     font-size: 1.3rem;
     font-weight: 700;
@@ -350,7 +407,6 @@ header .logo svg {
     justify-content: center;
 }
 
-/* ✅ Кнопка — прижата до низу */
 .product-item .btn {
     margin-top: auto;
     width: 100%;
@@ -433,7 +489,6 @@ header .logo svg {
     display: block !important;
 }
 
-/* Заголовок кошика з кнопкою закриття */
 .cart-header {
     display: flex;
     justify-content: space-between;
@@ -448,7 +503,6 @@ header .logo svg {
     margin: 0;
 }
 
-/* Кнопка закриття кошика (хрестик) */
 .cart-close {
     background: none;
     border: none;
@@ -709,7 +763,6 @@ footer > p {
 /* ======================================================
    ⭐ ВІДЖЕТ ВІДГУКІВ
    ====================================================== */
-
 .reviews-widget {
     display: inline-flex;
     align-items: center;
@@ -805,7 +858,7 @@ footer > p {
 
 .reviews-modal-header {
     display: flex;
-    background:linear-gradient(to right, rgba(7, 7, 7, 0.95), rgba(148, 148, 148, 0.95));
+    background: linear-gradient(to right, rgba(7, 7, 7, 0.95), rgba(148, 148, 148, 0.95));
     justify-content: space-between;
     align-items: center;
     padding: 20px;
@@ -858,18 +911,17 @@ footer > p {
     color: #fff;
 }
 
-/* Звёзды в модальном окне — такие же как в виджете */
 .modal-rating-stars {
     display: flex;
-    gap: 3px; /* одинаковый gap с виджетом */
+    gap: 3px;
     justify-content: center;
     font-size: 1.5em;
     margin: 10px 0;
 }
 
 .modal-star {
-    font-size: 24px; /* такой же размер как в виджете */
-    color: #ddd; /* цвет незаполненной звезды */
+    font-size: 24px;
+    color: #ddd;
     position: relative;
     display: inline-block;
     line-height: 1;
@@ -880,7 +932,7 @@ footer > p {
     top: 0;
     left: 0;
     overflow: hidden;
-    color: #ffa500; /* оранжевый цвет как в виджете */
+    color: #ffa500;
     pointer-events: none;
 }
 
@@ -1011,7 +1063,7 @@ footer > p {
     display: flex;
     align-items: center;
     gap: 8px;
-    color:linear-gradient(to right, rgba(7, 7, 7, 0.95), rgba(148, 148, 148, 0.95));
+    color: #aaa;
     font-size: 0.85em;
     margin-top: 10px;
     padding-top: 10px;
@@ -1118,45 +1170,27 @@ footer > p {
 }
 
 /* ========================================
-   АДАПТИВНІСТЬ
+   АНІМАЦІЇ ПЕРЕХОДУ МІЖ КАТЕГОРІЯМИ
    ======================================== */
-@media (max-width: 1024px) {
-    .footer-links {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-    }
-
-    .footer-links .cat2,
-    .footer-links .cat3 {
-        padding-top: 34px;
-    }
-}
-/* ========================================
-/* Анимации перехода между категориями */
-======================================== */
 body {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Уход влево (свайп влево → следующая категория) */
 body.slide-out-left {
     transform: translateX(-30%);
     opacity: 0;
 }
 
-/* Уход вправо (свайп вправо → предыдущая категория) */
 body.slide-out-right {
     transform: translateX(30%);
     opacity: 0;
 }
 
-/* Вход слева */
 @keyframes slideInFromLeft {
     from { transform: translateX(-30%); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
 }
 
-/* Вход справа */
 @keyframes slideInFromRight {
     from { transform: translateX(30%); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
@@ -1170,7 +1204,6 @@ body.slide-in-right {
     animation: slideInFromRight 0.3s ease;
 }
 
-/* Индикатор свайпа (показывается только на мобильных) */
 .swipe-hint {
     display: none;
     text-align: center;
@@ -1179,15 +1212,6 @@ body.slide-in-right {
     font-size: 0.8em;
     background: #2a2a2a;
     border-bottom: 1px solid #444;
-}
-
-@media (max-width: 768px) {
-    .swipe-hint {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px 20px;
-    }
 }
 
 .swipe-hint span {
@@ -1200,15 +1224,270 @@ body.slide-in-right {
     font-weight: 600;
     opacity: 1;
 }
- 
+
+/* ========================================
+   СТОРІНКА ТОВАРУ — КОНТЕЙНЕР
+   ======================================== */
+.container {
+    max-width: 900px;
+    margin: 75px auto 40px;
+    padding: 30px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    border: 1px solid #444;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.product-title {
+    text-align: center;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    color: #fff;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* ========================================
+   КАРУСЕЛЬ ЗОБРАЖЕНЬ
+   ======================================== */
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 0 auto 30px;
+    background: transparent;
+    border-radius: 8px;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+    background: transparent;
+}
+
+.carousel img {
+    flex: 0 0 100%;
+    max-width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    object-fit: contain;
+    max-height: 420px;
+    background: transparent;
+    display: block;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    color: #999;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s, transform 0.2s;
+    z-index: 10;
+    border: none;
+    padding: clamp(10px, 3vw, 20px);
+}
+
+.carousel-arrow:hover {
+    background: transparent;
+    color: #ff4444;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-arrow.left { 
+    left: clamp(5px, 5vw, 60px); 
+}
+
+.carousel-arrow.right { 
+    right: clamp(5px, 5vw, 60px); 
+}
+
+/* ========================================
+   ОПИС ТОВАРУ
+   ======================================== */
+.product-description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #b0b0b0;
+    margin-bottom: 20px;
+}
+
+.product-description strong {
+    color: #ff4444;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.product-description ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 10px 0;
+}
+
+.product-description li {
+    padding: 5px 0;
+    color: #999;
+    font-size: 0.9em;
+    padding-left: 20px;
+    position: relative;
+}
+
+.product-description li:before {
+    content: "▸";
+    color: #800000;
+    position: absolute;
+    left: 0;
+}
+
+/* ========================================
+   ЦІНА ТОВАРУ НА СТОРІНЦІ ТОВАРУ (СІРА)
+   ======================================== */
+.container .product-price {
+    font-size: clamp(1.5rem, 5vw, 1.8rem);
+    color: #808080;
+    text-align: center;
+    margin: 25px 0;
+    font-weight: 600;
+}
+
+/* ========================================
+   МОДАЛЬНЕ ВІКНО ДЛЯ ЗОБРАЖЕНЬ
+   ======================================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.modal .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    color: #999;
+    cursor: pointer;
+    user-select: none;
+    padding: 20px;
+    transition: color 0.3s;
+    background: none;
+    border: none;
+}
+
+.modal .arrow:hover {
+    color: #ff4444;
+}
+
+.modal .arrow.left { left: 20px; }
+.modal .arrow.right { right: 20px; }
+
+/* ========================================
+   ДОДАТКОВІ КЛАСИ
+   ======================================== */
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    color: #808080;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #ff4444;
+}
+
+/* ========================================
+   АДАПТИВНІСТЬ
+   ======================================== */
+@media (max-width: 1024px) {
+    .footer-links {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .footer-links .cat2,
+    .footer-links .cat3 {
+        padding-top: 34px;
+    }
+}
+
+@media (max-width: 900px) and (orientation: landscape) {
+    #categories {
+        padding-top: 80px;
+        background-size: cover;
+        background-position: center;
+    }
+}
+
 @media (max-width: 768px) {
-     .header-breadcrumbs {
+    .header-breadcrumbs {
         display: none;
     }
     
     .mobile-breadcrumbs {
         display: block;
-        top: 55px;
+    }
+    
+    .swipe-hint {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 20px;
+    }
+    
+    .category-nav {
+        display: none !important;
+    }
+    
+    .swipe-hint {
+        position: sticky;
+        top: 65px;
+        z-index: 99;
+    }
+    
+    .breadcrumbs {
+        margin-top: 55px;
+    }
+    
+    #categories,
+    .category-buttons {
+        display: flex !important;
+    }
+    
+    .category-card {
+        flex: 1 1 calc(50% - 10px) !important;
+        max-width: calc(50% - 10px) !important;
     }
 
     #categories {
@@ -1221,7 +1500,6 @@ body.slide-in-right {
         max-width: calc(50% - 12px);
     }
 
-    /* ✅ Мобільні: колонка, центрування */
     .products-container {
         flex-direction: column;
         align-items: center;
@@ -1371,111 +1649,77 @@ body.slide-in-right {
     .review-text {
         font-size: 14px;
     }
-   .review-product img {
-    width: 35px;
-    height: 35px;
-    border-radius: 4px;
-}
-}
- @media (max-width: 900px) and (orientation: landscape) {
-    #categories {
-        padding-top: 80px;
-        background-size: cover;
-        background-position: center;
+    
+    .review-product img {
+        width: 35px;
+        height: 35px;
+        border-radius: 4px;
+    }
+    
+    /* Адаптивність для сторінки товару */
+    .container {
+        margin-top: 90px;
+        padding: 20px;
+        border: none;
+    }
+    
+    .carousel-arrow {
+        font-size: 1.8rem;
+        padding: 15px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .carousel-arrow.left { left: 5px; }
+    .carousel-arrow.right { right: 5px; }
+    
+    .carousel img {
+        max-height: 300px;
     }
 }
-   @media (max-width: 480px) {
+
+@media (max-width: 480px) {
     .mobile-breadcrumbs {
-        font-size: 0.8em;    /* ещё меньше для маленьких экранов */
-        padding: 5px 8px;     /* ещё компактнее */
+        font-size: 0.8em;
+        padding: 5px 8px;
     }
     
     .mobile-breadcrumbs .separator {
-        margin: 0 3px;        /* минимальные отступы */
+        margin: 0 3px;
     }
-/* ========================================
-   МОБІЛЬНІ — СКРИВАЄМО НАВІГАЦІЮ, ЗАЛИШАЄМО СВАЙП
-   ======================================== */
-@media (max-width: 768px) {
-    /* Скрываем только липкую навигацию по категориям */
-    .category-nav {
+    
+    .carousel-arrow {
+        font-size: 1.5rem;
+        padding: 10px;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .container .btn {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-breadcrumbs {
         display: none !important;
     }
-    
-    /* Показываем индикатор свайпа */
-    .swipe-hint {
-        display: flex !important;
-        position: sticky;
-        top: 65px;
-        z-index: 99;
-    }
-    
-    /* Корректируем отступ breadcrumbs */
-    .breadcrumbs {
-        margin-top: 55px;
-    }
-    
-    /* Кнопки категорий на главной — оставляем */
-    #categories,
-    .category-buttons {
-        display: flex !important;
-    }
-    
-    /* Уменьшаем размер карточек для мобильных */
-    .category-card {
-        flex: 1 1 calc(50% - 10px) !important;
-        max-width: calc(50% - 10px) !important;
-    }
-}
-/* ========================================
-   МОБІЛЬНІ ХЛІБНІ КРОШКИ (як у деталях товару)
-   ======================================== */
-.mobile-breadcrumbs {
-    display: none;
-    position: fixed;
-    top: 55px;
-    left: 0;
-    width: 100%;
-    background: #2a2a2a;
-    padding: 4px 10px;
-    border-bottom: 1px solid #444;
-    z-index: 999;
-    font-size: 0.8em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
-.mobile-breadcrumbs a {
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.mobile-breadcrumbs .separator {
-    color: #666;
-    margin: 0 4px;
-}
-
-.mobile-breadcrumbs .current {
-    color: #ff4444;
-}
-
-/* ========================================
-   АДАПТИВНІСТЬ
-   ======================================== */
-@media (max-width: 768px) {
-    .mobile-breadcrumbs {
-        display: block;
+@media (min-width: 1024px) {
+    .product-description {
+        margin-left: 80px;
+        margin-right: 40px;
     }
     
-    /* Збільшуємо відступ контенту через хлібні крошки */
-    #categories {
-        padding-top: 20px;  /* 55px шапка + 45px хлібні крошки */
+    .carousel-arrow {
+        font-size: 2.5rem;
+        padding: 25px;
     }
     
-    /* або якщо використовуєте .products */
-    .products {
-        padding-top: 20px;
-    }
+    .carousel-arrow.left { left: 80px; }
+    .carousel-arrow.right { right: 80px; }
 }
