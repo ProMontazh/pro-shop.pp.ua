@@ -1472,11 +1472,11 @@ body.slide-in-right {
     
     /* Збільшуємо відступ контенту через хлібні крошки */
     #categories {
-        padding-top: 80px;  /* 55px шапка + 45px хлібні крошки */
+        padding-top: 60px;  /* 55px шапка + 45px хлібні крошки */
     }
     
     /* або якщо використовуєте .products */
     .products {
-        padding-top: 80px;
+        padding-top: 60px;
     }
 }
