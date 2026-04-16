@@ -228,20 +228,11 @@ header .logo svg {
     flex-wrap: wrap;
 }
 
+/* ФОН КАРТОЧОК КАТЕГОРІЙ — БЕЗ ЕФЕКТУ ЦАРАПИН (як було) */
 .category-card {
     position: relative;
     overflow: hidden;
-    background: 
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 10px,
-            rgba(0,0,0,0.3) 10px,
-            rgba(0,0,0,0.3) 11px,
-            transparent 11px,  
-            transparent 22px 
-        ),
-        linear-gradient(145deg, #0f0f0f, #1a1a1a);
+    background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
     border-radius: 8px;
     padding: 0;
     text-align: center;
@@ -393,9 +384,10 @@ header .logo svg {
 }
 
 /* ========================================
-   ЦІНА ТОВАРУ — БАЗОВИЙ СТИЛЬ (СІРИЙ)
+   ЦІНА ТОВАРУ — СІРА (ВСЮДИ)
    ======================================== */
 .product-price {
+    color: #808080;
     font-size: 1.3rem;
     font-weight: 700;
     margin: 15px 0;
@@ -408,19 +400,9 @@ header .logo svg {
     justify-content: center;
 }
 
-/* ========================================
-   ЦІНА В КАРТОЧЦІ ТОВАРУ (НА ГОЛОВНІЙ) — ЧЕРВОНА
-   ======================================== */
-.product-item .product-price {
-    color: #ff4444;
-}
-
-/* ========================================
-   ЦІНА НА СТОРІНЦІ ТОВАРУ (У .container) — СІРА
-   ======================================== */
+/* Ціна на сторінці товару — більший розмір */
 .container .product-price {
     font-size: clamp(1.5rem, 5vw, 1.8rem);
-    color: #808080;
     text-align: center;
     margin: 25px 0;
 }
