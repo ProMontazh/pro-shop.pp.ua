@@ -44,7 +44,7 @@ body {
 }
 
 /* ========================================
-   HEADER та LOGO
+   HEADER та LOGO з ХЛІБНИМИ КРОШКАМИ
    ======================================== */
 header {
     position: fixed;
@@ -68,7 +68,7 @@ header .logo svg {
     display: block;
 }
 
-/* === ХЛЕБНЫЕ КРОШКИ В ШАПКЕ === */
+/* === ХЛЕБНЫЕ КРОШКИ В ШАПКЕ (десктоп) === */
 .header-breadcrumbs {
     flex: 1;
     margin-left: 20px;
@@ -131,7 +131,7 @@ header .logo svg {
 }
 
 /* ========================================
-   МОБІЛЬНІ ХЛІБНІ КРОШКИ
+   МОБІЛЬНІ ХЛІБНІ КРОШКИ (під шапкою)
    ======================================== */
 .mobile-breadcrumbs {
     display: none;
@@ -1420,6 +1420,19 @@ body.slide-in-right {
 /* ========================================
    АДАПТИВНІСТЬ
    ======================================== */
+
+/* Десктоп — крошки в шапке видны, мобильные скрыты */
+@media (min-width: 769px) {
+    .mobile-breadcrumbs {
+        display: none !important;
+    }
+    
+    .header-breadcrumbs {
+        display: flex !important;
+    }
+}
+
+/* Планшеты и десктоп */
 @media (max-width: 1024px) {
     .footer-links {
         grid-template-columns: repeat(3, 1fr);
@@ -1440,13 +1453,16 @@ body.slide-in-right {
     }
 }
 
+/* Мобильные устройства */
 @media (max-width: 768px) {
+    /* Скрываем крошки в шапке на мобильных */
     .header-breadcrumbs {
-        display: none;
+        display: none !important;
     }
-
+    
+    /* Показываем мобильные крошки под шапкой */
     .mobile-breadcrumbs {
-        display: block;
+        display: block !important;
     }
 
     .swipe-hint {
@@ -1693,12 +1709,7 @@ body.slide-in-right {
     }
 }
 
-@media (min-width: 769px) {
-    .mobile-breadcrumbs {
-        display: none !important;
-    }
-}
-
+/* Большие экраны — отступы для крошек */
 @media (min-width: 1024px) {
     .product-description {
         margin-left: 80px;
@@ -1715,10 +1726,10 @@ body.slide-in-right {
 }
 
 /* ========================================
-   ХЛЕБНІ КРОШКИ — ПОВОРОТ ЕКРАНУ
+   ХЛЕБНІ КРОШКИ — ПОВОРОТ ЕКРАНУ (планшеты)
    ======================================== */
 
-/* Планшети та мобільні в портреті — мобільні крошки під шапкою */
+/* Планшеты и мобильные в портреті — мобільні крошки під шапкою */
 @media (max-width: 1024px) and (orientation: portrait) {
     .header-breadcrumbs {
         display: none !important;
@@ -1737,7 +1748,7 @@ body.slide-in-right {
     }
 }
 
-/* Планшети та мобільні в ландшафті — крошки в шапці */
+/* Планшеты и мобильные в ландшафті — крошки в шапці */
 @media (max-width: 1024px) and (orientation: landscape) {
     .mobile-breadcrumbs {
         display: none !important;
