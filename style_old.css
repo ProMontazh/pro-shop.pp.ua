@@ -1667,7 +1667,7 @@ body.slide-in-right {
     .carousel img {
         max-height: 300px;
     }
-}
+
 /* ========================================
    ХЛЕБНІ КРОШКИ — ПОВОРОТ ЕКРАНУ
    ======================================== */
@@ -1751,4 +1751,5 @@ body.slide-in-right {
 
     .carousel-arrow.left { left: 80px; }
     .carousel-arrow.right { right: 80px; }
+}
 }
