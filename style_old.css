@@ -1668,7 +1668,47 @@ body.slide-in-right {
         max-height: 300px;
     }
 }
+/* ========================================
+   ХЛЕБНІ КРОШКИ — ПОВОРОТ ЕКРАНУ
+   ======================================== */
 
+/* Планшети та мобільні в портреті — мобільні крошки під шапкою */
+@media (max-width: 1024px) and (orientation: portrait) {
+    .header-breadcrumbs {
+        display: none !important;
+    }
+    
+    .mobile-breadcrumbs {
+        display: block !important;
+    }
+    
+    #categories {
+        padding-top: 90px;
+    }
+    
+    .container {
+        margin-top: 90px;
+    }
+}
+
+/* Планшети та мобільні в ландшафті — крошки в шапці */
+@media (max-width: 1024px) and (orientation: landscape) {
+    .mobile-breadcrumbs {
+        display: none !important;
+    }
+    
+    .header-breadcrumbs {
+        display: flex !important;
+    }
+    
+    #categories {
+        padding-top: 75px;
+    }
+    
+    .container {
+        margin-top: 75px;
+    }
+}
 @media (max-width: 480px) {
     .mobile-breadcrumbs {
         font-size: 0.8em;
