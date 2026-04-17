@@ -3,6 +3,7 @@
    КОЛЬОРИ: темна тема
    ======================================== */
 
+
 /* CSS ЗМІННІ */
 :root {
     --text-dark: #333;
@@ -44,7 +45,7 @@ body {
 }
 
 /* ========================================
-   HEADER та LOGO з ХЛІБНИМИ КРОШКАМИ
+   HEADER та LOGO
    ======================================== */
 header {
     position: fixed;
@@ -67,8 +68,38 @@ header .logo svg {
     width: auto;
     display: block;
 }
+.header-breadcrumbs {
+    flex: 1;
+    margin-left: 20px;
+    margin-right: 120px;
+    overflow: hidden;
+    white-space: nowrap;
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+}
 
-/* === ХЛЕБНЫЕ КРОШКИ В ШАПКЕ (десктоп) === */
+.header-breadcrumbs a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.85em;
+    transition: color 0.3s ease;
+}
+
+.header-breadcrumbs a:hover {
+    color: #ff4444;
+}
+
+.header-breadcrumbs .separator {
+    color: #666;
+    font-size: 0.85em;
+    margin: 0 8px;
+}
+
+.header-breadcrumbs .current {
+    color: #fff;
+    font-size: 0.85em;
+}
+
 .header-breadcrumbs {
     flex: 1;
     margin-left: 20px;
@@ -131,7 +162,7 @@ header .logo svg {
 }
 
 /* ========================================
-   МОБІЛЬНІ ХЛІБНІ КРОШКИ (під шапкою)
+   МОБІЛЬНІ ХЛІБНІ КРОШКИ
    ======================================== */
 .mobile-breadcrumbs {
     display: none;
@@ -1420,19 +1451,6 @@ body.slide-in-right {
 /* ========================================
    АДАПТИВНІСТЬ
    ======================================== */
-
-/* Десктоп — крошки в шапке видны, мобильные скрыты */
-@media (min-width: 769px) {
-    .mobile-breadcrumbs {
-        display: none !important;
-    }
-    
-    .header-breadcrumbs {
-        display: flex !important;
-    }
-}
-
-/* Планшеты и десктоп */
 @media (max-width: 1024px) {
     .footer-links {
         grid-template-columns: repeat(3, 1fr);
@@ -1453,16 +1471,13 @@ body.slide-in-right {
     }
 }
 
-/* Мобильные устройства */
 @media (max-width: 768px) {
-    /* Скрываем крошки в шапке на мобильных */
     .header-breadcrumbs {
-        display: none !important;
+        display: none;
     }
-    
-    /* Показываем мобильные крошки под шапкой */
+
     .mobile-breadcrumbs {
-        display: block !important;
+        display: block;
     }
 
     .swipe-hint {
@@ -1684,84 +1699,44 @@ body.slide-in-right {
     .carousel img {
         max-height: 300px;
     }
-}
-
-@media (max-width: 480px) {
-    .mobile-breadcrumbs {
-        font-size: 0.8em;
-        padding: 5px 8px;
-    }
-    
-    .mobile-breadcrumbs .separator {
-        margin: 0 3px;
-    }
-    
-    .carousel-arrow {
-        font-size: 1.5rem;
-        padding: 10px;
-        width: 35px;
-        height: 35px;
-    }
-    
-    .btn {
-        width: 100%;
-        max-width: none;
-    }
-}
-
-/* Большие экраны — отступы для крошек */
-@media (min-width: 1024px) {
-    .product-description {
-        margin-left: 80px;
-        margin-right: 40px;
-    }
-    
-    .carousel-arrow {
-        font-size: 2.5rem;
-        padding: 25px;
-    }
-    
-    .carousel-arrow.left { left: 80px; }
-    .carousel-arrow.right { right: 80px; }
-}
 
 /* ========================================
-   ХЛЕБНІ КРОШКИ — ПОВОРОТ ЕКРАНУ (планшеты)
+   ХЛЕБНІ КРОШКИ — ПОВОРОТ ЕКРАНУ
    ======================================== */
 
-/* Планшеты и мобильные в портреті — мобільні крошки під шапкою */
+/* Планшети та мобільні в портреті — мобільні крошки під шапкою */
 @media (max-width: 1024px) and (orientation: portrait) {
     .header-breadcrumbs {
         display: none !important;
     }
-    
+
     .mobile-breadcrumbs {
         display: block !important;
     }
-    
+
     #categories {
         padding-top: 90px;
     }
-    
+
     .container {
         margin-top: 90px;
     }
 }
 
-/* Планшеты и мобильные в ландшафті — крошки в шапці */
+/* Планшети та мобільні в ландшафті — крошки в шапці */
 @media (max-width: 1024px) and (orientation: landscape) {
     .mobile-breadcrumbs {
         display: none !important;
     }
-    
+
     .header-breadcrumbs {
         display: flex !important;
     }
-    
+
     #categories {
         padding-top: 75px;
     }
-    
+
     .container {
         margin-top: 75px;
     }
