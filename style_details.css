@@ -530,7 +530,6 @@ header .logo svg {
     transition: opacity 0.5s;
     z-index: 9999;
 }
-
 .toast.show {
     visibility: visible;
     opacity: 1;
