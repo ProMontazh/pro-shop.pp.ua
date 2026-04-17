@@ -67,6 +67,37 @@ header .logo svg {
     width: auto;
     display: block;
 }
+.header-breadcrumbs {
+    flex: 1;
+    margin-left: 20px;
+    margin-right: 120px;
+    overflow: hidden;
+    white-space: nowrap;
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+}
+
+.header-breadcrumbs a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.85em;
+    transition: color 0.3s ease;
+}
+
+.header-breadcrumbs a:hover {
+    color: #ff4444;
+}
+
+.header-breadcrumbs .separator {
+    color: #666;
+    font-size: 0.85em;
+    margin: 0 8px;
+}
+
+.header-breadcrumbs .current {
+    color: #fff;
+    font-size: 0.85em;
+}
 
 .header-breadcrumbs {
     flex: 1;
