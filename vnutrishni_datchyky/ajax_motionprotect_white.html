@@ -65,10 +65,10 @@
 
   <div class="carousel-wrapper">
     <div class="carousel" id="carousel">
-      <img src="images/ajax_motionprotect_white_1.png" alt="Ajax MotionProtect White — загальний вигляд" onclick="openModal('images/ajax_motionprotect_white_1.png')">
-      <img src="images/ajax_motionprotect_white_2.png" alt="Ajax MotionProtect White — комплектація" onclick="openModal('images/ajax_motionprotect_white_2.png')">
-      <img src="images/ajax_motionprotect_white_3.png" alt="Ajax MotionProtect White — встановлення" onclick="openModal('images/ajax_motionprotect_white_3.png')">
-      <img src="images/ajax_motionprotect_white_4.png" alt="Ajax MotionProtect White — розміри" onclick="openModal('images/ajax_motionprotect_white_4.png')">
+      <img src="/images/ajax_motionprotect_white_1.png" alt="Ajax MotionProtect White — загальний вигляд" onclick="openModal('/images/ajax_motionprotect_white_1.png')">
+      <img src="/images/ajax_motionprotect_white_2.png" alt="Ajax MotionProtect White — комплектація" onclick="openModal('/images/ajax_motionprotect_white_2.png')">
+      <img src="/images/ajax_motionprotect_white_3.png" alt="Ajax MotionProtect White — встановлення" onclick="openModal('/images/ajax_motionprotect_white_3.png')">
+      <img src="/images/ajax_motionprotect_white_4.png" alt="Ajax MotionProtect White — розміри" onclick="openModal('/images/ajax_motionprotect_white_4.png')">
 
       <img src="images/ajax_motionprotect_white_1.png" alt="Ajax MotionProtect White — загальний вигляд" onclick="openModal('images/ajax_motionprotect_white_1.png')">
     </div>
@@ -206,7 +206,7 @@
   </ul>
 </div>
   <p class="product-price">1720.00 грн</p>
-  <button class="btn" onclick="addToCartFromProductPage({ id: 'Ajax MotionProtect White', name: 'Ajax MotionProtect White', price: 1720, image: 'images/ajax_motionprotect_white_1.png' })" aria-label="Додати Ajax MotionProtect White у кошик">
+  <button class="btn" onclick="addToCartFromProductPage({ id: 'Ajax MotionProtect White', name: 'Ajax MotionProtect White', price: 1720, image: '/images/ajax_motionprotect_white_1.png' })" aria-label="Додати Ajax MotionProtect White у кошик">
     Додати у кошик
   </button>
 </div>
@@ -220,10 +220,10 @@
 <script>
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 const images = [
-  "images/ajax_motionprotect_white_1.png",
-  "images/ajax_motionprotect_white_2.png",
-  "images/ajax_motionprotect_white_3.png",
-  "images/ajax_motionprotect_white_4.png"
+  "/images/ajax_motionprotect_white_1.png",
+  "/images/ajax_motionprotect_white_2.png",
+  "/images/ajax_motionprotect_white_3.png",
+  "/images/ajax_motionprotect_white_4.png"
 ];
 let currentIndex = 0;
 const totalSlides = images.length;
