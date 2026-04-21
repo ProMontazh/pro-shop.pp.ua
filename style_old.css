@@ -308,6 +308,7 @@ header .logo svg {
     padding: 0 20px;
 }
 
+/* ← ЗМІНА: 340px → 290px на десктопі */
 .product-item {
     background: linear-gradient(145deg, #2a2a2a, #333);
     border-radius: 15px;
@@ -319,8 +320,8 @@ header .logo svg {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 340px;
-    flex: 0 0 340px;
+    width: 290px;
+    flex: 0 0 290px;
     box-sizing: border-box;
     min-height: auto;
 }
@@ -1489,13 +1490,15 @@ body.slide-in-right {
         max-width: calc(50% - 12px);
     }
 
+    /* ← ЗМІНА: менший відступ контейнера → ширші картки на мобільних */
     .products-container {
         flex-direction: column;
         align-items: center;
         gap: 20px;
-        padding: 0 15px;
+        padding: 0 6px;
     }
 
+    /* ← ЗМІНА: картки займають майже всю ширину екрану */
     .product-item {
         width: 100%;
         max-width: 100%;
