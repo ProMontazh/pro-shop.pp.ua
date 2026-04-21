@@ -1530,7 +1530,7 @@ body.slide-in-right {
 
     .product-item {
         width: 100%;
-        max-width: 400px;
+        max-width: 90%;
         flex: 0 1 auto;
     }
 
