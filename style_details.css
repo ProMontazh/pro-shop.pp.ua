@@ -185,26 +185,39 @@ header .logo svg {
     background: #f0f0f0;
 }
 
+/* ========================================
+   КАРТОЧКА ТОВАРА В КОШИКУ
+   ======================================== */
+
 .cart-item {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 10px;
     margin-bottom: 10px;
-    gap: 8px;
-    padding: 0;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
 }
 
-.cart-item > span:first-child,
-.cart-item .item-name {
-    flex: 1;
-    text-align: left !important;
-    font-size: 8px !important;
+/* Картинка товара — слева, фиксированный размер */
+.cart-item img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    flex-shrink: 0;
+    border-radius: 4px;
+}
+
+/* Текстовый блок: название + цена — растягивается, выравнивание по левому краю */
+.cart-item > span {
+    flex: 1 1 auto;
+    text-align: left;
+    font-size: 13px;
     line-height: 1.4;
-    padding-left: 0 !important;
-    margin-left: 0 !important;
     color: #000;
+    word-break: break-word;
 }
 
+/* Блок управления количеством — справа, не сжимается */
 .quantity-control {
     display: flex;
     align-items: center;
@@ -237,10 +250,14 @@ header .logo svg {
     font-size: 14px;
     padding: 0 6px;
     min-width: 20px;
-    text-align: center !important;
+    text-align: center;
     line-height: 24px;
     color: #000;
 }
+
+/* ========================================
+   ПРОКРУТКА И ИТОГО
+   ======================================== */
 
 #cart-items {
     max-height: 300px;
@@ -252,6 +269,7 @@ header .logo svg {
     font-size: 1.04em;
     font-weight: bold;
     margin-top: 15px;
+    text-align: left;
 }
 
 #discount-message {
@@ -265,6 +283,7 @@ header .logo svg {
 #stock-warning {
     color: red;
     font-weight: bold;
+    text-align: left;
 }
 
 .button-row {
@@ -302,8 +321,6 @@ header .logo svg {
 .cancel-button:hover {
     background-color: #d44150;
 }
-
-
 /* ========================================
    ОСНОВНОЙ КОНТЕНТ
    ======================================== */
