@@ -153,24 +153,25 @@ header .logo svg {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-bottom: 2px solid #800000;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
 }
 
 .cart-content h2 {
     color: #000;
     margin: 0;
+    font-size: 1.2em;
 }
 
 .cart-close {
     background: none;
     border: none;
     color: #666;
-    font-size: 2em;
+    font-size: 1.8em;
     cursor: pointer;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -186,56 +187,59 @@ header .logo svg {
 }
 
 /* ========================================
-   КАРТОЧКА ТОВАРА В КОШИКУ
+   КАРТОЧКА ТОВАРА В КОШИКУ — компактная
    ======================================== */
 
 .cart-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    padding: 8px 0;
+    gap: 8px;
+    margin-bottom: 4px;
+    padding: 4px 0;
     border-bottom: 1px solid #eee;
+    line-height: 1.2;
 }
 
-/* Картинка товара — слева, фиксированный размер */
+/* Картинка товара — компактная */
 .cart-item img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     object-fit: contain;
     flex-shrink: 0;
-    border-radius: 4px;
+    border-radius: 3px;
 }
 
-/* Текстовый блок: название + цена — растягивается, выравнивание по левому краю */
+/* Текст: название + цена — одной строкой, слева */
 .cart-item > span {
     flex: 1 1 auto;
     text-align: left;
-    font-size: 13px;
-    line-height: 1.4;
+    font-size: 12px;
+    line-height: 1.2;
     color: #000;
-    word-break: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* Блок управления количеством — справа, не сжимается */
+/* Блок управления количеством — справа, компактный */
 .quantity-control {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
     flex-shrink: 0;
 }
 
 .quantity-btn {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
+    font-size: 14px;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: pointer;
     transition: background-color 0.3s;
     padding: 0;
@@ -247,11 +251,11 @@ header .logo svg {
 }
 
 .quantity {
-    font-size: 14px;
-    padding: 0 6px;
-    min-width: 20px;
+    font-size: 12px;
+    padding: 0 4px;
+    min-width: 16px;
     text-align: center;
-    line-height: 24px;
+    line-height: 20px;
     color: #000;
 }
 
@@ -260,23 +264,24 @@ header .logo svg {
    ======================================== */
 
 #cart-items {
-    max-height: 300px;
+    max-height: 260px;
     overflow-y: auto;
 }
 
 .total-price {
     color: #000;
-    font-size: 1.04em;
+    font-size: 1em;
     font-weight: bold;
-    margin-top: 15px;
+    margin-top: 10px;
     text-align: left;
+    line-height: 1.2;
 }
 
 #discount-message {
     color: #28a745;
     font-weight: bold;
-    font-size: 1.0em;
-    margin-left: 10px;
+    font-size: 0.9em;
+    margin-left: 8px;
     display: none;
 }
 
@@ -284,26 +289,31 @@ header .logo svg {
     color: red;
     font-weight: bold;
     text-align: left;
+    font-size: 0.85em;
+    margin-top: 4px;
+    line-height: 1.2;
 }
 
 .button-row {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px;
+    margin-top: 8px;
+    gap: 8px;
 }
 
 .checkout-button, .cancel-button {
-    padding: 10px 16px;
+    padding: 8px 12px;
     color: white;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 4px;
     border: none;
-    min-width: 100px;
+    min-width: auto;
     text-align: center;
-    font-size: 16px;
-    line-height: 1.0;
+    font-size: 13px;
+    line-height: 1.2;
     display: inline-block;
     cursor: pointer;
+    flex: 1;
 }
 
 .checkout-button {
