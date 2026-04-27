@@ -209,7 +209,7 @@ header .logo svg {
     object-fit: contain;
     flex-shrink: 0;
     border-radius: 4px;
-    background:/* #1a1a1a; */linear-gradient(145deg, #222, #2a2a2a);
+ /* background:/* #1a1a1a; linear-gradient(145deg, #222, #2a2a2a); */
 }
 
 /* Назва — вертикальне центрування, макс 2 рядки */
@@ -250,8 +250,8 @@ header .logo svg {
 }
 
 .quantity-btn {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     display: flex;
     align-items: center;
     justify-content: center;
