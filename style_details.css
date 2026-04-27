@@ -136,7 +136,7 @@ header .logo svg {
     position: fixed;
     right: 10px;
     top: 65px;
-    background-color: #e0e0e0;
+    background-color: rgba(255,255,255,0.95);
     color: black;
     padding: 20px;
     border-radius: 8px;
@@ -187,18 +187,18 @@ header .logo svg {
 }
 
 /* ========================================
-   КАРТОЧКА ТОВАРА — серый фон, компактно
+   КАРТОЧКА ТОВАРА — серый фон, перенос текста
    ======================================== */
 
 .cart-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
     margin-bottom: 2px;
     padding: 4px 6px;
-    background: #d0d0d0;
+    background: rgba(200,200,200,0.7);
     border-radius: 4px;
-    line-height: 1.1;
+    line-height: 1.2;
 }
 
 /* Картинка товара — на сером фоне */
@@ -208,18 +208,18 @@ header .logo svg {
     object-fit: contain;
     flex-shrink: 0;
     border-radius: 3px;
+    margin-top: 2px;
 }
 
-/* Название товара — слева */
+/* Название товара — слева, переносится на вторую строку */
 .cart-item .item-name {
     flex: 1 1 auto;
     text-align: left;
     font-size: 12px;
-    line-height: 1.2;
+    line-height: 1.3;
     color: #000;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-word;
 }
 
 /* Цена — прижата к правому краю */
@@ -231,6 +231,7 @@ header .logo svg {
     color: #333;
     white-space: nowrap;
     padding-right: 4px;
+    align-self: center;
 }
 
 /* Блок управления количеством — справа */
@@ -239,6 +240,7 @@ header .logo svg {
     align-items: center;
     gap: 4px;
     flex-shrink: 0;
+    align-self: center;
 }
 
 .quantity-btn {
@@ -272,13 +274,13 @@ header .logo svg {
 }
 
 /* ========================================
-   ПРОКРУТКА И ИТОГО — серый фон
+   ПРОКРУТКА И ИТОГО — серый полупрозрачный фон
    ======================================== */
 
 #cart-items {
     max-height: 300px;
     overflow-y: auto;
-    background: #d5d5d5;
+    background: rgba(220,220,220,0.6);
     border-radius: 4px;
     padding: 4px;
 }
