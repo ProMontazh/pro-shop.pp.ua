@@ -109,7 +109,7 @@ header .logo svg {
 }
 
 /* ========================================
-   КОШИК — оригинальная шапка и кнопки
+   КОШИК
    ======================================== */
 .cart {
     position: fixed;
@@ -136,7 +136,7 @@ header .logo svg {
     position: fixed;
     right: 10px;
     top: 65px;
-    background-color: rgba(255,255,255,0.95);
+    background-color: rgba(200, 200, 200, 0.92);
     color: black;
     padding: 20px;
     border-radius: 8px;
@@ -149,7 +149,7 @@ header .logo svg {
     display: block !important;
 }
 
-/* ШАПКА КОШИКА — как в оригинале */
+/* ШАПКА КОШИКА */
 .cart-header {
     display: flex;
     justify-content: space-between;
@@ -183,46 +183,47 @@ header .logo svg {
 
 .cart-close:hover {
     color: #ff4444;
-    background: #f0f0f0;
+    background: rgba(0,0,0,0.08);
 }
 
 /* ========================================
-   КАРТОЧКА ТОВАРА — серый фон, перенос текста
+   КАРТОЧКА ТОВАРА
    ======================================== */
-
 .cart-item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
     padding: 4px 6px;
-    background: rgba(200,200,200,0.7);
+    background: rgba(255, 255, 255, 0.25);
     border-radius: 4px;
-    line-height: 1.2;
 }
 
-/* Картинка товара — на сером фоне */
+/* Картинка */
 .cart-item img {
     width: 42px;
     height: 42px;
     object-fit: contain;
     flex-shrink: 0;
     border-radius: 3px;
-    margin-top: 2px;
 }
 
-/* Название товара — слева, переносится на вторую строку */
+/* Назва товару — максимум 2 рядки */
 .cart-item .item-name {
     flex: 1 1 auto;
     text-align: left;
     font-size: 12px;
-    line-height: 1.3;
+    line-height: 1.35;
     color: #000;
     white-space: normal;
     word-break: break-word;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
-/* Цена — прижата к правому краю */
+/* Ціна */
 .cart-item .item-price {
     flex: 0 0 auto;
     text-align: right;
@@ -231,16 +232,14 @@ header .logo svg {
     color: #333;
     white-space: nowrap;
     padding-right: 4px;
-    align-self: center;
 }
 
-/* Блок управления количеством — справа */
+/* Кнопки кількості */
 .quantity-control {
     display: flex;
     align-items: center;
     gap: 4px;
     flex-shrink: 0;
-    align-self: center;
 }
 
 .quantity-btn {
@@ -274,17 +273,18 @@ header .logo svg {
 }
 
 /* ========================================
-   ПРОКРУТКА И ИТОГО — серый полупрозрачный фон
+   СПИСОК ТОВАРІВ
    ======================================== */
-
 #cart-items {
     max-height: 300px;
     overflow-y: auto;
-    background: rgba(220,220,220,0.6);
     border-radius: 4px;
     padding: 4px;
 }
 
+/* ========================================
+   ПІДСУМОК І КНОПКИ
+   ======================================== */
 .total-price {
     color: #000;
     font-size: 1.04em;
@@ -307,7 +307,6 @@ header .logo svg {
     text-align: left;
 }
 
-/* КНОПКИ — как в оригинале */
 .button-row {
     display: flex;
     justify-content: space-between;
