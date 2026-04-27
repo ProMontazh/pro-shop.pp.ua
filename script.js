@@ -110,15 +110,16 @@ function updateCart() {
 
         const div = document.createElement('div');
         div.className = 'cart-item';
-        div.innerHTML = `
-            <img src="${item.image}" alt="${item.name}" style="width:30px;height:auto;margin-right:5px;">
-            <span>${item.name} - ${item.price} грн</span>
-            <div class="quantity-control">
-                <button class="quantity-btn" onclick="decreaseQuantity('${item.id}', event)">-</button>
-                <span class="quantity">${item.quantity}</span>
-                <button class="quantity-btn" onclick="increaseQuantity('${item.id}', event)">+</button>
-            </div>
-        `;
+       div.innerHTML = `
+    <img src="${item.image}" alt="${item.name}">
+    <span class="item-name">${item.name}</span>
+    <span class="item-price">${item.price} грн</span>
+    <div class="quantity-control">
+        <button class="quantity-btn" onclick="decreaseQuantity('${item.id}', event)">-</button>
+        <span class="quantity">${item.quantity}</span>
+        <button class="quantity-btn" onclick="increaseQuantity('${item.id}', event)">+</button>
+    </div>
+`;
         cartItems.appendChild(div);
     });
 
