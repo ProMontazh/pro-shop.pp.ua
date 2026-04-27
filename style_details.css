@@ -130,17 +130,19 @@ header .logo svg {
     font-size: 14px;
 }
 
+/* Весь кошик — як фон карточок товарів */
 .cart-content {
     display: none;
     position: fixed;
     right: 10px;
     top: 65px;
-    background-color: rgba(200, 200, 200, 0.95);
-    color: black;
+    background: linear-gradient(145deg, #2a2a2a, #333);
+    color: #e0e0e0;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 15px;
+    border: 1px solid #444;
     width: 465px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     z-index: 1100;
 }
 
@@ -159,14 +161,14 @@ header .logo svg {
 }
 
 .cart-content h2 {
-    color: #000;
+    color: #fff;
     margin: 0;
 }
 
 .cart-close {
     background: none;
     border: none;
-    color: #666;
+    color: #aaa;
     font-size: 2em;
     cursor: pointer;
     width: 40px;
@@ -182,29 +184,32 @@ header .logo svg {
 
 .cart-close:hover {
     color: #ff4444;
-    background: rgba(0,0,0,0.08);
+    background: #444;
 }
 
 /* ========================================
-   КАРТОЧКА ТОВАРА
+   КАРТОЧКА ТОВАРА — як фон карточок
    ======================================== */
 .cart-item {
     display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 4px;
-    padding: 4px 6px;
-    border-radius: 4px;
-    min-height: 50px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    background: linear-gradient(145deg, #222, #2a2a2a);
+    border: 1px solid #444;
+    min-height: 46px;
 }
 
-/* Картинка */
+/* Картинка — трохи менша */
 .cart-item img {
-    width: 42px;
-    height: 42px;
+    width: 34px;
+    height: 34px;
     object-fit: contain;
     flex-shrink: 0;
-    border-radius: 3px;
+    border-radius: 4px;
+    background: #1a1a1a;
 }
 
 /* Назва — вертикальне центрування, макс 2 рядки */
@@ -213,7 +218,7 @@ header .logo svg {
     text-align: left;
     font-size: 12px;
     line-height: 1.35;
-    color: #000;
+    color: #b0b0b0;
     white-space: normal;
     word-break: break-word;
     overflow: hidden;
@@ -229,7 +234,7 @@ header .logo svg {
     text-align: right;
     font-size: 12px;
     font-weight: 600;
-    color: #333;
+    color: #808080;
     white-space: nowrap;
     padding-right: 4px;
     align-self: center;
@@ -251,7 +256,7 @@ header .logo svg {
     align-items: center;
     justify-content: center;
     font-size: 16px;
-    background-color: #007bff;
+    background-color: #800000;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -262,7 +267,7 @@ header .logo svg {
 }
 
 .quantity-btn:hover {
-    background-color: #0056b3;
+    background-color: #a00000;
 }
 
 .quantity {
@@ -271,11 +276,11 @@ header .logo svg {
     min-width: 20px;
     text-align: center;
     line-height: 24px;
-    color: #000;
+    color: #e0e0e0;
 }
 
 /* ========================================
-   СПИСОК ТОВАРІВ — без окремого фону
+   СПИСОК ТОВАРІВ
    ======================================== */
 #cart-items {
     max-height: 300px;
@@ -288,7 +293,7 @@ header .logo svg {
    ПІДСУМОК І КНОПКИ
    ======================================== */
 .total-price {
-    color: #000;
+    color: #e0e0e0;
     font-size: 1.04em;
     font-weight: bold;
     margin-top: 15px;
@@ -304,7 +309,7 @@ header .logo svg {
 }
 
 #stock-warning {
-    color: red;
+    color: #ff4444;
     font-weight: bold;
     text-align: left;
 }
