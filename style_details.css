@@ -302,9 +302,9 @@ header .logo svg {
 
 #discount-message {
     color: #28a745;
-   /* font-weight: bold;*/
+    font-weight: bold;
     font-size: 1.0em;
-    margin-left: 10px;
+   /* margin-left: 10px;*/
     display: none;
     text-align: right;
 }
