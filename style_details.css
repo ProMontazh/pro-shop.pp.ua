@@ -295,7 +295,7 @@ header .logo svg {
 .total-price {
     color: #e0e0e0;
     font-size: 1.04em;
-    font-weight: bold;
+  /*   font-weight: bold;*/
     margin-top: 15px;
     text-align: left;
 }
@@ -311,7 +311,7 @@ header .logo svg {
 #stock-warning {
     color: #ff4444;
     font-weight: bold;
-    text-align: left;
+    text-align: right;
 }
 
 .button-row {
