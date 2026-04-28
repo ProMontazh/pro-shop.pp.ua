@@ -295,9 +295,10 @@ header .logo svg {
 .total-price {
     color: #e0e0e0;
     font-size: 1.04em;
-  /*   font-weight: bold;*/
     margin-top: 15px;
-    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #discount-message {
