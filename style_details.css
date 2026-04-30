@@ -289,7 +289,10 @@ header .logo svg {
     border-radius: 4px;
     padding: 2px 0;
 }
-
+@media (max-width: 768px) {
+#cart-items {
+    max-height: 410px;
+    }
 /* ========================================
    ПІДСУМОК І КНОПКИ
    ======================================== */
