@@ -138,10 +138,10 @@ header .logo svg {
     top: 60px;
     background: linear-gradient(145deg, #2a2a2a, #333);
     color: #e0e0e0;
-    padding: 20px;
+    padding: 10px;
     border-radius: 15px;
     border: 1px solid #444;
-    width: 465px;
+    width: 600px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     z-index: 1100;
 }
