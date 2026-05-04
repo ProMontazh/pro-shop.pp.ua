@@ -41,8 +41,7 @@
       "name": "IMOU IPC-K7FP-3H0TE-EU",
       "image": [
         "https://xn--80anevegliy.pp.ua/images/IPC-K7FP-3H0TE-EU_1.png",
-        "https://xn--80anevegliy.pp.ua/images/IPC-K7FP-3H0TE-EU_2.png",
-        "https://xn--80anevegliy.pp.ua/images/IPC-K7FP-3H0TE-EU_3.png"
+        "https://xn--80anevegliy.pp.ua/images/IPC-K7FP-3H0TE-EU_2.png"
       ],
       "description": "Поворотна 4G відеокамера IMOU IPC-K7FP-3H0TE-EU: 3МП (2304×1296), поворот 355° / нахил 0~90°, ІЧ+видиме підсвічування до 30 м, вбудована сирена 110 дБ, смарт-трекінг, 4G LTE, microSD до 512 Гб, IP66.",
       "sku": "IPC-K7FP-3H0TE-EU",
@@ -150,9 +149,10 @@
         <!-- КАРУСЕЛЬ -->
         <div class="carousel-wrapper">
             <div class="carousel" id="carousel">
-                <img src="/images/IPC-K7FP-3H0TE-EU_1.png" alt="IMOU IPC-K7FP-3H0TE-EU — поворотна 4G камера" onclick="openModal(0)">
+                <img src="/images/IPC-K7FP-3H0TE-EU_1.png" alt="IMOU IPC-K7FP-3H0TE-EU — загальний вигляд" onclick="openModal(0)">
                 <img src="/images/IPC-K7FP-3H0TE-EU_2.png" alt="IMOU IPC-K7FP-3H0TE-EU — вид збоку" onclick="openModal(1)">
-                <img src="/images/IPC-K7FP-3H0TE-EU_3.png" alt="IMOU IPC-K7FP-3H0TE-EU — деталі" onclick="openModal(2)">
+                <!-- Клон першого для безшовного циклу -->
+                <img src="/images/IPC-K7FP-3H0TE-EU_1.png" alt="IMOU IPC-K7FP-3H0TE-EU — загальний вигляд" onclick="openModal(0)">
             </div>
             <button class="carousel-arrow left" onclick="prevImage()" aria-label="Попереднє зображення">&#10094;</button>
             <button class="carousel-arrow right" onclick="nextImage()" aria-label="Наступне зображення">&#10095;</button>
@@ -213,8 +213,7 @@
     <script>
         const images = [
             "/images/IPC-K7FP-3H0TE-EU_1.png",
-            "/images/IPC-K7FP-3H0TE-EU_2.png",
-            "/images/IPC-K7FP-3H0TE-EU_3.png"
+            "/images/IPC-K7FP-3H0TE-EU_2.png"
         ];
 
         let currentIndex = 0;
@@ -231,43 +230,49 @@
             carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
 
-        function nextImage() { 
+        function nextImage() {
             if (totalSlides <= 1) return;
-            currentIndex = (currentIndex + 1) % totalSlides;
+            currentIndex++;
+            carousel.style.transition = 'transform 0.5s ease';
             updateCarousel();
-        }
-
-        function prevImage() { 
-            if (totalSlides <= 1) return;
-            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-            updateCarousel();
-        }
-
-        // Свайп для карусели
-        let startX = 0;
-        carousel.addEventListener('touchstart', e => {
-            startX = e.touches[0].clientX;
-        }, { passive: true });
-        
-        carousel.addEventListener('touchend', e => {
-            const diff = e.changedTouches[0].clientX - startX;
-            if (Math.abs(diff) > 50) {
-                diff < 0 ? nextImage() : prevImage();
+            if (currentIndex === totalSlides) {
+                setTimeout(() => {
+                    carousel.style.transition = 'none';
+                    currentIndex = 0;
+                    updateCarousel();
+                }, 500);
             }
-        }, { passive: true });
+        }
 
-        // Модальное окно
+        function prevImage() {
+            if (totalSlides <= 1) return;
+            if (currentIndex === 0) {
+                carousel.style.transition = 'none';
+                currentIndex = totalSlides;
+                updateCarousel();
+                setTimeout(() => {
+                    carousel.style.transition = 'transform 0.5s ease';
+                    currentIndex--;
+                    updateCarousel();
+                }, 20);
+            } else {
+                currentIndex--;
+                carousel.style.transition = 'transform 0.5s ease';
+                updateCarousel();
+            }
+        }
+
+        if (totalSlides > 1) {
+            setInterval(nextImage, 5000);
+        }
+
         let modalIndex = 0;
 
         function openModal(index) {
             modalIndex = index;
             modalImg.src = images[modalIndex];
-            modalImg.alt = `Збільшене зображення ${index + 1} — IMOU IPC-K7FP-3H0TE-EU`;
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
-            if (totalSlides <= 1) {
-                modal.querySelectorAll('.arrow').forEach(el => el.style.display = 'none');
-            }
         }
 
         function closeModal() {
@@ -275,18 +280,16 @@
             document.body.style.overflow = '';
         }
 
-        function nextModalImage() { 
+        function nextModalImage() {
             if (totalSlides <= 1) return;
-            modalIndex = (modalIndex + 1) % totalSlides;
+            modalIndex = (modalIndex + 1) % images.length;
             modalImg.src = images[modalIndex];
-            modalImg.alt = `Збільшене зображення ${modalIndex + 1} — IMOU IPC-K7FP-3H0TE-EU`;
         }
 
-        function prevModalImage() { 
+        function prevModalImage() {
             if (totalSlides <= 1) return;
-            modalIndex = (modalIndex - 1 + totalSlides) % totalSlides;
+            modalIndex = (modalIndex - 1 + images.length) % images.length;
             modalImg.src = images[modalIndex];
-            modalImg.alt = `Збільшене зображення ${modalIndex + 1} — IMOU IPC-K7FP-3H0TE-EU`;
         }
 
         document.addEventListener('keydown', (e) => {
@@ -296,14 +299,28 @@
             if (e.key === 'ArrowLeft') prevModalImage();
         });
 
-        // Свайп для модалки (закрытие)
+        let startX = 0;
+
+        carousel.addEventListener('touchstart', e => {
+            startX = e.touches[0].clientX;
+        }, { passive: true });
+
+        carousel.addEventListener('touchend', e => {
+            const diff = e.changedTouches[0].clientX - startX;
+            if (Math.abs(diff) > 50) {
+                diff > 0 ? prevImage() : nextImage();
+            }
+        }, { passive: true });
+
         modal.addEventListener('touchstart', e => {
             startX = e.touches[0].clientX;
         }, { passive: true });
 
         modal.addEventListener('touchend', e => {
             const diff = e.changedTouches[0].clientX - startX;
-            if (Math.abs(diff) > 50) closeModal();
+            if (Math.abs(diff) > 50) {
+                diff > 0 ? prevModalImage() : nextModalImage();
+            }
         }, { passive: true });
     </script>
 
