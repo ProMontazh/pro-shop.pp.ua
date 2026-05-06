@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<title>Оформлення замовлення - ПроЗахист</title>
+<style>
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #0d0d0d;
+    color: #e0e0e0;
+}
+
+.container {
+    width: 33%;
+    margin: auto;
+    padding: 20px;
+    background: #1a1a1a;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 8px;
+    margin-top: 20px;
+    border: 1px solid #444;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 1.8em;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #ff4444;
+    border-bottom: 2px solid #800000;
+    padding-bottom: 8px;
+    margin-top: 25px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+    color: #b0b0b0;
+}
+
+.total-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 10px;
+    color: #e0e0e0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #444;
+    border-radius: 4px;
+    font-size: 1.1em;
+    background: #222;
+    color: #e0e0e0;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #800000;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(145deg, #800000, #a00000);
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+    background: linear-gradient(145deg, #a00000, #c00000);
+    transform: scale(1.02);
+}
+
+#order-header {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.fade-line {
+    opacity: 0;
+    transition: opacity 2s ease;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #b0b0b0;
+}
+
+.fade-line.show {
+    opacity: 1;
+}
+
+.toast-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    z-index: 10000;
+}
+
+.toast-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.toast-message {
+    background: linear-gradient(145deg, #800000, #a00000);
+    color: #fff;
+    padding: 20px 40px;
+    border-radius: 8px;
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: bold;
+    opacity: 0;
+    transform: scale(0.7);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    border: 1px solid #444;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.toast-overlay.show .toast-message {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button-row .submit-button {
+    flex: 1;
+}
+
+.pay-button {
+    background: linear-gradient(145deg, #2b7cff, #1e5fcc);
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.pay-button:hover {
+    background: linear-gradient(145deg, #1e5fcc, #154a99);
+}
+
+.pay-button.visible {
+    display: inline-block;
+    opacity: 1;
+}
+
+/* Полоса прокрутки */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #800000;
+}
+
+@media(max-width:768px) {
+    .container {
+        width: 90%;
+        padding: 15px;
+        margin-top: 15px;
+    }
+    
+    h1 {
+        font-size: 1.6em;
+    }
+    
+    .cart-item {
+        flex-direction: column;
+        text-align: left;
+        font-size: 0.95em;
+    }
+    
+    .total-price {
+        font-size: 1.1em;
+        text-align: right;
+    }
+    
+    .submit-button {
+        font-size: 1.1em;
+        padding: 10px;
+    }
+    
+    .toast-message {
+        font-size: 1.2em;
+        padding: 15px 25px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Оформлення замовлення</h1>
+
+    <h2 id="order-header">Ваше замовлення</h2>
+    <div id="cart-items"></div>
+    <div class="total-price" id="total-price"></div>
+
+    <h2>Контактні дані</h2>
+    <form id="checkout-form" action="https://formspree.io/f/xrbadqqk" method="POST">
+        <div class="form-group">
+            <label for="name">Прізвище, Ім'я</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Телефон отримувача</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+            <label for="city">Місто</label>
+            <input type="text" id="city" name="city" required>
+        </div>
+        <div class="form-group">
+            <label for="branch">Номер відділення "Нової Пошти"</label>
+            <input type="tel" id="branch" name="branch" required>
+        </div>
+        <input type="hidden" id="cart-data" name="cart">
+        <div class="button-row">
+            <button type="submit" class="submit-button">Підтвердити</button>
+            <button type="button" id="pay-button" class="submit-button pay-button">💳 Сплатити</button>
+        </div>
+    </form>
+</div>
+
+<div class="toast-overlay" id="toast">
+    <div class="toast-message">Ваше замовлення підтверджено! Дякуємо!</div>
+</div>
+
+<audio id="cash-sound" src="sound.mp3"></audio>
+
+<script>
+// 🔹 НАЛАШТУВАННЯ PORTMONE - ЗАМІНІТЬ НА СВОЇ ДАНІ
+const PORTMONE_CONFIG = {
+    payee_id: "ВАШ_PAYEE_ID", // 🔴 ЗАМІНІТЬ на ваш Payee ID з кабінету Portmone
+    shop_order_number: "",
+    bill_amount: "",
+    description: "",
+    success_url: window.location.origin + "/success.html",
+    failure_url: window.location.origin + "/checkout.html",
+    lang: "uk"
+};
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let finalTotal = 0;
+let currentOrderNumber = "";
+
+// === Номер замовлення ===
+function getDailyOrderNumber() {
+    const today = new Date().toISOString().slice(0, 10);
+    let ordersData = JSON.parse(localStorage.getItem('dailyOrders') || '{}');
+    if (!ordersData.date || ordersData.date !== today) {
+        ordersData = { date: today, number: 0 };
+    }
+    ordersData.number = (ordersData.number % 99) + 1;
+    localStorage.setItem('dailyOrders', JSON.stringify(ordersData));
+    return ordersData.number;
+}
+
+function generateOrderNumber() {
+    const orderNum = getDailyOrderNumber();
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = String(now.getFullYear()).slice(-2);
+    return `${String(orderNum).padStart(2, '0')}${day}${month}${year}`;
+}
+
+// === Знижка ===
+function calculateDiscount(total) {
+    let discount = 0;
+    if (total >= 1000 && total < 4999) discount = 3;
+    else if (total >= 5000 && total < 9999) discount = 5;
+    else if (total >= 10000 && total < 29999) discount = 7;
+    else if (total >= 30000 && total < 59999) discount = 10;
+    else if (total >= 60000 && total < 149999) discount = 12;
+    else if (total >= 150000) discount = 15;
+    return discount;
+}
+
+// === PORTMONE PAYMENT ===
+function createPortmonePayment() {
+    const paymentUrl = `https://www.portmone.com.ua/r3/uk/gateway/` +
+        `?payee_id=${PORTMONE_CONFIG.payee_id}` +
+        `&shop_order_number=${PORTMONE_CONFIG.shop_order_number}` +
+        `&bill_amount=${PORTMONE_CONFIG.bill_amount}` +
+        `&description=${encodeURIComponent(PORTMONE_CONFIG.description)}` +
+        `&success_url=${PORTMONE_CONFIG.success_url}` +
+        `&failure_url=${PORTMONE_CONFIG.failure_url}` +
+        `&lang=${PORTMONE_CONFIG.lang}`;
+    
+    return paymentUrl;
+}
+
+// === Відображення замовлення ===
+function displayOrder() {
+    const orderItemsContainer = document.getElementById('cart-items');
+    const totalPriceElement = document.getElementById('total-price');
+    const cartDataField = document.getElementById('cart-data');
+
+    orderItemsContainer.innerHTML = '';
+    totalPriceElement.innerHTML = '';
+
+    let total = 0;
+    let cartText = "";
+
+    cart.forEach(item => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+        const itemElement = document.createElement('div');
+        itemElement.classList.add('cart-item');
+        itemElement.textContent = `${item.name} — ${item.price} грн × ${item.quantity} = ${subtotal} грн`;
+        orderItemsContainer.appendChild(itemElement);
+        cartText += `${item.name} — ${item.price} грн × ${item.quantity} = ${subtotal} грн\n`;
+    });
+
+    const discountPercent = calculateDiscount(total);
+    const discountAmount = (total * discountPercent) / 100;
+    finalTotal = total - discountAmount;
+
+    currentOrderNumber = generateOrderNumber();
+    document.getElementById('order-header').textContent = `Ваше замовлення №${currentOrderNumber}`;
+
+    // Оновлюємо config Portmone
+    PORTMONE_CONFIG.shop_order_number = currentOrderNumber;
+    PORTMONE_CONFIG.bill_amount = finalTotal.toFixed(2);
+    PORTMONE_CONFIG.description = `Замовлення №${currentOrderNumber} - ПроЗахіст`;
+
+    // Відображення
+    const totalLine = document.createElement('div');
+    totalLine.classList.add('fade-line', 'show');
+    totalLine.textContent = `Сума: ${total.toFixed(2)} грн`;
+    totalLine.style.fontSize = "1.0em";
+    totalLine.style.fontWeight = "bold";
+    totalPriceElement.appendChild(totalLine);
+
+    const discountColor = discountPercent > 0 ? "green" : "gray";
+    const discountText = discountPercent > 0
+        ? `Знижка: - ${discountAmount.toFixed(2)} грн`
+        : `Знижка: 0 грн`;
+
+    const discountLine = document.createElement('div');
+    discountLine.classList.add('fade-line');
+    discountLine.textContent = discountText;
+    discountLine.style.color = discountColor;
+    discountLine.style.fontSize = "1.0em";
+    discountLine.style.fontWeight = "bold";
+    totalPriceElement.appendChild(discountLine);
+    setTimeout(() => discountLine.classList.add('show'), 1500);
+
+    const finalLine = document.createElement('div');
+    finalLine.classList.add('fade-line');
+    finalLine.textContent = `До сплати: ${finalTotal.toFixed(2)} грн`;
+    finalLine.style.fontSize = "1.0em";
+    finalLine.style.fontWeight = "bold";
+    totalPriceElement.appendChild(finalLine);
+    setTimeout(() => {
+        finalLine.classList.add('show');
+        const sound = document.getElementById('cash-sound');
+        if (sound) {
+            sound.volume = 0.15;
+            sound.play().catch(() => {});
+        }
+    }, 2500);
+
+    cartDataField.value =
+        `Номер замовлення: ${currentOrderNumber}\n` +
+        cartText +
+        `\nЗагальна сума: ${total.toFixed(2)} грн` +
+        (discountPercent > 0
+            ? `\nЗнижка ${discountPercent}%: - ${discountAmount.toFixed(2)} грн\nДо сплати: ${finalTotal.toFixed(2)} грн`
+            : `\nДо сплати: ${finalTotal.toFixed(2)} грн`) +
+        `\n\n⚠️ Статус оплати: Очікується`;
+
+    // Показуємо кнопку оплати
+    setTimeout(() => {
+        document.getElementById('pay-button').classList.add('visible');
+    }, 3000);
+}
+
+displayOrder();
+
+// === КНОПКА "СПЛАТИТИ" ===
+document.getElementById('pay-button').addEventListener('click', function (e) {
+    e.preventDefault();
+    
+    const form = document.getElementById('checkout-form');
+    const inputs = form.querySelectorAll('input[required]');
+    const allFilled = Array.from(inputs).every(input => input.value.trim() !== '');
+    
+    if (!allFilled) {
+        alert('Будь ласка, заповніть всі поля форми!');
+        return;
+    }
+    
+    // Зберігаємо номер замовлення для success.html
+    localStorage.setItem('lastOrderNumber', currentOrderNumber);
+    
+    // Додаємо інформацію про оплату карткою в приховане поле
+    const cartDataField = document.getElementById('cart-data');
+    cartDataField.value = cartDataField.value + '\n\n💳 СПЛАЧЕНО КАРТКОЮ ОНЛАЙН';
+    
+    // Відправляємо форму на email
+    const data = new FormData(form);
+    fetch(form.action, { 
+        method: form.method, 
+        body: data, 
+        headers: { 'Accept': 'application/json' } 
+    })
+    .then(response => {
+        if (response.ok) {
+            // Переходимо на Portmone
+            const paymentUrl = createPortmonePayment();
+            window.location.href = paymentUrl;
+        } else {
+            alert("Помилка при надсиланні замовлення.");
+        }
+    })
+    .catch(() => alert("Помилка з'єднання із сервером."));
+});
+
+// === КНОПКА "ПІДТВЕРДИТИ" ===
+document.getElementById('checkout-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    
+    fetch(form.action, { 
+        method: form.method, 
+        body: data, 
+        headers: { 'Accept': 'application/json' } 
+    })
+    .then(response => {
+        if (response.ok) {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => { 
+                toast.classList.remove('show');
+                localStorage.removeItem('cart');
+                window.location.href = "index.html";
+            }, 2500);
+        } else {
+            alert("Помилка при відправці замовлення.");
+        }
+    })
+    .catch(() => alert("Помилка з'єднання із сервером."));
+});
+
+// Автоперехід між полями
+const inputs = document.querySelectorAll('#name, #phone, #city, #branch');
+inputs.forEach((field, index) => {
+    field.addEventListener('keydown', function (e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            if (index < inputs.length - 1) {
+                inputs[index + 1].focus();
+            }
+        }
+    });
+});
+
+// Мобільна оптимізація
+if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768) {
+    inputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            document.body.style.paddingBottom = '300px';
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+        input.addEventListener('blur', () => {
+            document.body.style.paddingBottom = '0';
+        });
+    });
+}
+</script>
+
+</body>
+</html>
+
