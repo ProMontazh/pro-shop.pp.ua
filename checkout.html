@@ -2,144 +2,346 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="robots" content="noindex, nofollow">
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <title>Оформлення замовлення - ПроЗахист</title>
 <style>
-body {
-    font-family: 'Roboto', sans-serif;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
     background: #0d0d0d;
     color: #e0e0e0;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding-bottom: 30px;
 }
 
-.container {
-    width: 33%;
-    margin: auto;
-    padding: 20px;
-    background: #1a1a1a;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    border-radius: 8px;
-    margin-top: 20px;
-    border: 1px solid #444;
-}
-
-h1 {
-    text-align: center;
-    color: #fff;
-    font-size: 1.8em;
-    margin-bottom: 25px;
-}
-
-h2 {
-    color: #ff4444;
+/* Шапка */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
     border-bottom: 2px solid #800000;
-    padding-bottom: 8px;
-    margin-top: 25px;
+    padding: 15px 20px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
+.header h1 {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.header .subtitle {
+    font-size: 0.85em;
+    color: #808080;
+    margin-top: 3px;
+}
+
+/* Основной контейнер */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Секции */
+.section {
+    background: linear-gradient(145deg, #1a1a1a, #222);
+    border-radius: 16px;
+    border: 1px solid #333;
+    margin-top: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.section-header {
+    background: linear-gradient(145deg, #800000, #600000);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-header .icon {
+    font-size: 1.3em;
+}
+
+.section-header h2 {
+    font-size: 1.05em;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.3px;
+}
+
+.section-body {
+    padding: 20px;
+}
+
+/* Номер заказа */
+.order-number {
+    text-align: center;
+    font-size: 1.1em;
+    color: #ff4444;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: rgba(128,0,0,0.1);
+    border-radius: 10px;
+    border: 1px solid rgba(128,0,0,0.3);
+}
+
+/* Карточки товаров */
 .cart-item {
     display: flex;
-    justify-content: space-between;
-    margin: 15px 0;
-    padding: 10px;
-    border-bottom: 1px solid #444;
-    color: #b0b0b0;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #333;
+    transition: background 0.3s;
 }
 
-.total-price {
-    font-size: 1.2em;
-    font-weight: bold;
-    text-align: right;
-    margin-top: 10px;
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item .item-icon {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(145deg, #800000, #600000);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4em;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(128,0,0,0.3);
+}
+
+.cart-item .item-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.cart-item .item-name {
+    font-size: 0.95em;
+    color: #e0e0e0;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cart-item .item-qty {
+    font-size: 0.8em;
+    color: #808080;
+    margin-top: 2px;
+}
+
+.cart-item .item-price {
+    font-size: 1em;
+    font-weight: 700;
+    color: #ff4444;
+    white-space: nowrap;
+}
+
+/* Итоги */
+.totals {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid #333;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 0.95em;
+}
+
+.total-row .label {
+    color: #808080;
+}
+
+.total-row .value {
+    font-weight: 500;
     color: #e0e0e0;
 }
 
+.total-row.discount .value {
+    color: #4CAF50;
+}
+
+.total-row.final {
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px solid #444;
+    font-size: 1.2em;
+}
+
+.total-row.final .label {
+    color: #fff;
+    font-weight: 700;
+}
+
+.total-row.final .value {
+    color: #ff4444;
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+/* Форма */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 .form-group label {
     display: block;
-    font-weight: bold;
+    font-size: 0.9em;
+    font-weight: 500;
     color: #ccc;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.form-group label .required {
+    color: #ff4444;
+    font-size: 0.8em;
 }
 
 .form-group input {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #444;
-    border-radius: 4px;
-    font-size: 1.1em;
-    background: #222;
+    padding: 14px 16px;
+    border: 2px solid #333;
+    border-radius: 12px;
+    font-size: 1em;
+    background: #0d0d0d;
     color: #e0e0e0;
-    transition: border-color 0.3s;
+    transition: all 0.3s ease;
+    font-family: 'Roboto', sans-serif;
 }
 
 .form-group input:focus {
     outline: none;
     border-color: #800000;
+    box-shadow: 0 0 0 3px rgba(128,0,0,0.2);
+    background: #1a1a1a;
+}
+
+.form-group input::placeholder {
+    color: #555;
+}
+
+/* Кнопки */
+.button-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
 }
 
 .submit-button {
     width: 100%;
-    padding: 12px;
+    padding: 16px 20px;
     background: linear-gradient(145deg, #800000, #a00000);
     color: #fff;
-    font-size: 1.1em;
-    font-weight: bold;
+    font-size: 1.05em;
+    font-weight: 700;
     border: none;
-    border-radius: 5px;
+    border-radius: 14px;
     cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
     text-align: center;
     transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(128,0,0,0.4);
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 10px rgba(128,0,0,0.3);
 }
 
 .submit-button:hover {
     background: linear-gradient(145deg, #a00000, #c00000);
-    transform: scale(1.02);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(128,0,0,0.5);
 }
 
-#order-header {
-    text-align: center;
-    margin-bottom: 15px;
-    color: #fff;
-}
-
-.fade-line {
+.pay-button {
+    background: linear-gradient(145deg, #2b7cff, #1e5fcc);
+    box-shadow: 0 6px 20px rgba(43,124,255,0.3);
+    display: none;
     opacity: 0;
-    transition: opacity 2s ease;
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #b0b0b0;
+    transition: all 0.5s ease;
 }
 
-.fade-line.show {
+.pay-button:hover {
+    background: linear-gradient(145deg, #1e5fcc, #154a99);
+    box-shadow: 0 8px 25px rgba(43,124,255,0.4);
+}
+
+.pay-button.visible {
+    display: block;
     opacity: 1;
 }
 
+.pay-button .card-icon {
+    margin-right: 8px;
+    font-size: 1.2em;
+}
+
+/* Пустая корзина */
+.empty-cart {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+}
+
+.empty-cart .icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.empty-cart p {
+    font-size: 1.1em;
+}
+
+/* Toast */
 .toast-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0,0,0,0.9);
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.6s ease, visibility 0.6s ease;
+    transition: all 0.4s ease;
     z-index: 10000;
+    backdrop-filter: blur(5px);
 }
 
 .toast-overlay.show {
@@ -148,149 +350,240 @@ h2 {
 }
 
 .toast-message {
-    background: linear-gradient(145deg, #800000, #a00000);
+    background: linear-gradient(145deg, #1a1a1a, #222);
     color: #fff;
-    padding: 20px 40px;
-    border-radius: 8px;
-    font-size: 1.5em;
+    padding: 30px 40px;
+    border-radius: 20px;
+    font-size: 1.2em;
     text-align: center;
-    font-weight: bold;
-    opacity: 0;
-    transform: scale(0.7);
-    transition: transform 0.6s ease, opacity 0.6s ease;
-    border: 1px solid #444;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    font-weight: 600;
+    border: 2px solid #800000;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    transform: scale(0.8) translateY(20px);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    max-width: 90%;
+    width: 320px;
 }
 
 .toast-overlay.show .toast-message {
-    opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translateY(0);
 }
 
-.button-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: 20px;
+.toast-message .check-icon {
+    font-size: 3em;
+    display: block;
+    margin-bottom: 15px;
 }
 
-.button-row .submit-button {
-    flex: 1;
-}
-
-.pay-button {
-    background: linear-gradient(145deg, #2b7cff, #1e5fcc);
-    display: none;
-    opacity: 0;
-    transition: opacity 0.5s;
-}
-
-.pay-button:hover {
-    background: linear-gradient(145deg, #1e5fcc, #154a99);
-}
-
-.pay-button.visible {
-    display: inline-block;
-    opacity: 1;
-}
-
-/* Полоса прокрутки */
+/* Scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #1a1a1a;
+    background: #0d0d0d;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #444;
-    border-radius: 4px;
+    background: #333;
+    border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: #800000;
 }
 
-@media(max-width:768px) {
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 480px) {
+    .header {
+        padding: 12px 15px;
+    }
+    
+    .header h1 {
+        font-size: 1.2em;
+    }
+    
     .container {
-        width: 90%;
-        padding: 15px;
-        margin-top: 15px;
+        padding: 0 10px;
     }
     
-    h1 {
-        font-size: 1.6em;
+    .section {
+        border-radius: 12px;
+        margin-top: 12px;
     }
     
-    .cart-item {
-        flex-direction: column;
-        text-align: left;
+    .section-header {
+        padding: 12px 15px;
+    }
+    
+    .section-header h2 {
         font-size: 0.95em;
     }
     
-    .total-price {
-        font-size: 1.1em;
-        text-align: right;
+    .section-body {
+        padding: 15px;
+    }
+    
+    .cart-item {
+        padding: 10px 0;
+    }
+    
+    .cart-item .item-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        font-size: 1.2em;
+    }
+    
+    .cart-item .item-name {
+        font-size: 0.9em;
+    }
+    
+    .cart-item .item-price {
+        font-size: 0.95em;
+    }
+    
+    .form-group input {
+        padding: 12px 14px;
+        font-size: 16px; /* Предотвращает зум на iOS */
+        border-radius: 10px;
     }
     
     .submit-button {
+        padding: 14px 16px;
+        font-size: 1em;
+        border-radius: 12px;
+    }
+    
+    .button-row {
+        gap: 10px;
+        margin-top: 20px;
+    }
+    
+    .total-row.final {
         font-size: 1.1em;
-        padding: 10px;
     }
     
     .toast-message {
-        font-size: 1.2em;
-        padding: 15px 25px;
+        padding: 25px 30px;
+        font-size: 1.1em;
+        border-radius: 16px;
+    }
+}
+
+/* Для очень маленьких экранов */
+@media (max-width: 360px) {
+    .header h1 {
+        font-size: 1.1em;
+    }
+    
+    .section-header h2 {
+        font-size: 0.9em;
+    }
+    
+    .cart-item .item-icon {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+/* Landscape на мобильных */
+@media (max-height: 500px) and (orientation: landscape) {
+    .header {
+        position: relative;
+    }
+    
+    .toast-message {
+        padding: 20px 25px;
     }
 }
 </style>
 </head>
 <body>
 
-<div class="container">
+<div class="header">
     <h1>Оформлення замовлення</h1>
+    <div class="subtitle">ПроЗахист — надійний захист для вас</div>
+</div>
 
-    <h2 id="order-header">Ваше замовлення</h2>
-    <div id="cart-items"></div>
-    <div class="total-price" id="total-price"></div>
+<div class="container">
+    <!-- Секция заказа -->
+    <div class="section fade-in">
+        <div class="section-header">
+            <span class="icon">📦</span>
+            <h2 id="order-header">Ваше замовлення</h2>
+        </div>
+        <div class="section-body">
+            <div id="cart-items"></div>
+            <div class="totals" id="total-price"></div>
+        </div>
+    </div>
 
-    <h2>Контактні дані</h2>
-    <form id="checkout-form" action="https://formspree.io/f/xrbadqqk" method="POST">
-        <div class="form-group">
-            <label for="name">Прізвище, Ім'я</label>
-            <input type="text" id="name" name="name" required>
+    <!-- Секция контактов -->
+    <div class="section fade-in" style="animation-delay: 0.1s">
+        <div class="section-header">
+            <span class="icon">📋</span>
+            <h2>Контактні дані</h2>
         </div>
-        <div class="form-group">
-            <label for="phone">Телефон отримувача</label>
-            <input type="tel" id="phone" name="phone" required>
+        <div class="section-body">
+            <form id="checkout-form" action="https://formspree.io/f/xrbadqqk" method="POST">
+                <div class="form-group">
+                    <label for="name">Прізвище, Ім'я <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" placeholder="Іванов Іван" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон отримувача <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" placeholder="+38 (___) ___-__-__" required autocomplete="tel">
+                </div>
+                <div class="form-group">
+                    <label for="city">Місто <span class="required">*</span></label>
+                    <input type="text" id="city" name="city" placeholder="Київ" required autocomplete="address-level2">
+                </div>
+                <div class="form-group">
+                    <label for="branch">Відділення "Нової Пошти" <span class="required">*</span></label>
+                    <input type="text" id="branch" name="branch" placeholder="№15" required>
+                </div>
+                <input type="hidden" id="cart-data" name="cart">
+                <div class="button-row">
+                    <button type="submit" class="submit-button">✓ Підтвердити замовлення</button>
+                    <button type="button" id="pay-button" class="submit-button pay-button">
+                        <span class="card-icon">💳</span>Сплатити карткою
+                    </button>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="city">Місто</label>
-            <input type="text" id="city" name="city" required>
-        </div>
-        <div class="form-group">
-            <label for="branch">Номер відділення "Нової Пошти"</label>
-            <input type="tel" id="branch" name="branch" required>
-        </div>
-        <input type="hidden" id="cart-data" name="cart">
-        <div class="button-row">
-            <button type="submit" class="submit-button">Підтвердити</button>
-            <button type="button" id="pay-button" class="submit-button pay-button">💳 Сплатити</button>
-        </div>
-    </form>
+    </div>
 </div>
 
 <div class="toast-overlay" id="toast">
-    <div class="toast-message">Ваше замовлення підтверджено! Дякуємо!</div>
+    <div class="toast-message">
+        <span class="check-icon">✅</span>
+        Ваше замовлення підтверджено!<br>Дякуємо!
+    </div>
 </div>
 
 <audio id="cash-sound" src="sound.mp3"></audio>
 
 <script>
-// 🔹 НАЛАШТУВАННЯ PORTMONE - ЗАМІНІТЬ НА СВОЇ ДАНІ
+// НАЛАШТУВАННЯ PORTMONE
 const PORTMONE_CONFIG = {
-    payee_id: "ВАШ_PAYEE_ID", // 🔴 ЗАМІНІТЬ на ваш Payee ID з кабінету Portmone
+    payee_id: "ВАШ_PAYEE_ID",
     shop_order_number: "",
     bill_amount: "",
     description: "",
@@ -303,7 +596,7 @@ let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let finalTotal = 0;
 let currentOrderNumber = "";
 
-// === Номер замовлення ===
+// Номер замовлення
 function getDailyOrderNumber() {
     const today = new Date().toISOString().slice(0, 10);
     let ordersData = JSON.parse(localStorage.getItem('dailyOrders') || '{}');
@@ -324,21 +617,20 @@ function generateOrderNumber() {
     return `${String(orderNum).padStart(2, '0')}${day}${month}${year}`;
 }
 
-// === Знижка ===
+// Знижка
 function calculateDiscount(total) {
-    let discount = 0;
-    if (total >= 1000 && total < 4999) discount = 3;
-    else if (total >= 5000 && total < 9999) discount = 5;
-    else if (total >= 10000 && total < 29999) discount = 7;
-    else if (total >= 30000 && total < 59999) discount = 10;
-    else if (total >= 60000 && total < 149999) discount = 12;
-    else if (total >= 150000) discount = 15;
-    return discount;
+    if (total >= 150000) return 15;
+    if (total >= 60000) return 12;
+    if (total >= 30000) return 10;
+    if (total >= 10000) return 7;
+    if (total >= 5000) return 5;
+    if (total >= 1000) return 3;
+    return 0;
 }
 
-// === PORTMONE PAYMENT ===
+// Portmone URL
 function createPortmonePayment() {
-    const paymentUrl = `https://www.portmone.com.ua/r3/uk/gateway/` +
+    return `https://www.portmone.com.ua/r3/uk/gateway/` +
         `?payee_id=${PORTMONE_CONFIG.payee_id}` +
         `&shop_order_number=${PORTMONE_CONFIG.shop_order_number}` +
         `&bill_amount=${PORTMONE_CONFIG.bill_amount}` +
@@ -346,30 +638,50 @@ function createPortmonePayment() {
         `&success_url=${PORTMONE_CONFIG.success_url}` +
         `&failure_url=${PORTMONE_CONFIG.failure_url}` +
         `&lang=${PORTMONE_CONFIG.lang}`;
-    
-    return paymentUrl;
 }
 
-// === Відображення замовлення ===
+// Отображение заказа
 function displayOrder() {
-    const orderItemsContainer = document.getElementById('cart-items');
-    const totalPriceElement = document.getElementById('total-price');
+    const container = document.getElementById('cart-items');
+    const totalsContainer = document.getElementById('total-price');
     const cartDataField = document.getElementById('cart-data');
 
-    orderItemsContainer.innerHTML = '';
-    totalPriceElement.innerHTML = '';
+    container.innerHTML = '';
+    totalsContainer.innerHTML = '';
+
+    if (cart.length === 0) {
+        container.innerHTML = `
+            <div class="empty-cart">
+                <div class="icon">🛒</div>
+                <p>Кошик порожній</p>
+            </div>
+        `;
+        document.querySelector('.submit-button').disabled = true;
+        document.querySelector('.submit-button').style.opacity = '0.5';
+        return;
+    }
 
     let total = 0;
     let cartText = "";
 
-    cart.forEach(item => {
+    cart.forEach((item, index) => {
         const subtotal = item.price * item.quantity;
         total += subtotal;
-        const itemElement = document.createElement('div');
-        itemElement.classList.add('cart-item');
-        itemElement.textContent = `${item.name} — ${item.price} грн × ${item.quantity} = ${subtotal} грн`;
-        orderItemsContainer.appendChild(itemElement);
         cartText += `${item.name} — ${item.price} грн × ${item.quantity} = ${subtotal} грн\n`;
+        
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.style.animationDelay = `${index * 0.1}s`;
+        itemDiv.classList.add('fade-in');
+        itemDiv.innerHTML = `
+            <div class="item-icon">🛡️</div>
+            <div class="item-info">
+                <div class="item-name">${item.name}</div>
+                <div class="item-qty">${item.price} грн × ${item.quantity} шт</div>
+            </div>
+            <div class="item-price">${subtotal} грн</div>
+        `;
+        container.appendChild(itemDiv);
     });
 
     const discountPercent = calculateDiscount(total);
@@ -377,51 +689,47 @@ function displayOrder() {
     finalTotal = total - discountAmount;
 
     currentOrderNumber = generateOrderNumber();
-    document.getElementById('order-header').textContent = `Ваше замовлення №${currentOrderNumber}`;
+    document.getElementById('order-header').textContent = `Замовлення №${currentOrderNumber}`;
 
-    // Оновлюємо config Portmone
+    // Config Portmone
     PORTMONE_CONFIG.shop_order_number = currentOrderNumber;
     PORTMONE_CONFIG.bill_amount = finalTotal.toFixed(2);
-    PORTMONE_CONFIG.description = `Замовлення №${currentOrderNumber} - ПроЗахіст`;
+    PORTMONE_CONFIG.description = `Замовлення №${currentOrderNumber} - ПроЗахист`;
 
-    // Відображення
-    const totalLine = document.createElement('div');
-    totalLine.classList.add('fade-line', 'show');
-    totalLine.textContent = `Сума: ${total.toFixed(2)} грн`;
-    totalLine.style.fontSize = "1.0em";
-    totalLine.style.fontWeight = "bold";
-    totalPriceElement.appendChild(totalLine);
+    // Totals
+    totalsContainer.innerHTML = `
+        <div class="total-row">
+            <span class="label">Сума:</span>
+            <span class="value">${total.toFixed(2)} грн</span>
+        </div>
+        ${discountPercent > 0 ? `
+        <div class="total-row discount">
+            <span class="label">Знижка ${discountPercent}%:</span>
+            <span class="value">-${discountAmount.toFixed(2)} грн</span>
+        </div>
+        ` : ''}
+        <div class="total-row final">
+            <span class="label">До сплати:</span>
+            <span class="value">${finalTotal.toFixed(2)} грн</span>
+        </div>
+    `;
 
-    const discountColor = discountPercent > 0 ? "green" : "gray";
-    const discountText = discountPercent > 0
-        ? `Знижка: - ${discountAmount.toFixed(2)} грн`
-        : `Знижка: 0 грн`;
-
-    const discountLine = document.createElement('div');
-    discountLine.classList.add('fade-line');
-    discountLine.textContent = discountText;
-    discountLine.style.color = discountColor;
-    discountLine.style.fontSize = "1.0em";
-    discountLine.style.fontWeight = "bold";
-    totalPriceElement.appendChild(discountLine);
-    setTimeout(() => discountLine.classList.add('show'), 1500);
-
-    const finalLine = document.createElement('div');
-    finalLine.classList.add('fade-line');
-    finalLine.textContent = `До сплати: ${finalTotal.toFixed(2)} грн`;
-    finalLine.style.fontSize = "1.0em";
-    finalLine.style.fontWeight = "bold";
-    totalPriceElement.appendChild(finalLine);
+    // Sound effect
     setTimeout(() => {
-        finalLine.classList.add('show');
         const sound = document.getElementById('cash-sound');
         if (sound) {
             sound.volume = 0.15;
             sound.play().catch(() => {});
         }
-    }, 2500);
+    }, 500);
 
-    cartDataField.value =
+    // Show pay button
+    setTimeout(() => {
+        document.getElementById('pay-button').classList.add('visible');
+    }, 1000);
+
+    // Form data
+    cartDataField.value = 
         `Номер замовлення: ${currentOrderNumber}\n` +
         cartText +
         `\nЗагальна сума: ${total.toFixed(2)} грн` +
@@ -429,16 +737,11 @@ function displayOrder() {
             ? `\nЗнижка ${discountPercent}%: - ${discountAmount.toFixed(2)} грн\nДо сплати: ${finalTotal.toFixed(2)} грн`
             : `\nДо сплати: ${finalTotal.toFixed(2)} грн`) +
         `\n\n⚠️ Статус оплати: Очікується`;
-
-    // Показуємо кнопку оплати
-    setTimeout(() => {
-        document.getElementById('pay-button').classList.add('visible');
-    }, 3000);
 }
 
 displayOrder();
 
-// === КНОПКА "СПЛАТИТИ" ===
+// Кнопка "Сплатити"
 document.getElementById('pay-button').addEventListener('click', function (e) {
     e.preventDefault();
     
@@ -447,18 +750,17 @@ document.getElementById('pay-button').addEventListener('click', function (e) {
     const allFilled = Array.from(inputs).every(input => input.value.trim() !== '');
     
     if (!allFilled) {
+        // Вибрация на мобильных
+        if (navigator.vibrate) navigator.vibrate(200);
         alert('Будь ласка, заповніть всі поля форми!');
         return;
     }
     
-    // Зберігаємо номер замовлення для success.html
     localStorage.setItem('lastOrderNumber', currentOrderNumber);
     
-    // Додаємо інформацію про оплату карткою в приховане поле
     const cartDataField = document.getElementById('cart-data');
     cartDataField.value = cartDataField.value + '\n\n💳 СПЛАЧЕНО КАРТКОЮ ОНЛАЙН';
     
-    // Відправляємо форму на email
     const data = new FormData(form);
     fetch(form.action, { 
         method: form.method, 
@@ -467,9 +769,7 @@ document.getElementById('pay-button').addEventListener('click', function (e) {
     })
     .then(response => {
         if (response.ok) {
-            // Переходимо на Portmone
-            const paymentUrl = createPortmonePayment();
-            window.location.href = paymentUrl;
+            window.location.href = createPortmonePayment();
         } else {
             alert("Помилка при надсиланні замовлення.");
         }
@@ -477,7 +777,7 @@ document.getElementById('pay-button').addEventListener('click', function (e) {
     .catch(() => alert("Помилка з'єднання із сервером."));
 });
 
-// === КНОПКА "ПІДТВЕРДИТИ" ===
+// Кнопка "Підтвердити"
 document.getElementById('checkout-form').addEventListener('submit', function (e) {
     e.preventDefault();
     const form = e.target;
@@ -492,6 +792,7 @@ document.getElementById('checkout-form').addEventListener('submit', function (e)
         if (response.ok) {
             const toast = document.getElementById('toast');
             toast.classList.add('show');
+            if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
             setTimeout(() => { 
                 toast.classList.remove('show');
                 localStorage.removeItem('cart');
@@ -504,7 +805,7 @@ document.getElementById('checkout-form').addEventListener('submit', function (e)
     .catch(() => alert("Помилка з'єднання із сервером."));
 });
 
-// Автоперехід між полями
+// Автопереход между полями
 const inputs = document.querySelectorAll('#name, #phone, #city, #branch');
 inputs.forEach((field, index) => {
     field.addEventListener('keydown', function (e) {
@@ -517,15 +818,30 @@ inputs.forEach((field, index) => {
     });
 });
 
-// Мобільна оптимізація
-if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768) {
+// Маска телефона
+document.getElementById('phone').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.startsWith('38')) value = value.slice(2);
+    if (value.length > 0) {
+        let formatted = '+38';
+        if (value.length > 3) formatted += ' (' + value.slice(0, 3);
+        else formatted += ' (' + value;
+        if (value.length > 3) formatted += ') ' + value.slice(3, 6);
+        if (value.length > 6) formatted += '-' + value.slice(6, 8);
+        if (value.length > 8) formatted += '-' + value.slice(8, 10);
+        e.target.value = formatted;
+    } else {
+        e.target.value = '';
+    }
+});
+
+// Мобильная оптимизация клавиатуры
+if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
     inputs.forEach(input => {
         input.addEventListener('focus', () => {
-            document.body.style.paddingBottom = '300px';
-            window.scrollTo(0, document.body.scrollHeight);
-        });
-        input.addEventListener('blur', () => {
-            document.body.style.paddingBottom = '0';
+            setTimeout(() => {
+                input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 300);
         });
     });
 }
@@ -533,4 +849,3 @@ if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWi
 
 </body>
 </html>
-
