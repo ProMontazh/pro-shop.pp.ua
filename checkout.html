@@ -1,500 +1,268 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="robots" content="noindex, nofollow">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-<title>Оформлення замовлення - ПроЗахист</title>
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Оформлення замовлення — ПРОЗАХИСТ</title>
+    <style>
+        * { box-sizing: border-box; }
 
-html {
-    scroll-behavior: smooth;
-}
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    background: #0d0d0d;
-    color: #e0e0e0;
-    line-height: 1.6;
-    min-height: 100vh;
-    padding-bottom: 30px;
-}
+        .page-wrapper {
+            max-width: 600px;
+            margin: 30px auto 40px;
+            padding: 0 15px;
+        }
 
-/* Основной контейнер */
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
+        .checkout-box {
+            background: #fff;
+            box-shadow: 0 0 12px rgba(0,0,0,0.12);
+            border-radius: 8px;
+            padding: 30px;
+            opacity: 0;
+            animation: fadeIn 1.2s forwards;
+        }
 
-/* Заголовок страницы */
-.page-title {
-    text-align: center;
-    padding: 30px 20px 10px;
-}
+        @keyframes fadeIn { to { opacity: 1; } }
 
-.page-title h1 {
-    font-size: 1.5em;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 0.5px;
-}
+        /* ===== ЗАГОЛОВОК ===== */
+        .page-title {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #222;
+            margin: 0 0 6px;
+        }
 
-.page-title .subtitle {
-    font-size: 0.85em;
-    color: #808080;
-    margin-top: 4px;
-}
+        .order-number {
+            text-align: center;
+            font-size: 1.05em;
+            font-weight: 600;
+            color: #800000;
+            margin-bottom: 20px;
+        }
 
-/* Секции */
-.section {
-    background: #1a1a1a;
-    border-radius: 12px;
-    border: 1px solid #333;
-    margin-top: 20px;
-    overflow: hidden;
-}
+        /* ===== СЕКЦІЇ ===== */
+        .section-title {
+            font-size: 1em;
+            font-weight: 700;
+            color: #444;
+            margin: 18px 0 8px;
+            border-left: 4px solid #800000;
+            padding-left: 10px;
+        }
 
-.section-header {
-    background: linear-gradient(145deg, #800000, #600000);
-    padding: 14px 20px;
-}
+        /* ===== СПИСОК ТОВАРІВ ===== */
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 9px 0;
+            border-bottom: 1px dotted #ddd;
+            font-size: 0.95em;
+            color: #333;
+            gap: 10px;
+        }
 
-.section-header h2 {
-    font-size: 1em;
-    font-weight: 600;
-    color: #fff;
-    letter-spacing: 0.3px;
-}
+        .cart-item-name { flex: 1; }
+        .cart-item-price { white-space: nowrap; font-weight: 600; color: #800000; }
 
-.section-body {
-    padding: 20px;
-}
+        /* ===== ПІДСУМОК ===== */
+        .total-block {
+            margin-top: 14px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            padding: 12px 16px;
+        }
 
-/* Номер заказа */
-.order-number {
-    text-align: center;
-    font-size: 1em;
-    color: #ff4444;
-    font-weight: 600;
-    margin-bottom: 15px;
-    padding: 10px;
-    background: rgba(128,0,0,0.08);
-    border-radius: 8px;
-    border: 1px solid rgba(128,0,0,0.25);
-}
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95em;
+            margin-bottom: 6px;
+            opacity: 0;
+            transition: opacity 1.8s ease;
+            color: #444;
+        }
 
-/* Карточки товаров */
-.cart-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 0;
-    border-bottom: 1px solid #2a2a2a;
-}
+        .total-row.show { opacity: 1; }
+        .total-row.discount { color: #2a8a2a; font-weight: 600; }
 
-.cart-item:last-child {
-    border-bottom: none;
-}
+        .total-row.final {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #c00;
+            border-top: 1px solid #ddd;
+            padding-top: 8px;
+            margin-top: 4px;
+        }
 
-.cart-item .item-num {
-    width: 32px;
-    height: 32px;
-    background: linear-gradient(145deg, #800000, #600000);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85em;
-    font-weight: 700;
-    color: #fff;
-    flex-shrink: 0;
-}
+        /* ===== ФОРМА ===== */
+        .form-group { margin-bottom: 14px; }
 
-.cart-item .item-info {
-    flex: 1;
-    min-width: 0;
-}
+        .form-group label {
+            display: block;
+            font-size: 0.88em;
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 5px;
+        }
 
-.cart-item .item-name {
-    font-size: 0.95em;
-    color: #e0e0e0;
-    font-weight: 500;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+        .form-group input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: 'Open Sans', sans-serif;
+            transition: border-color 0.2s;
+            outline: none;
+        }
 
-.cart-item .item-qty {
-    font-size: 0.8em;
-    color: #808080;
-    margin-top: 2px;
-}
+        .form-group input:focus { border-color: #800000; }
 
-.cart-item .item-price {
-    font-size: 1em;
-    font-weight: 700;
-    color: #ff4444;
-    white-space: nowrap;
-}
+        /* ===== КНОПКИ ===== */
+        .button-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 22px;
+        }
 
-/* Итоги */
-.totals {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 2px solid #2a2a2a;
-}
+        .btn-confirm {
+            flex: 1;
+            padding: 12px;
+            background: #007bff;
+            color: #fff;
+            font-size: 1em;
+            font-weight: 700;
+            font-family: 'Open Sans', sans-serif;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
 
-.total-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 0;
-    font-size: 0.95em;
-}
+        .btn-confirm:hover { background: #0056b3; }
 
-.total-row .label {
-    color: #808080;
-}
+        .btn-pay {
+            flex: 1;
+            padding: 12px;
+            background: #800000;
+            color: #fff;
+            font-size: 1em;
+            font-weight: 700;
+            font-family: 'Open Sans', sans-serif;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, opacity 0.5s;
+            display: none;
+            opacity: 0;
+        }
 
-.total-row .value {
-    font-weight: 500;
-    color: #e0e0e0;
-}
+        .btn-pay:hover { background: #a00000; }
+        .btn-pay.visible { display: block; opacity: 1; }
 
-.total-row.discount .value {
-    color: #4CAF50;
-}
+        /* ===== TOAST ===== */
+        .toast-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s, visibility 0.5s;
+            z-index: 10000;
+        }
 
-.total-row.final {
-    margin-top: 8px;
-    padding-top: 12px;
-    border-top: 1px solid #333;
-    font-size: 1.15em;
-}
+        .toast-overlay.show { opacity: 1; visibility: visible; }
 
-.total-row.final .label {
-    color: #fff;
-    font-weight: 700;
-}
+        .toast-message {
+            background: #fff;
+            border-top: 5px solid #800000;
+            color: #222;
+            padding: 30px 40px;
+            border-radius: 8px;
+            font-size: 1.2em;
+            text-align: center;
+            font-weight: 700;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transform: scale(0.8);
+            transition: transform 0.4s;
+        }
 
-.total-row.final .value {
-    color: #ff4444;
-    font-weight: 700;
-    font-size: 1.1em;
-}
+        .toast-overlay.show .toast-message { transform: scale(1); }
 
-/* Форма */
-.form-group {
-    margin-bottom: 18px;
-}
+        .toast-message span {
+            display: block;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
 
-.form-group label {
-    display: block;
-    font-size: 0.9em;
-    font-weight: 500;
-    color: #ccc;
-    margin-bottom: 8px;
-}
-
-.form-group label .required {
-    color: #ff4444;
-    margin-left: 2px;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1px solid #333;
-    border-radius: 10px;
-    font-size: 16px;
-    background: #0d0d0d;
-    color: #e0e0e0;
-    transition: all 0.3s ease;
-    font-family: 'Roboto', sans-serif;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: #800000;
-    box-shadow: 0 0 0 3px rgba(128,0,0,0.15);
-    background: #111;
-}
-
-.form-group input::placeholder {
-    color: #444;
-}
-
-/* Кнопки */
-.button-row {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 25px;
-}
-
-.submit-button {
-    width: 100%;
-    padding: 16px 20px;
-    background: linear-gradient(145deg, #800000, #a00000);
-    color: #fff;
-    font-size: 1em;
-    font-weight: 700;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 16px rgba(128,0,0,0.35);
-    letter-spacing: 0.3px;
-}
-
-.submit-button:active {
-    transform: scale(0.98);
-    box-shadow: 0 2px 8px rgba(128,0,0,0.25);
-}
-
-.submit-button:hover {
-    background: linear-gradient(145deg, #a00000, #c00000);
-}
-
-.pay-button {
-    background: linear-gradient(145deg, #2b7cff, #1e5fcc);
-    box-shadow: 0 4px 16px rgba(43,124,255,0.25);
-    display: none;
-    opacity: 0;
-    transition: all 0.5s ease;
-}
-
-.pay-button:hover {
-    background: linear-gradient(145deg, #1e5fcc, #154a99);
-}
-
-.pay-button.visible {
-    display: block;
-    opacity: 1;
-}
-
-/* Пустая корзина */
-.empty-cart {
-    text-align: center;
-    padding: 40px 20px;
-    color: #555;
-}
-
-.empty-cart p {
-    font-size: 1em;
-}
-
-/* Toast */
-.toast-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.88);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.4s ease;
-    z-index: 10000;
-}
-
-.toast-overlay.show {
-    opacity: 1;
-    visibility: visible;
-}
-
-.toast-message {
-    background: #1a1a1a;
-    color: #fff;
-    padding: 30px 40px;
-    border-radius: 16px;
-    font-size: 1.1em;
-    text-align: center;
-    font-weight: 600;
-    border: 1px solid #800000;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-    transform: scale(0.85);
-    transition: all 0.4s ease;
-    max-width: 90%;
-    width: 300px;
-}
-
-.toast-overlay.show .toast-message {
-    transform: scale(1);
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-    width: 6px;
-}
-
-::-webkit-scrollbar-track {
-    background: #0d0d0d;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #800000;
-}
-
-/* Мобильная адаптация */
-@media (max-width: 480px) {
-    .page-title {
-        padding: 20px 15px 5px;
-    }
-    
-    .page-title h1 {
-        font-size: 1.3em;
-    }
-    
-    .container {
-        padding: 0 10px;
-    }
-    
-    .section {
-        border-radius: 10px;
-        margin-top: 12px;
-    }
-    
-    .section-header {
-        padding: 12px 15px;
-    }
-    
-    .section-header h2 {
-        font-size: 0.95em;
-    }
-    
-    .section-body {
-        padding: 15px;
-    }
-    
-    .cart-item {
-        padding: 10px 0;
-        gap: 10px;
-    }
-    
-    .cart-item .item-num {
-        width: 28px;
-        height: 28px;
-        font-size: 0.8em;
-        border-radius: 6px;
-    }
-    
-    .cart-item .item-name {
-        font-size: 0.9em;
-    }
-    
-    .cart-item .item-price {
-        font-size: 0.95em;
-    }
-    
-    .form-group input {
-        padding: 12px 14px;
-    }
-    
-    .submit-button {
-        padding: 14px 16px;
-        font-size: 0.95em;
-        border-radius: 10px;
-    }
-    
-    .button-row {
-        gap: 10px;
-        margin-top: 20px;
-    }
-    
-    .total-row.final {
-        font-size: 1.05em;
-    }
-    
-    .toast-message {
-        padding: 25px 30px;
-        font-size: 1em;
-        border-radius: 12px;
-    }
-}
-
-@media (max-width: 360px) {
-    .page-title h1 {
-        font-size: 1.2em;
-    }
-    
-    .section-header h2 {
-        font-size: 0.9em;
-    }
-}
-</style>
+        /* ===== МОБІЛЬНА ===== */
+        @media (max-width: 768px) {
+            .page-wrapper { margin-top: 10px; }
+            .checkout-box { padding: 20px 16px; border-radius: 0; box-shadow: none; }
+            body { background: #fff; }
+            .button-row { flex-direction: column; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="page-title">
-        <h1>Оформлення замовлення</h1>
-        <div class="subtitle">ПроЗахист</div>
-    </div>
+<div class="page-wrapper">
+    <div class="checkout-box">
 
-    <!-- Секция заказа -->
-    <div class="section">
-        <div class="section-header">
-            <h2 id="order-header">Ваше замовлення</h2>
-        </div>
-        <div class="section-body">
-            <div id="cart-items"></div>
-            <div class="totals" id="total-price"></div>
-        </div>
-    </div>
+        <h1 class="page-title">Оформлення замовлення</h1>
+        <div class="order-number" id="order-number">Замовлення №…</div>
 
-    <!-- Секция контактов -->
-    <div class="section">
-        <div class="section-header">
-            <h2>Контактні дані</h2>
-        </div>
-        <div class="section-body">
-            <form id="checkout-form" action="https://formspree.io/f/xrbadqqk" method="POST">
-                <div class="form-group">
-                    <label for="name">Прізвище, Ім'я <span class="required">*</span></label>
-                    <input type="text" id="name" name="name" placeholder="Іванов Іван" required autocomplete="name">
-                </div>
-                <div class="form-group">
-                    <label for="phone">Телефон отримувача <span class="required">*</span></label>
-                    <input type="tel" id="phone" name="phone" placeholder="+38 (___) ___-__-__" required autocomplete="tel">
-                </div>
-                <div class="form-group">
-                    <label for="city">Місто <span class="required">*</span></label>
-                    <input type="text" id="city" name="city" placeholder="Київ" required autocomplete="address-level2">
-                </div>
-                <div class="form-group">
-                    <label for="branch">Номер відділення "Нової Пошти" <span class="required">*</span></label>
-                    <input type="number" id="branch" name="branch" placeholder="15" required inputmode="numeric" pattern="[0-9]*">
-                </div>
-                <input type="hidden" id="cart-data" name="cart">
-                <div class="button-row">
-                    <button type="submit" class="submit-button">Підтвердити замовлення</button>
-                    <button type="button" id="pay-button" class="submit-button pay-button">Сплатити карткою</button>
-                </div>
-            </form>
-        </div>
+        <div class="section-title">Ваше замовлення</div>
+        <div id="cart-items"></div>
+        <div class="total-block" id="total-block"></div>
+
+        <div class="section-title" style="margin-top:24px;">Контактні дані</div>
+        <form id="checkout-form" action="https://formspree.io/f/xrbadqqk" method="POST">
+            <div class="form-group">
+                <label for="name">Прізвище, Ім'я</label>
+                <input type="text" id="name" name="name" placeholder="Іваненко Іван" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Телефон отримувача</label>
+                <input type="tel" id="phone" name="phone" placeholder="+380 XX XXX XX XX" required>
+            </div>
+            <div class="form-group">
+                <label for="city">Місто</label>
+                <input type="text" id="city" name="city" placeholder="Харків" required>
+            </div>
+            <div class="form-group">
+                <label for="branch">Номер відділення «Нової Пошти»</label>
+                <input type="text" id="branch" name="branch" placeholder="наприклад: 12" required>
+            </div>
+            <input type="hidden" id="cart-data" name="cart">
+
+            <div class="button-row">
+                <button type="submit" class="btn-confirm">✅ Підтвердити</button>
+                <button type="button" id="pay-button" class="btn-pay">💳 Сплатити</button>
+            </div>
+        </form>
+
     </div>
 </div>
 
 <div class="toast-overlay" id="toast">
     <div class="toast-message">
+        <span>🎉</span>
         Ваше замовлення підтверджено!<br>Дякуємо!
     </div>
 </div>
@@ -530,19 +298,19 @@ function getDailyOrderNumber() {
 function generateOrderNumber() {
     const orderNum = getDailyOrderNumber();
     const now = new Date();
-    const day = String(now.getDate()).padStart(2, '0');
+    const day   = String(now.getDate()).padStart(2, '0');
     const month = String(now.getMonth() + 1).padStart(2, '0');
-    const year = String(now.getFullYear()).slice(-2);
+    const year  = String(now.getFullYear()).slice(-2);
     return `${String(orderNum).padStart(2, '0')}${day}${month}${year}`;
 }
 
 function calculateDiscount(total) {
     if (total >= 150000) return 15;
-    if (total >= 60000) return 12;
-    if (total >= 30000) return 10;
-    if (total >= 10000) return 7;
-    if (total >= 5000) return 5;
-    if (total >= 1000) return 3;
+    if (total >= 60000)  return 12;
+    if (total >= 30000)  return 10;
+    if (total >= 10000)  return 7;
+    if (total >= 5000)   return 5;
+    if (total >= 1000)   return 3;
     return 0;
 }
 
@@ -558,188 +326,130 @@ function createPortmonePayment() {
 }
 
 function displayOrder() {
-    const container = document.getElementById('cart-items');
-    const totalsContainer = document.getElementById('total-price');
+    const cartItemsEl  = document.getElementById('cart-items');
+    const totalBlockEl = document.getElementById('total-block');
     const cartDataField = document.getElementById('cart-data');
 
-    container.innerHTML = '';
-    totalsContainer.innerHTML = '';
-
-    if (cart.length === 0) {
-        container.innerHTML = '<div class="empty-cart"><p>Кошик порожній</p></div>';
-        document.querySelector('.submit-button').disabled = true;
-        document.querySelector('.submit-button').style.opacity = '0.5';
-        return;
-    }
+    cartItemsEl.innerHTML = '';
+    totalBlockEl.innerHTML = '';
 
     let total = 0;
     let cartText = "";
 
-    cart.forEach((item, index) => {
+    cart.forEach(item => {
         const subtotal = item.price * item.quantity;
         total += subtotal;
-        cartText += `${item.name} — ${item.price} грн × ${item.quantity} = ${subtotal} грн\n`;
-        
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'cart-item';
-        itemDiv.innerHTML = `
-            <div class="item-num">${index + 1}</div>
-            <div class="item-info">
-                <div class="item-name">${item.name}</div>
-                <div class="item-qty">${item.price} грн × ${item.quantity} шт</div>
-            </div>
-            <div class="item-price">${subtotal} грн</div>
-        `;
-        container.appendChild(itemDiv);
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `<span class="cart-item-name">${item.name} × ${item.quantity}</span>
+                         <span class="cart-item-price">${subtotal.toLocaleString('uk-UA')} грн</span>`;
+        cartItemsEl.appendChild(div);
+        cartText += `${item.name} × ${item.quantity} = ${subtotal} грн\n`;
     });
 
     const discountPercent = calculateDiscount(total);
-    const discountAmount = (total * discountPercent) / 100;
+    const discountAmount  = (total * discountPercent) / 100;
     finalTotal = total - discountAmount;
 
     currentOrderNumber = generateOrderNumber();
-    document.getElementById('order-header').textContent = `Замовлення №${currentOrderNumber}`;
+    document.getElementById('order-number').textContent = `Замовлення №${currentOrderNumber}`;
 
     PORTMONE_CONFIG.shop_order_number = currentOrderNumber;
-    PORTMONE_CONFIG.bill_amount = finalTotal.toFixed(2);
-    PORTMONE_CONFIG.description = `Замовлення №${currentOrderNumber} - ПроЗахист`;
+    PORTMONE_CONFIG.bill_amount       = finalTotal.toFixed(2);
+    PORTMONE_CONFIG.description       = `Замовлення №${currentOrderNumber} — ПРОЗАХИСТ`;
 
-    totalsContainer.innerHTML = `
-        <div class="total-row">
-            <span class="label">Сума:</span>
-            <span class="value">${total.toFixed(2)} грн</span>
-        </div>
-        ${discountPercent > 0 ? `
-        <div class="total-row discount">
-            <span class="label">Знижка ${discountPercent}%:</span>
-            <span class="value">-${discountAmount.toFixed(2)} грн</span>
-        </div>
-        ` : ''}
-        <div class="total-row final">
-            <span class="label">До сплати:</span>
-            <span class="value">${finalTotal.toFixed(2)} грн</span>
-        </div>
-    `;
+    const row1 = document.createElement('div');
+    row1.className = 'total-row show';
+    row1.innerHTML = `<span>Сума:</span><span>${total.toLocaleString('uk-UA')} грн</span>`;
+    totalBlockEl.appendChild(row1);
 
+    const row2 = document.createElement('div');
+    row2.className = 'total-row discount';
+    row2.innerHTML = discountPercent > 0
+        ? `<span>Знижка ${discountPercent}%:</span><span>−${discountAmount.toFixed(2)} грн</span>`
+        : `<span>Знижка:</span><span>0 грн</span>`;
+    totalBlockEl.appendChild(row2);
+    setTimeout(() => row2.classList.add('show'), 1200);
+
+    const row3 = document.createElement('div');
+    row3.className = 'total-row final';
+    row3.innerHTML = `<span>До сплати:</span><span>${finalTotal.toLocaleString('uk-UA')} грн</span>`;
+    totalBlockEl.appendChild(row3);
     setTimeout(() => {
+        row3.classList.add('show');
         const sound = document.getElementById('cash-sound');
-        if (sound) {
-            sound.volume = 0.15;
-            sound.play().catch(() => {});
-        }
-    }, 500);
+        if (sound) { sound.volume = 0.15; sound.play().catch(() => {}); }
+    }, 2200);
+
+    cartDataField.value =
+        `Номер замовлення: ${currentOrderNumber}\n` + cartText +
+        `\nЗагальна сума: ${total} грн` +
+        (discountPercent > 0
+            ? `\nЗнижка ${discountPercent}%: −${discountAmount.toFixed(2)} грн\nДо сплати: ${finalTotal} грн`
+            : `\nДо сплати: ${finalTotal} грн`) +
+        `\n\n⚠️ Статус оплати: Очікується`;
 
     setTimeout(() => {
         document.getElementById('pay-button').classList.add('visible');
-    }, 1000);
-
-    cartDataField.value = 
-        `Номер замовлення: ${currentOrderNumber}\n` +
-        cartText +
-        `\nЗагальна сума: ${total.toFixed(2)} грн` +
-        (discountPercent > 0
-            ? `\nЗнижка ${discountPercent}%: - ${discountAmount.toFixed(2)} грн\nДо сплати: ${finalTotal.toFixed(2)} грн`
-            : `\nДо сплати: ${finalTotal.toFixed(2)} грн`) +
-        `\n\nСтатус оплати: Очікується`;
+    }, 3000);
 }
 
 displayOrder();
 
-document.getElementById('pay-button').addEventListener('click', function (e) {
+document.getElementById('pay-button').addEventListener('click', function(e) {
     e.preventDefault();
-    
-    const form = document.getElementById('checkout-form');
+    const form   = document.getElementById('checkout-form');
     const inputs = form.querySelectorAll('input[required]');
-    const allFilled = Array.from(inputs).every(input => input.value.trim() !== '');
-    
-    if (!allFilled) {
-        if (navigator.vibrate) navigator.vibrate(200);
+    if (!Array.from(inputs).every(i => i.value.trim() !== '')) {
         alert('Будь ласка, заповніть всі поля форми!');
         return;
     }
-    
     localStorage.setItem('lastOrderNumber', currentOrderNumber);
-    
-    const cartDataField = document.getElementById('cart-data');
-    cartDataField.value = cartDataField.value + '\n\nСПЛАЧЕНО КАРТКОЮ ОНЛАЙН';
-    
+    document.getElementById('cart-data').value += '\n\n💳 СПЛАЧЕНО КАРТКОЮ ОНЛАЙН';
     const data = new FormData(form);
-    fetch(form.action, { 
-        method: form.method, 
-        body: data, 
-        headers: { 'Accept': 'application/json' } 
-    })
-    .then(response => {
-        if (response.ok) {
-            window.location.href = createPortmonePayment();
-        } else {
-            alert("Помилка при надсиланні замовлення.");
-        }
-    })
-    .catch(() => alert("Помилка з'єднання із сервером."));
+    fetch(form.action, { method: form.method, body: data, headers: { 'Accept': 'application/json' } })
+        .then(r => {
+            if (r.ok) window.location.href = createPortmonePayment();
+            else alert("Помилка при надсиланні замовлення.");
+        })
+        .catch(() => alert("Помилка з'єднання із сервером."));
 });
 
-document.getElementById('checkout-form').addEventListener('submit', function (e) {
+document.getElementById('checkout-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    const form = e.target;
-    const data = new FormData(form);
-    
-    fetch(form.action, { 
-        method: form.method, 
-        body: data, 
-        headers: { 'Accept': 'application/json' } 
-    })
-    .then(response => {
-        if (response.ok) {
-            const toast = document.getElementById('toast');
-            toast.classList.add('show');
-            if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
-            setTimeout(() => { 
-                toast.classList.remove('show');
-                localStorage.removeItem('cart');
-                window.location.href = "index.html";
-            }, 2500);
-        } else {
-            alert("Помилка при відправці замовлення.");
-        }
-    })
-    .catch(() => alert("Помилка з'єднання із сервером."));
+    const data = new FormData(e.target);
+    fetch(e.target.action, { method: e.target.method, body: data, headers: { 'Accept': 'application/json' } })
+        .then(r => {
+            if (r.ok) {
+                document.getElementById('toast').classList.add('show');
+                setTimeout(() => {
+                    document.getElementById('toast').classList.remove('show');
+                    localStorage.removeItem('cart');
+                    window.location.href = "index.html";
+                }, 2500);
+            } else { alert("Помилка при відправці замовлення."); }
+        })
+        .catch(() => alert("Помилка з'єднання із сервером."));
 });
 
-const inputs = document.querySelectorAll('#name, #phone, #city, #branch');
-inputs.forEach((field, index) => {
-    field.addEventListener('keydown', function (e) {
+const formInputs = document.querySelectorAll('#name, #phone, #city, #branch');
+formInputs.forEach((field, index) => {
+    field.addEventListener('keydown', function(e) {
         if (e.key === "Enter") {
             e.preventDefault();
-            if (index < inputs.length - 1) {
-                inputs[index + 1].focus();
-            }
+            if (index < formInputs.length - 1) formInputs[index + 1].focus();
         }
     });
 });
 
-document.getElementById('phone').addEventListener('input', function(e) {
-    let value = e.target.value.replace(/\D/g, '');
-    if (value.startsWith('38')) value = value.slice(2);
-    if (value.length > 0) {
-        let formatted = '+38';
-        if (value.length > 3) formatted += ' (' + value.slice(0, 3);
-        else formatted += ' (' + value;
-        if (value.length > 3) formatted += ') ' + value.slice(3, 6);
-        if (value.length > 6) formatted += '-' + value.slice(6, 8);
-        if (value.length > 8) formatted += '-' + value.slice(8, 10);
-        e.target.value = formatted;
-    } else {
-        e.target.value = '';
-    }
-});
-
-if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-    inputs.forEach(input => {
+if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768) {
+    formInputs.forEach(input => {
         input.addEventListener('focus', () => {
-            setTimeout(() => {
-                input.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 300);
+            document.body.style.paddingBottom = '300px';
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+        input.addEventListener('blur', () => {
+            document.body.style.paddingBottom = '0';
         });
     });
 }
