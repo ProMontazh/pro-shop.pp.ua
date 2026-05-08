@@ -718,7 +718,7 @@ header .logo svg {
     overflow-wrap: break-word;
     
     /* Ограничение ширины */
-    max-width: 90vw;
+    max-width: 100%;
     min-width: 200px;
     width: auto;
     text-align: center;
