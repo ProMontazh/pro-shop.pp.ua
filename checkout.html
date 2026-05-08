@@ -352,22 +352,22 @@
         <div class="total-block" id="total-block"></div>
 
         <div class="section-title">Контактні дані</div>
-        <form id="checkout-form" action="https://formspree.io/f/xrbadqqk" method="POST">
+        <form id="checkout-form" action="https://formspree.io/f/xrbadqqk" method="POST" novalidate>
             <div class="form-group">
                 <label for="name">Прізвище, Ім'я</label>
-                <input type="text" id="name" name="name" placeholder="Прізвище, Ім'я" required>
+                <input type="text" id="name" name="name" placeholder="Прізвище, Ім'я">
             </div>
             <div class="form-group">
                 <label for="phone">Телефон отримувача</label>
-                <input type="tel" id="phone" name="phone" placeholder="+38(0XX)-XXX-XX-XX" required>
+                <input type="tel" id="phone" name="phone" placeholder="+38(0XX)-XXX-XX-XX">
             </div>
             <div class="form-group">
                 <label for="city">Місто</label>
-                <input type="text" id="city" name="city" placeholder="Місто" required>
+                <input type="text" id="city" name="city" placeholder="Місто">
             </div>
             <div class="form-group">
                 <label for="branch">Номер відділення «Нової Пошти»</label>
-                <input type="tel" id="branch" name="branch" placeholder="Номер відділення" required inputmode="numeric" pattern="[0-9]*">
+                <input type="tel" id="branch" name="branch" placeholder="Номер відділення" inputmode="numeric" pattern="[0-9]*">
             </div>
             <input type="hidden" id="cart-data" name="cart">
 
@@ -521,30 +521,50 @@ function displayOrder() {
 
 displayOrder();
 
-// ===== ВАЛІДАЦІЯ ФОРМИ: фокус на перше порожнє поле =====
+// ===== ВАЛІДАЦІЯ ФОРМИ =====
 function validateForm() {
-    const inputs = document.querySelectorAll('#checkout-form input[required]');
-    for (let input of inputs) {
-        if (!input.value.trim() || input.value === '+38') {
+    const inputs = [
+        { id: 'name', label: 'Прізвище, Ім\'я' },
+        { id: 'phone', label: 'Телефон', minLen: 6 },
+        { id: 'city', label: 'Місто' },
+        { id: 'branch', label: 'Номер відділення' }
+    ];
+    
+    for (let item of inputs) {
+        const input = document.getElementById(item.id);
+        const val = input.value.trim();
+        
+        // Для телефона проверяем что не только +38
+        if (item.id === 'phone' && (val === '' || val === '+38' || val === '+38(' || val.length < 6)) {
             input.classList.add('error');
             input.focus();
-            // Скролл до поля на мобільному
-            setTimeout(() => {
-                const rect = input.getBoundingClientRect();
-                const headerHeight = 55;
-                if (rect.top < headerHeight + 10) {
-                    window.scrollBy({ 
-                        top: rect.top - headerHeight - 20, 
-                        behavior: 'smooth' 
-                    });
-                }
-            }, 100);
+            scrollToField(input);
             return false;
-        } else {
-            input.classList.remove('error');
         }
+        
+        if (val === '') {
+            input.classList.add('error');
+            input.focus();
+            scrollToField(input);
+            return false;
+        }
+        
+        input.classList.remove('error');
     }
     return true;
+}
+
+function scrollToField(input) {
+    setTimeout(() => {
+        const rect = input.getBoundingClientRect();
+        const headerHeight = 55;
+        if (rect.top < headerHeight + 10) {
+            window.scrollBy({ 
+                top: rect.top - headerHeight - 20, 
+                behavior: 'smooth' 
+            });
+        }
+    }, 100);
 }
 
 // Кнопка «Сплатити»
@@ -572,52 +592,54 @@ document.getElementById('checkout-form').addEventListener('submit', function(e) 
     e.preventDefault();
     if (!validateForm()) return;
     
-    const data = new FormData(e.target);
-    fetch(e.target.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+    const form = e.target;
+    const data = new FormData(form);
+    
+    fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
     .then(r => {
         if (r.ok) {
-            document.getElementById('toast').classList.add('show');
+            // Показываем toast
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            
+            // Через 2.5 секунды редирект
             setTimeout(() => {
-                document.getElementById('toast').classList.remove('show');
+                toast.classList.remove('show');
                 localStorage.removeItem('cart');
                 window.location.href = "index.html";
             }, 2500);
-        } else { alert("Помилка при відправці замовлення."); }
+        } else { 
+            alert("Помилка при відправці замовлення."); 
+        }
     })
     .catch(() => alert("Помилка з'єднання із сервером."));
 });
 
-// ===== МАСКА ТЕЛЕФОНА: +38(0XX)-XXX-XX-XX =====
+// ===== МАСКА ТЕЛЕФОНА =====
 const phoneInput = document.getElementById('phone');
 
-// При фокусі — якщо порожньо, ставимо +38
 phoneInput.addEventListener('focus', function() {
     if (!this.value || this.value === '') {
         this.value = '+38';
     }
 });
 
-// При втраті фокусу — якщо тільки +38, очищаємо
 phoneInput.addEventListener('blur', function() {
     if (this.value === '+38' || this.value === '+38(') {
         this.value = '';
     }
 });
 
-// Маска при вводі
 phoneInput.addEventListener('input', function(e) {
     let val = e.target.value;
     
-    // Завжди починаємо з +38
     if (!val.startsWith('+38')) {
         val = '+38' + val.replace(/^\+?3?8?/, '');
     }
     
-    // Беремо тільки цифри після +38
     let digits = val.slice(3).replace(/\D/g, '');
     if (digits.length > 10) digits = digits.slice(0, 10);
     
-    // Формат: +38(0XX)-XXX-XX-XX
     let out = '+38';
     if (digits.length >= 1) out += '(' + digits.slice(0, 1);
     if (digits.length >= 2) out += digits.slice(1, 2);
@@ -636,7 +658,6 @@ phoneInput.addEventListener('input', function(e) {
     e.target.value = out;
 });
 
-// При кліку — ставимо курсор після +38
 phoneInput.addEventListener('click', function() {
     if (this.value === '+38') {
         this.setSelectionRange(3, 3);
