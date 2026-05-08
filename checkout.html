@@ -29,10 +29,18 @@
             align-items: center;
             z-index: 1000;
             border-bottom: 2px solid #800000;
-            padding: 0 0;
+            padding: 0;
         }
 
-        header .logo svg { height: 55px; width: auto; display: block; }
+        header .logo {
+            margin-left: -5px;  /* ПРИЖИМАЕМ логотип влево */
+        }
+
+        header .logo svg { 
+            height: 55px; 
+            width: auto; 
+            display: block; 
+        }
 
         /* ===== КОНТЕЙНЕР ===== */
         .page-wrapper {
@@ -356,7 +364,7 @@
             </div>
             <div class="form-group">
                 <label for="phone">Телефон отримувача</label>
-                <input type="tel" id="phone" name="phone" placeholder="+380 XX XXX XX XX" required>
+                <input type="tel" id="phone" name="phone" placeholder="+380-XX-XXX-XX-XX" required>
             </div>
             <div class="form-group">
                 <label for="city">Місто</label>
@@ -364,7 +372,7 @@
             </div>
             <div class="form-group">
                 <label for="branch">Номер відділення «Нової Пошти»</label>
-                <input type="text" id="branch" name="branch" placeholder="Номер відділення" required>
+                <input type="tel" id="branch" name="branch" placeholder="Номер відділення" required inputmode="numeric" pattern="[0-9]*">
             </div>
             <input type="hidden" id="cart-data" name="cart">
 
@@ -462,7 +470,6 @@ function displayOrder() {
 
         const div = document.createElement('div');
         div.className = 'cart-item';
-        // Формат: Назва | ціна × кількість шт. | загальна .00 грн
         div.innerHTML =
             `<span class="cart-item-name">${item.name}</span>` +
             `<span class="cart-item-qty">${fmt(item.price)} × ${item.quantity} шт.</span>` +
@@ -482,13 +489,11 @@ function displayOrder() {
     PORTMONE_CONFIG.bill_amount       = finalTotal.toFixed(2);
     PORTMONE_CONFIG.description       = `Замовлення №${currentOrderNumber} — ПРОЗАХИСТ`;
 
-    // Рядок: сума
     const row1 = document.createElement('div');
     row1.className = 'total-row show';
     row1.innerHTML = `<span>Загальна сума:</span><span>${fmt(total)} грн</span>`;
     totalBlockEl.appendChild(row1);
 
-    // Рядок: знижка
     const row2 = document.createElement('div');
     row2.className = discountPercent > 0 ? 'total-row discount' : 'total-row no-discount';
     row2.innerHTML = discountPercent > 0
@@ -497,7 +502,6 @@ function displayOrder() {
     totalBlockEl.appendChild(row2);
     setTimeout(() => row2.classList.add('show'), 1000);
 
-    // Рядок: до сплати
     const row3 = document.createElement('div');
     row3.className = 'total-row final';
     row3.innerHTML = `<span>До сплати:</span><span>${fmt(finalTotal)} грн</span>`;
@@ -561,6 +565,22 @@ document.getElementById('checkout-form').addEventListener('submit', function(e) 
         .catch(() => alert("Помилка з'єднання із сервером."));
 });
 
+// ===== МАСКА ТЕЛЕФОНА З ТИРЕ =====
+document.getElementById('phone').addEventListener('input', function(e) {
+    let val = e.target.value.replace(/\D/g, '');
+    if (val.startsWith('38')) val = val.slice(2);
+    if (val.length > 10) val = val.slice(0, 10);
+    
+    let out = '+38';
+    if (val.length >= 2) out += '-' + val.slice(0, 2);
+    if (val.length >= 5) out += '-' + val.slice(2, 5);
+    if (val.length >= 7) out += '-' + val.slice(5, 7);
+    if (val.length >= 9) out += '-' + val.slice(7, 9);
+    if (val.length >= 10) out += '-' + val.slice(9, 10);
+    
+    e.target.value = out;
+});
+
 // Автоперехід між полями
 const formInputs = document.querySelectorAll('#name, #phone, #city, #branch');
 formInputs.forEach((field, index) => {
@@ -572,15 +592,22 @@ formInputs.forEach((field, index) => {
     });
 });
 
-// Мобільна оптимізація
+// ===== МОБІЛЬНА ОПТИМІЗАЦІЯ — скролл до поля при фокусе =====
 if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768) {
     formInputs.forEach(input => {
         input.addEventListener('focus', () => {
-            document.body.style.paddingBottom = '300px';
-            window.scrollTo(0, document.body.scrollHeight);
-        });
-        input.addEventListener('blur', () => {
-            document.body.style.paddingBottom = '0';
+            // Небольшая задержка чтобы клавиатура успела открыться
+            setTimeout(() => {
+                const rect = input.getBoundingClientRect();
+                const headerHeight = 55;
+                // Если поле под шапкой — скроллим
+                if (rect.top < headerHeight + 10) {
+                    window.scrollBy({ 
+                        top: rect.top - headerHeight - 20, 
+                        behavior: 'smooth' 
+                    });
+                }
+            }, 350);
         });
     });
 }
