@@ -600,6 +600,24 @@ header .logo svg {
     visibility: visible;
     opacity: 1;
 }
+
+/* ========================================
+   back-link
+   ======================================== */
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    color: #808080;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #ff4444;
+}
+
 /* ========================================
    АДАПТИВНІСТЬ
    ======================================== */
