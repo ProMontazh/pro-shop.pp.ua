@@ -17,7 +17,6 @@
             min-height: 100vh;
         }
 
-        /* ===== ШАПКА ===== */
         header {
             position: fixed;
             top: 0;
@@ -42,7 +41,6 @@
             display: block; 
         }
 
-        /* ===== КОНТЕЙНЕР ===== */
         .page-wrapper {
             max-width: 620px;
             margin: 80px auto 50px;
@@ -61,7 +59,6 @@
 
         @keyframes fadeIn { to { opacity: 1; } }
 
-        /* ===== ЗАГОЛОВКИ ===== */
         .page-title {
             text-align: center;
             font-size: 1.5em;
@@ -74,7 +71,7 @@
             text-align: center;
             font-size: 1em;
             font-weight: 600;
-            color: #ff4444;
+            color: #808080;
             margin-bottom: 24px;
         }
 
@@ -89,7 +86,6 @@
             letter-spacing: 0.05em;
         }
 
-        /* ===== РЯДОК ТОВАРУ ===== */
         .cart-item {
             display: grid;
             grid-template-columns: 1fr auto auto;
@@ -121,7 +117,6 @@
             min-width: 95px;
         }
 
-        /* ===== ПІДСУМОК ===== */
         .total-block {
             margin-top: 16px;
             background: #222;
@@ -160,7 +155,6 @@
             margin-bottom: 0;
         }
 
-        /* ===== ФОРМА ===== */
         .form-group { margin-bottom: 14px; }
 
         .form-group label {
@@ -193,7 +187,11 @@
             box-shadow: 0 0 0 2px rgba(128,0,0,0.2);
         }
 
-        /* ===== КНОПКИ ===== */
+        .form-group input.error {
+            border-color: #ff4444;
+            box-shadow: 0 0 0 2px rgba(255,68,68,0.2);
+        }
+
         .button-row {
             display: flex;
             gap: 12px;
@@ -233,7 +231,6 @@
         .btn-pay:hover { background: #1e5fcc; }
         .btn-pay.visible { display: block; opacity: 1; }
 
-        /* ===== TOAST ===== */
         .toast-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -270,7 +267,6 @@
 
         .toast-icon { font-size: 2em; display: block; margin-bottom: 10px; }
 
-        /* ===== МОБІЛЬНА ===== */
         @media (max-width: 768px) {
             .page-wrapper { margin-top: 70px; padding: 0; }
 
@@ -296,7 +292,6 @@
 </head>
 <body>
 
-<!-- ШАПКА -->
 <header>
     <div class="logo">
         <svg xmlns="http://www.w3.org/2000/svg" width="200" height="55" viewBox="0 0 600 200">
@@ -364,7 +359,7 @@
             </div>
             <div class="form-group">
                 <label for="phone">Телефон отримувача</label>
-                <input type="tel" id="phone" name="phone" placeholder="+380-XX-XXX-XX-XX" required>
+                <input type="tel" id="phone" name="phone" placeholder="+38(0XX)-XXX-XX-XX" required>
             </div>
             <div class="form-group">
                 <label for="city">Місто</label>
@@ -526,45 +521,73 @@ function displayOrder() {
 
 displayOrder();
 
+// ===== ВАЛІДАЦІЯ ФОРМИ: фокус на перше порожнє поле =====
+function validateForm() {
+    const inputs = document.querySelectorAll('#checkout-form input[required]');
+    for (let input of inputs) {
+        if (!input.value.trim() || input.value === '+38') {
+            input.classList.add('error');
+            input.focus();
+            // Скролл до поля на мобільному
+            setTimeout(() => {
+                const rect = input.getBoundingClientRect();
+                const headerHeight = 55;
+                if (rect.top < headerHeight + 10) {
+                    window.scrollBy({ 
+                        top: rect.top - headerHeight - 20, 
+                        behavior: 'smooth' 
+                    });
+                }
+            }, 100);
+            return false;
+        } else {
+            input.classList.remove('error');
+        }
+    }
+    return true;
+}
+
 // Кнопка «Сплатити»
 document.getElementById('pay-button').addEventListener('click', function(e) {
     e.preventDefault();
-    const form   = document.getElementById('checkout-form');
-    const inputs = form.querySelectorAll('input[required]');
-    if (!Array.from(inputs).every(i => i.value.trim() !== '')) {
-        alert('Будь ласка, заповніть всі поля форми!');
-        return;
-    }
+    if (!validateForm()) return;
+    
     localStorage.setItem('lastOrderNumber', currentOrderNumber);
     document.getElementById('cart-data').value += '\n\n💳 СПЛАЧЕНО КАРТКОЮ ОНЛАЙН';
-    const data = new FormData(form);
-    fetch(form.action, { method: form.method, body: data, headers: { 'Accept': 'application/json' } })
-        .then(r => {
-            if (r.ok) window.location.href = createPortmonePayment();
-            else alert("Помилка при надсиланні замовлення.");
-        })
-        .catch(() => alert("Помилка з'єднання із сервером."));
+    const data = new FormData(document.getElementById('checkout-form'));
+    fetch(document.getElementById('checkout-form').action, { 
+        method: 'POST', 
+        body: data, 
+        headers: { 'Accept': 'application/json' } 
+    })
+    .then(r => {
+        if (r.ok) window.location.href = createPortmonePayment();
+        else alert("Помилка при надсиланні замовлення.");
+    })
+    .catch(() => alert("Помилка з'єднання із сервером."));
 });
 
 // Кнопка «Підтвердити»
 document.getElementById('checkout-form').addEventListener('submit', function(e) {
     e.preventDefault();
+    if (!validateForm()) return;
+    
     const data = new FormData(e.target);
-    fetch(e.target.action, { method: e.target.method, body: data, headers: { 'Accept': 'application/json' } })
-        .then(r => {
-            if (r.ok) {
-                document.getElementById('toast').classList.add('show');
-                setTimeout(() => {
-                    document.getElementById('toast').classList.remove('show');
-                    localStorage.removeItem('cart');
-                    window.location.href = "index.html";
-                }, 2500);
-            } else { alert("Помилка при відправці замовлення."); }
-        })
-        .catch(() => alert("Помилка з'єднання із сервером."));
+    fetch(e.target.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+    .then(r => {
+        if (r.ok) {
+            document.getElementById('toast').classList.add('show');
+            setTimeout(() => {
+                document.getElementById('toast').classList.remove('show');
+                localStorage.removeItem('cart');
+                window.location.href = "index.html";
+            }, 2500);
+        } else { alert("Помилка при відправці замовлення."); }
+    })
+    .catch(() => alert("Помилка з'єднання із сервером."));
 });
 
-// ===== МАСКА ТЕЛЕФОНА: +38 вже в полі =====
+// ===== МАСКА ТЕЛЕФОНА: +38(0XX)-XXX-XX-XX =====
 const phoneInput = document.getElementById('phone');
 
 // При фокусі — якщо порожньо, ставимо +38
@@ -576,7 +599,7 @@ phoneInput.addEventListener('focus', function() {
 
 // При втраті фокусу — якщо тільки +38, очищаємо
 phoneInput.addEventListener('blur', function() {
-    if (this.value === '+38' || this.value === '+38-') {
+    if (this.value === '+38' || this.value === '+38(') {
         this.value = '';
     }
 });
@@ -594,15 +617,30 @@ phoneInput.addEventListener('input', function(e) {
     let digits = val.slice(3).replace(/\D/g, '');
     if (digits.length > 10) digits = digits.slice(0, 10);
     
-    // Формат: +38-XX-XXX-XX-XX
+    // Формат: +38(0XX)-XXX-XX-XX
     let out = '+38';
-    if (digits.length >= 2) out += '-' + digits.slice(0, 2);
-    if (digits.length >= 5) out += '-' + digits.slice(2, 5);
-    if (digits.length >= 7) out += '-' + digits.slice(5, 7);
-    if (digits.length >= 9) out += '-' + digits.slice(7, 9);
-    if (digits.length >= 10) out += '-' + digits.slice(9, 10);
+    if (digits.length >= 1) out += '(' + digits.slice(0, 1);
+    if (digits.length >= 2) out += digits.slice(1, 2);
+    if (digits.length >= 3) out += digits.slice(2, 3);
+    if (digits.length >= 3) out += ')';
+    if (digits.length >= 4) out += '-' + digits.slice(3, 4);
+    if (digits.length >= 5) out += digits.slice(4, 5);
+    if (digits.length >= 6) out += digits.slice(5, 6);
+    if (digits.length >= 6) out += '-';
+    if (digits.length >= 7) out += digits.slice(6, 7);
+    if (digits.length >= 8) out += digits.slice(7, 8);
+    if (digits.length >= 8) out += '-';
+    if (digits.length >= 9) out += digits.slice(8, 9);
+    if (digits.length >= 10) out += digits.slice(9, 10);
     
     e.target.value = out;
+});
+
+// При кліку — ставимо курсор після +38
+phoneInput.addEventListener('click', function() {
+    if (this.value === '+38') {
+        this.setSelectionRange(3, 3);
+    }
 });
 
 // Автоперехід між полями
@@ -616,7 +654,7 @@ formInputs.forEach((field, index) => {
     });
 });
 
-// ===== МОБІЛЬНА ОПТИМІЗАЦІЯ =====
+// Мобільна оптимізація
 if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768) {
     formInputs.forEach(input => {
         input.addEventListener('focus', () => {
