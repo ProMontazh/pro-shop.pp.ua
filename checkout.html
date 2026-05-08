@@ -32,7 +32,7 @@
         }
 
         header .logo {
-            margin-left: -14px;
+            margin-left: -5px;
         }
 
         header .logo svg { 
@@ -488,10 +488,11 @@ function displayOrder() {
     row1.innerHTML = `<span>Загальна сума:</span><span>${fmt(total)} грн</span>`;
     totalBlockEl.appendChild(row1);
 
+    // ===== ИЗМЕНЕНО: убран % из отображения =====
     const row2 = document.createElement('div');
     row2.className = discountPercent > 0 ? 'total-row discount' : 'total-row no-discount';
     row2.innerHTML = discountPercent > 0
-        ? `<span>Знижка ${discountPercent}%:</span><span>− ${fmt(discountAmount)} грн</span>`
+        ? `<span>Знижка:</span><span>− ${fmt(discountAmount)} грн</span>`  // было: Знижка ${discountPercent}%
         : `<span>Знижка:</span><span>0.00 грн</span>`;
     totalBlockEl.appendChild(row2);
     setTimeout(() => row2.classList.add('show'), 1000);
@@ -506,11 +507,12 @@ function displayOrder() {
         if (sound) { sound.volume = 0.15; sound.play().catch(() => {}); }
     }, 2000);
 
+    // ===== ИЗМЕНЕНО: убран % из скрытого поля формы =====
     cartDataField.value =
         `Номер замовлення: ${currentOrderNumber}\n` + cartText +
         `\nЗагальна сума: ${fmt(total)} грн` +
         (discountPercent > 0
-            ? `\nЗнижка ${discountPercent}%: −${fmt(discountAmount)} грн\nДо сплати: ${fmt(finalTotal)} грн`
+            ? `\nЗнижка: −${fmt(discountAmount)} грн\nДо сплати: ${fmt(finalTotal)} грн`  // было: Знижка ${discountPercent}%
             : `\nДо сплати: ${fmt(finalTotal)} грн`) +
         `\n\n⚠️ Статус оплати: Очікується`;
 
@@ -521,7 +523,6 @@ function displayOrder() {
 
 displayOrder();
 
-// ===== ВАЛІДАЦІЯ ФОРМИ =====
 function validateForm() {
     const inputs = [
         { id: 'name', label: 'Прізвище, Ім\'я' },
@@ -534,7 +535,6 @@ function validateForm() {
         const input = document.getElementById(item.id);
         const val = input.value.trim();
         
-        // Для телефона проверяем что не только +38
         if (item.id === 'phone' && (val === '' || val === '+38' || val === '+38(' || val.length < 6)) {
             input.classList.add('error');
             input.focus();
@@ -567,7 +567,6 @@ function scrollToField(input) {
     }, 100);
 }
 
-// Кнопка «Сплатити»
 document.getElementById('pay-button').addEventListener('click', function(e) {
     e.preventDefault();
     if (!validateForm()) return;
@@ -587,7 +586,6 @@ document.getElementById('pay-button').addEventListener('click', function(e) {
     .catch(() => alert("Помилка з'єднання із сервером."));
 });
 
-// Кнопка «Підтвердити»
 document.getElementById('checkout-form').addEventListener('submit', function(e) {
     e.preventDefault();
     if (!validateForm()) return;
@@ -598,11 +596,9 @@ document.getElementById('checkout-form').addEventListener('submit', function(e) 
     fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
     .then(r => {
         if (r.ok) {
-            // Показываем toast
             const toast = document.getElementById('toast');
             toast.classList.add('show');
             
-            // Через 2.5 секунды редирект
             setTimeout(() => {
                 toast.classList.remove('show');
                 localStorage.removeItem('cart');
@@ -615,7 +611,6 @@ document.getElementById('checkout-form').addEventListener('submit', function(e) 
     .catch(() => alert("Помилка з'єднання із сервером."));
 });
 
-// ===== МАСКА ТЕЛЕФОНА =====
 const phoneInput = document.getElementById('phone');
 
 phoneInput.addEventListener('focus', function() {
@@ -664,7 +659,6 @@ phoneInput.addEventListener('click', function() {
     }
 });
 
-// Автоперехід між полями
 const formInputs = document.querySelectorAll('#name, #phone, #city, #branch');
 formInputs.forEach((field, index) => {
     field.addEventListener('keydown', function(e) {
@@ -675,7 +669,6 @@ formInputs.forEach((field, index) => {
     });
 });
 
-// Мобільна оптимізація
 if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768) {
     formInputs.forEach(input => {
         input.addEventListener('focus', () => {
