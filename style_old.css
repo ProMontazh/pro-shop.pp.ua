@@ -712,15 +712,14 @@ header .logo svg {
     border-radius: 8px;
     font-size: 1.0em;
     
-    /* Перенос текста вместо nowrap */
+    /* Нормальный перенос — только при необходимости */
     white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
     
-    /* Ограничение ширины */
-    max-width: 100%;
-    min-width: 200px;
+    /* Ширина по содержимому */
     width: auto;
+    max-width: 90vw;
+    min-width: min-content;
+    
     text-align: center;
     line-height: 1.4;
     
