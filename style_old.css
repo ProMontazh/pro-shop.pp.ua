@@ -699,7 +699,27 @@ header .logo svg {
 .cancel-button:hover {
     background-color: #d44150;
 }
+/* ========================================
+   КНОПКА "ДОДАТИ У КОШИК" НА СТОРІНЦІ ТОВАРУ
+   ======================================== */
+.container .btn {
+    width: auto;
+    max-width: 300px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #800000;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
 
+.container .btn:hover {
+    background: #a00000;
+    transform: scale(1.02);
+}
 /* ========================================
    TOAST ПОВІДОМЛЕННЯ
    ======================================== */
