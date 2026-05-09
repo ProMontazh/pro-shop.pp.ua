@@ -698,6 +698,9 @@ header .logo svg {
 .cancel-button:hover {
     background-color: #d44150;
 }
+/* ========================================
+   TOAST ПОВІДОМЛЕННЯ
+   ======================================== */
 .toast {
     position: fixed;
     top: 45%;
