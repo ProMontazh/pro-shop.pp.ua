@@ -578,15 +578,20 @@ header .logo svg {
     border-radius: 8px;
     font-size: 1.0em;
     
-    /* Перенос ТОЛЬКО когда не влезает */
-    white-space: nowrap;        /* сначала без переноса */
-    word-wrap: normal;
-    overflow-wrap: normal;
+    /* Нормальный перенос — но только при достижении max-width */
+    white-space: normal;
     
-    /* Ширина по содержимому, но с ограничением */
-    width: auto;                /* автоширина по тексту */
-    max-width: 90vw;          /* перенос при превышении экрана */
-    min-width: min-content;   /* минимум по длине слова */
+    /* Ширина по содержимому */
+    width: fit-content;
+    width: -moz-fit-content;
+    
+    /* Максимум — 90% экрана. Перенос сработает только здесь */
+    max-width: 90vw;
+    
+    /* Не ломать слова посередине — перенос по пробелам */
+    overflow-wrap: normal;
+    word-wrap: normal;
+    word-break: normal;
     
     text-align: center;
     line-height: 1.4;
@@ -597,20 +602,18 @@ header .logo svg {
     z-index: 9999;
 }
 
-/* Когда текст не влезает — включаем перенос */
-@media screen and (max-width: 400px) {
-    .toast {
-        white-space: normal;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-    }
-}
-
 .toast.show {
     visibility: visible;
     opacity: 1;
 }
 
+/* На мобильных чуть больше места */
+@media (max-width: 480px) {
+    .toast {
+        max-width: 95vw;
+        padding: 10px 16px;
+    }
+}
 /* ========================================
    back-link
    ======================================== */
