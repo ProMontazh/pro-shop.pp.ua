@@ -712,20 +712,15 @@ header .logo svg {
     border-radius: 8px;
     font-size: 1.0em;
     
-    /* Нормальный перенос — но только при достижении max-width */
-    white-space: normal;
-    
-    /* Ширина по содержимому */
-    width: fit-content;
-    width: -moz-fit-content;
-    
-    /* Максимум — 90% экрана. Перенос сработает только здесь */
+    /* Ширина: по умолчанию авто, но с ограничениями */
+    width: auto;
+    min-width: min-content;
     max-width: 90vw;
     
-    /* Не ломать слова посередине — перенос по пробелам */
-    overflow-wrap: normal;
-    word-wrap: normal;
-    word-break: normal;
+    /* Перенос текста */
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     
     text-align: center;
     line-height: 1.4;
@@ -741,11 +736,15 @@ header .logo svg {
     opacity: 1;
 }
 
-/* На мобильных чуть больше места */
+/* Мобильная адаптация — занимает всю ширину */
 @media (max-width: 480px) {
     .toast {
+        width: 95vw;        /* занимает почти всю ширину */
         max-width: 95vw;
-        padding: 10px 16px;
+        min-width: auto;
+        padding: 14px 18px;
+        font-size: 1.05em;   /* чуть крупнее для читаемости */
+        line-height: 1.5;
     }
 }
 /* ========================================
