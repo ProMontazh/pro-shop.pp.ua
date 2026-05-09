@@ -131,8 +131,8 @@ function updateCart() {
 
     const discountMessage = document.getElementById('discount-message');
     if (discountMessage) {
-        discountMessage.style.display = total >= 1000 ? 'inline' : 'none';
-        discountMessage.textContent = total >= 1000 ? "Доступна знижка!" : "";
+        discountMessage.style.display = total >= 5000 ? 'inline' : 'none';
+        discountMessage.textContent = total >= 5000 ? "Доступна знижка!" : "";
     }
 }
 
