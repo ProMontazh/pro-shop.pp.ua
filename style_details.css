@@ -705,7 +705,7 @@ header .logo svg {
 .container .btn {
     width: auto;
     max-width: 350px;
-    padding: 12px 65px;
+    padding: 12px 65px; /* КНОПКА "ДОДАТИ У КОШИК" ширина 65 */
     border: none;
     border-radius: 8px;
     background: #800000;
