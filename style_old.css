@@ -1,5 +1,5 @@
 /* ========================================
-   ПРОЗАХІСТ - Основні стилі
+   ПРОЗАХІСТ — Основні стилі
    КОЛЬОРИ: темна тема
    ======================================== */
 
@@ -13,6 +13,8 @@
 /* Reset та базові стилі */
 *, *::before, *::after {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -22,12 +24,11 @@ html {
 
 body {
     font-family: 'Open Sans', sans-serif;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    background-color: #1a1a1a;
+    background-color: #0d0d0d;
     color: #e0e0e0;
     line-height: 1.6;
+    overflow-x: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* Приховані заголовки для SEO */
@@ -484,7 +485,6 @@ header .logo svg {
     border-radius: 15px;
     border: 1px solid #444;
     width: 465px;
-    
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     z-index: 1100;
 }
@@ -531,7 +531,7 @@ header .logo svg {
 }
 
 /* ========================================
-   КАРТОЧКА ТОВАРА — як фон карточок
+   КАРТОЧКА ТОВАРА В КОШИКУ
    ======================================== */
 .cart-item {
     display: flex;
@@ -540,8 +540,6 @@ header .logo svg {
     margin-bottom: 4px;
     padding: 2px 2px;
     border-radius: 8px;
- /*   background: linear-gradient(145deg, #222, #2a2a2a);*/
-   /* border: 1px solid #444;*/
     min-height: 46px;
 }
 
@@ -552,7 +550,6 @@ header .logo svg {
     object-fit: contain;
     flex-shrink: 0;
     border-radius: 4px;
- /* background:/* #1a1a1a; linear-gradient(145deg, #222, #2a2a2a); */
 }
 
 /* Назва — вертикальне центрування, макс 2 рядки */
@@ -623,7 +620,7 @@ header .logo svg {
 }
 
 /* ========================================
-   СПИСОК ТОВАРІВ
+   СПИСОК ТОВАРІВ У КОШИКУ
    ======================================== */
 #cart-items {
     max-height: 450px;
@@ -631,13 +628,15 @@ header .logo svg {
     border-radius: 4px;
     padding: 2px 0;
 }
+
 @media (max-width: 768px) {
-#cart-items {
-    max-height: 410px;   /* высота кошика в мобильном */
+    #cart-items {
+        max-height: 410px;   /* висота кошика в мобільному */
     }
 }
+
 /* ========================================
-   ПІДСУМОК І КНОПКИ
+   ПІДСУМОК І КНОПКИ КОШИКА
    ======================================== */
 .total-price {
     color: #e0e0e0;
@@ -652,7 +651,6 @@ header .logo svg {
     color: #28a745;
     font-weight: bold;
     font-size: 1.0em;
-   /* margin-left: 10px;*/
     display: none;
     text-align: right;
 }
@@ -687,7 +685,6 @@ header .logo svg {
     background-color: #4CAF50;
 }
 
-
 .cancel-button {
     background-color: #f35363;
 }
@@ -699,6 +696,7 @@ header .logo svg {
 .cancel-button:hover {
     background-color: #d44150;
 }
+
 /* ========================================
    TOAST ПОВІДОМЛЕННЯ
    ======================================== */
@@ -712,20 +710,14 @@ header .logo svg {
     padding: 12px 20px;
     border-radius: 8px;
     font-size: 1.0em;
-    
-    /* Ширина: по умолчанию авто, но с ограничениями */
     width: auto;
     min-width: min-content;
     max-width: 90vw;
-    
-    /* Перенос текста */
     white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    
     text-align: center;
     line-height: 1.4;
-    
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.5s;
@@ -737,17 +729,18 @@ header .logo svg {
     opacity: 1;
 }
 
-/* Мобильная адаптация — занимает всю ширину */
+/* Мобільна адаптація — займає всю ширину */
 @media (max-width: 480px) {
     .toast {
-        width: 95vw;        /* занимает почти всю ширину */
+        width: 95vw;
         max-width: 95vw;
         min-width: auto;
         padding: 14px 18px;
-        font-size: 1.05em;   /* чуть крупнее для читаемости */
+        font-size: 1.05em;
         line-height: 1.5;
     }
 }
+
 /* ========================================
    FOOTER
    ======================================== */
@@ -1252,10 +1245,6 @@ footer > p {
 /* ========================================
    АНІМАЦІЇ ПЕРЕХОДУ МІЖ КАТЕГОРІЯМИ
    ======================================== */
-body {
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
 body.slide-out-left {
     transform: translateX(-30%);
     opacity: 0;
@@ -1569,7 +1558,6 @@ body.slide-in-right {
         max-width: calc(50% - 12px);
     }
 
-    /* ← ЗМІНА: менший відступ контейнера → ширші картки на мобільних */
     .products-container {
         flex-direction: column;
         align-items: center;
@@ -1577,7 +1565,6 @@ body.slide-in-right {
         padding: 0 6px;
     }
 
-    /* ← ЗМІНА: картки займають майже всю ширину екрану */
     .product-item {
         width: 100%;
         max-width: 100%;
@@ -1750,8 +1737,52 @@ body.slide-in-right {
     }
 }
 
+@media (max-width: 480px) {
+    .mobile-breadcrumbs {
+        font-size: 0.8em;
+        padding: 5px 8px;
+    }
+    
+    .mobile-breadcrumbs .separator {
+        margin: 0 3px;
+    }
+    
+    .carousel-arrow {
+        font-size: 1.5rem;
+        padding: 10px;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-breadcrumbs {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .product-description {
+        margin-left: 80px;
+        margin-right: 40px;
+    }
+    
+    .carousel-arrow {
+        font-size: 2.5rem;
+        padding: 25px;
+    }
+    
+    .carousel-arrow.left { left: 80px; }
+    .carousel-arrow.right { right: 80px; }
+}
+
 /* ========================================
-   ХЛЕБНІ КРОШКИ — ПОВОРОТ ЕКРАНУ
+   ХЛІБНІ КРОШКИ — ПОВОРОТ ЕКРАНУ
    ======================================== */
 
 @media (max-width: 1024px) and (orientation: portrait) {
