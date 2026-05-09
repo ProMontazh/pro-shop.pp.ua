@@ -16,6 +16,29 @@ const CATEGORY_MAP = {
 };
 
 /* ======================================================
+   🔊 ЗВУК ПРИ КЛІКУ НА КАТЕГОРІЮ
+   ====================================================== */
+const clickSound = new Audio('sounds/click.mp3');
+
+function playClickSound() {
+    clickSound.currentTime = 0;
+    clickSound.volume = 0.3;
+    clickSound.play().catch(() => {});
+}
+
+// Розблокування аудіо при першій взаємодії користувача зі сторінкою
+let audioUnlocked = false;
+document.addEventListener('click', function unlockAudio() {
+    if (audioUnlocked) return;
+    clickSound.play().then(() => {
+        clickSound.pause();
+        clickSound.currentTime = 0;
+        audioUnlocked = true;
+    }).catch(() => {});
+    document.removeEventListener('click', unlockAudio);
+}, { once: true });
+
+/* ======================================================
    👆 СВАЙП НАВІГАЦІЯ — МІНІМАЛЬНА
    ====================================================== */
 const CATEGORY_SLIDES = [
