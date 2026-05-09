@@ -414,7 +414,7 @@ header .logo svg {
 
 .product-item .btn {
     margin-top: auto;
-    width: 100%;
+    max-width: 300px;
     padding: 12px 20px;
     border: none;
     border-radius: 8px;
