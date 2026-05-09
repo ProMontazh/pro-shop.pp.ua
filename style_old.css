@@ -713,7 +713,8 @@ header .logo svg {
     font-weight: 600;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s ease;
-    display: inline-block;
+    display: block;
+    margin: 0 auto;
 }
 
 .container .btn:hover {
