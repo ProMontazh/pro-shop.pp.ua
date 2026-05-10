@@ -70,10 +70,14 @@ function initSwipeNavigation() {
 
     // 🎵 Звук при кліку на категорію (карточки + навігація)
     document.querySelectorAll('.category-card, .category-nav a, .category-item').forEach(el => {
-        el.addEventListener('click', () => {
+    el.addEventListener('click', (e) => {
+        if (el.href) {
+            e.preventDefault();
             playClickSound();
-        });
+            setTimeout(() => { window.location.href = el.href; }, 80);
+        }
     });
+});
 
     // Свайпи
     let startX = 0;
