@@ -18,12 +18,8 @@ const CATEGORY_MAP = {
 /* ======================================================
    🎵 ЗВУКИ
    ====================================================== */
-function getSound(id) {
-    return document.getElementById(id);
-}
-
 function playClickSound() {
-    const sound = getSound('click-sound') || getSound('hover-sound');
+    const sound = document.getElementById('hover-sound') || document.getElementById('click-sound');
     if (!sound) return;
     const clone = sound.cloneNode();
     clone.volume = 0.3;
@@ -31,7 +27,7 @@ function playClickSound() {
 }
 
 function playBackSound() {
-    const sound = getSound('back-sound');
+    const sound = document.getElementById('back-sound');
     if (!sound) return;
     const clone = sound.cloneNode();
     clone.volume = 0.3;
