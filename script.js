@@ -16,27 +16,12 @@ const CATEGORY_MAP = {
 };
 
 /* ======================================================
-   🔊 ЗВУК ПРИ КЛІКУ НА КАТЕГОРІЮ
+   🎵 ЗВУКИ
    ====================================================== */
-const clickSound = new Audio('sounds/click.mp3');
-
-function playClickSound() {
-    clickSound.currentTime = 0;
-    clickSound.volume = 0.3;
-    clickSound.play().catch(() => {});
+const backSound = document.getElementById('back-sound');
+if (backSound) {
+    backSound.volume = 0.3;
 }
-
-// Розблокування аудіо при першій взаємодії користувача зі сторінкою
-let audioUnlocked = false;
-document.addEventListener('click', function unlockAudio() {
-    if (audioUnlocked) return;
-    clickSound.play().then(() => {
-        clickSound.pause();
-        clickSound.currentTime = 0;
-        audioUnlocked = true;
-    }).catch(() => {});
-    document.removeEventListener('click', unlockAudio);
-}, { once: true });
 
 /* ======================================================
    👆 СВАЙП НАВІГАЦІЯ — МІНІМАЛЬНА
@@ -72,6 +57,18 @@ function initSwipeNavigation() {
     }
     if (hintPrev) hintPrev.style.visibility = currentIndex > 0 ? 'visible' : 'hidden';
     if (hintNext) hintNext.style.visibility = currentIndex < CATEGORY_SLIDES.length - 1 ? 'visible' : 'hidden';
+
+    // 🎵 Звук при клику на категорию
+    document.querySelectorAll('.category-nav a').forEach(el => {
+        el.addEventListener('click', () => {
+            const hoverSound = document.getElementById('hover-sound');
+            if (hoverSound) {
+                hoverSound.currentTime = 0;
+                hoverSound.volume = 0.3;
+                hoverSound.play().catch(() => {});
+            }
+        });
+    });
 
     // Свайпи
     let startX = 0;
