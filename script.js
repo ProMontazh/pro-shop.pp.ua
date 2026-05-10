@@ -23,6 +23,24 @@ if (backSound) {
     backSound.volume = 0.3;
 }
 
+function playClickSound() {
+    const sound = document.getElementById('click-sound') || document.getElementById('hover-sound');
+    if (sound) {
+        sound.currentTime = 0;
+        sound.volume = 0.3;
+        sound.play().catch(() => {});
+    }
+}
+
+function playBackSound() {
+    const sound = document.getElementById('back-sound');
+    if (sound) {
+        sound.currentTime = 0;
+        sound.volume = 0.3;
+        sound.play().catch(() => {});
+    }
+}
+
 /* ======================================================
    👆 СВАЙП НАВІГАЦІЯ — МІНІМАЛЬНА
    ====================================================== */
@@ -58,15 +76,10 @@ function initSwipeNavigation() {
     if (hintPrev) hintPrev.style.visibility = currentIndex > 0 ? 'visible' : 'hidden';
     if (hintNext) hintNext.style.visibility = currentIndex < CATEGORY_SLIDES.length - 1 ? 'visible' : 'hidden';
 
-    // 🎵 Звук при клику на категорию
-    document.querySelectorAll('.category-nav a').forEach(el => {
+    // 🎵 Звук при кліку на категорію (карточки + навігація)
+    document.querySelectorAll('.category-card, .category-nav a, .category-item').forEach(el => {
         el.addEventListener('click', () => {
-            const hoverSound = document.getElementById('hover-sound');
-            if (hoverSound) {
-                hoverSound.currentTime = 0;
-                hoverSound.volume = 0.3;
-                hoverSound.play().catch(() => {});
-            }
+            playClickSound();
         });
     });
 
@@ -88,8 +101,10 @@ function initSwipeNavigation() {
         if (diffY > Math.abs(diffX)) return;
         
         if (diffX < -50 && currentIndex < CATEGORY_SLIDES.length - 1) {
+            playClickSound();
             window.location.href = CATEGORY_SLIDES[currentIndex + 1].file;
         } else if (diffX > 50 && currentIndex > 0) {
+            playBackSound();
             window.location.href = CATEGORY_SLIDES[currentIndex - 1].file;
         }
     }, { passive: true });
