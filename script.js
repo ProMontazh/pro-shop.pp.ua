@@ -18,29 +18,25 @@ const CATEGORY_MAP = {
 /* ======================================================
    🎵 ЗВУКИ
    ====================================================== */
-const backSound = document.getElementById('back-sound');
-if (backSound) {
-    backSound.volume = 0.3;
+function getSound(id) {
+    return document.getElementById(id);
 }
 
 function playClickSound() {
-    const sound = document.getElementById('click-sound') || document.getElementById('hover-sound');
-    if (sound) {
-        sound.currentTime = 0;
-        sound.volume = 0.3;
-        sound.play().catch(() => {});
-    }
+    const sound = getSound('click-sound') || getSound('hover-sound');
+    if (!sound) return;
+    const clone = sound.cloneNode();
+    clone.volume = 0.3;
+    clone.play().catch(() => {});
 }
 
 function playBackSound() {
-    const sound = document.getElementById('back-sound');
-    if (sound) {
-        sound.currentTime = 0;
-        sound.volume = 0.3;
-        sound.play().catch(() => {});
-    }
+    const sound = getSound('back-sound');
+    if (!sound) return;
+    const clone = sound.cloneNode();
+    clone.volume = 0.3;
+    clone.play().catch(() => {});
 }
-
 /* ======================================================
    👆 СВАЙП НАВІГАЦІЯ — МІНІМАЛЬНА
    ====================================================== */
