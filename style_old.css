@@ -58,7 +58,7 @@ header {
     color: white;
     text-align: left;
     z-index: 1000;
-    border-bottom: 2px solid #800000;
+/*    border-bottom: 2px solid #800000;  */
     display: flex;
     align-items: center;
 }
@@ -141,7 +141,7 @@ header .logo svg {
     width: 100%;
     background: linear-gradient(to right, rgba(7, 7, 7, 0.95), rgba(148, 148, 148, 0.95));
     padding: 4px 10px;
-    border-bottom: 1px solid #444;
+    border-bottom: 2px solid #800000;
     z-index: 999;
     font-size: 0.8em;
     white-space: nowrap;
