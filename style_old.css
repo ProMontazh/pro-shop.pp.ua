@@ -24,7 +24,7 @@ html {
 
 body {
     font-family: 'Open Sans', sans-serif;
-    background-color: #0d0d0d;
+    background-color: #1a1a1a;
     color: #e0e0e0;
     line-height: 1.6;
     overflow-x: hidden;
@@ -58,7 +58,7 @@ header {
     color: white;
     text-align: left;
     z-index: 1000;
-/*    border-bottom: 2px solid #800000;  */
+    border-bottom: 2px solid #800000;
     display: flex;
     align-items: center;
 }
@@ -140,8 +140,8 @@ header .logo svg {
     left: 0;
     width: 100%;
     background: linear-gradient(to right, rgba(7, 7, 7, 0.95), rgba(148, 148, 148, 0.95));
-    padding: 1px 10px;
-    border-bottom: 2px solid #800000;
+    padding: 4px 10px;
+    border-bottom: 1px solid #444;
     z-index: 999;
     font-size: 0.8em;
     white-space: nowrap;
@@ -161,7 +161,7 @@ header .logo svg {
 }
 
 .mobile-breadcrumbs .current {
-    color:/* #ff4444;*/    #fff;
+    color: #fff;
 }
 
 /* ========================================
@@ -705,7 +705,7 @@ header .logo svg {
 .container .btn {
     width: auto;
     max-width: 350px;
-    padding: 12px 65px;
+    padding: 12px 65px; /* КНОПКА "ДОДАТИ У КОШИК" ширина 65 */
     border: none;
     border-radius: 8px;
     background: #800000;
@@ -1606,7 +1606,7 @@ body.slide-in-right {
         width: 98%;
         max-width: 400px;
         margin: 0 auto;
-        top: 70px;
+        top: 92px;
         left: 0;
         right: 0;
     }
