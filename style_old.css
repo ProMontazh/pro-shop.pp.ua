@@ -140,7 +140,7 @@ header .logo svg {
     left: 0;
     width: 100%;
     background: linear-gradient(to right, rgba(7, 7, 7, 0.95), rgba(148, 148, 148, 0.95));
-    padding: 4px 10px;
+    padding: 1px 10px;
     border-bottom: 2px solid #800000;
     z-index: 999;
     font-size: 0.8em;
