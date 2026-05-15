@@ -10,55 +10,28 @@
     <title>Гарантія та Повернення | ПРОЗАХІСТ | Ajax та Imou | Харків</title>
     
     <style>
-        /* ===== БАЗОВІ СТИЛІ ===== */
-        :root {
-            --primary-color: #800000;
-            --secondary-color: #808080;
-            --accent-color: #007bff;
-            --text-dark: #333;
-            --text-light: #666;
-            --bg-light: #f4f4f4;
-            --white: #ffffff;
-            --shadow: 0 4px 12px rgba(0,0,0,0.1);
-            --transition: all 0.3s ease;
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Open Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-light);
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
+            background-color: #0d0d0d;
+            color: #e0e0e0;
             line-height: 1.6;
-            color: var(--text-dark);
+            min-height: 100vh;
         }
-a[href^="mailto:"] {
-    text-decoration: none;
-}
-        /* ===== HEADER ===== */
+
         header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 65px;
-            background: linear-gradient(to right, rgba(7, 7, 7, 0.95), rgba(148, 148, 148, 0.95));
-            padding: 0;
-            color: white;
+            height: 55px;
+            background: linear-gradient(to right, rgba(7,7,7,0.95), rgba(148,148,148,0.95));
+            display: flex;
+            align-items: center;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 2px solid #800000;
+            padding: 0;
         }
 
         header .logo {
@@ -66,89 +39,81 @@ a[href^="mailto:"] {
         }
 
         header .logo svg {
-            height: 65px;
+            height: 55px;
             width: auto;
+            display: block;
         }
 
-        /* ===== MAIN CONTENT ===== */
         main {
-            margin-top: 65px;
-            min-height: calc(100vh - 65px);
+            margin-top: 55px;
+            min-height: calc(100vh - 55px);
         }
 
         .warranty-container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .page-title {
             text-align: center;
-            font-size: 2.5em;
-            color: var(--primary-color);
-            margin-bottom: 20px;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+            color: #fff;
+            margin-bottom: 10px;
         }
 
         .page-subtitle {
             text-align: center;
-            font-size: 1.2em;
-            color: var(--text-dark);
+            font-size: 1em;
+            color: #808080;
             margin-bottom: 40px;
-            background: rgba(255,255,255,0.7);
-            padding: 10px;
-            border-radius: 8px;
-            backdrop-filter: blur(5px);
         }
 
-        /* ===== СЕКЦІЇ ===== */
         .section {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: #1a1a1a;
+            border: 1px solid #444;
+            border-radius: 8px;
             padding: 30px;
             margin-bottom: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
         }
 
+        @keyframes fadeIn { to { opacity: 1; } }
+
         .section h2 {
-            color: var(--primary-color);
-            font-size: 1.8em;
+            color: #ff4444;
+            font-size: 1.3em;
+            font-weight: 700;
             margin-bottom: 20px;
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 10px;
+            border-left: 3px solid #800000;
+            padding-left: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .section h3 {
-            color: var(--secondary-color);
-            font-size: 1.4em;
+            color: #b0b0b0;
+            font-size: 1.1em;
             margin-top: 25px;
             margin-bottom: 15px;
         }
 
-        /* ===== ГАРАНТІЙНІ ТЕРМІНИ ===== */
         .warranty-terms {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
 
         .warranty-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 25px;
-            transition: var(--transition);
+            background: linear-gradient(145deg, #2a2a2a, #333);
+            border: 1px solid #444;
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
             cursor: default;
             position: relative;
             overflow: hidden;
@@ -161,35 +126,35 @@ a[href^="mailto:"] {
             left: 0;
             width: 5px;
             height: 100%;
-            background: var(--primary-color);
+            background: #800000;
         }
 
         .warranty-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(128, 0, 0, 0.15);
-            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-color: #800000;
         }
 
         .warranty-card h3 {
-            color: var(--primary-color);
+            color: #ff4444;
             margin-top: 0;
             margin-bottom: 15px;
-            font-size: 1.5em;
+            font-size: 1.2em;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
         .warranty-icon {
-            font-size: 1.8em;
+            font-size: 1.5em;
         }
 
         .warranty-period {
-            font-size: 2.5em;
+            font-size: 2em;
             font-weight: 700;
-            color: var(--primary-color);
+            color: #ff4444;
             text-align: center;
-            margin: 20px 0;
+            margin: 15px 0;
         }
 
         .warranty-card ul {
@@ -200,164 +165,173 @@ a[href^="mailto:"] {
 
         .warranty-card li {
             padding: 8px 0;
-            color: var(--text-dark);
+            color: #aaa;
             position: relative;
             padding-left: 25px;
+            font-size: 0.9em;
         }
 
         .warranty-card li:before {
-            content: "✓";
+            content: "▸";
             position: absolute;
             left: 0;
-            color: #28a745;
+            color: #800000;
             font-weight: bold;
             font-size: 1.2em;
         }
 
-        /* ===== ТАБЛИЦЯ ГАРАНТІЙНИХ ТЕРМІНІВ ===== */
+        .warranty-card p {
+            color: #808080;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
         .warranty-table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
-            background: white;
+            background: #1a1a1a;
             border-radius: 8px;
             overflow: hidden;
+            border: 1px solid #444;
         }
 
         .warranty-table th,
         .warranty-table td {
-            padding: 15px;
+            padding: 12px 15px;
             text-align: left;
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid #333;
+            color: #b0b0b0;
+            font-size: 0.9em;
         }
 
         .warranty-table th {
-            background: linear-gradient(to right, var(--primary-color), #a00000);
-            color: white;
+            background: linear-gradient(145deg, #800000, #a00000);
+            color: #fff;
             font-weight: 600;
         }
 
         .warranty-table tr:hover {
-            background: #f8f9fa;
+            background: #222;
         }
 
         .warranty-table .period {
             font-weight: 700;
-            color: var(--primary-color);
+            color: #ff4444;
             font-size: 1.1em;
         }
 
-        /* ===== ВАЖЛИВА ІНФОРМАЦІЯ ===== */
         .info-box {
-            background: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 20px;
+            background: #222;
+            border-left: 3px solid #ffc107;
+            padding: 15px;
             margin: 20px 0;
-            border-radius: 8px;
+            border-radius: 6px;
         }
 
         .info-box.success {
-            background: #d4edda;
-            border-left-color: #28a745;
+            background: #1a3a1a;
+            border-left-color: #4CAF50;
         }
 
         .info-box.danger {
-            background: #f8d7da;
-            border-left-color: #dc3545;
+            background: #3a1a1a;
+            border-left-color: #ff4444;
         }
 
         .info-box.primary {
-            background: #d1ecf1;
-            border-left-color: #17a2b8;
+            background: #1a2a3a;
+            border-left-color: #2b7cff;
         }
 
         .info-box h4 {
             margin-top: 0;
-            color: var(--text-dark);
-            font-size: 1.2em;
+            color: #fff;
+            font-size: 1em;
+            margin-bottom: 8px;
         }
-/* ======================================================
-   🎨 КОЛЬОРИ ДЛЯ ТЕКСТУ
-   ====================================================== */
 
-.red {
-    color: #800000;
-}
+        .info-box p {
+            color: #aaa;
+            font-size: 0.9em;
+            margin: 0;
+        }
 
-.black {
-    color: #808080;
-}
-        /* ===== СПИСОК З ІКОНКАМИ ===== */
+        .info-box strong {
+            color: #fff;
+        }
+
         .feature-list {
             list-style: none;
             padding: 0;
         }
 
         .feature-list li {
-            padding: 12px 0;
-            padding-left: 35px;
+            padding: 10px 0;
+            padding-left: 30px;
             position: relative;
-            font-size: 1.05em;
+            font-size: 0.95em;
+            color: #aaa;
         }
 
         .feature-list li:before {
-            content: "✅";
+            content: "▸";
             position: absolute;
             left: 0;
-            font-size: 1.3em;
+            color: #800000;
+            font-size: 1.2em;
         }
 
         .feature-list.cross li:before {
-            content: "❌";
+            content: "✕";
+            color: #ff4444;
         }
 
-        /* ===== КНОПКИ ===== */
         .btn-primary {
             display: inline-block;
-            background: var(--primary-color);
-            color: white;
-            padding: 15px 40px;
+            background: linear-gradient(145deg, #800000, #a00000);
+            color: #fff;
+            padding: 12px 25px;
             border: none;
             border-radius: 8px;
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: 600;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             text-decoration: none;
             text-align: center;
         }
 
         .btn-primary:hover {
-            background: #600000;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(128, 0, 0, 0.3);
+            background: linear-gradient(145deg, #a00000, #c00000);
+            transform: scale(1.02);
         }
 
         .btn-secondary {
             display: inline-block;
-            background: var(--secondary-color);
-            color: white;
-            padding: 12px 30px;
-            border: none;
+            background: #333;
+            color: #ccc;
+            padding: 12px 25px;
+            border: 1px solid #444;
             border-radius: 8px;
             font-size: 1em;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             text-decoration: none;
         }
 
         .btn-secondary:hover {
-            background: #606060;
+            background: #444;
+            color: #fff;
         }
 
         .buttons-row {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             margin-top: 30px;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            text-align: center;
         }
 
         .buttons-row.column {
@@ -370,7 +344,6 @@ a[href^="mailto:"] {
             min-width: 280px;
         }
 
-        /* ===== ПРОЦЕС ПОВЕРНЕННЯ ===== */
         .process-steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -379,19 +352,24 @@ a[href^="mailto:"] {
         }
 
         .process-step {
-            background: white;
+            background: linear-gradient(145deg, #2a2a2a, #333);
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 15px;
             text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            position: relative;
+            border: 1px solid #444;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-3px);
+            border-color: #800000;
         }
 
         .step-number {
             width: 50px;
             height: 50px;
-            background: var(--primary-color);
-            color: white;
+            background: linear-gradient(145deg, #800000, #a00000);
+            color: #fff;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -402,168 +380,133 @@ a[href^="mailto:"] {
         }
 
         .process-step h4 {
-            color: var(--primary-color);
+            color: #ff4444;
             margin-bottom: 10px;
         }
 
         .process-step p {
-            color: var(--text-light);
-            font-size: 0.95em;
+            color: #aaa;
+            font-size: 0.9em;
             margin: 0;
         }
 
-               /* ======================================================
-   🦶 FOOTER (ПІДВАЛ)
-   ====================================================== */
-
-footer {
-    background: var(--text-dark);
-    color: var(--white);
-    text-align: center;
-     padding: 30px 20px 5px 20px;  /* top right bottom left */
-    font-size: 0.9em;
-    margin-top: 0px;
-}
-
-.footer-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-links {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 25px;
-    margin-bottom: 20px;
-    align-items: start;
-}
-
-/* Все столбики */
-.footer-links > div {
-    text-align: left;
-    margin-top: 0;
-}
-
-/* Все заголовки — одна линия */
-.footer-links h4 {
-    color: var(--white);
-    margin-bottom: 15px;
-    font-size: 1.1em;
-    font-weight: 700;
-    border-bottom: none;
-    padding-bottom: 0;
-    margin-top: 0;
-    line-height: 1.2;
-}
-
-/* У категорий 2 и 3 убираем заголовки полностью */
-.footer-links .cat2 h4,
-.footer-links .cat3 h4 {
-    display: none;
-}
-
-/* Опускаем категории 2 и 3 на уровень ссылок первого столбика */
-.footer-links .cat2,
-.footer-links .cat3 {
-    padding-top: 33px;/* высота заголовка + margin-bottom */
-}
-
-.footer-links a {
-    display: block;
-    color: #aaa;
-    text-decoration: none;
-    margin-bottom: 8px;
-    transition: var(--transition);
-    font-size: 0.9em;
-    line-height: 1.4;
-}
-
-.footer-links a:hover {
-    color: var(--white);
-    transform: translateX(1px);
-}
-
-/* ======================================================
-   📱 АДАПТИВНІСТЬ (ПЛАНШЕТИ)
-   ====================================================== */
-
-@media (max-width: 1024px) {
-    .footer-links {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-    }
-    
-    /* Убираем отступ на планшете */
-    .footer-links .cat2,
-    .footer-links .cat3 {
-        padding-top: 34px;
-    }
-}
-
-/* ======================================================
-   📱 АДАПТИВНІСТЬ (МОБІЛЬНА ВЕРСІЯ)
-   ====================================================== */
-
-@media (max-width: 768px) {
-    .footer-links {
-        grid-template-columns: 1fr;
-        gap: 25px;
-        text-align: center;
-    }
-
-    .footer-links > div {
-        text-align: center;
-    }
-    
-    /* Убираем отступ на мобильном */
-    .footer-links .cat2,
-    .footer-links .cat3 {
-        padding-top: 0;
-    }
-}
         .red {
-            color: var(--primary-color);
+            color: #ff4444;
         }
 
         .black {
-            color: var(--secondary-color);
+            color: #808080;
         }
 
-        /* ===== АДАПТИВНІСТЬ ===== */
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px 5px 20px;
+            font-size: 0.9em;
+            margin-top: 0;
+            border-top: 2px solid #800000;
+        }
+
+        .footer-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 25px;
+            margin-bottom: 20px;
+            align-items: start;
+        }
+
+        .footer-links > div {
+            text-align: left;
+            margin-top: 0;
+        }
+
+        .footer-links h4 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            font-weight: 700;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-top: 0;
+            line-height: 1.2;
+        }
+
+        .footer-links .cat2 h4,
+        .footer-links .cat3 h4 {
+            display: none;
+        }
+
+        .footer-links .cat2,
+        .footer-links .cat3 {
+            padding-top: 33px;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #aaa;
+            text-decoration: none;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .footer-links a[href^="tel:"],
+        .footer-links a[href^="mailto:"] {
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .footer-links a[href^="tel:"]:hover,
+        .footer-links a[href^="mailto:"]:hover {
+            color: #fff;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        footer > p {
+            text-align: center;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-links {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+            .footer-links .cat2,
+            .footer-links .cat3 {
+                padding-top: 34px;
+            }
+        }
+
         @media (max-width: 768px) {
-            body {
-                background-attachment: scroll;
-            }
-
-            header .logo {
-                padding-left: 0px;
-            }
-
-            header .logo svg {
-                width: 230px;
-                height: auto;
-            }
-
             .page-title {
-                font-size: 1.8em;
-            }
-
-            .page-subtitle {
-                font-size: 1em;
+                font-size: clamp(1.2rem, 4vw, 1.8rem);
             }
 
             .warranty-container {
-                padding: 20px 15px;
+                padding: 20px 10px;
             }
 
             .section {
                 padding: 20px 15px;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(8px);
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
             }
 
             .section h2 {
-                font-size: 1.5em;
+                font-size: 1.1em;
             }
 
             .warranty-terms {
@@ -571,12 +514,12 @@ footer {
             }
 
             .warranty-table {
-                font-size: 0.9em;
+                font-size: 0.85em;
             }
 
             .warranty-table th,
             .warranty-table td {
-                padding: 10px;
+                padding: 10px 8px;
             }
 
             .process-steps {
@@ -594,33 +537,36 @@ footer {
                 max-width: 320px;
             }
 
-            
-
-        @media (max-width: 480px) {
-            header .logo svg {
-                width: 205px;
+            .footer-links {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                text-align: center;
             }
 
+            .footer-links > div {
+                text-align: center;
+            }
+
+            .footer-links .cat2,
+            .footer-links .cat3 {
+                padding-top: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
             .page-title {
-                font-size: 1.5em;
+                font-size: 1.2em;
             }
 
             .warranty-card h3 {
-                font-size: 1.3em;
+                font-size: 1.1em;
             }
 
             .warranty-period {
-                font-size: 2em;
+                font-size: 1.8em;
             }
         }
-    
-        /* ===== ГАРАНТІЙНІ КОНТАКТИ ===== */
-        .warranty-container a[href^="tel:"],
-        .warranty-container a[href^="mailto:"] {
-            color: inherit;
-            text-decoration: none;
-        }
-</style>
+    </style>
 <base target="_blank">
 </head>
 <body>
@@ -684,7 +630,7 @@ footer {
 
             <!-- ГАРАНТІЙНІ ТЕРМІНИ -->
             <section class="section">
-                <h2>Гарантійні терміни</h2>
+                <h2>🛡️ Гарантійні терміни</h2>
                 
                 <div class="warranty-terms">
                     <!-- Ajax Systems -->
@@ -731,7 +677,7 @@ footer {
                 </div>
 
                 <div class="info-box success">
-                    <h4>Гарантія від продавця</h4>
+                    <h4>✅ Гарантія від продавця</h4>
                     <p>На всі пристрої Ajax Systems та Imou надається гарантія від продавця терміном до 24 місяців. Всі пристрої — 100% оригінальні з сертифікатами якості та повним сервісним обслуговуванням.</p>
                 </div>
 
@@ -743,7 +689,7 @@ footer {
 
             <!-- ЩО ВХОДИТЬ В ГАРАНТІЮ -->
             <section class="section">
-                <h2>Що входить у гарантійне обслуговування</h2>
+                <h2>✅ Що входить у гарантійне обслуговування</h2>
                 
                 <ul class="feature-list">
                     <li>Безкоштовний ремонт при заводському браку</li>
@@ -778,7 +724,7 @@ footer {
 
             <!-- ПРОЦЕС ГАРАНТІЙНОГО ОБСЛУГОВУВАННЯ -->
             <section class="section">
-                <h2>Як оформити гарантійний випадок</h2>
+                <h2>🔧 Як оформити гарантійний випадок</h2>
                 
                 <div class="process-steps">
                     <div class="process-step">
@@ -818,7 +764,7 @@ footer {
                     </div>
                 </div>
 
-                <h3>Що потрібно для гарантійного випадку:</h3>
+                <h3>📦 Що потрібно для гарантійного випадку:</h3>
                 <ul class="feature-list">
                     <li>Гарантійний талон (заповнений при продажу)</li>
                     <li>Чек або інший документ про купівлю</li>
@@ -838,7 +784,7 @@ footer {
 
             <!-- ПОВЕРНЕННЯ ТОВАРУ -->
             <section class="section">
-                <h2>Повернення товару (14 днів)</h2>
+                <h2>↩️ Повернення товару (14 днів)</h2>
                 
                 <p style="font-size: 1.1em; margin-bottom: 20px;">Згідно Закону України "Про захист прав споживачів", ви маєте право повернути товар належної якості протягом 14 днів з моменту покупки.</p>
 
@@ -889,7 +835,7 @@ footer {
 
             <!-- ОБМІН ТОВАРУ -->
             <section class="section">
-                <h2>Обмін товару</h2>
+                <h2>🔄 Обмін товару</h2>
                 
                 <p style="font-size: 1.1em; margin-bottom: 20px;">Ви можете обміняти придбаний товар на інший протягом 14 днів, якщо він не підійшов за характеристиками, розміром або з інших причин.</p>
 
@@ -909,19 +855,19 @@ footer {
                 </ul>
 
                 <div class="info-box success">
-                    <h4>Швидкий обмін</h4>
+                    <h4>✅ Швидкий обмін</h4>
                     <p>При наявності потрібного товару на складі обмін відбувається протягом 1-3 днів! Доставка обміненого товару — безкоштовно.</p>
                 </div>
             </section>
 
             <!-- КОНТАКТИ -->
             <section class="section">
-                <h2>Контакти для гарантійних питань</h2>
+                <h2>📞 Контакти для гарантійних питань</h2>
                 
                 <p style="font-size: 1.1em; margin-bottom: 20px;">Виникли питання щодо гарантії або повернення? Звертайтеся!</p>
                 
                 <ul class="feature-list">
-                    <li><strong>Телефон:</strong> <a href="tel:+380935016040">+380 93 501 60 40</a></li>
+                    <li><strong>Телефон:</strong> <a href="tel:+380935016040" >+380 93 501 60 40</a></li>
                     <li><strong>Email:</strong> <a href="mailto:prozakhyst@ukr.net">prozakhyst@ukr.net</a>
                     <li><strong>Viber / Telegram:</strong> +380 93 501 60 40</li>
                     <li><strong>Графік роботи:</strong> Пн-Пт: 9:00-18:00, Сб: 10:00-15:00</li>
