@@ -285,14 +285,14 @@ header .logo svg {
 
 .products h1 {
     color: #fff;
-    font-size: clamp(1.0rem, 4vw, 2rem);
+    font-size: clamp(1.1rem, 4vw, 2rem);
     margin: 90px 0 20px;
     text-align: center;
 }
 
 .seo-text {
     text-align: center;
-    max-width: 950px;
+    max-width: 940px;
     margin: 0 auto 40px;
     color: #aaa;
     line-height: 1.8;
