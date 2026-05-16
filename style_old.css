@@ -1615,7 +1615,9 @@ body.slide-in-right {
         padding: 8px 18px;
         font-size: 0.9em;
     }
-
+.products h1 {
+    margin: 90px 0 20px;
+    }
     .footer-links {
         grid-template-columns: 1fr;
         gap: 25px;
