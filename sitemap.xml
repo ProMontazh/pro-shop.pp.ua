@@ -51,14 +51,17 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-
+                                                                                                               <!-- Деталі vnutrishni_datchyky -->
     <url>
         <loc>https://xn--80anevegliy.pp.ua/vnutrishni_datchyky.html</loc>
         <lastmod>2026-05-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
- <!-- Деталі товарів -->
+        
+        
+        
+        <!-- Деталі товарів -->
 
     <url>
         <loc>https://xn--80anevegliy.pp.ua/vnutrishni_datchyky/ajax_doorprotect_white.html</loc>
