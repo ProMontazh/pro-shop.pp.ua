@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Головна -->
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/</loc>
+        <lastmod>2026-05-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Категорії -->
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/vnutrishni_kamery.html</loc>
+        <lastmod>2026-05-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/zovnishni_kamery.html</loc>
+        <lastmod>2026-05-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/zovnishni_4G_kamery.html</loc>
+        <lastmod>2026-05-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/karty_pam'yati.html</loc>
+        <lastmod>2026-05-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/komplekty_syhnalizaciyi.html</loc>
+        <lastmod>2026-05-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/khuby.html</loc>
+        <lastmod>2026-05-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/vnutrishni_datchyky.html</loc>
+        <lastmod>2026-05-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/zovnishni_datchyky.html</loc>
+        <lastmod>2026-05-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/zakhyst_vid_potopu.html</loc>
+        <lastmod>2026-05-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/pozhezhna_bezpeka.html</loc>
+        <lastmod>2026-05-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Інформаційні сторінки -->
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/dostavka.html</loc>
+        <lastmod>2026-05-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/montazh.html</loc>
+        <lastmod>2026-05-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/garantiya.html</loc>
+        <lastmod>2026-05-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+</urlset>
