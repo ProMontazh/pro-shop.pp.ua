@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 70">
+    <!-- Стены -->
+    <line x1="15" y1="38" x2="15" y2="65"
+          stroke="#808080"
+          stroke-width="10"
+          stroke-linecap="round"/>
+
+    <line x1="75" y1="38" x2="75" y2="65"
+          stroke="#808080"
+          stroke-width="10"
+          stroke-linecap="round"/>
+
+    <!-- Крыша поверх стен -->
+    <line x1="5" y1="35" x2="45" y2="10"
+          stroke="#800000"
+          stroke-width="10"
+          stroke-linecap="round"/>
+
+    <line x1="45" y1="10" x2="85" y2="35"
+          stroke="#800000"
+          stroke-width="10"
+          stroke-linecap="round"/>
+</svg>
