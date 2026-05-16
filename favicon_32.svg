@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Крыша -->
+  <line x1="40" y1="80" x2="100" y2="40" stroke="#800000" stroke-width="14" stroke-linecap="round"/>
+  <line x1="100" y1="40" x2="160" y2="80" stroke="#800000" stroke-width="14" stroke-linecap="round"/>
+  
+  <!-- Стены -->
+  <line x1="60" y1="85" x2="60" y2="130" stroke="#808080" stroke-width="14" stroke-linecap="round"/>
+  <line x1="140" y1="85" x2="140" y2="130" stroke="#808080" stroke-width="14" stroke-linecap="round"/>
+  
+  <!-- Текст ПРОЗАХИСТ -->
+  <text x="100" y="175" text-anchor="middle" font-size="32" font-weight="700" font-family="Arial, Helvetica, sans-serif">
+    <tspan fill="#800000">ПРО</tspan><tspan fill="#808080">ЗАХИСТ</tspan>
+  </text>
+</svg>
