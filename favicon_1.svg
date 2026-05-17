@@ -23,7 +23,7 @@
   <text x="160"
         y="213"
         text-anchor="middle"
-        font-size="40"
+        font-size="38"
         font-weight="700"
         font-family="Helvetica"
         fill="#800000"
@@ -33,9 +33,9 @@
 
   <!-- ЗАХИСТ -->
   <text x="160"
-        y="260"
+        y="250"
         text-anchor="middle"
-        font-size="40"
+        font-size="38"
         font-weight="700"
         font-family="Arial, Helvetica, sans-serif"
         fill="#808080"
