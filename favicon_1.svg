@@ -21,7 +21,7 @@
 
   <!-- ПРО внутри дома НИЖЕ -->
   <text x="160"
-        y="210"
+        y="215"
         text-anchor="middle"
         font-size="47"
         font-weight="700"
