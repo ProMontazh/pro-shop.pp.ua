@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /private/
+Disallow: /checkout.html
+
+Allow: /images/
+Allow: /details_*.html
+
+Sitemap: https://xn--80anevegliy.pp.ua/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
