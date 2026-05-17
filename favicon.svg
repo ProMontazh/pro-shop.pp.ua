@@ -19,7 +19,7 @@
         stroke-linecap="round"/>
 
   <!-- Текст -->
-  <text x="105" y="185"
+  <text x="105" y="175"
         text-anchor="middle"
         font-size="30"
         font-weight="700"
