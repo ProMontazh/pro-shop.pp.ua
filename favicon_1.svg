@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 300">
+
+  <!-- Дом -->
+  <g stroke-linecap="round" fill="none">
+
+    <!-- Крыша -->
+    <path d="M70 120 L160 55 L250 120"
+          stroke="#800000"
+          stroke-width="18"/>
+
+    <!-- Стены -->
+    <line x1="95" y1="120" x2="95" y2="205"
+          stroke="#808080"
+          stroke-width="18"/>
+
+    <line x1="225" y1="120" x2="225" y2="205"
+          stroke="#808080"
+          stroke-width="18"/>
+
+  </g>
+
+  <!-- ПРО внутри дома НИЖЕ -->
+  <text x="160"
+        y="195"
+        text-anchor="middle"
+        font-size="52"
+        font-weight="700"
+        font-family="Arial, Helvetica, sans-serif"
+        fill="#800000"
+        letter-spacing="1">
+    ПРО
+  </text>
+
+  <!-- ЗАХИСТ -->
+  <text x="160"
+        y="270"
+        text-anchor="middle"
+        font-size="58"
+        font-weight="700"
+        font-family="Arial, Helvetica, sans-serif"
+        fill="#808080"
+        letter-spacing="1">
+    ЗАХИСТ
+  </text>
+
+</svg>
