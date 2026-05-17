@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <!-- Головна -->
     <url>
@@ -139,7 +139,7 @@
     </url>
                                                                                 <!-- karty_pam'yati -->
     <url>
-        <loc>https://xn--80anevegliy.pp.ua/karty_pam'yati.html</loc>
+        <loc>https://xn--80anevegliy.pp.ua/karty_pam%27yati.html</loc>
         <lastmod>2026-05-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
