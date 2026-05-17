@@ -1,24 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    <!-- Головна -->
-    <url>
+<url>
         <loc>https://xn--80anevegliy.pp.ua/</loc>
         <lastmod>2026-05-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
-
-    <!-- Категорії -->
-                                                                                <!-- vnutrishni_kamery -->
-    <url>
+<url>
         <loc>https://xn--80anevegliy.pp.ua/vnutrishni_kamery.html</loc>
         <lastmod>2026-05-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
-    <!-- Сторінки товарів -->
-<url>
+    <url>
     <loc>https://xn--80anevegliy.pp.ua/vnutrishni_kamery/IMOU_IPC_K2MP_3H1WE.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
@@ -59,14 +53,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
 </url>
-                                                                                <!-- zovnishni_kamery -->
-    <url>
+<url>
         <loc>https://xn--80anevegliy.pp.ua/zovnishni_kamery.html</loc>
         <lastmod>2026-05-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
-      <!-- Товари: Зовнішні камери -->
     <url>
         <loc>https://xn--80anevegliy.pp.ua/zovnishni_kamery/IMOU_IPC_K3DP_3H0WF.html</loc>
         <lastmod>2026-05-17</lastmod>
@@ -107,16 +99,13 @@
         <lastmod>2026-05-17</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-    </url>
-
-                                                                                <!-- zovnishni_4G_kamery -->
+        </url>
     <url>
         <loc>https://xn--80anevegliy.pp.ua/zovnishni_4G_kamery.html</loc>
         <lastmod>2026-05-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
-     <!-- Товари: Зовнішні 4G камери -->
     <url>
         <loc>https://xn--80anevegliy.pp.ua/zovnishni_4G_kamery/IMOU_IPC_K7FP_3H0TE_EU.html</loc>
         <lastmod>2026-05-17</lastmod>
@@ -137,22 +126,19 @@
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
-                                                                                <!-- karty_pam'yati -->
     <url>
         <loc>https://xn--80anevegliy.pp.ua/karty_pam%27yati.html</loc>
         <lastmod>2026-05-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-                                                                                <!-- komplekty_syhnalizaciyi -->  
     <url>
         <loc>https://xn--80anevegliy.pp.ua/komplekty_syhnalizaciyi.html</loc>
         <lastmod>2026-05-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
-         <!-- Комплекти Ajax -->
-<url>
+    <url>
     <loc>https://xn--80anevegliy.pp.ua/komplekty_syhnalizaciyi/ajax_starterkit_white.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -206,16 +192,14 @@
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-</url>                                                                                          <!-- khuby -->
+</url>                                                                                       
     <url>
         <loc>https://xn--80anevegliy.pp.ua/khuby.html</loc>
         <lastmod>2026-05-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-      <!-- Хаби -->
-
-    <url>
+     <url>
         <loc>https://xn--80anevegliy.pp.ua/khuby/ajax_hub_white.html</loc>
         <lastmod>2026-05-17</lastmod>
         <changefreq>weekly</changefreq>
@@ -312,18 +296,12 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-                                                                                   <!-- vnutrishni_datchyky -->
     <url>
         <loc>https://xn--80anevegliy.pp.ua/vnutrishni_datchyky.html</loc>
         <lastmod>2026-05-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-        
-        
-        
-        <!-- Деталі товарів -->
-
     <url>
         <loc>https://xn--80anevegliy.pp.ua/vnutrishni_datchyky/ajax_doorprotect_white.html</loc>
         <lastmod>2026-05-16</lastmod>
@@ -476,15 +454,13 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-                                                                                                <!-- zovnishni_datchyky -->
     <url>
         <loc>https://xn--80anevegliy.pp.ua/zovnishni_datchyky.html</loc>
         <lastmod>2026-05-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-    <!-- Зовнішні датчики -->
-    <url>
+ <url>
         <loc>https://xn--80anevegliy.pp.ua/zovnishni_datchyky/ajax_motionprotect_outdoor.html</loc>
         <lastmod>2026-05-17</lastmod>
         <changefreq>monthly</changefreq>
@@ -525,15 +501,13 @@
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
-                                                                                                 <!--  zakhyst_vid_potopu -->
     <url>
         <loc>https://xn--80anevegliy.pp.ua/zakhyst_vid_potopu.html</loc>
         <lastmod>2026-05-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-    <!-- AJAX WATERSTOP WHITE -->
-<url>
+    <url>
     <loc>https://xn--80anevegliy.pp.ua/zakhyst_vid_potopu/ajax_waterstop_white_0.5D.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -554,7 +528,6 @@
     <priority>0.8</priority>
 </url>
 
-<!-- AJAX WATERSTOP BLACK -->
 <url>
     <loc>https://xn--80anevegliy.pp.ua/zakhyst_vid_potopu/ajax_waterstop_black_0.5D.html</loc>
     <lastmod>2026-05-17</lastmod>
@@ -576,7 +549,6 @@
     <priority>0.8</priority>
 </url>
 
-<!-- AJAX LEAKSPROTECT -->
 <url>
     <loc>https://xn--80anevegliy.pp.ua/zakhyst_vid_potopu/ajax_leaksprotect_white.html</loc>
     <lastmod>2026-05-17</lastmod>
@@ -590,14 +562,14 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
 </url>
-                                                                                                 <!-- pozhezhna_bezpeka -->
+                                                                                            
     <url>
         <loc>https://xn--80anevegliy.pp.ua/pozhezhna_bezpeka.html</loc>
         <lastmod>2026-05-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
-    <!-- Сторінки товарів -->
+
 <url>
     <loc>https://xn--80anevegliy.pp.ua/pozhezhna_bezpeka/ajax_fireprotect_white.html</loc>
     <lastmod>2026-05-17</lastmod>
@@ -618,30 +590,19 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
 </url>
-
 <url>
     <loc>https://xn--80anevegliy.pp.ua/pozhezhna_bezpeka/ajax_fireprotect_plus_black.html</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
 </url>
-
-    <!-- Інформаційні сторінки -->                                                                <!-- Інформаційні сторінки -->
-    <url>
+<url>
         <loc>https://xn--80anevegliy.pp.ua/dostavka.html</loc>
         <lastmod>2026-05-16</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
-
- <!--   <url>
-        <loc>https://xn--80anevegliy.pp.ua/montazh.html</loc>
-        <lastmod>2026-05-16</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>-->
-
-    <url>
+   <url>
         <loc>https://xn--80anevegliy.pp.ua/garantiya.html</loc>
         <lastmod>2026-05-16</lastmod>
         <changefreq>monthly</changefreq>
