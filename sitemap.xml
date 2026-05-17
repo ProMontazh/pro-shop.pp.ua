@@ -17,6 +17,48 @@
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
+    <!-- Сторінки товарів -->
+<url>
+    <loc>https://xn--80anevegliy.pp.ua/vnutrishni_kamery/IMOU_IPC_K2MP_3H1WE.html</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://xn--80anevegliy.pp.ua/vnutrishni_kamery/IMOU_IPC_C32EP.html</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://xn--80anevegliy.pp.ua/vnutrishni_kamery/IMOU_IPC_K2EP_3H3W.html</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://xn--80anevegliy.pp.ua/vnutrishni_kamery/IMOU_IPC_K2EP_5H3W.html</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://xn--80anevegliy.pp.ua/vnutrishni_kamery/IMOU_IPC_T22EP_C.html</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
+
+<url>
+    <loc>https://xn--80anevegliy.pp.ua/vnutrishni_kamery/IMOU_IPC_T42EP_C.html</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+</url>
                                                                                 <!-- Деталі zovnishni_kamery -->
     <url>
         <loc>https://xn--80anevegliy.pp.ua/zovnishni_kamery.html</loc>
@@ -24,12 +66,76 @@
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
+      <!-- Товари: Зовнішні камери -->
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/zovnishni_kamery/IMOU_IPC_K3DP_3H0WF.html</loc>
+        <lastmod>2026-05-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/zovnishni_kamery/IMOU_IPC_K3DP_5H0WF.html</loc>
+        <lastmod>2026-05-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/zovnishni_kamery/IMOU_IPC_K7CP_3H1WE.html</loc>
+        <lastmod>2026-05-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/zovnishni_kamery/IMOU_IPC_S3EP_3M0WE.html</loc>
+        <lastmod>2026-05-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/zovnishni_kamery/IMOU_IPC_GS7EP_5M0WE.html</loc>
+        <lastmod>2026-05-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/zovnishni_kamery/IMOU_IPC_S7XEP_10M0WED.html</loc>
+        <lastmod>2026-05-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
                                                                                 <!-- Деталі zovnishni_4G_kamery -->
     <url>
         <loc>https://xn--80anevegliy.pp.ua/zovnishni_4G_kamery.html</loc>
         <lastmod>2026-05-16</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+    </url>
+     <!-- Товари: Зовнішні 4G камери -->
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/zovnishni_4G_kamery/IMOU_IPC_K7FP_3H0TE_EU.html</loc>
+        <lastmod>2026-05-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/zovnishni_4G_kamery/IMOU_IPC_TB3FP_3T0WE_FSP12_TYPEC.html</loc>
+        <lastmod>2026-05-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://xn--80anevegliy.pp.ua/zovnishni_4G_kamery/IMOU_IPC_B7ED_5M0TEA_EU.html</loc>
+        <lastmod>2026-05-17</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
     </url>
                                                                                 <!-- Деталі karty_pam'yati -->
     <url>
